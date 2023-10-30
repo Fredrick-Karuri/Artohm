@@ -3,6 +3,9 @@ import 'controller/collaborate_controller.dart';
 import 'models/chipviewselect_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
+import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_screen.dart';
+import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
+
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
@@ -12,6 +15,7 @@ import 'package:artohmapp/widgets/custom_drop_down.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
+
 
 class CollaborateScreen extends GetWidget<CollaborateController> {
   const CollaborateScreen({Key? key}) : super(key: key);
@@ -541,30 +545,38 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
   }
 
   ///Handling route based on bottom click actions
-  String getCurrentRoute(BottomBarEnum type) {
+    String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home2:
         return AppRoutes.homePage;
       case BottomBarEnum.Marketplace2:
-        return "/";
+        return AppRoutes.artMarketplaceScreen;
       case BottomBarEnum.Community2:
-        return "/";
+        return AppRoutes.artCommunityScreen;
       case BottomBarEnum.Collaborate:
-        return "/";
+        return AppRoutes.collaborateScreen;
       default:
         return "/";
     }
   }
+  
 
   ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
-      case AppRoutes.homePage:
-        return HomePage();
-      default:
-        return DefaultWidget();
-    }
+Widget getCurrentPage(String currentRoute) {
+  switch (currentRoute) {
+    case AppRoutes.homePage:
+      return HomePage();
+    case AppRoutes.artMarketplaceScreen:
+      return ArtMarketplaceScreen();
+    case AppRoutes.artCommunityScreen:
+      return ArtCommunityScreen();
+    case AppRoutes.collaborateScreen:
+      return CollaborateScreen();
+    default:
+      return HomePage();
   }
+}
+
 
   /// Navigates to the previous screen.
   ///

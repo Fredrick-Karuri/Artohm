@@ -3,6 +3,7 @@ import 'controller/art_community_controller.dart';
 import 'models/userprofile_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
+import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
 import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -633,11 +634,11 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
       case BottomBarEnum.Home2:
         return AppRoutes.homePage;
       case BottomBarEnum.Marketplace2:
-        return "/";
+        return AppRoutes.artMarketplaceScreen;
       case BottomBarEnum.Community2:
-        return "/";
+        return AppRoutes.artCommunityScreen;
       case BottomBarEnum.Collaborate:
-        return "/";
+        return AppRoutes.collaborateScreen;
       default:
         return "/";
     }
@@ -649,7 +650,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
       case AppRoutes.homePage:
         return HomePage();
       default:
-        return DefaultWidget();
+        return HomePage();
     }
   }
 

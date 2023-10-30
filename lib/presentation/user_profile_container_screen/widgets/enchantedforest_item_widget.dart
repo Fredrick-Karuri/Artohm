@@ -18,42 +18,49 @@ class EnchantedforestItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomImageView(
-          imagePath: ImageConstant.imgRectangle11135x1081,
-          height: 135.v,
-          width: 108.h,
-          radius: BorderRadius.circular(
-            8.h,
-          ),
-        ),
-        SizedBox(height: 3.v),
-        Align(
-          alignment: Alignment.center,
-          child: Obx(
-            () => Text(
-              enchantedforestItemModelObj.txt!.value,
-              overflow: TextOverflow.ellipsis,
-              style: theme.textTheme.labelMedium,
+    return InkWell(
+      onTap: () {
+        // Handle your tap here.
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Expanded(
+            child: CustomImageView(
+              imagePath: ImageConstant.imgRectangle11135x1081,
+              height: 120.v,
+              width: 108.h,
+              radius: BorderRadius.circular(
+                8.h,
+              ),
             ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: 8.h,
-            top: 4.v,
-          ),
-          child: Obx(
-            () => Text(
-              enchantedforestItemModelObj.txtone!.value,
-              overflow: TextOverflow.ellipsis,
-              style: CustomTextStyles.bodySmallLatoLight,
+          SizedBox(height: 3.v),
+          Align(
+            alignment: Alignment.center,
+            child: Obx(
+              () => Text(
+                enchantedforestItemModelObj.txt!.value,
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.labelMedium,
+              ),
             ),
           ),
-        ),
-      ],
+          Padding(
+            padding: EdgeInsets.only(
+              left: 8.h,
+              top: 4.v,
+            ),
+            child: Obx(
+              () => Text(
+                enchantedforestItemModelObj.txtone!.value,
+                overflow: TextOverflow.ellipsis,
+                style: CustomTextStyles.bodySmallLatoLight,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

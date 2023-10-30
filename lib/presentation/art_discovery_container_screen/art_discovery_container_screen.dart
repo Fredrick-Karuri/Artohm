@@ -3,6 +3,10 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_screen.dart';
+import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
+import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
+
 
 class ArtDiscoveryContainerScreen
     extends GetWidget<ArtDiscoveryContainerController> {
@@ -26,28 +30,35 @@ class ArtDiscoveryContainerScreen
   }
 
   ///Handling route based on bottom click actions
+
   String getCurrentRoute(BottomBarEnum type) {
     switch (type) {
       case BottomBarEnum.Home2:
         return AppRoutes.homePage;
       case BottomBarEnum.Marketplace2:
-        return "/";
+        return AppRoutes.artMarketplaceScreen;
       case BottomBarEnum.Community2:
-        return "/";
+        return AppRoutes.artCommunityScreen;
       case BottomBarEnum.Collaborate:
-        return "/";
+        return AppRoutes.collaborateScreen;
       default:
         return "/";
     }
   }
 
   ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
-      case AppRoutes.homePage:
-        return HomePage();
-      default:
-        return DefaultWidget();
-    }
+Widget getCurrentPage(String currentRoute) {
+  switch (currentRoute) {
+    case AppRoutes.homePage:
+      return HomePage();
+    case AppRoutes.artMarketplaceScreen:
+      return ArtMarketplaceScreen();
+    case AppRoutes.artCommunityScreen:
+      return ArtCommunityScreen();
+    case AppRoutes.collaborateScreen:
+      return CollaborateScreen();
+    default:
+      return HomePage();
   }
+}
 }

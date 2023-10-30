@@ -434,7 +434,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
       case AppRoutes.homePage:
         return HomePage();
       default:
-        return DefaultWidget();
+        return HomePage();
     }
   }
 

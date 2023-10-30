@@ -1,3 +1,4 @@
+import 'package:artohmapp/widgets/custom_drop_down.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
 import 'models/home_model.dart';
@@ -110,22 +111,29 @@ class HomePage extends StatelessWidget {
                                                       "lbl_filter_by".tr,
                                                       style: theme.textTheme
                                                           .labelLarge)),
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgArrowdown,
-                                                  height: 6.v,
-                                                  width: 12.h,
-                                                  margin: EdgeInsets.only(
-                                                      left: 7.h,
-                                                      top: 6.v,
-                                                      bottom: 4.v)),
-                                              Padding(
-                                                  padding:
-                                                      EdgeInsets.only(top: 2.v),
-                                                  child: Text("lbl_painting".tr,
-                                                      style: theme.textTheme
-                                                          .labelLarge))
+                                              // CustomImageView(
+                                              //     svgPath: ImageConstant
+                                              //         .imgArrowdown,
+                                              //     height: 6.v,
+                                              //     width: 12.h,
+                                              //     margin: EdgeInsets.only(
+                                              //         left: 7.h,
+                                              //         top: 6.v,
+                                              //         bottom: 4.v)),
                                             ])),
+
+                                    // CustomDropDown(
+                                    //   // fillColor: Colors.blue,
+                                      
+                                    // ),
+                                    CustomElevatedButton(
+                                        width: 120.h,
+                                        text: "lbl_painting".tr,
+                                        margin: EdgeInsets.only(left: 8.h),
+                                        buttonStyle: CustomButtonStyles
+                                            .fillLightBlueATL16,
+                                        buttonTextStyle:
+                                            theme.textTheme.labelLarge!),
                                     CustomElevatedButton(
                                         width: 61.h,
                                         text: "lbl_art".tr,
@@ -196,6 +204,14 @@ class HomePage extends StatelessWidget {
   onTapImgProfileoneone() {
     Get.toNamed(
       AppRoutes.userProfileContainerScreen,
+    );
+  }
+
+  /// Navigates to the art_marketplace_screen when the action is triggered.
+
+  onTapImgMarketplace() {
+    Get.toNamed(
+      AppRoutes.artMarketplaceScreen,
     );
   }
 }

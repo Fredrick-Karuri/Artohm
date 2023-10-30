@@ -31,20 +31,20 @@ class CustomTextStyles {
   static get bodyLargeBlack90001_6 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.black90001.withOpacity(0.72),
       );
-  static get bodyLargeBlack90002 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.72),
+  static get bodyLargeblack90001 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.72),
       );
-  static get bodyLargeBlack90002_1 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.8),
+  static get bodyLargeblack90001_1 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.8),
       );
-  static get bodyLargeBlack90002_2 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.6),
+  static get bodyLargeblack90001_2 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.6),
       );
-  static get bodyLargeBlack90002_3 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.9),
+  static get bodyLargeblack90001_3 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.9),
       );
-  static get bodyLargeBlack90002_4 => theme.textTheme.bodyLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.6),
+  static get bodyLargeblack90001_4 => theme.textTheme.bodyLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.6),
       );
   static get bodyLargeInter => theme.textTheme.bodyLarge!.inter;
   static get bodyLargeInter18 => theme.textTheme.bodyLarge!.inter.copyWith(
@@ -95,9 +95,9 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.roboto.copyWith(
         color: appTheme.black90001.withOpacity(0.87),
       );
-  static get bodyLargeRobotoBlack90002 =>
+  static get bodyLargeRobotoblack90001 =>
       theme.textTheme.bodyLarge!.roboto.copyWith(
-        color: appTheme.black90002.withOpacity(0.87),
+        color: appTheme.black90001.withOpacity(0.87),
       );
   static get bodyLargeWhiteA700 => theme.textTheme.bodyLarge!.copyWith(
         color: appTheme.whiteA700,
@@ -120,14 +120,14 @@ class CustomTextStyles {
   static get bodyMediumBlack90001_4 => theme.textTheme.bodyMedium!.copyWith(
         color: appTheme.black90001.withOpacity(0.6),
       );
-  static get bodyMediumBlack90002 => theme.textTheme.bodyMedium!.copyWith(
-        color: appTheme.black90002.withOpacity(0.5),
+  static get bodyMediumblack90001 => theme.textTheme.bodyMedium!.copyWith(
+        color: appTheme.black90001.withOpacity(0.5),
       );
-  static get bodyMediumBlack90002_1 => theme.textTheme.bodyMedium!.copyWith(
-        color: appTheme.black90002.withOpacity(0.8),
+  static get bodyMediumblack90001_1 => theme.textTheme.bodyMedium!.copyWith(
+        color: appTheme.black90001.withOpacity(0.8),
       );
-  static get bodyMediumBlack90002_2 => theme.textTheme.bodyMedium!.copyWith(
-        color: appTheme.black90002.withOpacity(0.6),
+  static get bodyMediumblack90001_2 => theme.textTheme.bodyMedium!.copyWith(
+        color: appTheme.black90001.withOpacity(0.6),
       );
   static get bodyMediumInter => theme.textTheme.bodyMedium!.inter.copyWith(
         fontWeight: FontWeight.w300,
@@ -158,9 +158,9 @@ class CustomTextStyles {
       theme.textTheme.bodyMedium!.roboto.copyWith(
         color: appTheme.black90001.withOpacity(0.6),
       );
-  static get bodyMediumRobotoBlack90002 =>
+  static get bodyMediumRobotoblack90001 =>
       theme.textTheme.bodyMedium!.roboto.copyWith(
-        color: appTheme.black90002.withOpacity(0.6),
+        color: appTheme.black90001.withOpacity(0.6),
       );
   static get bodyMediumRobotoWhiteA700 =>
       theme.textTheme.bodyMedium!.roboto.copyWith(
@@ -192,14 +192,14 @@ class CustomTextStyles {
         color: appTheme.black90001.withOpacity(0.87),
         fontSize: 12.fSize,
       );
-  static get bodySmallLatoBlack90002 =>
+  static get bodySmallLatoblack90001 =>
       theme.textTheme.bodySmall!.lato.copyWith(
-        color: appTheme.black90002.withOpacity(0.6),
+        color: appTheme.black90001.withOpacity(0.6),
         fontSize: 12.fSize,
       );
-  static get bodySmallLatoBlack9000212 =>
+  static get bodySmallLatoblack9000112 =>
       theme.textTheme.bodySmall!.lato.copyWith(
-        color: appTheme.black90002.withOpacity(0.87),
+        color: appTheme.black90001.withOpacity(0.87),
         fontSize: 12.fSize,
       );
   static get bodySmallLatoLight => theme.textTheme.bodySmall!.lato.copyWith(
@@ -234,17 +234,17 @@ class CustomTextStyles {
         color: appTheme.black90001.withOpacity(0.87),
         fontSize: 12.fSize,
       );
-  static get bodySmallRobotoBlack90002 =>
+  static get bodySmallRobotoblack90001 =>
       theme.textTheme.bodySmall!.roboto.copyWith(
-        color: appTheme.black90002.withOpacity(0.87),
+        color: appTheme.black90001.withOpacity(0.87),
         fontSize: 12.fSize,
       );
   // Label text style
   static get labelLargeBlack90001 => theme.textTheme.labelLarge!.copyWith(
         color: appTheme.black90001,
       );
-  static get labelLargeBlack90002 => theme.textTheme.labelLarge!.copyWith(
-        color: appTheme.black90002.withOpacity(0.87),
+  static get labelLargeblack90001 => theme.textTheme.labelLarge!.copyWith(
+        color: appTheme.black90001.withOpacity(0.87),
       );
   static get labelLargeRobotoWhiteA700 =>
       theme.textTheme.labelLarge!.roboto.copyWith(
@@ -261,16 +261,16 @@ class CustomTextStyles {
   static get titleLargeBlack90001 => theme.textTheme.titleLarge!.copyWith(
         color: appTheme.black90001,
       );
-  static get titleLargeBlack90002 => theme.textTheme.titleLarge!.copyWith(
-        color: appTheme.black90002,
+  static get titleLargeblack90001 => theme.textTheme.titleLarge!.copyWith(
+        color: appTheme.black90001,
       );
   static get titleLargeMontserratBlack90001 =>
       theme.textTheme.titleLarge!.montserrat.copyWith(
         color: appTheme.black90001,
       );
-  static get titleLargeMontserratBlack90002 =>
+  static get titleLargeMontserratblack90001 =>
       theme.textTheme.titleLarge!.montserrat.copyWith(
-        color: appTheme.black90002,
+        color: appTheme.black90001,
       );
   static get titleMediumBlack90001 => theme.textTheme.titleMedium!.copyWith(
         color: appTheme.black90001.withOpacity(0.8),
@@ -333,8 +333,8 @@ class CustomTextStyles {
   static get titleSmallBlack90001 => theme.textTheme.titleSmall!.copyWith(
         color: appTheme.black90001.withOpacity(0.87),
       );
-  static get titleSmallBlack90002 => theme.textTheme.titleSmall!.copyWith(
-        color: appTheme.black90002.withOpacity(0.87),
+  static get titleSmallblack90001 => theme.textTheme.titleSmall!.copyWith(
+        color: appTheme.black90001.withOpacity(0.87),
       );
   static get titleSmallLato => theme.textTheme.titleSmall!.lato.copyWith(
         fontWeight: FontWeight.w500,

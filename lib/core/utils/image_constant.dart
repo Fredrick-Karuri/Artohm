@@ -43,7 +43,7 @@ class ImageConstant {
   static String imgRectangle11120x1601 =
       '$imagePath/img_rectangle11_120x160_1.png';
 
-  static String imgIconsBlack90002 = '$imagePath/img_icons_black_900_02.svg';
+  static String imgIconsblack90001 = '$imagePath/img_icons_black_900_02.svg';
 
   static String imgRectangle11120x1602 =
       '$imagePath/img_rectangle11_120x160_2.png';

@@ -23,53 +23,62 @@ class CollectionItemWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgRectangle11120x160,
-            height: 120.v,
-            width: 160.h,
-            radius: BorderRadius.circular(
-              8.h,
+          Flexible(
+            flex: 6,
+            child: CustomImageView(
+              imagePath: ImageConstant.imgRectangle11120x160,
+              height: 120.v,
+              width: 160.h,
+              radius: BorderRadius.circular(
+                8.h,
+              ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 8.h,
-              top: 4.v,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Obx(
-                      () => Text(
-                        collectionItemModelObj.collectionText!.value,
-                        overflow: TextOverflow.ellipsis,
-                        style: theme.textTheme.labelMedium,
-                      ),
+          Flexible(
+            flex: 2,
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 8.h,
+                top: 1.v,
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Flexible(
+                    flex: 1,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => Text(
+                            collectionItemModelObj.collectionText!.value,
+                            overflow: TextOverflow.ellipsis,
+                            style: theme.textTheme.labelMedium,
+                          ),
+                        ),
+                        SizedBox(height: 2.v),
+                        Obx(
+                          () => Text(
+                            collectionItemModelObj.artworkText!.value,
+                            overflow: TextOverflow.ellipsis,
+                            style: CustomTextStyles.bodySmallLatoLight,
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 2.v),
-                    Obx(
-                      () => Text(
-                        collectionItemModelObj.artworkText!.value,
-                        overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodySmallLatoLight,
-                      ),
-                    ),
-                  ],
-                ),
-                CustomImageView(
-                  svgPath: ImageConstant.imgIconsBlack90002,
-                  height: 20.v,
-                  width: 4.h,
-                  margin: EdgeInsets.only(
-                    left: 59.h,
-                    top: 3.v,
-                    bottom: 4.v,
                   ),
-                ),
-              ],
+                  CustomImageView(
+                    svgPath: ImageConstant.imgIconsblack90001,
+                    height: 20.v,
+                    width: 4.h,
+                    margin: EdgeInsets.only(
+                      left: 59.h,
+                      top: 3.v,
+                      bottom: 4.v,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

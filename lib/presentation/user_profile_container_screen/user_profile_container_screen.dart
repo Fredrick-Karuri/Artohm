@@ -21,517 +21,475 @@ class UserProfileContainerScreen
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: CustomAppBar(
-                leadingWidth: 46.h,
-                leading: AppbarImage(
-                    svgPath: ImageConstant.imgArrowleftRed300,
-                    margin:
-                        EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+      appBar: CustomAppBar(
+          leadingWidth: 46.h,
+          leading: AppbarImage(
+              svgPath: ImageConstant.imgArrowleftRed300,
+              margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+              onTap: () {
+                onTapArrowleftone();
+              }),
+          title: AppbarTitle(
+              text: "lbl_profile".tr,
+              margin: EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v)),
+          actions: [
+            Padding(
+                padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
+                child: AppbarImage1(
+                    svgPath: ImageConstant.imgProfileicons,
+                    margin: EdgeInsets.only(top: 24.v, right: 24.h),
                     onTap: () {
-                      onTapArrowleftone();
-                    }),
-                title: AppbarTitle(
-                    text: "lbl_profile".tr,
-                    margin:
-                        EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v)),
-                actions: [
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 16.v),
-                      child: Column(children: [
-                        AppbarImage1(
-                            svgPath: ImageConstant.imgMask,
-                            margin: EdgeInsets.only(left: 1.h)),
-                        AppbarImage1(
-                            svgPath: ImageConstant.imgProfileicons,
-                            margin: EdgeInsets.only(top: 23.v, right: 28.h),
-                            onTap: () {
-                              onTapProfileicons();
-                            })
-                      ]))
-                ],
-                styleType: Style.bgFill),
-            body: SizedBox(
-                width: mediaQueryData.size.width,
-                child: SingleChildScrollView(
-                    padding: EdgeInsets.only(top: 24.v),
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.only(right: 15.h),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 8.h, vertical: 16.v),
-                                  decoration: AppDecoration.outlineBlack900011
-                                      .copyWith(
-                                          borderRadius: BorderRadiusStyle
-                                              .roundedBorder12),
-                                  child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                            padding:
-                                                EdgeInsets.only(left: 15.h),
-                                            child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  CustomImageView(
-                                                      imagePath: ImageConstant
-                                                          .imgEllipse12,
-                                                      height: 80.adaptSize,
-                                                      width: 80.adaptSize,
-                                                      radius:
-                                                          BorderRadius.circular(
-                                                              40.h)),
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: 2.v),
-                                                      child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                "lbl_sophia_anderson"
-                                                                    .tr,
-                                                                style: theme
-                                                                    .textTheme
-                                                                    .titleMedium),
-                                                            Padding(
-                                                                padding: EdgeInsets
-                                                                    .only(
-                                                                        left:
-                                                                            4.h,
-                                                                        top: 5
-                                                                            .v),
-                                                                child: Text(
-                                                                    "lbl_artlover1"
-                                                                        .tr,
-                                                                    style: CustomTextStyles
-                                                                        .bodyLargeLibreBaskerville)),
-                                                            SizedBox(
-                                                                height: 12.v),
-                                                            Row(children: [
-                                                              Padding(
-                                                                  padding: EdgeInsets
-                                                                      .only(
-                                                                          bottom:
-                                                                              1.v),
-                                                                  child: RichText(
-                                                                      text: TextSpan(children: [
-                                                                        TextSpan(
-                                                                            text:
-                                                                                "lbl_1_56k".tr,
-                                                                            style: CustomTextStyles.titleSmallLatoLightblueA700),
-                                                                        TextSpan(
-                                                                            text:
-                                                                                "  ".tr),
-                                                                        TextSpan(
-                                                                            text:
-                                                                                "lbl_followers".tr,
-                                                                            style: CustomTextStyles.bodyMediumLightblueA700)
-                                                                      ]),
-                                                                      textAlign: TextAlign.left)),
-                                                              Padding(
-                                                                  padding: EdgeInsets
-                                                                      .only(
-                                                                          left:
-                                                                              24.h),
-                                                                  child: RichText(
-                                                                      text: TextSpan(children: [
-                                                                        TextSpan(
-                                                                            text:
-                                                                                "lbl_21".tr,
-                                                                            style: CustomTextStyles.titleSmallLatoLightblueA700),
-                                                                        TextSpan(
-                                                                            text:
-                                                                                "lbl_following".tr,
-                                                                            style: CustomTextStyles.bodyMediumLightblueA700)
-                                                                      ]),
-                                                                      textAlign: TextAlign.left))
-                                                            ])
-                                                          ]))
-                                                ])),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 16.h, top: 24.v),
-                                            child: Row(children: [
-                                              Text("lbl_location".tr,
-                                                  style: theme
-                                                      .textTheme.bodyLarge),
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 99.h),
-                                                  child: Text("lbl_nairobi".tr,
-                                                      style: CustomTextStyles
-                                                          .bodyLargeLight))
-                                            ])),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 16.h,
-                                                top: 7.v,
-                                                right: 44.h),
-                                            child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          top: 1.v,
-                                                          bottom: 20.v),
-                                                      child: Text(
-                                                          "msg_favorite_art_styles"
+                      onTapProfileicons();
+                    }))
+          ],
+          styleType: Style.bgFill),
+      body: SizedBox(
+          width: mediaQueryData.size.width,
+          child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 24.v),
+              child: Padding(
+                  padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(right: 15.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 8.h, vertical: 16.v),
+                            decoration: AppDecoration.outlineBlack900011
+                                .copyWith(
+                                    borderRadius:
+                                        BorderRadiusStyle.roundedBorder12),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                      padding: EdgeInsets.only(left: 15.h),
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            CustomImageView(
+                                                imagePath:
+                                                    ImageConstant.imgEllipse12,
+                                                height: 80.adaptSize,
+                                                width: 80.adaptSize,
+                                                radius: BorderRadius.circular(
+                                                    40.h)),
+                                            Padding(
+                                                padding:
+                                                    EdgeInsets.only(top: 2.v),
+                                                child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                          "lbl_sophia_anderson"
                                                               .tr,
                                                           style: theme.textTheme
-                                                              .bodyLarge)),
-                                                  Container(
-                                                      width: 122.h,
-                                                      margin: EdgeInsets.only(
-                                                          left: 31.h),
-                                                      child: Text(
-                                                          "msg_surrealism_digital"
-                                                              .tr,
-                                                          maxLines: 2,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          style: CustomTextStyles
-                                                              .bodyLargeLight))
-                                                ])),
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 16.h,
-                                                top: 4.v,
-                                                right: 35.h),
-                                            child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          bottom: 18.v),
-                                                      child: Text(
-                                                          "lbl_influences".tr,
-                                                          style: theme.textTheme
-                                                              .bodyLarge)),
-                                                  Container(
-                                                      width: 131.h,
-                                                      margin: EdgeInsets.only(
-                                                          left: 87.h),
-                                                      child: Text(
-                                                          "msg_salvador_dali_frida"
-                                                              .tr,
-                                                          maxLines: 2,
-                                                          overflow: TextOverflow
-                                                              .ellipsis,
-                                                          style: CustomTextStyles
-                                                              .bodyLargeLight))
-                                                ])),
-                                        CustomElevatedButton(
-                                            text: "lbl_edit_profile".tr,
-                                            margin: EdgeInsets.only(
-                                                left: 41.h,
-                                                top: 22.v,
-                                                right: 41.h),
-                                            buttonTextStyle: CustomTextStyles
-                                                .titleSmallLatoWhiteA700Medium,
-                                            onTap: () {
-                                              onTapEditprofile();
-                                            },
-                                            alignment: Alignment.center)
-                                      ])),
-                              Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 4.h, top: 53.v, right: 16.h),
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 5.v, bottom: 7.v),
-                                            child: Text("lbl_your_work".tr,
-                                                style: theme
-                                                    .textTheme.titleMedium)),
-                                        CustomOutlinedButton(
-                                            width: 107.h,
-                                            text: "lbl_121_artworks".tr,
-                                            buttonStyle: CustomButtonStyles
-                                                .outlineLightBlueATL4,
-                                            buttonTextStyle: CustomTextStyles
-                                                .titleSmallLatoLightblueA700Medium)
-                                      ])),
-                              Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 16.v, right: 25.h),
-                                  child: Obx(() => GridView.builder(
-                                      shrinkWrap: true,
-                                      gridDelegate:
-                                          SliverGridDelegateWithFixedCrossAxisCount(
-                                              mainAxisExtent: 169.v,
-                                              crossAxisCount: 3,
-                                              mainAxisSpacing: 13.h,
-                                              crossAxisSpacing: 13.h),
-                                      physics: NeverScrollableScrollPhysics(),
-                                      itemCount: controller
-                                          .userProfileContainerModelObj
-                                          .value
-                                          .enchantedforestItemList
-                                          .value
-                                          .length,
-                                      itemBuilder: (context, index) {
-                                        EnchantedforestItemModel model =
-                                            controller
-                                                .userProfileContainerModelObj
-                                                .value
-                                                .enchantedforestItemList
-                                                .value[index];
-                                        return EnchantedforestItemWidget(model);
-                                      }))),
-                              CustomOutlinedButton(
-                                  text: "lbl_add_new".tr,
-                                  margin:
-                                      EdgeInsets.only(top: 23.v, right: 16.h),
-                                  onTap: () {
-                                    onTapAddnew();
-                                  }),
-                              Padding(
-                                  padding:
-                                      EdgeInsets.only(left: 4.h, top: 53.v),
-                                  child: Text("lbl_collections".tr,
-                                      style: theme.textTheme.titleMedium)),
-                              SizedBox(height: 17.v),
-                              Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Expanded(
-                                            child: Row(children: [
-                                          Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                CustomImageView(
-                                                    imagePath: ImageConstant
-                                                        .imgRectangle11120x1601,
-                                                    height: 120.v,
-                                                    width: 160.h,
-                                                    radius:
-                                                        BorderRadius.circular(
-                                                            8.h)),
-                                                Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 7.h, top: 3.v),
-                                                    child: Row(children: [
-                                                      Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                                "msg_abstract_wonders"
-                                                                    .tr,
-                                                                style: theme
-                                                                    .textTheme
-                                                                    .labelMedium),
-                                                            SizedBox(
-                                                                height: 4.v),
-                                                            Text(
-                                                                "lbl_12_artworks"
-                                                                    .tr,
-                                                                style: CustomTextStyles
-                                                                    .bodySmallLatoLight)
-                                                          ]),
-                                                      CustomImageView(
-                                                          svgPath: ImageConstant
-                                                              .imgIconsBlack90002,
-                                                          height: 20.v,
-                                                          width: 4.h,
-                                                          margin:
+                                                              .titleMedium),
+                                                      Padding(
+                                                          padding:
                                                               EdgeInsets.only(
-                                                                  left: 36.h,
-                                                                  top: 4.v,
-                                                                  bottom: 4.v),
-                                                          onTap: () {
-                                                            onTapImgIconsone();
-                                                          })
+                                                                  left: 4.h,
+                                                                  top: 5.v),
+                                                          child: Text(
+                                                              "lbl_artlover1"
+                                                                  .tr,
+                                                              style: CustomTextStyles
+                                                                  .bodyLargeLibreBaskerville)),
+                                                      SizedBox(height: 12.v),
+                                                      Row(children: [
+                                                        Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    bottom:
+                                                                        1.v),
+                                                            child: RichText(
+                                                                text: TextSpan(
+                                                                    children: [
+                                                                      TextSpan(
+                                                                          text: "lbl_1_56k"
+                                                                              .tr,
+                                                                          style:
+                                                                              CustomTextStyles.titleSmallLatoLightblueA700),
+                                                                      TextSpan(
+                                                                          text:
+                                                                              "  ".tr),
+                                                                      TextSpan(
+                                                                          text: "lbl_followers"
+                                                                              .tr,
+                                                                          style:
+                                                                              CustomTextStyles.bodyMediumLightblueA700)
+                                                                    ]),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left)),
+                                                        Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    left: 24.h),
+                                                            child: RichText(
+                                                                text: TextSpan(
+                                                                    children: [
+                                                                      TextSpan(
+                                                                          text: "lbl_21"
+                                                                              .tr,
+                                                                          style:
+                                                                              CustomTextStyles.titleSmallLatoLightblueA700),
+                                                                      TextSpan(
+                                                                          text: "lbl_following"
+                                                                              .tr,
+                                                                          style:
+                                                                              CustomTextStyles.bodyMediumLightblueA700)
+                                                                    ]),
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .left))
+                                                      ])
                                                     ]))
-                                              ]),
-                                          Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 16.h),
-                                              child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    CustomImageView(
-                                                        imagePath: ImageConstant
-                                                            .imgRectangle11120x1602,
-                                                        height: 120.v,
-                                                        width: 160.h,
-                                                        radius: BorderRadius
-                                                            .circular(8.h)),
-                                                    Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 8.h,
-                                                                top: 3.v),
-                                                        child: Row(children: [
-                                                          Column(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                    "msg_nature_s_palette"
-                                                                        .tr,
-                                                                    style: theme
-                                                                        .textTheme
-                                                                        .labelMedium),
-                                                                SizedBox(
-                                                                    height:
-                                                                        4.v),
-                                                                Text(
-                                                                    "lbl_8_artworks"
-                                                                        .tr,
-                                                                    style: CustomTextStyles
-                                                                        .bodySmallLatoLight)
-                                                              ]),
-                                                          CustomImageView(
-                                                              svgPath: ImageConstant
-                                                                  .imgIconsBlack90002,
-                                                              height: 20.v,
-                                                              width: 4.h,
-                                                              margin: EdgeInsets
-                                                                  .only(
-                                                                      left:
-                                                                          48.h,
-                                                                      top: 4.v,
-                                                                      bottom:
-                                                                          4.v))
-                                                        ]))
-                                                  ]))
-                                        ])),
-                                        Expanded(
-                                            child: SizedBox(
-                                                height: 152.v,
-                                                child: Obx(() =>
-                                                    ListView.separated(
-                                                        padding: EdgeInsets
-                                                            .symmetric(
-                                                                horizontal:
-                                                                    16.h),
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        separatorBuilder:
-                                                            (context, index) {
-                                                          return SizedBox(
-                                                              width: 16.h);
-                                                        },
-                                                        itemCount: controller
-                                                            .userProfileContainerModelObj
-                                                            .value
-                                                            .collectionItemList
-                                                            .value
-                                                            .length,
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          CollectionItemModel
-                                                              model = controller
-                                                                  .userProfileContainerModelObj
-                                                                  .value
-                                                                  .collectionItemList
-                                                                  .value[index];
-                                                          return CollectionItemWidget(
-                                                              model);
-                                                        }))))
-                                      ])),
-                              CustomOutlinedButton(
-                                  text: "msg_create_collection".tr,
-                                  margin:
-                                      EdgeInsets.only(top: 23.v, right: 16.h),
-                                  buttonTextStyle:
-                                      CustomTextStyles.titleSmallRobotoRed300,
-                                  onTap: () {
-                                    onTapCreate();
-                                  }),
-                              Container(
-                                  width: 358.h,
-                                  margin:
-                                      EdgeInsets.only(top: 53.v, right: 16.h),
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 7.h, vertical: 15.v),
-                                  decoration: AppDecoration.outlineRed.copyWith(
-                                      borderRadius:
-                                          BorderRadiusStyle.roundedBorder4),
-                                  child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 4.v, right: 16.h),
-                                            child: Row(children: [
-                                              Text(
-                                                  "msg_art_community_engagement"
-                                                      .tr,
-                                                  style: theme
-                                                      .textTheme.titleMedium),
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgArrowrightRed300,
-                                                  height: 18.v,
-                                                  width: 10.h,
-                                                  margin: EdgeInsets.only(
-                                                      left: 69.h, bottom: 2.v),
-                                                  onTap: () {
-                                                    onTapImgArrowrightone();
-                                                  })
-                                            ])),
-                                        SizedBox(height: 17.v),
-                                        Text("lbl_recent_comments".tr,
+                                          ])),
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 16.h, top: 24.v),
+                                      child: Row(children: [
+                                        Text("lbl_location".tr,
                                             style: theme.textTheme.bodyLarge),
                                         Padding(
-                                            padding: EdgeInsets.only(
-                                                left: 4.h, top: 11.v),
-                                            child: Text(
-                                                "msg_beautiful_use_of".tr,
+                                            padding:
+                                                EdgeInsets.only(left: 99.h),
+                                            child: Text("lbl_nairobi".tr,
                                                 style: CustomTextStyles
-                                                    .bodyMediumBlack90001)),
-                                        Container(
-                                            width: 289.h,
+                                                    .bodyLargeLight))
+                                      ])),
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 16.h, top: 7.v, right: 44.h),
+                                      child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: 1.v, bottom: 20.v),
+                                                child: Text(
+                                                    "msg_favorite_art_styles"
+                                                        .tr,
+                                                    style: theme
+                                                        .textTheme.bodyLarge)),
+                                            Container(
+                                                width: 122.h,
+                                                margin:
+                                                    EdgeInsets.only(left: 31.h),
+                                                child: Text(
+                                                    "msg_surrealism_digital".tr,
+                                                    maxLines: 2,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: CustomTextStyles
+                                                        .bodyLargeLight))
+                                          ])),
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 16.h, top: 4.v, right: 35.h),
+                                      child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                                padding: EdgeInsets.only(
+                                                    bottom: 18.v),
+                                                child: Text("lbl_influences".tr,
+                                                    style: theme
+                                                        .textTheme.bodyLarge)),
+                                            Container(
+                                                width: 131.h,
+                                                margin:
+                                                    EdgeInsets.only(left: 87.h),
+                                                child: Text(
+                                                    "msg_salvador_dali_frida"
+                                                        .tr,
+                                                    maxLines: 2,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: CustomTextStyles
+                                                        .bodyLargeLight))
+                                          ])),
+                                  CustomElevatedButton(
+                                      text: "lbl_edit_profile".tr,
+                                      margin: EdgeInsets.only(
+                                          left: 41.h, top: 22.v, right: 41.h),
+                                      buttonTextStyle: CustomTextStyles
+                                          .titleSmallLatoWhiteA700Medium,
+                                      onTap: () {
+                                        onTapEditprofile();
+                                      },
+                                      alignment: Alignment.center)
+                                ])),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: 4.h, top: 53.v, right: 16.h),
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 5.v, bottom: 7.v),
+                                      child: Text("lbl_your_work".tr,
+                                          style: theme.textTheme.titleMedium)),
+                                  CustomOutlinedButton(
+                                      width: 107.h,
+                                      text: "lbl_121_artworks".tr,
+                                      buttonStyle: CustomButtonStyles
+                                          .outlineLightBlueATL4,
+                                      buttonTextStyle: CustomTextStyles
+                                          .titleSmallLatoLightblueA700Medium)
+                                ])),
+                        Padding(
+                            padding: EdgeInsets.only(top: 16.v, right: 25.h),
+                            child: Obx(() => GridView.builder(
+                                shrinkWrap: true,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                        mainAxisExtent: 172.v,
+                                        crossAxisCount: 3,
+                                        mainAxisSpacing: 13.h,
+                                        crossAxisSpacing: 13.h),
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: controller
+                                    .userProfileContainerModelObj
+                                    .value
+                                    .enchantedforestItemList
+                                    .value
+                                    .length,
+                                itemBuilder: (context, index) {
+                                  EnchantedforestItemModel model = controller
+                                      .userProfileContainerModelObj
+                                      .value
+                                      .enchantedforestItemList
+                                      .value[index];
+                                  return EnchantedforestItemWidget(model);
+                                }))),
+                        CustomOutlinedButton(
+                            text: "lbl_add_new".tr,
+                            margin: EdgeInsets.only(top: 23.v, right: 16.h),
+                            onTap: () {
+                              onTapAddnew();
+                            }),
+                        Padding(
+                            padding: EdgeInsets.only(left: 4.h, top: 53.v),
+                            child: Text("lbl_collections".tr,
+                                style: theme.textTheme.titleMedium)),
+                        SizedBox(height: 17.v),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: Row(children: [
+                              // Expanded(
+                              //     child: Row(children: [
+                              //   Column(
+                              //       crossAxisAlignment:
+                              //           CrossAxisAlignment.start,
+                              //       children: [
+                              //         CustomImageView(
+                              //             imagePath: ImageConstant
+                              //                 .imgRectangle11120x1601,
+                              //             height: 120.v,
+                              //             width: 160.h,
+                              //             radius:
+                              //                 BorderRadius.circular(
+                              //                     8.h)),
+                              //         Padding(
+                              //             padding: EdgeInsets.only(
+                              //                 left: 7.h, top: 3.v),
+                              //             child: Row(children: [
+                              //               Column(
+                              //                   crossAxisAlignment:
+                              //                       CrossAxisAlignment
+                              //                           .start,
+                              //                   children: [
+                              //                     Text(
+                              //                         "msg_abstract_wonders"
+                              //                             .tr,
+                              //                         style: theme
+                              //                             .textTheme
+                              //                             .labelMedium),
+                              //                     SizedBox(
+                              //                         height: 4.v),
+                              //                     Text(
+                              //                         "lbl_12_artworks"
+                              //                             .tr,
+                              //                         style: CustomTextStyles
+                              //                             .bodySmallLatoLight)
+                              //                   ]),
+                              //               CustomImageView(
+                              //                   svgPath: ImageConstant
+                              //                       .imgIconsblack90001,
+                              //                   height: 20.v,
+                              //                   width: 4.h,
+                              //                   margin:
+                              //                       EdgeInsets.only(
+                              //                           left: 36.h,
+                              //                           top: 4.v,
+                              //                           bottom: 4.v),
+                              //                   onTap: () {
+                              //                     onTapImgIconsone();
+                              //                   })
+                              //             ]))
+                              //       ]),
+                              //   Padding(
+                              //       padding:
+                              //           EdgeInsets.only(left: 16.h),
+                              //       child: Column(
+                              //           crossAxisAlignment:
+                              //               CrossAxisAlignment.start,
+                              //           children: [
+                              //             CustomImageView(
+                              //                 imagePath: ImageConstant
+                              //                     .imgRectangle11120x1602,
+                              //                 height: 120.v,
+                              //                 width: 160.h,
+                              //                 radius: BorderRadius
+                              //                     .circular(8.h)),
+                              //             Padding(
+                              //                 padding:
+                              //                     EdgeInsets.only(
+                              //                         left: 8.h,
+                              //                         top: 3.v),
+                              //                 child: Row(children: [
+                              //                   Column(
+                              //                       crossAxisAlignment:
+                              //                           CrossAxisAlignment
+                              //                               .start,
+                              //                       children: [
+                              //                         Text(
+                              //                             "msg_nature_s_palette"
+                              //                                 .tr,
+                              //                             style: theme
+                              //                                 .textTheme
+                              //                                 .labelMedium),
+                              //                         SizedBox(
+                              //                             height:
+                              //                                 4.v),
+                              //                         Text(
+                              //                             "lbl_8_artworks"
+                              //                                 .tr,
+                              //                             style: CustomTextStyles
+                              //                                 .bodySmallLatoLight)
+                              //                       ]),
+                              //                   CustomImageView(
+                              //                       svgPath: ImageConstant
+                              //                           .imgIconsblack90001,
+                              //                       height: 20.v,
+                              //                       width: 4.h,
+                              //                       margin: EdgeInsets
+                              //                           .only(
+                              //                               left:
+                              //                                   48.h,
+                              //                               top: 4.v,
+                              //                               bottom:
+                              //                                   4.v))
+                              //                 ]))
+                              //           ]))
+                              // ])),
+
+                              Expanded(
+                                  child: SizedBox(
+                                      height: 152.v,
+                                      child: Obx(() => ListView.separated(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 16.h),
+                                          scrollDirection: Axis.horizontal,
+                                          separatorBuilder: (context, index) {
+                                            return SizedBox(width: 16.h);
+                                          },
+                                          itemCount: controller
+                                              .userProfileContainerModelObj
+                                              .value
+                                              .collectionItemList
+                                              .value
+                                              .length,
+                                          itemBuilder: (context, index) {
+                                            CollectionItemModel model =
+                                                controller
+                                                    .userProfileContainerModelObj
+                                                    .value
+                                                    .collectionItemList
+                                                    .value[index];
+                                            return CollectionItemWidget(model);
+                                          }))))
+                            ])),
+                        CustomOutlinedButton(
+                            text: "msg_create_collection".tr,
+                            margin: EdgeInsets.only(top: 23.v, right: 16.h),
+                            buttonTextStyle:
+                                CustomTextStyles.titleSmallRobotoRed300,
+                            onTap: () {
+                              onTapCreate();
+                            }),
+                        Container(
+                            width: 360.h,
+                            margin: EdgeInsets.only(top: 53.v, right: 16.h),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 7.h, vertical: 15.v),
+                            decoration: AppDecoration.outlineRed.copyWith(
+                                borderRadius: BorderRadiusStyle.roundedBorder4),
+                            child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 4.v, right: 16.h),
+                                      child: Row(children: [
+                                        Text("msg_art_community_engagement".tr,
+                                            style: theme.textTheme.titleMedium),
+                                        CustomImageView(
+                                            svgPath: ImageConstant
+                                                .imgArrowrightRed300,
+                                            height: 18.v,
+                                            width: 10.h,
                                             margin: EdgeInsets.only(
-                                                left: 4.h,
-                                                top: 7.v,
-                                                right: 48.h),
-                                            child: Text("msg_your_creations".tr,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: CustomTextStyles
-                                                    .bodyMediumBlack90001)),
-                                        Container(
-                                            width: 289.h,
-                                            margin: EdgeInsets.only(
-                                                left: 4.h,
-                                                top: 7.v,
-                                                right: 48.h),
-                                            child: Text("msg_your_creations".tr,
-                                                maxLines: 2,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: CustomTextStyles
-                                                    .bodyMediumBlack90001))
-                                      ]))
-                            ]))))));
+                                                left: 69.h, bottom: 2.v),
+                                            onTap: () {
+                                              onTapImgArrowrightone();
+                                            })
+                                      ])),
+                                  SizedBox(height: 17.v),
+                                  Text("lbl_recent_comments".tr,
+                                      style: theme.textTheme.bodyLarge),
+                                  Padding(
+                                      padding:
+                                          EdgeInsets.only(left: 4.h, top: 11.v),
+                                      child: Text("msg_beautiful_use_of".tr,
+                                          style: CustomTextStyles
+                                              .bodyMediumBlack90001)),
+                                  Container(
+                                      width: 289.h,
+                                      margin: EdgeInsets.only(
+                                          left: 4.h, top: 7.v, right: 48.h),
+                                      child: Text("msg_your_creations".tr,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: CustomTextStyles
+                                              .bodyMediumBlack90001)),
+                                  Container(
+                                      width: 289.h,
+                                      margin: EdgeInsets.only(
+                                          left: 4.h, top: 7.v, right: 48.h),
+                                      child: Text("msg_your_creations".tr,
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: CustomTextStyles
+                                              .bodyMediumBlack90001)),
+                                ]))
+                      ]))
+                      )),
+    ));
   }
 
   /// Navigates to the previous screen.
