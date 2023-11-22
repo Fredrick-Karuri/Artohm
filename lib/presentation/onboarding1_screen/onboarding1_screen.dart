@@ -41,11 +41,13 @@ class Onboarding1Screen extends GetWidget<Onboarding1Controller> {
                       SizedBox(
                           height: 17.v,
                           child: AnimatedSmoothIndicator(
-                              activeIndex: 0,
+                              duration: const Duration(milliseconds: 300),
+                              activeIndex: 1,
                               count: 3,
                               effect: ScrollingDotsEffect(
                                   spacing: 4,
-                                  dotColor: appTheme.red300,
+                                  dotColor: appTheme.red30044,
+                                  activeDotColor: appTheme.red300,
                                   dotHeight: 17.v,
                                   dotWidth: 17.h))),
                       SizedBox(height: 40.v),

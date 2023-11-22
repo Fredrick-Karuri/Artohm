@@ -2,6 +2,7 @@ import 'controller/onboarding_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends GetWidget<OnboardingController> {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -37,10 +38,23 @@ class OnboardingScreen extends GetWidget<OnboardingController> {
                               style: theme.textTheme.bodyLarge!
                                   .copyWith(height: 1.50))),
                       SizedBox(height: 77.v),
-                      CustomImageView(
-                          svgPath: ImageConstant.imgSettings,
+                      SizedBox(
                           height: 17.v,
-                          width: 59.h),
+                          child: AnimatedSmoothIndicator(
+                              activeIndex: 0,
+                              count: 3,
+                              effect: ScrollingDotsEffect(
+                                  activeDotColor: appTheme.red300,
+                                  dotColor: appTheme.red30044,
+                                  spacing: 4,
+                                  dotHeight: 17.v,
+                                  dotWidth: 17.h))),
+
+                      // CustomImageView(
+                      //     svgPath: ImageConstant.imgSettings,
+                      //     height: 17.v,
+                      //     width: 59.h),
+
                       SizedBox(height: 40.v),
                       CustomElevatedButton(
                           height: 35.v,

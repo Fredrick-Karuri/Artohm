@@ -46,7 +46,7 @@ class UserProfileContainerScreen
       body: SizedBox(
           width: mediaQueryData.size.width,
           child: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 24.v),
+              padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
               child: Padding(
                   padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
                   child: Column(
@@ -459,7 +459,7 @@ class UserProfileContainerScreen
                                               onTapImgArrowrightone();
                                             })
                                       ])),
-                                  SizedBox(height: 17.v),
+                                  SizedBox(height: 16.v),
                                   Text("lbl_recent_comments".tr,
                                       style: theme.textTheme.bodyLarge),
                                   Padding(
@@ -487,8 +487,7 @@ class UserProfileContainerScreen
                                           style: CustomTextStyles
                                               .bodyMediumBlack90001)),
                                 ]))
-                      ]))
-                      )),
+                      ])))),
     ));
   }
 

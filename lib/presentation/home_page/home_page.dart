@@ -1,3 +1,4 @@
+import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
@@ -6,6 +7,7 @@ import 'models/homeartcol_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
+import 'package:artohmapp/widgets/custom_drop_down.dart';
 
 // ignore_for_file: must_be_immutable
 class HomePage extends StatelessWidget {
@@ -18,70 +20,59 @@ class HomePage extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+              leadingWidth: 46.h,
+              leading: CustomImageView(
+                  svgPath: ImageConstant.imgArtohmlogo,
+                  margin: EdgeInsets.only(
+                    left: 18.h,
+                  ),
+                  height: 40.v,
+                  width: 30.h),
+              actions: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
+                  child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 32.h),
+                        CustomImageView(
+                            svgPath: ImageConstant.imgSearchRed300,
+                            height: 24.adaptSize,
+                            width: 24.adaptSize,
+                            margin: EdgeInsets.symmetric(vertical: 8.v)),
+                        CustomImageView(
+                            svgPath: ImageConstant.imgNotificationRed300,
+                            height: 24.v,
+                            width: 20.h,
+                            margin: EdgeInsets.only(
+                                left: 32.h, top: 8.v, bottom: 8.v),
+                            onTap: () {
+                              onTapImgNotification();
+                            }),
+                        SizedBox(width: 32.h),
+                        CustomImageView(
+                            imagePath: ImageConstant.imgFrame72,
+                            height: 36.adaptSize,
+                            width: 36.adaptSize,
+                            margin: EdgeInsets.only(left: 32.h, right: 12.h),
+                            onTap: () {
+                              onTapImgProfileoneone();
+                            })
+                      ]),
+                ),
+              ],
+            ),
             body: Container(
                 width: double.maxFinite,
-                decoration: AppDecoration.fillWhiteA,
+                // decoration: AppDecoration.fillWhiteA,
+                decoration: AppDecoration.outlineBlack900012,
                 child: SingleChildScrollView(
                     child: Padding(
-                        padding: EdgeInsets.only(bottom: 5.v),
+                        padding: EdgeInsets.only(bottom: 6.v, top: 6.v),
                         child: Column(children: [
-                          Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 8.h, vertical: 7.v),
-                              decoration: AppDecoration.outlineBlack900012,
-                              child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CustomImageView(
-                                        svgPath: ImageConstant.imgMask,
-                                        height: 10.v,
-                                        width: 49.h,
-                                        alignment: Alignment.centerRight),
-                                    Padding(
-                                        padding: EdgeInsets.fromLTRB(
-                                            24.h, 15.v, 24.h, 1.v),
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgArtohmlogo,
-                                                  height: 40.v,
-                                                  width: 30.h),
-                                              Spacer(),
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgSearchRed300,
-                                                  height: 24.adaptSize,
-                                                  width: 24.adaptSize,
-                                                  margin: EdgeInsets.symmetric(
-                                                      vertical: 8.v)),
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgNotificationRed300,
-                                                  height: 24.v,
-                                                  width: 20.h,
-                                                  margin: EdgeInsets.only(
-                                                      left: 32.h,
-                                                      top: 8.v,
-                                                      bottom: 8.v),
-                                                  onTap: () {
-                                                    onTapImgNotification();
-                                                  }),
-                                              CustomImageView(
-                                                  imagePath:
-                                                      ImageConstant.imgFrame72,
-                                                  height: 36.adaptSize,
-                                                  width: 36.adaptSize,
-                                                  margin: EdgeInsets.only(
-                                                      left: 32.h),
-                                                  onTap: () {
-                                                    onTapImgProfileoneone();
-                                                  })
-                                            ]))
-                                  ])),
                           SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.only(left: 16.h, top: 24.v),
@@ -90,48 +81,17 @@ class HomePage extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                    Container(
-                                        width: 113.h,
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 7.v),
-                                        decoration: AppDecoration.fillLightBlueA
-                                            .copyWith(
-                                                borderRadius: BorderRadiusStyle
-                                                    .circleBorder15),
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.end,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.end,
-                                            children: [
-                                              Padding(
-                                                  padding:
-                                                      EdgeInsets.only(top: 2.v),
-                                                  child: Text(
-                                                      "lbl_filter_by".tr,
-                                                      style: theme.textTheme
-                                                          .labelLarge)),
-                                              // CustomImageView(
-                                              //     svgPath: ImageConstant
-                                              //         .imgArrowdown,
-                                              //     height: 6.v,
-                                              //     width: 12.h,
-                                              //     margin: EdgeInsets.only(
-                                              //         left: 7.h,
-                                              //         top: 6.v,
-                                              //         bottom: 4.v)),
-                                            ])),
+                                    CustomDropDown(
+                                      width: 120.h,
 
-                                    // CustomDropDown(
-                                    //   // fillColor: Colors.blue,
-                                      
-                                    // ),
+                                      // hintText: "filter by",
+                                    ),
                                     CustomElevatedButton(
                                         width: 120.h,
                                         text: "lbl_painting".tr,
                                         margin: EdgeInsets.only(left: 8.h),
                                         buttonStyle: CustomButtonStyles
-                                            .fillLightBlueATL16,
+                                            .outlineLightBlueATL15,
                                         buttonTextStyle:
                                             theme.textTheme.labelLarge!),
                                     CustomElevatedButton(
@@ -139,15 +99,20 @@ class HomePage extends StatelessWidget {
                                         text: "lbl_art".tr,
                                         margin: EdgeInsets.only(left: 8.h),
                                         buttonStyle: CustomButtonStyles
-                                            .fillLightBlueATL16,
+                                            .outlineLightBlueATL15,
                                         buttonTextStyle:
                                             theme.textTheme.labelLarge!),
                                     CustomElevatedButton(
                                         width: 122.h,
+                                        decoration: BoxDecoration(
+                                            color: appTheme.lightBlueA700
+                                                .withOpacity(0.08),
+                                            borderRadius:
+                                                BorderRadius.circular(16.h)),
                                         text: "lbl_photography2".tr,
                                         margin: EdgeInsets.only(left: 8.h),
                                         buttonStyle: CustomButtonStyles
-                                            .fillLightBlueATL16,
+                                            .fillLightBlueATL15,
                                         buttonTextStyle:
                                             theme.textTheme.labelLarge!),
                                     Container(
@@ -215,3 +180,53 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+                                    // Container(
+                                    //     width: 112.h,
+                                    //     padding:
+                                    //         EdgeInsets.symmetric(vertical: 7.v),
+                                    //     decoration: AppDecoration.fillLightBlueA
+                                    //         .copyWith(
+                                    //             borderRadius: BorderRadiusStyle
+                                    //                 .circleBorder15),
+                                    //     child: Row(
+                                    //         mainAxisAlignment:
+                                    //             MainAxisAlignment.end,
+                                    //         crossAxisAlignment:
+                                    //             CrossAxisAlignment.end,
+                                    //         children: [
+                                    //           Padding(
+                                    //               padding:
+                                    //                   EdgeInsets.only(top: 2.v),
+                                    //               child: Text(
+                                    //                   "lbl_filter_by".tr,
+                                    //                   style: theme.textTheme
+                                    //                       .labelLarge)),
+                                    //           // CustomImageView(
+                                    //           //     svgPath: ImageConstant
+                                    //           //         .imgArrowdown,
+                                    //           //     height: 6.v,
+                                    //           //     width: 12.h,
+                                    //           //     margin: EdgeInsets.only(
+                                    //           //         left: 7.h,
+                                    //           //         top: 6.v,
+                                    //           //         bottom: 4.v)),
+                                    //         ])),
+
+                                    // CustomDropDown(
+                                    //   // fillColor: Colors.blue,
+
+                                    // ),
+
+                                    // CustomDropDown(
+                                    //         width: 160.h,
+                                    //         icon: Container(
+                                    //             margin: EdgeInsets.fromLTRB(
+                                    //                 30.h, 12.v, 16.h, 11.v),
+                                    //             child: CustomImageView(
+                                    //                 svgPath: ImageConstant
+                                    //                     .imgProfileiconsRed30012x18)),
+                                    //         hintText: "lbl_surrealism".tr,
+                                    //         hintStyle: CustomTextStyles
+                                    //             DropDownStyleHelper,
+                                    //         onChanged: (value) {
+                                    //         }),

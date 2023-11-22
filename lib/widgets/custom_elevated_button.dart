@@ -27,6 +27,7 @@ class CustomElevatedButton extends BaseButton {
           width: width,
           alignment: alignment,
           margin: margin,
+          
         );
 
   final BoxDecoration? decoration;
