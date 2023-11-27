@@ -189,7 +189,9 @@ class SignupOneScreen extends GetWidget<SignupOneController> {
                             onTapCreateaccount();
                           }),
                       SizedBox(height: 5.v)
-                    ])))));
+                    ])))
+                    
+                    ));
   }
 
   /// Navigates to the previous screen.

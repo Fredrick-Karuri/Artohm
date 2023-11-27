@@ -16,6 +16,17 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
+            appBar: AppBar(
+                leadingWidth: 46.h,
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  iconSize: 40,
+                  icon: Icon(Icons.close,
+                      color: Theme.of(context).colorScheme.primary),
+                )),
             resizeToAvoidBottomInset: false,
             body: SizedBox(
                 width: mediaQueryData.size.width,
@@ -26,24 +37,6 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                  padding: EdgeInsets.only(left: 2.h),
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        CustomImageView(
-                                            svgPath: ImageConstant.imgMask,
-                                            height: 10.v,
-                                            width: 49.h,
-                                            alignment: Alignment.centerRight),
-                                        SizedBox(height: 21.v),
-                                        CustomImageView(
-                                            svgPath:
-                                                ImageConstant.imgNavtoRed300,
-                                            height: 28.adaptSize,
-                                            width: 28.adaptSize)
-                                      ])),
                               Container(
                                   margin:
                                       EdgeInsets.only(top: 30.v, right: 6.h),
@@ -57,92 +50,89 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         CustomImageView(
-                                            imagePath:
-                                                ImageConstant.imgEllipse12,
-                                            height: 80.adaptSize,
-                                            width: 80.adaptSize,
-                                            radius:
-                                                BorderRadius.circular(40.h)),
+                                          imagePath: ImageConstant.imgEllipse12,
+                                          height: 80.adaptSize,
+                                          width: 80.adaptSize,
+                                          radius: BorderRadius.circular(40.h),
+                                        ),
                                         SizedBox(height: 16.v),
                                         CustomOutlinedButton(
                                             width: 157.h,
                                             text: "lbl_change_image".tr,
                                             rightIcon: Container(
-                                                margin:
-                                                    EdgeInsets.only(left: 8.h),
-                                                child: CustomImageView(
-                                                    svgPath: ImageConstant
-                                                        .imgClock)),
+                                              margin:
+                                                  EdgeInsets.only(left: 8.h),
+                                              child: CustomImageView(
+                                                  svgPath:
+                                                      ImageConstant.imgClock),
+                                            ),
                                             onTap: () {
                                               onTapChangeimage();
                                             }),
                                         SizedBox(height: 24.v),
                                         Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgProfileiconsRed30024x24,
-                                                  height: 24.adaptSize,
-                                                  width: 24.adaptSize,
-                                                  margin: EdgeInsets.only(
-                                                      bottom: 54.v)),
-                                              Expanded(
-                                                  child: Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: 24.h),
-                                                      child: Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Row(
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  Padding(
-                                                                      padding: EdgeInsets.only(
-                                                                          top: 2
-                                                                              .v,
-                                                                          bottom: 3
-                                                                              .v),
-                                                                      child: Text(
-                                                                          "lbl_username"
-                                                                              .tr,
-                                                                          style: theme
-                                                                              .textTheme
-                                                                              .titleSmall)),
-                                                                  CustomImageView(
-                                                                      svgPath:
-                                                                          ImageConstant
-                                                                              .imgShareRed300,
-                                                                      height:
-                                                                          24.v,
-                                                                      width:
-                                                                          22.h)
-                                                                ]),
-                                                            Padding(
-                                                                padding: EdgeInsets
-                                                                    .only(
-                                                                        left:
-                                                                            3.h,
-                                                                        top: 19
-                                                                            .v),
-                                                                child: Text(
-                                                                    "lbl_artlover1"
-                                                                        .tr,
-                                                                    style: theme
-                                                                        .textTheme
-                                                                        .bodyMedium)),
-                                                            SizedBox(
-                                                                height: 16.v),
-                                                            Divider()
-                                                          ])))
-                                            ]),
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            CustomImageView(
+                                                svgPath: ImageConstant
+                                                    .imgProfileiconsRed30024x24,
+                                                height: 24.adaptSize,
+                                                width: 24.adaptSize,
+                                                margin: EdgeInsets.only(
+                                                    bottom: 54.v)),
+                                            Expanded(
+                                              child: Padding(
+                                                padding:
+                                                    EdgeInsets.only(left: 24.h),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                            padding:
+                                                                EdgeInsets.only(
+                                                                    top: 2.v,
+                                                                    bottom:
+                                                                        3.v),
+                                                            child: Text(
+                                                                "lbl_username"
+                                                                    .tr,
+                                                                style: theme
+                                                                    .textTheme
+                                                                    .titleSmall)),
+                                                        CustomImageView(
+                                                            svgPath: ImageConstant
+                                                                .imgShareRed300,
+                                                            height: 24.v,
+                                                            width: 22.h)
+                                                      ],
+                                                    ),
+                                                    Padding(
+                                                        padding:
+                                                            EdgeInsets.only(
+                                                                left: 3.h,
+                                                                top: 19.v),
+                                                        child: Text(
+                                                            "lbl_artlover1".tr,
+                                                            style: theme
+                                                                .textTheme
+                                                                .bodyMedium)),
+                                                    SizedBox(height: 16.v),
+                                                    Divider()
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                         SizedBox(height: 15.v),
                                         Row(
                                             mainAxisAlignment:
@@ -167,6 +157,9 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                                                   .start,
                                                           children: [
                                                             Row(
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
                                                                 crossAxisAlignment:
                                                                     CrossAxisAlignment
                                                                         .start,
@@ -525,57 +518,52 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                                                     ])))
                                       ])),
                               Container(
-                                  margin: EdgeInsets.only(top: 8.v, right: 7.h),
-                                  padding: EdgeInsets.all(16.h),
-                                  decoration: AppDecoration.fillPink50.copyWith(
-                                      borderRadius:
-                                          BorderRadiusStyle.circleBorder15),
-                                  child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        CustomImageView(
-                                            svgPath: ImageConstant
-                                                .imgProfileicons24x244,
-                                            height: 24.adaptSize,
-                                            width: 24.adaptSize,
-                                            margin:
-                                                EdgeInsets.only(bottom: 37.v)),
-                                        Expanded(
-                                            child: Padding(
-                                                padding:
-                                                    EdgeInsets.only(left: 24.h),
-                                                child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Row(children: [
-                                                        Padding(
-                                                            padding:
-                                                                EdgeInsets.only(
-                                                                    top: 3.v,
-                                                                    bottom:
-                                                                        2.v),
-                                                            child: Text(
-                                                                "lbl_artlover"
-                                                                    .tr,
-                                                                style: theme
-                                                                    .textTheme
-                                                                    .titleSmall)),
-                                                        CustomImageView(
-                                                            svgPath: ImageConstant
-                                                                .imgShareRed300,
-                                                            height: 24.v,
-                                                            width: 22.h)
-                                                      ]),
-                                                      SizedBox(height: 19.v),
-                                                      Text("lbl_instagram".tr,
-                                                          style: theme.textTheme
-                                                              .bodyMedium)
-                                                    ])))
-                                      ])),
+                                margin: EdgeInsets.only(top: 8.v, right: 7.h),
+                                padding: EdgeInsets.all(16.h),
+                                decoration: AppDecoration.fillPink50.copyWith(
+                                    borderRadius:
+                                        BorderRadiusStyle.circleBorder15),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    CustomImageView(
+                                        svgPath:
+                                            ImageConstant.imgProfileicons24x244,
+                                        height: 24.adaptSize,
+                                        width: 24.adaptSize,
+                                        margin: EdgeInsets.only(bottom: 37.v)),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(left: 24.h),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(children: [
+                                              Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 3.v, bottom: 2.v),
+                                                  child: Text("lbl_artlover".tr,
+                                                      style: theme.textTheme
+                                                          .titleSmall)),
+                                              CustomImageView(
+                                                  svgPath: ImageConstant
+                                                      .imgShareRed300,
+                                                  height: 24.v,
+                                                  width: 22.h)
+                                            ]),
+                                            SizedBox(height: 19.v),
+                                            Text("lbl_instagram".tr,
+                                                style:
+                                                    theme.textTheme.bodyMedium)
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                               SizedBox(height: 36.v),
                               Text("lbl_your_influences".tr,
                                   style: theme.textTheme.titleSmall),

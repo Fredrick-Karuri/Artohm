@@ -9,4 +9,5 @@ class SettingsitemController extends GetxController {
   Rx<SettingsitemModel> settingsitemModelObj = SettingsitemModel().obs;
 
   Rx<bool> isSelectedSwitch = false.obs;
+  Rx<bool> isSelectedSwitch2 = false.obs;
 }

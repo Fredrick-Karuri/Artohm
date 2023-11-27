@@ -22,7 +22,9 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
                     margin:
                         EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
                     onTap: () {
-                      onTapArrowleftone();
+                      // onTapArrowleftone();
+                      Navigator.pop(context);
+                      
                     }),
                 title: AppbarTitle(
                     text: "lbl_artist".tr,
@@ -37,40 +39,46 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
             body: SizedBox(
                 width: mediaQueryData.size.width,
                 child: SingleChildScrollView(
-                    padding: EdgeInsets.only(top: 16.v),
+                    padding: EdgeInsets.only(top: 16.v, bottom: 32.v),
                     child: Padding(
                         padding: EdgeInsets.only(left: 10.h, bottom: 5.v),
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              CustomImageView(
-                                  imagePath: ImageConstant.imgEllipse1113x113,
-                                  height: 113.adaptSize,
-                                  width: 113.adaptSize,
-                                  radius: BorderRadius.circular(56.h),
-                                  alignment: Alignment.center),
-                              SizedBox(height: 18.v),
-                              Align(
-                                  alignment: Alignment.center,
-                                  child: Text("lbl_sophia_anderson".tr,
-                                      style: theme.textTheme.titleMedium)),
-                              Container(
-                                  width: 274.h,
-                                  margin: EdgeInsets.only(
-                                      left: 45.h, top: 9.v, right: 60.h),
-                                  child: Text("msg_a_nature_enthusiast".tr,
-                                      maxLines: 3,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: CustomTextStyles
-                                          .bodyLargeBlack90001_6
-                                          .copyWith(height: 1.50))),
-                              SizedBox(height: 12.v),
-                              CustomElevatedButton(
-                                  width: 160.h,
-                                  text: "lbl_follow".tr,
-                                  buttonTextStyle: CustomTextStyles
-                                      .titleSmallRobotoWhiteA700Medium,
-                                  alignment: Alignment.center),
+                              Column(
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+
+                                children: [
+                                  CustomImageView(
+                                      imagePath: ImageConstant.imgEllipse1113x113,
+                                      height: 113.adaptSize,
+                                      width: 113.adaptSize,
+                                      radius: BorderRadius.circular(56.h),
+                                      alignment: Alignment.center),
+                                  SizedBox(height: 18.v),
+                                  Align(
+                                      alignment: Alignment.center,
+                                      child: Text("lbl_sophia_anderson".tr,
+                                          style: theme.textTheme.titleMedium)),
+                                  Container(
+                                      width: 274.h,
+                                      margin: EdgeInsets.only(
+                                          left: 45.h, top: 9.v, right: 60.h),
+                                      child: Text("msg_a_nature_enthusiast".tr,
+                                          maxLines: 3,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: CustomTextStyles
+                                              .bodyLargeBlack90001_6
+                                              .copyWith(height: 1.50))),
+                                  SizedBox(height: 12.v),
+                                  CustomElevatedButton(
+                                      width: 160.h,
+                                      text: "lbl_follow".tr,
+                                      buttonTextStyle: CustomTextStyles
+                                          .titleSmallRobotoWhiteA700Medium,
+                                      alignment: Alignment.center),
+                                ],
+                              ),
                               SizedBox(height: 21.v),
                               Text("lbl_from_sophia".tr,
                                   style: theme.textTheme.titleMedium),

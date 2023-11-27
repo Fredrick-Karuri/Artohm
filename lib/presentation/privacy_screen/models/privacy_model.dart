@@ -10,4 +10,7 @@ class PrivacyModel {
 
   Rx<List<Row2ItemModel>> row2ItemList =
       Rx(List.generate(2, (index) => Row2ItemModel()));
+
+  // Rx<List<Row2ItemModel>> row3ItemList =
+  //     Rx(List.generate(2, (index) => Row2ItemModel()));
 }

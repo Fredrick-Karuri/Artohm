@@ -16,6 +16,7 @@ class ArtworkScreen extends GetWidget<ArtworkController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
+          
             resizeToAvoidBottomInset: false,
             appBar: CustomAppBar(
                 height: 66.v,
@@ -35,7 +36,7 @@ class ArtworkScreen extends GetWidget<ArtworkController> {
             body: SizedBox(
                 width: mediaQueryData.size.width,
                 child: SingleChildScrollView(
-                    padding: EdgeInsets.only(top: 24.v),
+                    padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
                     child: Padding(
                         padding: EdgeInsets.only(
                             left: 15.h, right: 15.h, bottom: 5.v),

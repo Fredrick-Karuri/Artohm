@@ -25,25 +25,25 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: CustomAppBar(
-                leadingWidth: 46.h,
-                leading: AppbarImage(
-                    svgPath: ImageConstant.imgArrowleftRed300,
-                    margin:
-                        EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                    onTap: () {
-                      onTapArrowleftone();
-                    }),
-                title: AppbarTitle(
-                    text: "lbl_collaborate".tr,
-                    margin:
-                        EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v)),
-                actions: [
-                  AppbarImage1(
-                      svgPath: ImageConstant.imgMask,
-                      margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-                ],
-                styleType: Style.bgOutline),
+            // appBar: CustomAppBar(
+            //     leadingWidth: 46.h,
+            //     leading: AppbarImage(
+            //         svgPath: ImageConstant.imgArrowleftRed300,
+            //         margin:
+            //             EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+            //         onTap: () {
+            //           Get.back();
+            //         }),
+            //     title: AppbarTitle(
+            //         text: "lbl_collaborate".tr,
+            //         margin:
+            //             EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v)),
+            //     actions: [
+            //       AppbarImage1(
+            //           svgPath: ImageConstant.imgMask,
+            //           margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
+            //     ],
+            //     styleType: Style.bgOutline),
             body: SizedBox(
                 width: double.maxFinite,
                 child: Column(children: [
@@ -538,44 +538,46 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
                                             ])))
                                   ]))))
                 ])),
-            bottomNavigationBar:
-                CustomBottomBar(onChanged: (BottomBarEnum type) {
-              Get.toNamed(getCurrentRoute(type), id: 1);
-            })));
+            // bottomNavigationBar:
+            //     CustomBottomBar(onChanged: (BottomBarEnum type) {
+            //   Get.toNamed(getCurrentRoute(type), id: 1);
+            // })
+            )
+            );
   }
 
   ///Handling route based on bottom click actions
-    String getCurrentRoute(BottomBarEnum type) {
-    switch (type) {
-      case BottomBarEnum.Home2:
-        return AppRoutes.homePage;
-      case BottomBarEnum.Marketplace2:
-        return AppRoutes.artMarketplaceScreen;
-      case BottomBarEnum.Community2:
-        return AppRoutes.artCommunityScreen;
-      case BottomBarEnum.Collaborate:
-        return AppRoutes.collaborateScreen;
-      default:
-        return "/";
-    }
-  }
+  //   String getCurrentRoute(BottomBarEnum type) {
+  //   switch (type) {
+  //     case BottomBarEnum.Home2:
+  //       return AppRoutes.homePage;
+  //     case BottomBarEnum.Marketplace2:
+  //       return AppRoutes.artMarketplaceScreen;
+  //     case BottomBarEnum.Community2:
+  //       return AppRoutes.artCommunityScreen;
+  //     case BottomBarEnum.Collaborate:
+  //       return AppRoutes.collaborateScreen;
+  //     default:
+  //       return "/";
+  //   }
+  // }
   
 
   ///Handling page based on route
-Widget getCurrentPage(String currentRoute) {
-  switch (currentRoute) {
-    case AppRoutes.homePage:
-      return HomePage();
-    case AppRoutes.artMarketplaceScreen:
-      return ArtMarketplaceScreen();
-    case AppRoutes.artCommunityScreen:
-      return ArtCommunityScreen();
-    case AppRoutes.collaborateScreen:
-      return CollaborateScreen();
-    default:
-      return HomePage();
-  }
-}
+// Widget getCurrentPage(String currentRoute) {
+//   switch (currentRoute) {
+//     case AppRoutes.homePage:
+//       return HomePage();
+//     case AppRoutes.artMarketplaceScreen:
+//       return ArtMarketplaceScreen();
+//     case AppRoutes.artCommunityScreen:
+//       return ArtCommunityScreen();
+//     case AppRoutes.collaborateScreen:
+//       return CollaborateScreen();
+//     default:
+//       return HomePage();
+//   }
+// }
 
 
   /// Navigates to the previous screen.

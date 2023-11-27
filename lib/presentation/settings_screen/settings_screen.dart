@@ -41,22 +41,58 @@ class SettingsScreen extends GetWidget<SettingsController> {
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 32.v),
                 child: Column(children: [
-                  CustomTextFormField(
-                      controller: controller.profileController,
-                      hintText: "msg_account_settings".tr,
-                      hintStyle: CustomTextStyles.titleMediumLato,
-                      textInputAction: TextInputAction.done,
-                      suffix: Container(
+                  // CustomTextFormField(
+                  //     controller: controller.profileController,
+                  //     hintText: "msg_account_settings".tr,
+                  //     hintStyle: CustomTextStyles.titleMediumLato,
+                  //     textInputAction: TextInputAction.done,
+                  //     suffix: Container(
+                  //         margin: EdgeInsets.fromLTRB(30.h, 16.v, 12.h, 16.v),
+                  //         decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(20.h)),
+                  //         child: CustomImageView(
+                  //             imagePath: ImageConstant.imgProfile,
+                  //             height: 40.adaptSize,
+                  //             width: 40.adaptSize)),
+                  //     suffixConstraints: BoxConstraints(maxHeight: 72.v),
+                  //     contentPadding:
+                  //         EdgeInsets.only(left: 11.h, top: 26.v, bottom: 26.v)),
+                  Container(
+                    padding: EdgeInsets.only(left: 11.h, top: 8.v, bottom: 8.v),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12), // border radius
+                      border: Border.all(
+                        color:
+                            Color.fromRGBO(255, 107, 136, 0.50), // border color
+                        width: 1, // border width
+                      ),
+                      color: Color.fromRGBO(
+                          255, 107, 136, 0.20), // background color
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "msg_account_settings".tr,
+                          style: CustomTextStyles.titleMediumLato,
+                        ),
+                        Expanded(
+                            child:
+                                SizedBox()), // This will push the image to the end of the row
+                        Container(
                           margin: EdgeInsets.fromLTRB(30.h, 16.v, 12.h, 16.v),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20.h)),
+                            borderRadius: BorderRadius.circular(20.h),
+                          ),
                           child: CustomImageView(
-                              imagePath: ImageConstant.imgProfile,
-                              height: 40.adaptSize,
-                              width: 40.adaptSize)),
-                      suffixConstraints: BoxConstraints(maxHeight: 72.v),
-                      contentPadding:
-                          EdgeInsets.only(left: 11.h, top: 26.v, bottom: 26.v)),
+                            imagePath: ImageConstant.imgProfile,
+                            height: 40.adaptSize,
+                            width: 40.adaptSize,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
                   GestureDetector(
                       onTap: () {
                         onTapRow();

@@ -27,7 +27,7 @@ class UserProfileContainerScreen
               svgPath: ImageConstant.imgArrowleftRed300,
               margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
               onTap: () {
-                onTapArrowleftone();
+                Navigator.pop(context);
               }),
           title: AppbarTitle(
               text: "lbl_profile".tr,

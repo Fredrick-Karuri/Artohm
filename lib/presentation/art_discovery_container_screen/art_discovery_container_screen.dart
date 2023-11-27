@@ -7,7 +7,6 @@ import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_sc
 import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 
-
 class ArtDiscoveryContainerScreen
     extends GetWidget<ArtDiscoveryContainerController> {
   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
@@ -16,17 +15,20 @@ class ArtDiscoveryContainerScreen
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
-        child: Scaffold(
-            body: Navigator(
-                key: Get.nestedKey(1),
-                initialRoute: AppRoutes.homePage,
-                onGenerateRoute: (routeSetting) => GetPageRoute(
-                    page: () => getCurrentPage(routeSetting.name!),
-                    transition: Transition.noTransition)),
-            bottomNavigationBar:
-                CustomBottomBar(onChanged: (BottomBarEnum type) {
-              Get.toNamed(getCurrentRoute(type), id: 1);
-            })));
+      child: Scaffold(
+        body: Navigator(
+            key: Get.nestedKey(1),
+            initialRoute: AppRoutes.homePage,
+            onGenerateRoute: (routeSetting) => GetPageRoute(
+                page: () => getCurrentPage(routeSetting.name!),
+                transition: Transition.noTransition)),
+        bottomNavigationBar: CustomBottomBar(
+          onChanged: (BottomBarEnum type) {
+            Get.toNamed(getCurrentRoute(type), id: 1);
+          },
+        ),
+      ),
+    );
   }
 
   ///Handling route based on bottom click actions
@@ -47,18 +49,18 @@ class ArtDiscoveryContainerScreen
   }
 
   ///Handling page based on route
-Widget getCurrentPage(String currentRoute) {
-  switch (currentRoute) {
-    case AppRoutes.homePage:
-      return HomePage();
-    case AppRoutes.artMarketplaceScreen:
-      return ArtMarketplaceScreen();
-    case AppRoutes.artCommunityScreen:
-      return ArtCommunityScreen();
-    case AppRoutes.collaborateScreen:
-      return CollaborateScreen();
-    default:
-      return HomePage();
+  Widget getCurrentPage(String currentRoute) {
+    switch (currentRoute) {
+      case AppRoutes.homePage:
+        return HomePage();
+      case AppRoutes.artMarketplaceScreen:
+        return ArtMarketplaceScreen();
+      case AppRoutes.artCommunityScreen:
+        return ArtCommunityScreen();
+      case AppRoutes.collaborateScreen:
+        return CollaborateScreen();
+      default:
+        return HomePage();
+    }
   }
-}
 }

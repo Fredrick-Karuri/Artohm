@@ -1,3 +1,5 @@
+import 'package:artohmapp/presentation/home_page/binding/home_page_binding.dart';
+import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:artohmapp/presentation/onboarding_screen/onboarding_screen.dart';
 import 'package:artohmapp/presentation/onboarding_screen/binding/onboarding_binding.dart';
 import 'package:artohmapp/presentation/collaborateitem_screen/collaborateitem_screen.dart';
@@ -308,6 +310,11 @@ class AppRoutes {
       bindings: [
         AppNavigationBinding(),
       ],
+    ),
+    GetPage(
+      name: homePage,
+      page: () => HomePage(),
+      bindings: [HomeBinding()],
     ),
     GetPage(
       name: initialRoute,

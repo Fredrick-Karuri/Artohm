@@ -1,24 +1,38 @@
+// not being used currently
 import 'controller/modal_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-// ignore_for_file: must_be_immutable
-class ModalScreen extends GetWidget<ModalController> {
-  const ModalScreen({Key? key})
-      : super(
-          key: key,
-        );
+class ModalScreen extends StatefulWidget {
+  const ModalScreen({Key? key}) : super(key: key);
+
+  @override
+  _ModalScreenState createState() => _ModalScreenState();
+}
+
+class _ModalScreenState extends State<ModalScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Add a delay to ensure ModalScreen is built before showing the modal
+    Future.delayed(Duration.zero, () => showModal(context));
+  }
 
   @override
   Widget build(BuildContext context) {
-    mediaQueryData = MediaQuery.of(context);
+    return Container(); // Empty container
+  }
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: appTheme.deepOrange50,
-        body: Container(
-          width: double.maxFinite,
+
+  void showModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+      ),
+      builder: (BuildContext context) {
+        return Container(
           padding: EdgeInsets.symmetric(
             horizontal: 15.h,
             vertical: 13.v,
@@ -62,19 +76,19 @@ class ModalScreen extends GetWidget<ModalController> {
                   ),
                 ),
               ),
+              CustomElevatedButton(
+                text: "lbl_book_ticket".tr,
+                margin: EdgeInsets.only(
+                  left: 16.h,
+                  right: 16.h,
+                  bottom: 24.v,
+                ),
+                buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
+              ),
             ],
           ),
-        ),
-        bottomNavigationBar: CustomElevatedButton(
-          text: "lbl_book_ticket".tr,
-          margin: EdgeInsets.only(
-            left: 16.h,
-            right: 16.h,
-            bottom: 24.v,
-          ),
-          buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -27,7 +27,8 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                     margin:
                         EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
                     onTap: () {
-                      onTapArrowleftone();
+                      Navigator.pop(context);
+
                     }),
                 title: AppbarSubtitle1(
                     text: "lbl_market_place2".tr,
@@ -46,35 +47,35 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                   Expanded(
                       child: SingleChildScrollView(
                           child: Padding(
-                              padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
+                              padding: EdgeInsets.only(left: 15.h, bottom: 32.v , right: 16.h),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Obx(() => GridView.builder(
-                                        shrinkWrap: true,
-                                        gridDelegate:
-                                            SliverGridDelegateWithFixedCrossAxisCount(
-                                                mainAxisExtent: 81.v,
-                                                crossAxisCount: 3,
-                                                mainAxisSpacing: 8.h,
-                                                crossAxisSpacing: 8.h),
-                                        physics: NeverScrollableScrollPhysics(),
-                                        itemCount: controller
-                                            .artMarketplaceModelObj
-                                            .value
-                                            .marketplacechipItemList
-                                            .value
-                                            .length,
-                                        itemBuilder: (context, index) {
-                                          MarketplacechipItemModel model =
-                                              controller
-                                                  .artMarketplaceModelObj
-                                                  .value
-                                                  .marketplacechipItemList
-                                                  .value[index];
-                                          return MarketplacechipItemWidget(
-                                              model);
-                                        })),
+                                    // Obx(() => GridView.builder(
+                                    //     shrinkWrap: true,
+                                    //     gridDelegate:
+                                    //         SliverGridDelegateWithFixedCrossAxisCount(
+                                    //             mainAxisExtent: 81.v,
+                                    //             crossAxisCount: 3,
+                                    //             mainAxisSpacing: 8.h,
+                                    //             crossAxisSpacing: 8.h),
+                                    //     physics: NeverScrollableScrollPhysics(),
+                                    //     itemCount: controller
+                                    //         .artMarketplaceModelObj
+                                    //         .value
+                                    //         .marketplacechipItemList
+                                    //         .value
+                                    //         .length,
+                                    //     itemBuilder: (context, index) {
+                                    //       MarketplacechipItemModel model =
+                                    //           controller
+                                    //               .artMarketplaceModelObj
+                                    //               .value
+                                    //               .marketplacechipItemList
+                                    //               .value[index];
+                                    //       return MarketplacechipItemWidget(
+                                    //           model);
+                                    //     })),
                                     SizedBox(height: 32.v),
                                     CustomImageView(
                                         imagePath:
@@ -84,39 +85,43 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                                         radius: BorderRadius.circular(8.h)),
                                     Padding(
                                         padding: EdgeInsets.only(
-                                            top: 23.v, right: 17.h),
+                                            top: 20.v, right: 16.h),
                                         child: Column(children: [
                                           Row(
                                               mainAxisAlignment:
                                                   MainAxisAlignment.center,
                                               children: [
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      Text(
-                                                          "msg_ethereal_enchantment"
-                                                              .tr,
-                                                          style: theme.textTheme
-                                                              .titleMedium),
-                                                      SizedBox(height: 17.v),
-                                                      Text(
-                                                          "lbl_sophia_anderson"
-                                                              .tr,
-                                                          style: CustomTextStyles
-                                                              .bodyMediumBlack90001)
-                                                    ]),
-                                                CustomOutlinedButton(
-                                                    height: 38.v,
-                                                    width: 71.h,
-                                                    text: "lbl_850".tr,
-                                                    margin: EdgeInsets.only(
-                                                        left: 95.h,
-                                                        top: 8.v,
-                                                        bottom: 8.v),
-                                                    buttonTextStyle: theme
-                                                        .textTheme.titleMedium!)
+                                                Flexible(
+                                                  child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                            "msg_ethereal_enchantment"
+                                                                .tr,
+                                                            style: theme.textTheme
+                                                                .titleMedium),
+                                                        SizedBox(height: 17.v),
+                                                        Text(
+                                                            "lbl_sophia_anderson"
+                                                                .tr,
+                                                            style: CustomTextStyles
+                                                                .bodyMediumBlack90001)
+                                                      ]),
+                                                ),
+                                                Flexible(
+                                                  child: CustomOutlinedButton(
+                                                      height: 38.v,
+                                                      width: 64.h,
+                                                      text: "lbl_850".tr,
+                                                      margin: EdgeInsets.only(
+                                                          left: 95.h,
+                                                          top: 8.v,
+                                                          bottom: 8.v),
+                                                      buttonTextStyle: theme
+                                                          .textTheme.titleMedium!),
+                                                )
                                               ]),
                                           SizedBox(height: 24.v),
                                           CustomElevatedButton(
@@ -406,10 +411,11 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                                             ])))
                                   ]))))
                 ])),
-            bottomNavigationBar:
-                CustomBottomBar(onChanged: (BottomBarEnum type) {
-              Get.toNamed(getCurrentRoute(type), id: 1);
-            })));
+            // bottomNavigationBar:
+            //     CustomBottomBar(onChanged: (BottomBarEnum type) {
+            //   Get.toNamed(getCurrentRoute(type), id: 1);
+            // })
+            ));
   }
 
   ///Handling route based on bottom click actions

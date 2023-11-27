@@ -45,7 +45,7 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
                       padding: EdgeInsets.only(left: 8.h),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                                 padding: EdgeInsets.only(top: 2.v, bottom: 3.v),
@@ -69,16 +69,17 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
                       padding: EdgeInsets.only(left: 8.h, top: 37.v),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                                 padding: EdgeInsets.only(top: 2.v, bottom: 3.v),
                                 child: Text("msg_email_notifications".tr,
                                     style: theme.textTheme.titleSmall)),
-                            CustomImageView(
-                                svgPath: ImageConstant.imgProfileiconsRed300,
-                                height: 24.v,
-                                width: 37.h)
+                            Obx(() => CustomSwitch(
+                                value: controller.isSelectedSwitch2.value,
+                                onChange: (value) {
+                                  controller.isSelectedSwitch2.value = value;
+                                }))
                           ])),
                   SizedBox(height: 11.v),
                   Text("msg_stay_informed_about".tr,

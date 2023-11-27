@@ -29,7 +29,7 @@ class PrivacyScreen extends GetWidget<PrivacyController> {
                       onTapArrowleftone();
                     }),
                 title: AppbarTitle(
-                    text: "msg_notification_settings".tr,
+                    text: "Privacy Settings",
                     margin:
                         EdgeInsets.only(left: 36.h, top: 41.v, bottom: 15.v)),
                 actions: [

@@ -1,5 +1,6 @@
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
+import 'package:artohmapp/widgets/custom_search_view.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
 import 'models/home_model.dart';
@@ -19,137 +20,145 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: Color.fromRGBO(255, 255, 255, 1),
-              leadingWidth: 46.h,
-              leading: CustomImageView(
-                  svgPath: ImageConstant.imgArtohmlogo,
-                  margin: EdgeInsets.only(
-                    left: 18.h,
-                  ),
-                  height: 40.v,
-                  width: 30.h),
-              actions: [
-                Padding(
-                  padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
-                  child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(width: 32.h),
-                        CustomImageView(
-                            svgPath: ImageConstant.imgSearchRed300,
-                            height: 24.adaptSize,
-                            width: 24.adaptSize,
-                            margin: EdgeInsets.symmetric(vertical: 8.v)),
-                        CustomImageView(
-                            svgPath: ImageConstant.imgNotificationRed300,
-                            height: 24.v,
-                            width: 20.h,
-                            margin: EdgeInsets.only(
-                                left: 32.h, top: 8.v, bottom: 8.v),
-                            onTap: () {
-                              onTapImgNotification();
-                            }),
-                        SizedBox(width: 32.h),
-                        CustomImageView(
-                            imagePath: ImageConstant.imgFrame72,
-                            height: 36.adaptSize,
-                            width: 36.adaptSize,
-                            margin: EdgeInsets.only(left: 32.h, right: 12.h),
-                            onTap: () {
-                              onTapImgProfileoneone();
-                            })
-                      ]),
-                ),
-              ],
-            ),
-            body: Container(
-                width: double.maxFinite,
-                // decoration: AppDecoration.fillWhiteA,
-                decoration: AppDecoration.outlineBlack900012,
-                child: SingleChildScrollView(
-                    child: Padding(
-                        padding: EdgeInsets.only(bottom: 6.v, top: 6.v),
-                        child: Column(children: [
-                          SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              padding: EdgeInsets.only(left: 16.h, top: 24.v),
-                              child: IntrinsicWidth(
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                    CustomDropDown(
-                                      width: 120.h,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+          leadingWidth: 46.h,
+          leading: CustomImageView(
+              svgPath: ImageConstant.imgArtohmlogo,
+              margin: EdgeInsets.only(
+                left: 18.h,
+              ),
+              height: 40.v,
+              width: 30.h),
+          actions: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
+              child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 32.h),
+                    GestureDetector(
+                      onTap: () {
+                        print('Image tapped'); // Add this line
 
-                                      // hintText: "filter by",
-                                    ),
-                                    CustomElevatedButton(
-                                        width: 120.h,
-                                        text: "lbl_painting".tr,
-                                        margin: EdgeInsets.only(left: 8.h),
-                                        buttonStyle: CustomButtonStyles
-                                            .outlineLightBlueATL15,
-                                        buttonTextStyle:
-                                            theme.textTheme.labelLarge!),
-                                    CustomElevatedButton(
-                                        width: 61.h,
-                                        text: "lbl_art".tr,
-                                        margin: EdgeInsets.only(left: 8.h),
-                                        buttonStyle: CustomButtonStyles
-                                            .outlineLightBlueATL15,
-                                        buttonTextStyle:
-                                            theme.textTheme.labelLarge!),
-                                    CustomElevatedButton(
-                                        width: 122.h,
-                                        decoration: BoxDecoration(
-                                            color: appTheme.lightBlueA700
-                                                .withOpacity(0.08),
-                                            borderRadius:
-                                                BorderRadius.circular(16.h)),
-                                        text: "lbl_photography2".tr,
-                                        margin: EdgeInsets.only(left: 8.h),
-                                        buttonStyle: CustomButtonStyles
-                                            .fillLightBlueATL15,
-                                        buttonTextStyle:
-                                            theme.textTheme.labelLarge!),
-                                    Container(
-                                        height: 33.v,
-                                        width: 94.h,
-                                        margin: EdgeInsets.only(left: 8.h),
-                                        decoration: BoxDecoration(
-                                            color: appTheme.lightBlueA700
-                                                .withOpacity(0.08),
-                                            borderRadius:
-                                                BorderRadius.circular(16.h)))
-                                  ]))),
-                          SizedBox(height: 16.v),
-                          CustomImageView(
-                              imagePath: ImageConstant.imgRectangle11400x3401,
-                              height: 400.v,
-                              width: 340.h,
-                              radius: BorderRadius.circular(8.h)),
-                          Padding(
-                              padding: EdgeInsets.only(left: 15.h, top: 18.v),
-                              child: Obx(() => ListView.separated(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  separatorBuilder: (context, index) {
-                                    return SizedBox(height: 26.v);
-                                  },
-                                  itemCount: controller.homeModelObj.value
-                                      .homeartcolItemList.value.length,
-                                  itemBuilder: (context, index) {
-                                    HomeartcolItemModel model = controller
-                                        .homeModelObj
-                                        .value
-                                        .homeartcolItemList
-                                        .value[index];
-                                    return HomeartcolItemWidget(model);
-                                  })))
-                        ]))))));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CustomSearchView()),
+                        );
+                      },
+                      child: CustomImageView(
+                          svgPath: ImageConstant.imgSearchRed300,
+                          height: 24.adaptSize,
+                          width: 24.adaptSize,
+                          margin: EdgeInsets.symmetric(vertical: 8.v)),
+                    ),
+                    CustomImageView(
+                        svgPath: ImageConstant.imgNotificationRed300,
+                        height: 24.v,
+                        width: 20.h,
+                        margin:
+                            EdgeInsets.only(left: 32.h, top: 8.v, bottom: 8.v),
+                        onTap: () {
+                          onTapImgNotification();
+                        }),
+                    SizedBox(width: 32.h),
+                    CustomImageView(
+                        imagePath: ImageConstant.imgFrame72,
+                        height: 36.adaptSize,
+                        width: 36.adaptSize,
+                        margin: EdgeInsets.only(left: 32.h, right: 12.h),
+                        onTap: () {
+                          onTapImgProfileoneone();
+                        })
+                  ]),
+            ),
+          ],
+        ),
+        body: Container(
+          width: double.maxFinite,
+          // decoration: AppDecoration.fillWhiteA,
+          decoration: AppDecoration.outlineBlack900012,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 6.v, top: 6.v),
+              child: Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.only(left: 16.h, top: 24.v),
+                    child: IntrinsicWidth(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CustomDropDown(
+                            width: 120.h,
+                          ),
+                          CustomElevatedButton(
+                              width: 120.h,
+                              text: "lbl_painting".tr,
+                              margin: EdgeInsets.only(left: 8.h),
+                              buttonStyle:
+                                  CustomButtonStyles.outlineLightBlueATL15,
+                              buttonTextStyle: theme.textTheme.labelLarge!),
+                          CustomElevatedButton(
+                              width: 61.h,
+                              text: "lbl_art".tr,
+                              margin: EdgeInsets.only(left: 8.h),
+                              buttonStyle:
+                                  CustomButtonStyles.outlineLightBlueATL15,
+                              buttonTextStyle: theme.textTheme.labelLarge!),
+                          CustomElevatedButton(
+                              width: 122.h,
+                              decoration: BoxDecoration(
+                                  color:
+                                      appTheme.lightBlueA700.withOpacity(0.08),
+                                  borderRadius: BorderRadius.circular(16.h)),
+                              text: "lbl_photography2".tr,
+                              margin: EdgeInsets.only(left: 8.h),
+                              buttonStyle:
+                                  CustomButtonStyles.fillLightBlueATL15,
+                              buttonTextStyle: theme.textTheme.labelLarge!),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.v),
+                  CustomImageView(
+                    imagePath: ImageConstant.imgRectangle11400x3401,
+                    height: 400.v,
+                    width: 340.h,
+                    radius: BorderRadius.circular(8.h),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 15.h, top: 18.v),
+                    child: Obx(
+                      () => ListView.separated(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return SizedBox(height: 26.v);
+                        },
+                        itemCount: controller
+                            .homeModelObj.value.homeartcolItemList.value.length,
+                        itemBuilder: (context, index) {
+                          HomeartcolItemModel model = controller.homeModelObj
+                              .value.homeartcolItemList.value[index];
+
+                          return HomeartcolItemWidget(model);
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   /// Navigates to the notificationsTabContainerScreen when the action is triggered.

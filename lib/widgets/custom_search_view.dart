@@ -78,23 +78,59 @@ class CustomSearchView extends StatelessWidget {
         : searchViewWidget;
   }
 
-  Widget get searchViewWidget => Container(
-        width: width ?? double.maxFinite,
-        margin: margin,
-        child: TextFormField(
-          controller: controller,
-          focusNode: focusNode ?? FocusNode(),
-          autofocus: autofocus!,
-          style:
-              textStyle ?? CustomTextStyles.titleSmallLatoLightblueA700Medium,
-          keyboardType: textInputType,
-          maxLines: maxLines ?? 1,
-          decoration: decoration,
-          validator: validator,
+  Widget get searchViewWidget => Padding(
+        padding: const EdgeInsets.only(top: 24.0),
+        child: FractionallySizedBox(
+          widthFactor: 0.9,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                  onPressed: () {
+                    backButton();
+                    // Get.back();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: appTheme.red300,
+                  )),
+              Expanded(
+                child: Container(
+                  width: width ?? double.maxFinite,
+                  margin: margin,
+                  child: TextFormField(
+                    controller: controller,
+                    focusNode: focusNode ?? FocusNode(),
+                    autofocus: autofocus!,
+                    style: textStyle ??
+                        CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                    keyboardType: textInputType,
+                    maxLines: maxLines ?? 1,
+                    decoration: decoration,
+                    validator: validator,
+                  ),
+                ),
+              ),
+              TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Search",
+                    style: TextStyle(color: appTheme.red300),
+                  ))
+              // InkWell(
+              //   onTap: (){},
+              //   child: Text(
+              //     "Search",
+              //     style: TextStyle(color: appTheme.red300),
+              //   ),
+              // )
+            ],
+          ),
         ),
       );
   InputDecoration get decoration => InputDecoration(
-        hintText: hintText ?? "",
+        hintText: hintText ?? "Type to Search ",
         hintStyle:
             hintStyle ?? CustomTextStyles.titleSmallLatoLightblueA700Medium,
         prefixIcon: prefix,
@@ -105,7 +141,11 @@ class CustomSearchView extends StatelessWidget {
                 right: 15.h,
               ),
               child: IconButton(
-                onPressed: () => controller!.clear(),
+                onPressed: () {
+                  if (controller != null) {
+                    controller!.clear();
+                  }
+                },
                 icon: Icon(
                   Icons.clear,
                   color: Colors.grey.shade600,
@@ -116,6 +156,7 @@ class CustomSearchView extends StatelessWidget {
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.only(
+              left: 16.v,
               top: 19.v,
               right: 19.h,
               bottom: 19.v,
@@ -148,3 +189,15 @@ class CustomSearchView extends StatelessWidget {
             ),
       );
 }
+
+backButton() {
+  Get.toNamed(
+    AppRoutes.homePage,
+  );
+}
+
+// onTapImgNotification() {
+//   Get.toNamed(
+//     AppRoutes.notificationsTabContainerScreen,
+//   );
+// }
