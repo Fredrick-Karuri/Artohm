@@ -26,27 +26,24 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-                  appBar: CustomAppBar(
-                leadingWidth: 46.h,
-                leading: AppbarImage(
-                    svgPath: ImageConstant.imgArrowleftRed300,
-                    margin:
-                        EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                    onTap: () {
-                      // onTapImgArrowleftone();
-                      Navigator.pop(context);
-                    }),
-                title: AppbarSubtitle1(
-                    text: "lbl_community2".tr,
-                    margin:
-                        EdgeInsets.only(left: 36.h, top: 41.v, bottom: 18.v)),
-                actions: [
-                  AppbarImage1(
-                      svgPath: ImageConstant.imgMask,
-                      margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-                ],
-                styleType: Style.bgFill),
-
+      appBar: CustomAppBar(
+          leadingWidth: 46.h,
+          leading: AppbarImage(
+              svgPath: ImageConstant.imgArrowleftRed300,
+              margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+              onTap: () {
+                // onTapImgArrowleftone();
+                Navigator.pop(context);
+              }),
+          title: AppbarSubtitle1(
+              text: "lbl_community2".tr,
+              margin: EdgeInsets.only(left: 36.h, top: 41.v, bottom: 18.v)),
+          actions: [
+            AppbarImage1(
+                svgPath: ImageConstant.imgMask,
+                margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
+          ],
+          styleType: Style.bgFill),
 
       body: SizedBox(
           width: mediaQueryData.size.width,
@@ -56,42 +53,6 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Container(
-                        //     width: double.maxFinite,
-                        //     padding: EdgeInsets.symmetric(
-                        //         horizontal: 8.h, vertical: 7.v),
-                        //     decoration: AppDecoration.outlineBlack900013,
-                        //     child: Column(
-                        //         crossAxisAlignment: CrossAxisAlignment.start,
-                        //         children: [
-                        //           CustomImageView(
-                        //               svgPath: ImageConstant.imgMask,
-                        //               height: 10.v,
-                        //               width: 49.h,
-                        //               alignment: Alignment.centerRight),
-                        //           Padding(
-                        //               padding: EdgeInsets.only(
-                        //                   left: 9.h, top: 21.v, bottom: 7.v),
-                        //               child: Row(children: [
-                        //                 CustomImageView(
-                        //                     svgPath: ImageConstant
-                        //                         .imgArrowleftRed300,
-                        //                     height: 28.adaptSize,
-                        //                     width: 28.adaptSize,
-                        //                     radius: BorderRadius.circular(6.h),
-                        //                     onTap: () {
-                        //                       onTapImgArrowleftone();
-                        //                     }),
-                        //                 Padding(
-                        //                     padding: EdgeInsets.only(
-                        //                         left: 36.h,
-                        //                         top: 5.v,
-                        //                         bottom: 2.v),
-                        //                     child: Text("lbl_community2".tr,
-                        //                         style: CustomTextStyles
-                        //                             .titleMediumInter))
-                        //               ]))
-                        //         ])),
                         Align(
                             alignment: Alignment.center,
                             child: Container(
@@ -634,7 +595,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                 imagePath: ImageConstant.imgImg,
                 labelText: "lbl_mia_thompson".tr,
               ),
-                  buildArtistColumn(
+              buildArtistColumn(
                 onTap: onTapColumn2,
                 imagePath: ImageConstant.imgImg,
                 labelText: "lbl_mia_thompson".tr,

@@ -1,4 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchView extends StatelessWidget {
@@ -87,28 +88,33 @@ class CustomSearchView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               IconButton(
-                  onPressed: () {
-                    backButton();
-                    // Get.back();
-                  },
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: appTheme.red300,
-                  )),
+                onPressed: () {
+                  // backButton();
+                  Get.back(id: 1);
+                  // Get.toNamed(AppRoutes.homePage);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: appTheme.red300,
+                ),
+              ),
               Expanded(
-                child: Container(
-                  width: width ?? double.maxFinite,
-                  margin: margin,
-                  child: TextFormField(
-                    controller: controller,
-                    focusNode: focusNode ?? FocusNode(),
-                    autofocus: autofocus!,
-                    style: textStyle ??
-                        CustomTextStyles.titleSmallLatoLightblueA700Medium,
-                    keyboardType: textInputType,
-                    maxLines: maxLines ?? 1,
-                    decoration: decoration,
-                    validator: validator,
+                child: Material(
+                  child: Container(
+                    color: Colors.white,
+                    width: width ?? double.maxFinite,
+                    margin: margin,
+                    child: TextFormField(
+                      controller: controller,
+                      focusNode: focusNode ?? FocusNode(),
+                      autofocus: autofocus!,
+                      style: textStyle ??
+                          CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                      keyboardType: textInputType,
+                      maxLines: maxLines ?? 1,
+                      decoration: decoration,
+                      validator: validator,
+                    ),
                   ),
                 ),
               ),

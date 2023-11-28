@@ -17,28 +17,36 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       decoration: AppDecoration.fillWhiteA,
                       child: Column(children: [
                         Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 20.h, vertical: 10.v),
-                                child: Text("lbl_app_navigation".tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: appTheme.black90001,
-                                        fontSize: 20.fSize,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400)))),
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.h, vertical: 10.v),
+                            child: Text(
+                              "lbl_app_navigation".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: appTheme.black90001,
+                                  fontSize: 20.fSize,
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
                         Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                                padding: EdgeInsets.only(left: 20.h),
-                                child: Text("msg_check_your_app_s".tr,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: appTheme.blueGray400,
-                                        fontSize: 16.fSize,
-                                        fontFamily: 'Roboto',
-                                        fontWeight: FontWeight.w400)))),
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 20.h),
+                            child: Text(
+                              "msg_check_your_app_s".tr,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: appTheme.blueGray400,
+                                  fontSize: 16.fSize,
+                                  fontFamily: 'Roboto',
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ),
+                        ),
                         SizedBox(height: 5.v),
                         Divider(
                             height: 1.v,
@@ -51,35 +59,39 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                               decoration: AppDecoration.fillWhiteA,
                               child: Column(children: [
                                 GestureDetector(
-                                    onTap: () {
-                                      onTapOnboarding();
-                                    },
-                                    child: Container(
-                                        decoration: AppDecoration.fillWhiteA,
-                                        child: Column(children: [
-                                          Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "lbl_onboarding".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                          SizedBox(height: 5.v),
-                                          Divider(
-                                              height: 1.v,
-                                              thickness: 1.v,
-                                              color: appTheme.blueGray400)
-                                        ]))),
+                                  onTap: () {
+                                    onTapOnboarding();
+                                  },
+                                  child: Container(
+                                    decoration: AppDecoration.fillWhiteA,
+                                    child: Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.h,
+                                                vertical: 10.v),
+                                            child: Text(
+                                              "lbl_onboarding".tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appTheme.black90001,
+                                                  fontSize: 20.fSize,
+                                                  fontFamily: 'Roboto',
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 5.v),
+                                        Divider(
+                                            height: 1.v,
+                                            thickness: 1.v,
+                                            color: appTheme.blueGray400)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
                                     onTap: () {
                                       onTapCollaborateItem();
@@ -88,22 +100,23 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                         decoration: AppDecoration.fillWhiteA,
                                         child: Column(children: [
                                           Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "lbl_collaborateitem".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20.h,
+                                                  vertical: 10.v),
+                                              child: Text(
+                                                "lbl_collaborateitem".tr,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: appTheme.black90001,
+                                                    fontSize: 20.fSize,
+                                                    fontFamily: 'Roboto',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
                                           SizedBox(height: 5.v),
                                           Divider(
                                               height: 1.v,
@@ -111,65 +124,72 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                               color: appTheme.blueGray400)
                                         ]))),
                                 GestureDetector(
-                                    onTap: () {
-                                      onTapCollaborate();
-                                    },
-                                    child: Container(
-                                        decoration: AppDecoration.fillWhiteA,
-                                        child: Column(children: [
-                                          Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "lbl_collaborate2".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                          SizedBox(height: 5.v),
-                                          Divider(
-                                              height: 1.v,
-                                              thickness: 1.v,
-                                              color: appTheme.blueGray400)
-                                        ]))),
+                                  onTap: () {
+                                    onTapCollaborate();
+                                  },
+                                  child: Container(
+                                    decoration: AppDecoration.fillWhiteA,
+                                    child: Column(
+                                      children: [
+                                        Align(
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 20.h,
+                                                    vertical: 10.v),
+                                                child: Text(
+                                                    "lbl_collaborate2".tr,
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color:
+                                                            appTheme.black90001,
+                                                        fontSize: 20.fSize,
+                                                        fontFamily: 'Roboto',
+                                                        fontWeight:
+                                                            FontWeight.w400)))),
+                                        SizedBox(height: 5.v),
+                                        Divider(
+                                            height: 1.v,
+                                            thickness: 1.v,
+                                            color: appTheme.blueGray400)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
-                                    onTap: () {
-                                      onTapNotificationsTabContainer();
-                                    },
-                                    child: Container(
-                                        decoration: AppDecoration.fillWhiteA,
-                                        child: Column(children: [
-                                          Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "msg_notifications".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                          SizedBox(height: 5.v),
-                                          Divider(
-                                              height: 1.v,
-                                              thickness: 1.v,
-                                              color: appTheme.blueGray400)
-                                        ]))),
+                                  onTap: () {
+                                    onTapNotificationsTabContainer();
+                                  },
+                                  child: Container(
+                                    decoration: AppDecoration.fillWhiteA,
+                                    child: Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.h,
+                                                vertical: 10.v),
+                                            child: Text(
+                                              "msg_notifications".tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appTheme.black90001,
+                                                  fontSize: 20.fSize,
+                                                  fontFamily: 'Roboto',
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 5.v),
+                                        Divider(
+                                            height: 1.v,
+                                            thickness: 1.v,
+                                            color: appTheme.blueGray400)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
                                     onTap: () {
                                       onTapSettings();
@@ -178,22 +198,23 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                         decoration: AppDecoration.fillWhiteA,
                                         child: Column(children: [
                                           Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "lbl_settings2".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20.h,
+                                                  vertical: 10.v),
+                                              child: Text(
+                                                "lbl_settings2".tr,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: appTheme.black90001,
+                                                    fontSize: 20.fSize,
+                                                    fontFamily: 'Roboto',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
                                           SizedBox(height: 5.v),
                                           Divider(
                                               height: 1.v,
@@ -201,35 +222,39 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                               color: appTheme.blueGray400)
                                         ]))),
                                 GestureDetector(
-                                    onTap: () {
-                                      onTapSettingsItem();
-                                    },
-                                    child: Container(
-                                        decoration: AppDecoration.fillWhiteA,
-                                        child: Column(children: [
-                                          Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "lbl_settingsitem".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                          SizedBox(height: 5.v),
-                                          Divider(
-                                              height: 1.v,
-                                              thickness: 1.v,
-                                              color: appTheme.blueGray400)
-                                        ]))),
+                                  onTap: () {
+                                    onTapSettingsItem();
+                                  },
+                                  child: Container(
+                                    decoration: AppDecoration.fillWhiteA,
+                                    child: Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.h,
+                                                vertical: 10.v),
+                                            child: Text(
+                                              "lbl_settingsitem".tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appTheme.black90001,
+                                                  fontSize: 20.fSize,
+                                                  fontFamily: 'Roboto',
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 5.v),
+                                        Divider(
+                                            height: 1.v,
+                                            thickness: 1.v,
+                                            color: appTheme.blueGray400)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
                                     onTap: () {
                                       onTapPrivacy();
@@ -238,21 +263,23 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                         decoration: AppDecoration.fillWhiteA,
                                         child: Column(children: [
                                           Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text("lbl_privacy".tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
+                                            alignment: Alignment.centerLeft,
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 20.h,
+                                                  vertical: 10.v),
+                                              child: Text(
+                                                "lbl_privacy".tr,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: appTheme.black90001,
+                                                    fontSize: 20.fSize,
+                                                    fontFamily: 'Roboto',
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
                                           SizedBox(height: 5.v),
                                           Divider(
                                               height: 1.v,
@@ -260,36 +287,39 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                                               color: appTheme.blueGray400)
                                         ]))),
                                 GestureDetector(
-                                    onTap: () {
-                                      onTapUserprofileContainer();
-                                    },
-                                    child: Container(
-                                        decoration: AppDecoration.fillWhiteA,
-                                        child: Column(children: [
-                                          Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: Padding(
-                                                  padding: EdgeInsets.symmetric(
-                                                      horizontal: 20.h,
-                                                      vertical: 10.v),
-                                                  child: Text(
-                                                      "msg_user_profile_container"
-                                                          .tr,
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                          color: appTheme
-                                                              .black90001,
-                                                          fontSize: 20.fSize,
-                                                          fontFamily: 'Roboto',
-                                                          fontWeight: FontWeight
-                                                              .w400)))),
-                                          SizedBox(height: 5.v),
-                                          Divider(
-                                              height: 1.v,
-                                              thickness: 1.v,
-                                              color: appTheme.blueGray400)
-                                        ]))),
+                                  onTap: () {
+                                    onTapUserprofileContainer();
+                                  },
+                                  child: Container(
+                                    decoration: AppDecoration.fillWhiteA,
+                                    child: Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 20.h,
+                                                vertical: 10.v),
+                                            child: Text(
+                                              "msg_user_profile_container".tr,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: appTheme.black90001,
+                                                  fontSize: 20.fSize,
+                                                  fontFamily: 'Roboto',
+                                                  fontWeight: FontWeight.w400),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 5.v),
+                                        Divider(
+                                            height: 1.v,
+                                            thickness: 1.v,
+                                            color: appTheme.blueGray400)
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 GestureDetector(
                                     onTap: () {
                                       onTapArtDiscoveryContainer();

@@ -1,3 +1,4 @@
+import '../collaborate_screen/controller/collaborate_controller.dart';
 import 'controller/art_discovery_container_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
@@ -8,7 +9,7 @@ import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dar
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 
 class ArtDiscoveryContainerScreen
-    extends GetWidget<ArtDiscoveryContainerController> {
+    extends StatelessWidget {
   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
 
   @override
@@ -17,13 +18,22 @@ class ArtDiscoveryContainerScreen
     return SafeArea(
       child: Scaffold(
         body: Navigator(
-            key: Get.nestedKey(1),
-            initialRoute: AppRoutes.homePage,
-            onGenerateRoute: (routeSetting) => GetPageRoute(
-                page: () => getCurrentPage(routeSetting.name!),
-                transition: Transition.noTransition)),
+          key: Get.nestedKey(1),
+          initialRoute: AppRoutes.homePage,
+          onGenerateRoute: (routeSetting) => GetPageRoute(
+              page: () => getCurrentPage(routeSetting.name!),
+              transition: Transition.noTransition),
+        ),
         bottomNavigationBar: CustomBottomBar(
           onChanged: (BottomBarEnum type) {
+            // Get.toNamed(getCurrentRoute(type), id: 1)?.then(
+            //   (_) {
+            //     print('Navigated to ${getCurrentRoute(type)}');
+            //     print(
+            //         'CollaborateController: ${Get.find<CollaborateController>()}');
+            //   },
+            // );
+
             Get.toNamed(getCurrentRoute(type), id: 1);
           },
         ),

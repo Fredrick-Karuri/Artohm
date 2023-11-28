@@ -41,8 +41,6 @@ class HomePage extends StatelessWidget {
                     SizedBox(width: 32.h),
                     GestureDetector(
                       onTap: () {
-                        print('Image tapped'); // Add this line
-
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -95,6 +93,16 @@ class HomePage extends StatelessWidget {
                         children: [
                           CustomDropDown(
                             width: 120.h,
+                            icon: Container(
+                              margin:
+                                  EdgeInsets.fromLTRB(16.h, 12.v, 16.h, 11.v),
+                            ),
+                            hintText: "Filter By",
+                            items: controller
+                                .homeModelObj.value.dropdownItemList!.value,
+                            onChanged: (value) {
+                              controller.onSelected(value);
+                            },
                           ),
                           CustomElevatedButton(
                               width: 120.h,
