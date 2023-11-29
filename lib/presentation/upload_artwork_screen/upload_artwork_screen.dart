@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'controller/upload_artwork_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
@@ -14,83 +16,53 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
+            appBar: AppBar(
+              leadingWidth: 46.h,
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                iconSize: 40,
+                icon: Icon(Icons.close,
+                    color: Theme.of(context).colorScheme.primary),
+              ),
+            ),
             resizeToAvoidBottomInset: false,
-            body: Container(
-                width: double.maxFinite,
+            body: SingleChildScrollView(
+                // width: double.maxFinite,
                 padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 7.v),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                          padding: EdgeInsets.only(left: 7.h),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CustomImageView(
-                                    svgPath: ImageConstant.imgMask,
-                                    height: 10.v,
-                                    width: 49.h,
-                                    alignment: Alignment.centerRight),
-                                SizedBox(height: 21.v),
-                                CustomImageView(
-                                    svgPath: ImageConstant.imgNavtoRed300,
-                                    height: 28.adaptSize,
-                                    width: 28.adaptSize)
-                              ])),
-                      Padding(
-                          padding: EdgeInsets.only(left: 7.h, top: 46.v),
-                          child: Text("lbl_title".tr,
-                              style: theme.textTheme.titleSmall)),
-                      CustomTextFormField(
-                          controller: controller.inputTextController,
-                          margin:
-                              EdgeInsets.only(left: 7.h, top: 9.v, right: 7.h),
-                          hintText: "lbl_input_text".tr,
-                          hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
-                          borderDecoration: TextFormFieldStyleHelper.fillBlue,
-                          filled: true,
-                          fillColor: appTheme.blue50),
-                      Padding(
-                          padding: EdgeInsets.only(left: 7.h, top: 37.v),
-                          child: Text("lbl_description".tr,
-                              style: theme.textTheme.titleSmall)),
-                      CustomTextFormField(
-                          controller: controller.inputtextoneController,
-                          margin:
-                              EdgeInsets.only(left: 7.h, top: 8.v, right: 7.h),
-                          hintText: "lbl_input_text".tr,
-                          hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
-                          textInputAction: TextInputAction.done,
-                          borderDecoration:
-                              TextFormFieldStyleHelper.fillBlueTL4,
-                          filled: true,
-                          fillColor: appTheme.blue50),
+                      title(),
+                      description(),
                       Container(
-                          margin:
-                              EdgeInsets.only(left: 7.h, top: 36.v, right: 7.h),
-                          padding: EdgeInsets.all(16.h),
-                          decoration: AppDecoration.fillPink5001.copyWith(
-                              borderRadius: BorderRadiusStyle.circleBorder15),
-                          child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("lbl_dimensions".tr,
-                                    style: theme.textTheme.titleSmall),
-                                SizedBox(height: 17.v),
-                                Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      CustomDropDown(
-                                          width: 92.h,
+                        margin:
+                            EdgeInsets.only(left: 7.h, top: 36.v, right: 7.h),
+                        padding: EdgeInsets.all(16.h),
+                        decoration: AppDecoration.fillPink5001.copyWith(
+                            borderRadius: BorderRadiusStyle.circleBorder15),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("lbl_dimensions".tr,
+                                style: theme.textTheme.titleSmall),
+                            SizedBox(height: 17.v),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Flexible(
+                                    child: Column(
+                                      children: [
+                                        CustomDropDown(
+                                          width: 120.h,
                                           icon: Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  8.h, 12.v, 16.h, 9.v),
-                                              child: CustomImageView(
-                                                  svgPath: ImageConstant
-                                                      .imgProfileiconsRed30012x18)),
-                                          margin: EdgeInsets.only(bottom: 41.v),
+                                            margin: EdgeInsetsDirectional.only(
+                                                end: 2),
+                                          ),
                                           hintText: "lbl_inches".tr,
                                           items: controller
                                               .uploadArtworkModelObj
@@ -99,42 +71,62 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                                               .value,
                                           onChanged: (value) {
                                             controller.onSelected(value);
-                                          }),
-                                      Column(children: [
+                                          },
+                                        ),
+                                        SizedBox(height: 16.v),
+                                        CustomElevatedButton(
+                                            width: 101.h,
+                                            text: "lbl_24_x_36_inches".tr,
+                                            buttonStyle:
+                                                CustomButtonStyles.fillWhiteA,
+                                            buttonTextStyle: CustomTextStyles
+                                                .bodySmallLatoBlack9000112),
+                                      ],
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      children: [
                                         Text("lbl_width".tr,
                                             style: theme.textTheme.bodyMedium),
-                                        SizedBox(height: 23.v),
-                                        CustomOutlinedButton(
-                                            height: 29.v,
-                                            width: 49.h,
-                                            text: "lbl_24".tr,
-                                            buttonStyle: CustomButtonStyles
-                                                .outlineBlackTL83,
-                                            buttonTextStyle:
-                                                theme.textTheme.bodyMedium!)
-                                      ]),
-                                      Column(children: [
+                                        SizedBox(height: 24.v),
+                                        CustomTextFormField(
+                                          textInputType: TextInputType.number,
+                                          width: 49.h,
+                                          hintText: '24',
+                                          borderDecoration:
+                                              OutlineInputBorder(),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      children: [
                                         Text("lbl_height".tr,
                                             style: theme.textTheme.bodyMedium),
-                                        SizedBox(height: 22.v),
-                                        CustomOutlinedButton(
-                                            height: 29.v,
-                                            width: 49.h,
-                                            text: "lbl_36".tr,
-                                            buttonStyle: CustomButtonStyles
-                                                .outlineBlackTL83,
-                                            buttonTextStyle:
-                                                theme.textTheme.bodyMedium!)
-                                      ])
-                                    ]),
-                                SizedBox(height: 13.v),
-                                CustomElevatedButton(
-                                    width: 101.h,
-                                    text: "lbl_24_x_36_inches".tr,
-                                    buttonStyle: CustomButtonStyles.fillWhiteA,
-                                    buttonTextStyle: CustomTextStyles
-                                        .bodySmallLatoBlack9000112)
-                              ])),
+                                        SizedBox(height: 24.v),
+                                        CustomTextFormField(
+                                          textInputType: TextInputType.number,
+                                          width: 49.h,
+                                          hintText: '36',
+                                          borderDecoration:
+                                              OutlineInputBorder(),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ]),
+                            SizedBox(height: 16.v),
+                            // CustomElevatedButton(
+                            //     width: 101.h,
+                            //     text: "lbl_24_x_36_inches".tr,
+                            //     buttonStyle: CustomButtonStyles.fillWhiteA,
+                            //     buttonTextStyle:
+                            //         CustomTextStyles.bodySmallLatoBlack9000112)
+                          ],
+                        ),
+                      ),
                       Container(
                           width: 358.h,
                           margin:
@@ -196,6 +188,46 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                 })));
   }
 
+  description() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(left: 7.h, top: 37.v),
+          child: Text("lbl_description".tr, style: theme.textTheme.titleSmall),
+        ),
+        CustomTextFormField(
+            controller: controller.inputtextoneController,
+            margin: EdgeInsets.only(left: 7.h, top: 8.v, right: 7.h),
+            hintText: "lbl_input_text".tr,
+            hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
+            textInputAction: TextInputAction.done,
+            borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
+            filled: true,
+            fillColor: appTheme.blue50),
+      ],
+    );
+  }
+
+  title() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+            padding: EdgeInsets.only(left: 7.h, top: 16.v),
+            child: Text("lbl_title".tr, style: theme.textTheme.titleSmall)),
+        CustomTextFormField(
+            controller: controller.inputTextController,
+            margin: EdgeInsets.only(left: 7.h, top: 9.v, right: 7.h),
+            hintText: "lbl_input_text".tr,
+            hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
+            borderDecoration: TextFormFieldStyleHelper.fillBlue,
+            filled: true,
+            fillColor: appTheme.blue50),
+      ],
+    );
+  }
+
   /// Navigates to the uploadArtworkTwoScreen when the action is triggered.
 
   /// When the action is triggered, this function uses the [Get] package to
@@ -206,3 +238,12 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
     );
   }
 }
+
+                                        // CustomOutlinedButton(
+                                        //     height: 29.v,
+                                        //     width: 49.h,
+                                        //     text: "lbl_36".tr,
+                                        //     buttonStyle: CustomButtonStyles
+                                        //         .outlineBlackTL83,
+                                        //     buttonTextStyle:
+                                        //         theme.textTheme.bodyMedium!)

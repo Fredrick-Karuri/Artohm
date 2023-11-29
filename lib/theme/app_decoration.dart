@@ -109,6 +109,16 @@ class AppDecoration {
           width: 1.h,
         ),
       );
+  static BoxDecoration get fillLightblueA700 => BoxDecoration(
+        color: appTheme.lightBlueA700,
+        borderRadius: BorderRadius.circular(20.h),
+
+        border: Border.all(
+          color: appTheme.lightBlueA700,
+          width: 1.h,
+          
+        ),
+      );
   static BoxDecoration get outlinePrimary => BoxDecoration(
         border: Border.all(
           color: theme.colorScheme.primary,

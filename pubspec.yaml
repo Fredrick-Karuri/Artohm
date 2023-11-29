@@ -15,7 +15,16 @@ dependencies:
   flutter_login_facebook: ^1.6.2
   smooth_page_indicator: ^1.0.0+2
   intl: ^0.18.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: assets/images/Artohm-logo.png
+
+
+
 dev_dependencies: 
+  flutter_launcher_icons: "^0.9.2"
   flutter_test: 
     sdk: flutter
 flutter: 

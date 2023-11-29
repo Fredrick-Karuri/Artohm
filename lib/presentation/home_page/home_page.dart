@@ -75,98 +75,116 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(
-          width: double.maxFinite,
-          // decoration: AppDecoration.fillWhiteA,
-          decoration: AppDecoration.outlineBlack900012,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 6.v, top: 6.v),
-              child: Column(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    padding: EdgeInsets.only(left: 16.h, top: 24.v),
-                    child: IntrinsicWidth(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CustomDropDown(
-                            width: 120.h,
-                            icon: Container(
-                              margin:
-                                  EdgeInsets.fromLTRB(16.h, 12.v, 16.h, 11.v),
-                            ),
-                            hintText: "Filter By",
-                            items: controller
-                                .homeModelObj.value.dropdownItemList!.value,
-                            onChanged: (value) {
-                              controller.onSelected(value);
-                            },
-                          ),
-                          CustomElevatedButton(
-                              width: 120.h,
-                              text: "lbl_painting".tr,
-                              margin: EdgeInsets.only(left: 8.h),
-                              buttonStyle:
-                                  CustomButtonStyles.outlineLightBlueATL15,
-                              buttonTextStyle: theme.textTheme.labelLarge!),
-                          CustomElevatedButton(
-                              width: 61.h,
-                              text: "lbl_art".tr,
-                              margin: EdgeInsets.only(left: 8.h),
-                              buttonStyle:
-                                  CustomButtonStyles.outlineLightBlueATL15,
-                              buttonTextStyle: theme.textTheme.labelLarge!),
-                          CustomElevatedButton(
-                              width: 122.h,
-                              decoration: BoxDecoration(
-                                  color:
-                                      appTheme.lightBlueA700.withOpacity(0.08),
-                                  borderRadius: BorderRadius.circular(16.h)),
-                              text: "lbl_photography2".tr,
-                              margin: EdgeInsets.only(left: 8.h),
-                              buttonStyle:
-                                  CustomButtonStyles.fillLightBlueATL15,
-                              buttonTextStyle: theme.textTheme.labelLarge!),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16.v),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgRectangle11400x3401,
-                    height: 400.v,
-                    width: 340.h,
-                    radius: BorderRadius.circular(8.h),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.h, top: 18.v),
-                    child: Obx(
-                      () => ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) {
-                          return SizedBox(height: 26.v);
-                        },
-                        itemCount: controller
-                            .homeModelObj.value.homeartcolItemList.value.length,
-                        itemBuilder: (context, index) {
-                          HomeartcolItemModel model = controller.homeModelObj
-                              .value.homeartcolItemList.value[index];
-
-                          return HomeartcolItemWidget(model);
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+        body: bodyContent(),
+        
       ),
     );
+  }
+
+  Container bodyContent() {
+    return Container(
+        width: double.maxFinite,
+        // decoration: AppDecoration.fillWhiteA,
+        // decoration: AppDecoration.outlineBlack900012,
+        child: ListView(
+          // child: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.only(left: 16.h, top: 24.v),
+              child: IntrinsicWidth(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomDropDown(
+                      width: 120.h,
+                      icon: Container(
+                        margin: EdgeInsets.fromLTRB(16.h, 12.v, 16.h, 11.v),
+                      ),
+                      hintText: "Filter By",
+                      items: controller
+                          .homeModelObj.value.dropdownItemList!.value,
+                      onChanged: (value) {
+                        controller.onSelected(value);
+                      },
+                    ),
+                    CustomElevatedButton(
+                        width: 120.h,
+                        text: "lbl_painting".tr,
+                        margin: EdgeInsets.only(left: 8.h),
+                        buttonStyle: CustomButtonStyles.outlineLightBlueATL15,
+                        buttonTextStyle: theme.textTheme.labelLarge!),
+                    CustomElevatedButton(
+                        width: 61.h,
+                        text: "lbl_art".tr,
+                        margin: EdgeInsets.only(left: 8.h),
+                        buttonStyle: CustomButtonStyles.outlineLightBlueATL15,
+                        buttonTextStyle: theme.textTheme.labelLarge!),
+                    CustomElevatedButton(
+                        width: 122.h,
+                        decoration: BoxDecoration(
+                            color: appTheme.lightBlueA700.withOpacity(0.08),
+                            borderRadius: BorderRadius.circular(16.h)),
+                        text: "lbl_photography2".tr,
+                        margin: EdgeInsets.only(left: 8.h),
+                        buttonStyle: CustomButtonStyles.fillLightBlueATL15,
+                        buttonTextStyle: theme.textTheme.labelLarge!),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 16.v),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: Container(
+                height: 400.v,
+                width: 340.h,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      // color: Colors.black.withOpacity(0.5),
+                      color: appTheme.blueGray400.withOpacity(0.5),
+        
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.h),
+                  child: CustomImageView(
+                    imagePath: ImageConstant.imgRectangle11400x3401,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 15.h, top: 18.v),
+              child: Obx(
+                () => ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(height: 26.v);
+                  },
+                  itemCount: controller
+                      .homeModelObj.value.homeartcolItemList.value.length,
+                  itemBuilder: (context, index) {
+                    HomeartcolItemModel model = controller
+                        .homeModelObj.value.homeartcolItemList.value[index];
+        
+                    return HomeartcolItemWidget(model);
+                  },
+                ),
+              ),
+            ),
+            SizedBox(height: 24.v),
+
+          ],
+          // ),
+        ),
+      );
   }
 
   /// Navigates to the notificationsTabContainerScreen when the action is triggered.

@@ -78,31 +78,34 @@ class CustomDropDown extends StatelessWidget {
         : dropDownWidget;
   }
 
-  Widget get dropDownWidget => Container(
-        width: width ?? double.maxFinite,
-        margin: margin,
-        child: DropdownButtonFormField<SelectionPopupModel>(
-          focusNode: focusNode ?? FocusNode(),
-          icon: icon,
-          autofocus: autofocus!,
-          style: textStyle ?? theme.textTheme.bodyMedium,
-          items: items?.map((SelectionPopupModel item) {
-            return DropdownMenuItem<SelectionPopupModel>(
-              value: item,
-              child: Text(
-                item.title,
-                overflow: TextOverflow.ellipsis,
-                style: hintStyle ?? theme.textTheme.bodyMedium,
-              ),
-            );
-          }).toList(),
-          decoration: decoration,
-          validator: validator,
-          onChanged: (value) {
-            onChanged!(value!);
-          },
+  Widget get dropDownWidget => Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+          width: width ?? double.maxFinite,
+          margin: margin,
+          child: DropdownButtonFormField<SelectionPopupModel>(
+            focusNode: focusNode ?? FocusNode(),
+            icon: icon,
+            autofocus: autofocus!,
+            style: textStyle ?? theme.textTheme.bodyMedium,
+            items: items?.map((SelectionPopupModel item) {
+              return DropdownMenuItem<SelectionPopupModel>(
+                value: item,
+                child: Text(
+                  item.title,
+                  overflow: TextOverflow.ellipsis,
+                  style: hintStyle ?? theme.textTheme.bodyMedium,
+                ),
+              );
+            }).toList(),
+            decoration: decoration,
+            validator: validator,
+            onChanged: (value) {
+              onChanged!(value!);
+            },
+          ),
         ),
-      );
+  );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? theme.textTheme.bodyMedium,

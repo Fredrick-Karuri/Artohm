@@ -26,7 +26,7 @@ class NotificationsPage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(
               left: 16.h,
-              top: 47.v,
+              top: 16.v,
               right: 16.h,
             ),
             child: Obx(

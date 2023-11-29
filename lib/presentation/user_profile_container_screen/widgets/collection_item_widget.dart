@@ -39,45 +39,52 @@ class CollectionItemWidget extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(
                 left: 8.h,
-                top: 1.v,
+                top: 8.v,
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Obx(
-                          () => Text(
-                            collectionItemModelObj.collectionText!.value,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.labelMedium,
+              child: Container(
+                margin: EdgeInsets.only(right: 8.h),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => Text(
+                              collectionItemModelObj.collectionText!.value,
+                              overflow: TextOverflow.ellipsis,
+                              // style: theme.textTheme.labelMedium,
+                              style: theme.textTheme.labelLarge,
+
+                            ),
                           ),
-                        ),
-                        SizedBox(height: 2.v),
-                        Obx(
-                          () => Text(
-                            collectionItemModelObj.artworkText!.value,
-                            overflow: TextOverflow.ellipsis,
-                            style: CustomTextStyles.bodySmallLatoLight,
+                          SizedBox(height: 2.v),
+                          Obx(
+                            () => Text(
+                              collectionItemModelObj.artworkText!.value,
+                              overflow: TextOverflow.ellipsis,
+                              // style: CustomTextStyles.bodySmallLatoLight,
+                              style: theme.textTheme.bodyMedium,
+
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  CustomImageView(
-                    svgPath: ImageConstant.imgIconsblack90001,
-                    height: 20.v,
-                    width: 4.h,
-                    margin: EdgeInsets.only(
-                      left: 59.h,
-                      top: 3.v,
-                      bottom: 4.v,
+                    CustomImageView(
+                      svgPath: ImageConstant.imgIconsblack90001,
+                      height: 20.v,
+                      width: 4.h,
+                      margin: EdgeInsets.only(
+                        top: 3.v,
+                        bottom: 4.v,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

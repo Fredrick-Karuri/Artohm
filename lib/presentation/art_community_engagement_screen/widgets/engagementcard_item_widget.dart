@@ -98,6 +98,7 @@ class EngagementcardItemWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 14.v),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomOutlinedButton(
                         width: 67.h,

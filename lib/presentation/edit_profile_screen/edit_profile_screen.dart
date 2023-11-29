@@ -17,16 +17,17 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
     return SafeArea(
         child: Scaffold(
             appBar: AppBar(
-                leadingWidth: 46.h,
-                backgroundColor: Colors.white,
-                leading: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  iconSize: 40,
-                  icon: Icon(Icons.close,
-                      color: Theme.of(context).colorScheme.primary),
-                )),
+              leadingWidth: 46.h,
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                iconSize: 40,
+                icon: Icon(Icons.close,
+                    color: Theme.of(context).colorScheme.primary),
+              ),
+            ),
             resizeToAvoidBottomInset: false,
             body: SizedBox(
                 width: mediaQueryData.size.width,
