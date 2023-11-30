@@ -26,10 +26,6 @@ import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
 import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 import 'package:artohmapp/presentation/art_community_screen/binding/art_community_binding.dart';
-import 'package:artohmapp/presentation/onboarding1_screen/onboarding1_screen.dart';
-import 'package:artohmapp/presentation/onboarding1_screen/binding/onboarding1_binding.dart';
-import 'package:artohmapp/presentation/onboarding_one_screen/onboarding_one_screen.dart';
-import 'package:artohmapp/presentation/onboarding_one_screen/binding/onboarding_one_binding.dart';
 import 'package:artohmapp/presentation/signup_screen/signup_screen.dart';
 import 'package:artohmapp/presentation/signup_screen/binding/signup_binding.dart';
 import 'package:artohmapp/presentation/signup_one_screen/signup_one_screen.dart';
@@ -214,20 +210,6 @@ class AppRoutes {
       ],
     ),
     GetPage(
-      name: onboarding1Screen,
-      page: () => Onboarding1Screen(),
-      bindings: [
-        Onboarding1Binding(),
-      ],
-    ),
-    GetPage(
-      name: onboardingOneScreen,
-      page: () => OnboardingOneScreen(),
-      bindings: [
-        OnboardingOneBinding(),
-      ],
-    ),
-    GetPage(
       name: signupScreen,
       page: () => SignupScreen(),
       bindings: [
@@ -322,6 +304,6 @@ class AppRoutes {
       bindings: [
         OnboardingBinding(),
       ],
-    )
+    ),
   ];
 }

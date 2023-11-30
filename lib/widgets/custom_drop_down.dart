@@ -24,10 +24,11 @@ class CustomDropDown extends StatelessWidget {
     this.filled = false,
     this.validator,
     this.onChanged,
+    this.dropdownColor = Colors.blue
   }) : super(
           key: key,
         );
-
+final Color dropdownColor;
   final Alignment? alignment;
 
   final double? width;
@@ -103,6 +104,8 @@ class CustomDropDown extends StatelessWidget {
             onChanged: (value) {
               onChanged!(value!);
             },
+            dropdownColor: dropdownColor,
+            
           ),
         ),
   );
@@ -116,9 +119,10 @@ class CustomDropDown extends StatelessWidget {
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.only(
-              left: 6.h,
+              left: 12.h,
               top: 6.v,
               bottom: 6.v,
+              right: 8.v
             ),
         fillColor: fillColor,
         filled: filled,

@@ -26,14 +26,11 @@ class SelectartworkItemWidget extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 2.v),
           child: Column(
             children: [
-              CustomImageView(
-                imagePath: ImageConstant.imgRectangle11135x108,
-                height: 135.v,
-                width: 108.h,
-                radius: BorderRadius.circular(
-                  8.h,
-                ),
-              ),
+              Obx(() => selectartworkItemModelObj.imagePath?.value != null
+                      ? Image.asset(selectartworkItemModelObj.imagePath!.value)
+                      : Container() // This will be used when imagePath is null
+                  ),
+              // Use the image path from the model
               SizedBox(height: 3.v),
               Obx(
                 () => Text(
@@ -43,10 +40,12 @@ class SelectartworkItemWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15.v),
-              CustomImageView(
-                svgPath: ImageConstant.imgCheckmarkRed300,
-                height: 24.adaptSize,
-                width: 24.adaptSize,
+              OutlinedButton(
+                onPressed: () {
+                  // Handle the selection here
+                },
+                child: Icon(
+                    Icons.check), // Use an icon or any other widget you want
               ),
             ],
           ),

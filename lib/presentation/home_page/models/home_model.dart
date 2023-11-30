@@ -13,16 +13,16 @@ class HomeModel {
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx([
     SelectionPopupModel(
       id: 1,
-      title: "Item One",
+      title: "Genre",
       isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
-      title: "Item Two",
+      title: "Theme",
     ),
     SelectionPopupModel(
       id: 3,
-      title: "Item Three",
+      title: "Art Style",
     )
   ]);
 }

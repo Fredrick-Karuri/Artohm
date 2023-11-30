@@ -1,3 +1,4 @@
+import 'package:shared_preferences/shared_preferences.dart';
 import '../collaborate_screen/controller/collaborate_controller.dart';
 import 'controller/art_discovery_container_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -8,37 +9,45 @@ import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_sc
 import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 
-class ArtDiscoveryContainerScreen
-    extends StatelessWidget {
+class ArtDiscoveryContainerScreen extends StatelessWidget {
   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        body: Navigator(
-          key: Get.nestedKey(1),
-          initialRoute: AppRoutes.homePage,
-          onGenerateRoute: (routeSetting) => GetPageRoute(
-              page: () => getCurrentPage(routeSetting.name!),
-              transition: Transition.noTransition),
-        ),
-        bottomNavigationBar: CustomBottomBar(
-          onChanged: (BottomBarEnum type) {
-            // Get.toNamed(getCurrentRoute(type), id: 1)?.then(
-            //   (_) {
-            //     print('Navigated to ${getCurrentRoute(type)}');
-            //     print(
-            //         'CollaborateController: ${Get.find<CollaborateController>()}');
-            //   },
-            // );
+    return FutureBuilder(
+      future: _checkOnboardingStatus(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          // show a loading spinner when waiting for the future to complete
+          return CircularProgressIndicator();
+        }
+        String initialRoute = (snapshot.data is bool && snapshot.data as bool)
+            ? AppRoutes.homePage
+            : AppRoutes.onboardingScreen;
 
-            Get.toNamed(getCurrentRoute(type), id: 1);
-          },
-        ),
-      ),
+        return SafeArea(
+          child: Scaffold(
+            body: Navigator(
+              key: Get.nestedKey(1),
+              initialRoute: initialRoute, // Use the initialRoute variable here
+              onGenerateRoute: (routeSetting) => GetPageRoute(
+                  page: () => getCurrentPage(routeSetting.name!),
+                  transition: Transition.noTransition),
+            ),
+            bottomNavigationBar: CustomBottomBar(
+              onChanged: (BottomBarEnum type) {
+                Get.toNamed(getCurrentRoute(type), id: 1);
+              },
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  Future<bool> _checkOnboardingStatus() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getBool('onboardingCompleted') ?? false;
   }
 
   ///Handling route based on bottom click actions

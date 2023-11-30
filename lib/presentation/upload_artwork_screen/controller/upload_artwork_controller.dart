@@ -1,6 +1,7 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/models/upload_artwork_model.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 /// A controller class for the UploadArtworkScreen.
 ///
@@ -16,6 +17,8 @@ class UploadArtworkController extends GetxController {
   SelectionPopupModel? selectedDropDownValue;
 
   SelectionPopupModel? selectedDropDownValue1;
+
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void onClose() {
@@ -42,5 +45,25 @@ class UploadArtworkController extends GetxController {
       }
     }
     uploadArtworkModelObj.value.dropdownItemList1.refresh();
+  }
+
+  Future<void> pickImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      // handle picked image
+      print('image path:${image.path}');
+    } else {
+      print('no image selected');
+    }
+  }
+
+  Future<void> takePicture() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+    if (image != null) {
+      // handle taken picture
+      print('image path:${image.path}');
+    } else {
+      print('no image selected');
+    }
   }
 }

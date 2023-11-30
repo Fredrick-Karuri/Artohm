@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../../../core/app_export.dart';
 import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'selectedstyles_item_model.dart';
@@ -21,6 +23,28 @@ class EditProfileModel {
     )
   ]);
 
-  Rx<List<SelectedstylesItemModel>> selectedstylesItemList =
-      Rx(List.generate(2, (index) => SelectedstylesItemModel()));
+  Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx(
+    List.generate(
+      2,
+      (index) => SelectedstylesItemModel(),
+    ),
+  );
+}
+
+class UserProfile {
+  String username;
+  String email;
+  String bio;
+  String location;
+  String website;
+  // String imagePath;
+
+  UserProfile({
+    required this.username,
+    required this.email,
+    required this.bio,
+    required this.location,
+    required this.website,
+    // required this.imagePath,
+  });
 }
