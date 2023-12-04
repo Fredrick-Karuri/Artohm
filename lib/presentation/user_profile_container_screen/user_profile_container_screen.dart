@@ -1,5 +1,6 @@
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/profile_info.dart';
 
+import '../../widgets/app_bar/appbar_subtitle_1.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
 import 'controller/user_profile_container_controller.dart';
@@ -27,22 +28,30 @@ class UserProfileContainerScreen
             leadingWidth: 46.h,
             leading: AppbarImage(
                 svgPath: ImageConstant.imgArrowleftRed300,
-                margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+                margin: EdgeInsets.only(
+                  left: 18.h,
+                ),
                 onTap: () {
                   Navigator.pop(context);
                 }),
-            title: AppbarTitle(
+            // title: AppbarTitle(
+            title: AppbarSubtitle1(
+              
                 text: "lbl_profile".tr,
-                margin: EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v)),
+                margin: EdgeInsets.only(
+                  left: 36.h,
+                )),
             actions: [
               Padding(
-                  padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
-                  child: AppbarImage1(
-                      svgPath: ImageConstant.imgProfileicons,
-                      margin: EdgeInsets.only(top: 24.v, right: 24.h),
-                      onTap: () {
-                        onTapProfileicons();
-                      }))
+                padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
+                child: AppbarImage1(
+                  svgPath: ImageConstant.imgProfileicons,
+                  margin: EdgeInsets.only( right: 24.h),
+                  onTap: () {
+                    onTapProfileicons();
+                  },
+                ),
+              ),
             ],
             styleType: Style.bgFill),
         body: SizedBox(

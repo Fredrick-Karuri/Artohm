@@ -2,6 +2,7 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 import '../../../theme/theme_helper.dart';
+import '../../../widgets/custom_elevated_button.dart';
 import '../../../widgets/custom_icon_button.dart';
 import '../../../widgets/custom_image_view.dart';
 
@@ -10,12 +11,14 @@ class ListingCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final String description;
+  final VoidCallback onButtonPressed;
 
   ListingCard({
     required this.imagePath,
     required this.title,
     required this.subtitle,
     required this.description,
+    required this.onButtonPressed,
   });
 
   @override
@@ -99,6 +102,15 @@ class ListingCard extends StatelessWidget {
                     style: CustomTextStyles.bodyMediumBlack90001
                         .copyWith(height: 1.50),
                   ),
+                ),
+                SizedBox(height: 8.v),
+                CustomElevatedButton(
+                  onTap: onButtonPressed,
+                  width: 250.h,
+                  text: 'Curious...',
+                  // margin: EdgeInsets.only(left: 8.h),
+                  // buttonStyle: CustomButtonStyles.outlineLightBlueATL15,
+                  // buttonTextStyle: theme.textTheme.labelLarge!
                 ),
               ],
             ),

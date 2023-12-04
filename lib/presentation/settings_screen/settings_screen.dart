@@ -1,3 +1,4 @@
+import '../../widgets/custom_appbar_component.dart';
 import 'controller/settings_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
@@ -18,25 +19,27 @@ class SettingsScreen extends GetWidget<SettingsController> {
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: CustomAppBar(
-                leadingWidth: 46.h,
-                leading: AppbarImage(
-                    svgPath: ImageConstant.imgArrowleftRed300,
-                    margin:
-                        EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                    onTap: () {
-                      onTapArrowleftone();
-                    }),
-                title: AppbarTitle(
-                    text: "lbl_settings".tr,
-                    margin:
-                        EdgeInsets.only(left: 36.h, top: 41.v, bottom: 15.v)),
-                actions: [
-                  AppbarImage1(
-                      svgPath: ImageConstant.imgMask,
-                      margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-                ],
-                styleType: Style.bgOutline),
+      appBar: CustomAppBarComponent(title: "lbl_settings".tr) ,
+
+            // appBar: CustomAppBar(
+            //     leadingWidth: 46.h,
+            //     leading: AppbarImage(
+            //         svgPath: ImageConstant.imgArrowleftRed300,
+            //         margin:
+            //             EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+            //         onTap: () {
+            //           onTapArrowleftone();
+            //         }),
+            //     title: AppbarTitle(
+            //         text: "lbl_settings".tr,
+            //         margin:
+            //             EdgeInsets.only(left: 36.h, top: 41.v, bottom: 15.v)),
+            //     actions: [
+            //       AppbarImage1(
+            //           svgPath: ImageConstant.imgMask,
+            //           margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
+            //     ],
+            //     styleType: Style.bgOutline),
             body: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 32.v),

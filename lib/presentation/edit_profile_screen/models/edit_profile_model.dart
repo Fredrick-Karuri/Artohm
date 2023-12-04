@@ -10,17 +10,24 @@ class EditProfileModel {
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx([
     SelectionPopupModel(
       id: 1,
-      title: "Item One",
+      title: "Impressionism",
       isSelected: true,
     ),
     SelectionPopupModel(
       id: 2,
-      title: "Item Two",
+      title: "Cubism",
     ),
     SelectionPopupModel(
       id: 3,
-      title: "Item Three",
-    )
+      title: "Surrealism",
+    ),
+     SelectionPopupModel(
+      id: 4,
+      title: "Abstract Expressionism",
+    ), SelectionPopupModel(
+      id: 5,
+      title: "Pop Art",
+    ),
   ]);
 
   Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx(
@@ -32,19 +39,15 @@ class EditProfileModel {
 }
 
 class UserProfile {
-  String username;
-  String email;
-  String bio;
-  String location;
-  String website;
-  // String imagePath;
+  final String label;
+  final String value;
+  final String iconPath;
+  final Function(String) onChanged;
 
   UserProfile({
-    required this.username,
-    required this.email,
-    required this.bio,
-    required this.location,
-    required this.website,
-    // required this.imagePath,
+    required this.label,
+    required this.value,
+    required this.iconPath,
+    required this.onChanged,
   });
 }

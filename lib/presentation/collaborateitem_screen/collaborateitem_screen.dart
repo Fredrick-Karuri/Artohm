@@ -1,3 +1,4 @@
+import '../../widgets/custom_appbar_component.dart';
 import '../collaborateitem_screen/widgets/chipviewcont2_item_widget.dart';
 import '../collaborateitem_screen/widgets/chipviewcont_item_widget.dart';
 import 'controller/collaborateitem_controller.dart';
@@ -16,44 +17,46 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
+            // appBar: CustomAppBarComponent(title: "lbl_collaborate".tr),
+
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(
+                  60.0), // change this size as per your requirement
+              child: AppBar(
+                backgroundColor: Colors.white,
+                leadingWidth: MediaQuery.of(context)
+                    .size
+                    .width, // this will take the full width
+                leading: Container(
+                  padding: EdgeInsets.only(left: 16),
+                  child: Row(
+                    children: [
+                      CustomIconButton(
+                        height: 28.adaptSize,
+                        width: 28.adaptSize,
+                        padding: EdgeInsets.all(7.h),
+                        onTap: () {
+                          onTapBtnArrowleftone();
+                        },
+                        child:
+                            CustomImageView(svgPath: ImageConstant.imgArrowleft),
+                      ),
+                      // Expanded(
+                      //   child: Padding(
+                      //     padding: EdgeInsets.only(left: 32.h),
+                      //     child: Text("lbl_collaborate".tr,
+                      //         style: CustomTextStyles.titleMediumBlack90001),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
             body: SizedBox(
                 width: double.maxFinite,
                 child: SingleChildScrollView(
                     child: Column(children: [
-                  Container(
-                      width: double.maxFinite,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 8.h, vertical: 7.v),
-                      decoration: AppDecoration.fillWhiteA,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomImageView(
-                                svgPath: ImageConstant.imgMask,
-                                height: 10.v,
-                                width: 49.h,
-                                alignment: Alignment.centerRight),
-                            Padding(
-                                padding: EdgeInsets.only(
-                                    left: 9.h, top: 21.v, bottom: 7.v),
-                                child: Row(children: [
-                                  CustomIconButton(
-                                      height: 28.adaptSize,
-                                      width: 28.adaptSize,
-                                      padding: EdgeInsets.all(7.h),
-                                      onTap: () {
-                                        onTapBtnArrowleftone();
-                                      },
-                                      child: CustomImageView(
-                                          svgPath: ImageConstant.imgArrowleft)),
-                                  Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 36.h, bottom: 3.v),
-                                      child: Text("lbl_collaborate".tr,
-                                          style: CustomTextStyles
-                                              .titleMediumBlack90001))
-                                ]))
-                          ])),
                   Container(
                       margin:
                           EdgeInsets.only(left: 18.h, top: 7.v, right: 14.h),

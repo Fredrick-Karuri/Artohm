@@ -23,8 +23,8 @@ class AppbarImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadiusStyle.roundedBorder8,
+    return GestureDetector(
+      // borderRadius: BorderRadiusStyle.roundedBorder8,
       onTap: () {
         onTap?.call();
       },
@@ -33,8 +33,8 @@ class AppbarImage extends StatelessWidget {
         child: CustomImageView(
           svgPath: svgPath,
           imagePath: imagePath,
-          height: 10.v,
-          width: 49.h,
+          height: 8.v,
+          width: 8.h,
           fit: BoxFit.contain,
           radius: BorderRadius.circular(
             6.h,

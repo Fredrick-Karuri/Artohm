@@ -3,11 +3,13 @@ import 'package:artohmapp/widgets/base_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends BaseButton {
+  final bool fullWidth;
   CustomElevatedButton({
     Key? key,
     this.decoration,
     this.leftIcon,
     this.rightIcon,
+    this.fullWidth = false,
     EdgeInsets? margin,
     VoidCallback? onTap,
     ButtonStyle? buttonStyle,
@@ -27,7 +29,6 @@ class CustomElevatedButton extends BaseButton {
           width: width,
           alignment: alignment,
           margin: margin,
-          
         );
 
   final BoxDecoration? decoration;
@@ -41,14 +42,17 @@ class CustomElevatedButton extends BaseButton {
     return alignment != null
         ? Align(
             alignment: alignment ?? Alignment.center,
-            child: buildElevatedButtonWidget,
+            child: buildElevatedButtonWidget(context),
           )
-        : buildElevatedButtonWidget;
+        : buildElevatedButtonWidget(context);
   }
 
-  Widget get buildElevatedButtonWidget => Container(
+  Widget buildElevatedButtonWidget(BuildContext context) => Container(
         height: this.height ?? 32.v,
-        width: this.width ?? double.maxFinite,
+        // width: this.width ?? double.maxFinite,
+        width: fullWidth ? double.maxFinite : this.width,
+
+        // width: this.width ?? MediaQuery.of(context).size.width,
         margin: margin,
         decoration: decoration,
         child: ElevatedButton(

@@ -4,6 +4,7 @@ import 'package:artohmapp/widgets/app_bar/appbar_subtitle_1.dart';
 import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 
 import '../../widgets/app_bar/appbar_image_1.dart';
+import '../../widgets/custom_appbar_component.dart';
 import '../art_community_screen/widgets/userprofile_item_widget.dart';
 import 'controller/art_community_controller.dart';
 import 'models/userprofile_item_model.dart';
@@ -26,337 +27,251 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-      appBar: CustomAppBar(
-          leadingWidth: 46.h,
-          leading: AppbarImage(
-              svgPath: ImageConstant.imgArrowleftRed300,
-              margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-              onTap: () {
-                // onTapImgArrowleftone();
-                Navigator.pop(context);
-              }),
-          title: AppbarSubtitle1(
-              text: "lbl_community2".tr,
-              margin: EdgeInsets.only(left: 36.h, top: 41.v, bottom: 18.v)),
-          actions: [
-            AppbarImage1(
-                svgPath: ImageConstant.imgMask,
-                margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-          ],
-          styleType: Style.bgFill),
+      appBar: CustomAppBarComponent(title: "lbl_community2".tr) ,
+      
 
-      body: SizedBox(
-          width: mediaQueryData.size.width,
-          child: SingleChildScrollView(
-              child: Padding(
-                  padding: EdgeInsets.only(bottom: 5.v),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                                width: 358.h,
-                                margin: EdgeInsets.only(
-                                    left: 16.h, top: 21.v, right: 16.h),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 16.h, vertical: 6.v),
-                                decoration: AppDecoration.outlineRed300
-                                    .copyWith(
-                                        borderRadius:
-                                            BorderRadiusStyle.roundedBorder8),
-                                child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text("lbl_featured_artist".tr,
-                                          style: theme.textTheme.titleMedium),
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 17.v, right: 31.h),
-                                          child: Row(
+      body: bodyContent(context),
+      // bottomNavigationBar:
+      //     CustomBottomBar(onChanged: (BottomBarEnum type) {
+      //   Get.toNamed(getCurrentRoute(type), id: 1);
+      // })
+    ));
+  }
+
+  bodyContent(BuildContext context) {
+    return SizedBox(
+        width: mediaQueryData.size.width,
+        child: SingleChildScrollView(
+            child: Padding(
+                padding: EdgeInsets.only(bottom: 5.v),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                              width: 358.h,
+                              margin: EdgeInsets.only(
+                                  left: 16.h, top: 21.v, right: 16.h),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 16.h, vertical: 6.v),
+                              decoration: AppDecoration.outlineRed300.copyWith(
+                                  borderRadius:
+                                      BorderRadiusStyle.roundedBorder8),
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text("lbl_featured_artist".tr,
+                                        style: theme.textTheme.titleMedium),
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 17.v, right: 31.h),
+                                        child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              CustomImageView(
+                                                  imagePath: ImageConstant
+                                                      .imgEllipse160x60,
+                                                  height: 60.adaptSize,
+                                                  width: 60.adaptSize,
+                                                  radius: BorderRadius.circular(
+                                                      30.h),
+                                                  margin: EdgeInsets.only(
+                                                      bottom: 22.v)),
+                                              Expanded(
+                                                  child: Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 16.h, top: 3.v),
+                                                      child: Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                                "lbl_mia_thompson"
+                                                                    .tr,
+                                                                style: CustomTextStyles
+                                                                    .titleMediumLatoBlack90001),
+                                                            SizedBox(
+                                                                height: 10.v),
+                                                            SizedBox(
+                                                                width: 218.h,
+                                                                child: Text(
+                                                                    "msg_art_is_my_way_of"
+                                                                        .tr,
+                                                                    maxLines: 2,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    style: CustomTextStyles
+                                                                        .bodyLargeBlack90001_5
+                                                                        .copyWith(
+                                                                            height:
+                                                                                1.50)))
+                                                          ])))
+                                            ])),
+                                    SizedBox(height: 4.v),
+                                    CustomElevatedButton(
+                                        height: 28.v,
+                                        width: 109.h,
+                                        text: "lbl_discover_more".tr,
+                                        buttonTextStyle: CustomTextStyles
+                                            .labelLargeRobotoWhiteA700,
+                                        onTap: () {
+                                          onTapDiscovermore();
+                                        },
+                                        alignment: Alignment.centerRight)
+                                  ]))),
+                      SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.only(left: 16.h, top: 44.v),
+                          child: IntrinsicWidth(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                Expanded(
+                                    child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                      Container(
+                                          decoration: AppDecoration.fillPrimary1
+                                              .copyWith(
+                                                  borderRadius:
+                                                      BorderRadiusStyle
+                                                          .roundedBorder8),
+                                          child: Column(
+                                              mainAxisSize: MainAxisSize.min,
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 CustomImageView(
                                                     imagePath: ImageConstant
-                                                        .imgEllipse160x60,
-                                                    height: 60.adaptSize,
-                                                    width: 60.adaptSize,
+                                                        .imgRectangle10,
+                                                    height: 69.v,
+                                                    width: 165.h,
                                                     radius:
-                                                        BorderRadius.circular(
-                                                            30.h),
-                                                    margin: EdgeInsets.only(
-                                                        bottom: 22.v)),
-                                                Expanded(
-                                                    child: Padding(
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                left: 16.h,
-                                                                top: 3.v),
-                                                        child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: [
-                                                              Text(
-                                                                  "lbl_mia_thompson"
-                                                                      .tr,
-                                                                  style: CustomTextStyles
-                                                                      .titleMediumLatoBlack90001),
-                                                              SizedBox(
-                                                                  height: 10.v),
-                                                              SizedBox(
-                                                                  width: 218.h,
-                                                                  child: Text(
-                                                                      "msg_art_is_my_way_of"
-                                                                          .tr,
-                                                                      maxLines:
-                                                                          2,
-                                                                      overflow:
-                                                                          TextOverflow
-                                                                              .ellipsis,
-                                                                      style: CustomTextStyles
-                                                                          .bodyLargeBlack90001_5
-                                                                          .copyWith(
-                                                                              height: 1.50)))
-                                                            ])))
+                                                        BorderRadius.vertical(
+                                                            top:
+                                                                Radius.circular(
+                                                                    8.h))),
+                                                Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 9.h,
+                                                        top: 10.v,
+                                                        bottom: 7.v),
+                                                    child: Text(
+                                                        "lbl_art_techniques".tr,
+                                                        style: CustomTextStyles
+                                                            .labelLargeBlack90001))
                                               ])),
-                                      SizedBox(height: 4.v),
-                                      CustomElevatedButton(
-                                          height: 28.v,
-                                          width: 109.h,
-                                          text: "lbl_discover_more".tr,
-                                          buttonTextStyle: CustomTextStyles
-                                              .labelLargeRobotoWhiteA700,
-                                          onTap: () {
-                                            onTapDiscovermore();
-                                          },
-                                          alignment: Alignment.centerRight)
-                                    ]))),
-                        SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            padding: EdgeInsets.only(left: 16.h, top: 44.v),
-                            child: IntrinsicWidth(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                  Expanded(
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                        Container(
-                                            decoration: AppDecoration
-                                                .fillPrimary1
-                                                .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder8),
-                                            child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  CustomImageView(
-                                                      imagePath: ImageConstant
-                                                          .imgRectangle10,
-                                                      height: 69.v,
-                                                      width: 165.h,
-                                                      radius:
-                                                          BorderRadius.vertical(
-                                                              top: Radius
-                                                                  .circular(
-                                                                      8.h))),
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: 9.h,
-                                                          top: 10.v,
-                                                          bottom: 7.v),
-                                                      child: Text(
-                                                          "lbl_art_techniques"
-                                                              .tr,
-                                                          style: CustomTextStyles
-                                                              .labelLargeBlack90001))
-                                                ])),
-                                        Container(
-                                            margin: EdgeInsets.only(left: 7.h),
-                                            decoration: AppDecoration
-                                                .fillPrimary1
-                                                .copyWith(
-                                                    borderRadius:
-                                                        BorderRadiusStyle
-                                                            .roundedBorder8),
-                                            child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  CustomImageView(
-                                                      imagePath: ImageConstant
-                                                          .imgRectangle1069x165,
-                                                      height: 69.v,
-                                                      width: 165.h,
-                                                      radius:
-                                                          BorderRadius.vertical(
-                                                              top: Radius
-                                                                  .circular(
-                                                                      8.h))),
-                                                  Padding(
-                                                      padding: EdgeInsets.only(
-                                                          left: 10.h,
-                                                          top: 10.v,
-                                                          bottom: 7.v),
-                                                      child: Text(
-                                                          "lbl_inspiration".tr,
-                                                          style: CustomTextStyles
-                                                              .labelLargeBlack90001))
-                                                ]))
-                                      ])),
-                                  Container(
-                                      margin: EdgeInsets.only(left: 7.h),
-                                      decoration: AppDecoration.fillPrimary1
-                                          .copyWith(
-                                              borderRadius: BorderRadiusStyle
-                                                  .roundedBorder8),
-                                      child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            CustomImageView(
-                                                imagePath: ImageConstant
-                                                    .imgRectangle101,
-                                                height: 69.v,
-                                                width: 165.h,
-                                                radius: BorderRadius.vertical(
-                                                    top: Radius.circular(8.h))),
-                                            Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 10.h,
-                                                    top: 8.v,
-                                                    bottom: 9.v),
-                                                child: Text(
-                                                    "lbl_collaborations".tr,
-                                                    style: CustomTextStyles
-                                                        .labelLargeBlack90001))
-                                          ]))
-                                ]))),
-                        // Padding(
-                        //     padding:
-                        //         EdgeInsets.only(left: 16.h, top: 44.v),
-                        //     child: Text("lbl_forum_threads".tr,
-                        //         style: theme.textTheme.titleMedium)),
-                        // Padding(
-                        //     padding: EdgeInsets.only(
-                        //         left: 16.h, top: 25.v, right: 16.h),
-                        //     child: Obx(() => ListView.separated(
-                        //         physics: NeverScrollableScrollPhysics(),
-                        //         shrinkWrap: true,
-                        //         separatorBuilder: (context, index) {
-                        //           return SizedBox(height: 36.v);
-                        //         },
-                        //         itemCount: controller
-                        //             .artCommunityModelObj
-                        //             .value
-                        //             .userprofileItemList
-                        //             .value
-                        //             .length,
-                        //         itemBuilder: (context, index) {
-                        //           UserprofileItemModel model = controller
-                        //               .artCommunityModelObj
-                        //               .value
-                        //               .userprofileItemList
-                        //               .value[index];
-                        //           return UserprofileItemWidget(model);
-                        //         }))),
-                        Padding(
-                            padding: EdgeInsets.only(
-                                left: 16.h, top: 46.v, right: 16.h),
-                            child: Text("msg_upcoming_events".tr,
-                                style: theme.textTheme.titleMedium)),
-                        SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            padding: EdgeInsets.only(left: 16.h, top: 15.v),
-                            child: IntrinsicWidth(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 16),
-                                    child: SizedBox(
-                                        height: 200.v,
-                                        width: 260.h,
-                                        child: Stack(
-                                            alignment: Alignment.bottomCenter,
-                                            children: [
-                                              CustomImageView(
-                                                  imagePath: ImageConstant
-                                                      .imgRectangle11200x260,
-                                                  height: 200.v,
-                                                  width: 260.h,
-                                                  radius: BorderRadius.circular(
-                                                      8.h),
-                                                  alignment: Alignment.center),
-                                              Align(
-                                                  alignment:
-                                                      Alignment.bottomCenter,
-                                                  child: Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 158.v),
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 19.h,
-                                                              vertical: 4.v),
-                                                      decoration: AppDecoration
-                                                          .fillPrimary
-                                                          .copyWith(
-                                                              borderRadius:
-                                                                  BorderRadiusStyle
-                                                                      .customBorderBL8),
-                                                      child: Row(children: [
-                                                        SizedBox(
-                                                            width: 144.h,
-                                                            child: Text(
-                                                                "msg_art_unveiling_exploring"
-                                                                    .tr,
-                                                                maxLines: 2,
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: CustomTextStyles
-                                                                    .labelLargeWhiteA700
-                                                                    .copyWith(
-                                                                        height:
-                                                                            1.40))),
-                                                        CustomImageView(
-                                                            svgPath: ImageConstant
-                                                                .imgIconsWhiteA700,
-                                                            height: 20.v,
-                                                            width: 18.h,
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    left: 54.h,
-                                                                    top: 6.v,
-                                                                    bottom:
-                                                                        6.v),
-                                                            onTap: () {
-                                                              showModal(
-                                                                  context);
-                                                              // showModalBottomSheet(
-                                                              //     context:
-                                                              //         context,
-                                                              //     builder:
-                                                              //         (BuildContext
-                                                              //             context) {
-                                                              //       return ModalScreen();
-                                                              //     });
-                                                            }),
-                                                      ])))
-                                            ])),
-                                  ),
-                                  SizedBox(
+                                      Container(
+                                          margin: EdgeInsets.only(left: 7.h),
+                                          decoration: AppDecoration.fillPrimary1
+                                              .copyWith(
+                                                  borderRadius:
+                                                      BorderRadiusStyle
+                                                          .roundedBorder8),
+                                          child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomImageView(
+                                                    imagePath: ImageConstant
+                                                        .imgRectangle1069x165,
+                                                    height: 69.v,
+                                                    width: 165.h,
+                                                    radius:
+                                                        BorderRadius.vertical(
+                                                            top:
+                                                                Radius.circular(
+                                                                    8.h))),
+                                                Padding(
+                                                    padding: EdgeInsets.only(
+                                                        left: 10.h,
+                                                        top: 10.v,
+                                                        bottom: 7.v),
+                                                    child: Text(
+                                                        "lbl_inspiration".tr,
+                                                        style: CustomTextStyles
+                                                            .labelLargeBlack90001))
+                                              ]))
+                                    ])),
+                                Container(
+                                    margin: EdgeInsets.only(left: 7.h),
+                                    decoration: AppDecoration.fillPrimary1
+                                        .copyWith(
+                                            borderRadius: BorderRadiusStyle
+                                                .roundedBorder8),
+                                    child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          CustomImageView(
+                                              imagePath:
+                                                  ImageConstant.imgRectangle101,
+                                              height: 69.v,
+                                              width: 165.h,
+                                              radius: BorderRadius.vertical(
+                                                  top: Radius.circular(8.h))),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 10.h,
+                                                  top: 8.v,
+                                                  bottom: 9.v),
+                                              child: Text(
+                                                  "lbl_collaborations".tr,
+                                                  style: CustomTextStyles
+                                                      .labelLargeBlack90001))
+                                        ]))
+                              ]))),
+                      // Padding(
+                      //     padding:
+                      //         EdgeInsets.only(left: 16.h, top: 44.v),
+                      //     child: Text("lbl_forum_threads".tr,
+                      //         style: theme.textTheme.titleMedium)),
+                      // Padding(
+                      //     padding: EdgeInsets.only(
+                      //         left: 16.h, top: 25.v, right: 16.h),
+                      //     child: Obx(() => ListView.separated(
+                      //         physics: NeverScrollableScrollPhysics(),
+                      //         shrinkWrap: true,
+                      //         separatorBuilder: (context, index) {
+                      //           return SizedBox(height: 36.v);
+                      //         },
+                      //         itemCount: controller
+                      //             .artCommunityModelObj
+                      //             .value
+                      //             .userprofileItemList
+                      //             .value
+                      //             .length,
+                      //         itemBuilder: (context, index) {
+                      //           UserprofileItemModel model = controller
+                      //               .artCommunityModelObj
+                      //               .value
+                      //               .userprofileItemList
+                      //               .value[index];
+                      //           return UserprofileItemWidget(model);
+                      //         }))),
+                      Padding(
+                          padding: EdgeInsets.only(
+                              left: 16.h, top: 46.v, right: 16.h),
+                          child: Text("msg_upcoming_events".tr,
+                              style: theme.textTheme.titleMedium)),
+                      SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.only(left: 16.h, top: 15.v),
+                          child: IntrinsicWidth(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 16),
+                                  child: SizedBox(
                                       height: 200.v,
                                       width: 260.h,
                                       child: Stack(
@@ -413,162 +328,218 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                                                                   bottom: 6.v),
                                                           onTap: () {
                                                             showModal(context);
-                                                          })
+                                                            // showModalBottomSheet(
+                                                            //     context:
+                                                            //         context,
+                                                            //     builder:
+                                                            //         (BuildContext
+                                                            //             context) {
+                                                            //       return ModalScreen();
+                                                            //     });
+                                                          }),
                                                     ])))
                                           ])),
-                                  // Container(
-                                  //     height: 200.v,
-                                  //     width: 260.h,
-                                  //     margin: EdgeInsets.only(left: 16.h),
-                                  //     child: Stack(
-                                  //         alignment: Alignment.bottomCenter,
-                                  //         children: [
-                                  //           CustomImageView(
-                                  //               imagePath: ImageConstant
-                                  //                   .imgRectangle11200x260,
-                                  //               height: 200.v,
-                                  //               width: 260.h,
-                                  //               radius:
-                                  //                   BorderRadius.circular(8.h),
-                                  //               alignment: Alignment.center),
-                                  //           Align(
-                                  //               alignment:
-                                  //                   Alignment.bottomCenter,
-                                  //               child: Container(
-                                  //                   margin: EdgeInsets.only(
-                                  //                       top: 158.v),
-                                  //                   padding:
-                                  //                       EdgeInsets.symmetric(
-                                  //                           horizontal: 20.h,
-                                  //                           vertical: 4.v),
-                                  //                   decoration: AppDecoration
-                                  //                       .fillPrimary
-                                  //                       .copyWith(
-                                  //                           borderRadius:
-                                  //                               BorderRadiusStyle
-                                  //                                   .customBorderBL8),
-                                  //                   child: Row(children: [
-                                  //                     SizedBox(
-                                  //                         width: 144.h,
-                                  //                         child: Text(
-                                  //                             "msg_art_unveiling_exploring"
-                                  //                                 .tr,
-                                  //                             maxLines: 2,
-                                  //                             overflow:
-                                  //                                 TextOverflow
-                                  //                                     .ellipsis,
-                                  //                             style: CustomTextStyles
-                                  //                                 .labelLargeWhiteA700
-                                  //                                 .copyWith(
-                                  //                                     height:
-                                  //                                         1.40))),
-                                  //                     CustomImageView(
-                                  //                         svgPath: ImageConstant
-                                  //                             .imgIconsWhiteA700,
-                                  //                         height: 20.v,
-                                  //                         width: 4.h,
-                                  //                         margin:
-                                  //                             EdgeInsets.only(
-                                  //                                 left: 54.h,
-                                  //                                 top: 6.v,
-                                  //                                 bottom: 6.v))
-                                  //                   ])))
-                                  //         ]))
-                                ]))),
-                        Padding(
-                            padding: EdgeInsets.only(left: 16.h, top: 44.v),
-                            child: Text("msg_featured_art_collaboration".tr,
-                                style: theme.textTheme.titleMedium)),
-                        Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                                margin: EdgeInsets.only(
-                                    left: 16.h, top: 17.v, right: 16.h),
-                                padding: EdgeInsets.all(8.h),
-                                decoration: AppDecoration.outlineGray.copyWith(
-                                    borderRadius:
-                                        BorderRadiusStyle.roundedBorder8),
-                                child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      CustomImageView(
-                                          imagePath:
-                                              ImageConstant.imgRectangle11,
-                                          height: 180.v,
-                                          width: 342.h,
-                                          radius: BorderRadius.circular(8.h)),
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 10.h, top: 12.v),
-                                          child: Text(
-                                              "msg_harmony_of_nature".tr,
-                                              style:
-                                                  theme.textTheme.titleSmall)),
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 10.h, top: 7.v),
-                                          child: Row(children: [
-                                            SizedBox(
-                                                height: 30.v,
-                                                width: 45.h,
-                                                child: Stack(
-                                                    alignment:
-                                                        Alignment.centerRight,
-                                                    children: [
-                                                      CustomImageView(
-                                                          imagePath: ImageConstant
-                                                              .imgEllipse130x30,
-                                                          height: 30.adaptSize,
-                                                          width: 30.adaptSize,
-                                                          radius: BorderRadius
-                                                              .circular(15.h),
-                                                          alignment: Alignment
-                                                              .centerLeft),
-                                                      CustomImageView(
-                                                          imagePath:
-                                                              ImageConstant
-                                                                  .imgEllipse11,
-                                                          height: 30.adaptSize,
-                                                          width: 30.adaptSize,
-                                                          radius: BorderRadius
-                                                              .circular(15.h),
-                                                          alignment: Alignment
-                                                              .centerRight)
-                                                    ])),
-                                            Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: 12.h,
-                                                    top: 7.v,
-                                                    bottom: 5.v),
-                                                child: Text(
-                                                    "msg_sarah_smith_david2".tr,
-                                                    style: theme
-                                                        .textTheme.bodyMedium))
-                                          ])),
-                                      Padding(
-                                          padding: EdgeInsets.only(
-                                              left: 10.h, top: 9.v),
-                                          child: Text("msg_july_8_august".tr,
-                                              style: CustomTextStyles
-                                                  .bodyMediumLight)),
-                                      SizedBox(height: 8.v),
-                                      CustomElevatedButton(
-                                          height: 35.v, text: "lbl_curious".tr),
-                                      SizedBox(height: 8.v)
-                                    ]))),
-                        Padding(
-                            padding: EdgeInsets.only(left: 16.h, top: 46.v),
-                            child: Text("lbl_explore_artists".tr,
-                                style: theme.textTheme.titleMedium)),
-                        Artists()
-                      ])))),
-      // bottomNavigationBar:
-      //     CustomBottomBar(onChanged: (BottomBarEnum type) {
-      //   Get.toNamed(getCurrentRoute(type), id: 1);
-      // })
-    ));
+                                ),
+                                SizedBox(
+                                    height: 200.v,
+                                    width: 260.h,
+                                    child: Stack(
+                                        alignment: Alignment.bottomCenter,
+                                        children: [
+                                          CustomImageView(
+                                              imagePath: ImageConstant
+                                                  .imgRectangle11200x260,
+                                              height: 200.v,
+                                              width: 260.h,
+                                              radius:
+                                                  BorderRadius.circular(8.h),
+                                              alignment: Alignment.center),
+                                          Align(
+                                              alignment: Alignment.bottomCenter,
+                                              child: Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: 158.v),
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: 19.h,
+                                                      vertical: 4.v),
+                                                  decoration: AppDecoration
+                                                      .fillPrimary
+                                                      .copyWith(
+                                                          borderRadius:
+                                                              BorderRadiusStyle
+                                                                  .customBorderBL8),
+                                                  child: Row(children: [
+                                                    SizedBox(
+                                                        width: 144.h,
+                                                        child: Text(
+                                                            "msg_art_unveiling_exploring"
+                                                                .tr,
+                                                            maxLines: 2,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                            style: CustomTextStyles
+                                                                .labelLargeWhiteA700
+                                                                .copyWith(
+                                                                    height:
+                                                                        1.40))),
+                                                    CustomImageView(
+                                                        svgPath: ImageConstant
+                                                            .imgIconsWhiteA700,
+                                                        height: 20.v,
+                                                        width: 18.h,
+                                                        margin: EdgeInsets.only(
+                                                            left: 54.h,
+                                                            top: 6.v,
+                                                            bottom: 6.v),
+                                                        onTap: () {
+                                                          showModal(context);
+                                                        })
+                                                  ])))
+                                        ])),
+                                // Container(
+                                //     height: 200.v,
+                                //     width: 260.h,
+                                //     margin: EdgeInsets.only(left: 16.h),
+                                //     child: Stack(
+                                //         alignment: Alignment.bottomCenter,
+                                //         children: [
+                                //           CustomImageView(
+                                //               imagePath: ImageConstant
+                                //                   .imgRectangle11200x260,
+                                //               height: 200.v,
+                                //               width: 260.h,
+                                //               radius:
+                                //                   BorderRadius.circular(8.h),
+                                //               alignment: Alignment.center),
+                                //           Align(
+                                //               alignment:
+                                //                   Alignment.bottomCenter,
+                                //               child: Container(
+                                //                   margin: EdgeInsets.only(
+                                //                       top: 158.v),
+                                //                   padding:
+                                //                       EdgeInsets.symmetric(
+                                //                           horizontal: 20.h,
+                                //                           vertical: 4.v),
+                                //                   decoration: AppDecoration
+                                //                       .fillPrimary
+                                //                       .copyWith(
+                                //                           borderRadius:
+                                //                               BorderRadiusStyle
+                                //                                   .customBorderBL8),
+                                //                   child: Row(children: [
+                                //                     SizedBox(
+                                //                         width: 144.h,
+                                //                         child: Text(
+                                //                             "msg_art_unveiling_exploring"
+                                //                                 .tr,
+                                //                             maxLines: 2,
+                                //                             overflow:
+                                //                                 TextOverflow
+                                //                                     .ellipsis,
+                                //                             style: CustomTextStyles
+                                //                                 .labelLargeWhiteA700
+                                //                                 .copyWith(
+                                //                                     height:
+                                //                                         1.40))),
+                                //                     CustomImageView(
+                                //                         svgPath: ImageConstant
+                                //                             .imgIconsWhiteA700,
+                                //                         height: 20.v,
+                                //                         width: 4.h,
+                                //                         margin:
+                                //                             EdgeInsets.only(
+                                //                                 left: 54.h,
+                                //                                 top: 6.v,
+                                //                                 bottom: 6.v))
+                                //                   ])))
+                                //         ]))
+                              ]))),
+                      Padding(
+                          padding: EdgeInsets.only(left: 16.h, top: 44.v),
+                          child: Text("msg_featured_art_collaboration".tr,
+                              style: theme.textTheme.titleMedium)),
+                      Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                              margin: EdgeInsets.only(
+                                  left: 16.h, top: 17.v, right: 16.h),
+                              padding: EdgeInsets.all(8.h),
+                              decoration: AppDecoration.outlineGray.copyWith(
+                                  borderRadius:
+                                      BorderRadiusStyle.roundedBorder8),
+                              child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomImageView(
+                                        imagePath: ImageConstant.imgRectangle11,
+                                        height: 180.v,
+                                        width: 342.h,
+                                        radius: BorderRadius.circular(8.h)),
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10.h, top: 12.v),
+                                        child: Text("msg_harmony_of_nature".tr,
+                                            style: theme.textTheme.titleSmall)),
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10.h, top: 7.v),
+                                        child: Row(children: [
+                                          SizedBox(
+                                              height: 30.v,
+                                              width: 45.h,
+                                              child: Stack(
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  children: [
+                                                    CustomImageView(
+                                                        imagePath: ImageConstant
+                                                            .imgEllipse130x30,
+                                                        height: 30.adaptSize,
+                                                        width: 30.adaptSize,
+                                                        radius: BorderRadius
+                                                            .circular(15.h),
+                                                        alignment: Alignment
+                                                            .centerLeft),
+                                                    CustomImageView(
+                                                        imagePath: ImageConstant
+                                                            .imgEllipse11,
+                                                        height: 30.adaptSize,
+                                                        width: 30.adaptSize,
+                                                        radius: BorderRadius
+                                                            .circular(15.h),
+                                                        alignment: Alignment
+                                                            .centerRight)
+                                                  ])),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  left: 12.h,
+                                                  top: 7.v,
+                                                  bottom: 5.v),
+                                              child: Text(
+                                                  "msg_sarah_smith_david2".tr,
+                                                  style: theme
+                                                      .textTheme.bodyMedium))
+                                        ])),
+                                    Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10.h, top: 9.v),
+                                        child: Text("msg_july_8_august".tr,
+                                            style: CustomTextStyles
+                                                .bodyMediumLight)),
+                                    SizedBox(height: 8.v),
+                                    CustomElevatedButton(
+                                        height: 35.v, text: "lbl_curious".tr),
+                                    SizedBox(height: 8.v)
+                                  ]))),
+                      Padding(
+                          padding: EdgeInsets.only(left: 16.h, top: 46.v),
+                          child: Text("lbl_explore_artists".tr,
+                              style: theme.textTheme.titleMedium)),
+                      Artists()
+                    ]))));
   }
 
   Padding Artists() {

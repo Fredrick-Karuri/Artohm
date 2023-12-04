@@ -1,6 +1,7 @@
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
+import '../../widgets/app_bar/custom_app_bar.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
 import 'models/home_model.dart';
@@ -21,8 +22,7 @@ class HomePage extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+        appBar: CustomAppBar(
           leadingWidth: 46.h,
           leading: CustomImageView(
               svgPath: ImageConstant.imgArtohmlogo,

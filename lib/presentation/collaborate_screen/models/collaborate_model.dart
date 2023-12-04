@@ -8,19 +8,23 @@ class CollaborateModel {
   Rx<List<ChipviewselectItemModel>> chipviewselectItemList =
       Rx(List.generate(3, (index) => ChipviewselectItemModel()));
 
-  Rx<List<SelectionPopupModel>> dropdownItemList = Rx([
-    SelectionPopupModel(
-      id: 1,
-      title: "Item One",
-      isSelected: true,
-    ),
-    SelectionPopupModel(
-      id: 2,
-      title: "Item Two",
-    ),
-    SelectionPopupModel(
-      id: 3,
-      title: "Item Three",
-    )
-  ]);
+  Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
+    [
+      SelectionPopupModel(
+        id: 1,
+        title: "Item One",
+        isSelected: true,
+      ),
+      SelectionPopupModel(
+        id: 2,
+        title: "Item Two",
+      ),
+      SelectionPopupModel(
+        id: 3,
+        title: "Item Three",
+      )
+    ],
+  );
+  
 }
+

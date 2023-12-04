@@ -1,3 +1,4 @@
+import '../../widgets/custom_appbar_component.dart';
 import 'controller/notifications_tab_container_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/notifications_page/notifications_page.dart';
@@ -16,26 +17,7 @@ class NotificationsTabContainerScreen
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: AppbarImage(
-              svgPath: ImageConstant.imgArrowleftRed300,
-              margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-              onTap: () {
-                onTapArrowleftone();
-              },
-            ),
-            title: AppbarTitle(
-              text: "lbl_notifications".tr,
-              margin: EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v),
-            ),
-            actions: [
-              AppbarImage1(
-                svgPath: ImageConstant.imgMask,
-                margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v),
-              )
-            ],
-            styleType: Style.bgOutline),
+        appBar: CustomAppBarComponent(title: "lbl_notifications".tr),
         body: SizedBox(
           width: double.maxFinite,
           child: Column(

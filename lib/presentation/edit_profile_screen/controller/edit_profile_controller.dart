@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +13,62 @@ class EditProfileController extends GetxController {
   TextEditingController inputTextController = TextEditingController();
 
   Rx<EditProfileModel> editProfileModelObj = EditProfileModel().obs;
-   Rx<UserProfile> userProfile = UserProfile(
-    username: 'Username',
-    email: 'Email',
-    bio: 'Bio',
-    location: 'Location',
-    website: 'Website',
-    // imagePath: ImageConstant.imgProfileiconsRed30024x24,
-  ).obs;
+  RxList<UserProfile> fields = <UserProfile>[].obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Initialize your fields here
+    fields.addAll(
+      [
+        UserProfile(
+          label: 'Username',
+          value: 'Your username',
+          iconPath: ImageConstant.imgProfileiconsRed30024x24,
+          onChanged: (value) {
+            // Handle the change
+            print('New value: $value');
+          },
+        ),
+        UserProfile(
+          label: 'Email',
+          value: 'Your email',
+          iconPath: ImageConstant.imgMailRed300,
+          onChanged: (value) {
+            // Handle the change
+            print('New value: $value');
+          },
+        ),
+        UserProfile(
+          label: 'Bio',
+          value: 'Exploring the beauty of art, one canvas at a time',
+          iconPath: ImageConstant.imgProfileicons24x241,
+          onChanged: (value) {
+            // Handle the change
+            print('New value: $value');
+          },
+        ),
+        UserProfile(
+          label: 'Location',
+          value: 'Nairobi, Kenya',
+          iconPath: ImageConstant.imgProfileicons24x242,
+          onChanged: (value) {
+            // Handle the change
+            print('New value: $value');
+          },
+        ),
+        UserProfile(
+          label: 'Website',
+          value: 'www.artlover.com',
+          iconPath: ImageConstant.imgGlobeRed300,
+          onChanged: (value) {
+            // Handle the change
+            print('New value: $value');
+          },
+        ),
+      ],
+    );
+  }
 
   SelectionPopupModel? selectedDropDownValue;
   final ImagePicker _picker = ImagePicker();
@@ -48,25 +98,19 @@ class EditProfileController extends GetxController {
       print('No image selected.');
     }
   }
-  void editProfileField(String field, String newValue) {
-    switch (field) {
-      case 'username':
-        userProfile.value.username = newValue;
+
+  void updateField(String label, String newValue) {
+    for (var i = 0; i < fields.length; i++) {
+      var field = fields[i];
+      if (field.label == label) {
+        fields[i] = UserProfile(
+          label: field.label,
+          value: newValue,
+          iconPath: field.iconPath,
+          onChanged: field.onChanged,
+        );
         break;
-      case 'email':
-        userProfile.value.email = newValue;
-        break;
-      case 'bio':
-        userProfile.value.bio = newValue;
-        break;
-      case 'location':
-        userProfile.value.location = newValue;
-        break;
-      case 'website':
-        userProfile.value.website = newValue;
-        break;
-      default:
-        print('Invalid field');
+      }
     }
   }
 }

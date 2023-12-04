@@ -62,7 +62,6 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
                     visibility(),
                     selectArtwork(),
                     SizedBox(height: 24.v),
-
                     ctaButton(),
                   ],
                 ),
@@ -74,17 +73,15 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
     );
   }
 
-  CustomElevatedButton ctaButton() {
+  ctaButton() {
     return CustomElevatedButton(
-                    text: "msg_create_collection".tr,
-                    margin: EdgeInsets.only(
-                        left: 16.h, right: 16.h, bottom: 32.v),
-                    buttonTextStyle:
-                        CustomTextStyles.titleSmallRobotoWhiteA700Medium,
-                    onTap: () {
-                      onTapCreate();
-                    },
-                  );
+      text: "msg_create_collection".tr,
+      margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 32.v),
+      buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700Medium,
+      onTap: () {
+        onTapCreate();
+      },
+    );
   }
 
   selectArtwork() {

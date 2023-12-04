@@ -50,13 +50,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size(
         mediaQueryData.size.width,
-        height ?? 80.v,
+        height ?? 72.v,
       );
   _getStyle() {
     switch (styleType) {
       case Style.bgOutline:
         return Container(
-          height: 80.v,
+          height: 72.v,
           width: double.maxFinite,
           decoration: BoxDecoration(
             border: Border(
@@ -69,7 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         );
       case Style.bgFill:
         return Container(
-          height: 80.v,
+          height: 72.v,
           width: double.maxFinite,
           decoration: BoxDecoration(
             color: appTheme.whiteA700,

@@ -1,6 +1,7 @@
 import 'package:artohmapp/presentation/collaborate_screen/models/collaborate_model.dart';
 import 'package:artohmapp/presentation/collaborate_screen/widgets/listing_card.dart';
 
+import '../../widgets/custom_appbar_component.dart';
 import '../collaborate_screen/widgets/chipviewselect_item_widget.dart';
 import 'controller/collaborate_controller.dart';
 import 'models/chipviewselect_item_model.dart';
@@ -27,25 +28,8 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: AppbarImage(
-                svgPath: ImageConstant.imgArrowleftRed300,
-                margin: EdgeInsets.only(left: 18.h, top: 38.v,),
-                onTap: () {
-                  Get.back(id: 1);
-                }),
-            title: AppbarTitle(
-              text: "lbl_collaborate".tr,
-              margin: EdgeInsets.only(left: 36.h, top: 39.v, bottom: 17.v),
-            ),
-            actions: [
-              AppbarImage1(
-                svgPath: ImageConstant.imgMask,
-                margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v),
-              ),
-            ],
-            styleType: Style.bgOutline),
+        appBar: CustomAppBarComponent(title: "lbl_collaborate".tr),
+
         body: BodyContent(),
 
         // bottomNavigationBar:
@@ -56,12 +40,12 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     );
   }
 
-  SizedBox BodyContent() {
+  BodyContent() {
     return SizedBox(
       width: double.maxFinite,
       child: Column(
         children: [
-          SizedBox(height: 24.v),
+          // SizedBox(height: 24.v),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -137,6 +121,9 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
           children: [
             ListingCard(
               imagePath: ImageConstant.imgRectangle11180x264,
+              onButtonPressed: () {
+                Get.toNamed(AppRoutes.collaborateitemScreen);
+              },
               title: "msg_ai_infused_sculpture".tr,
               subtitle: "msg_mark_turner_aiart".tr,
               description: "msg_mark_s_bronze_sculpture".tr,
@@ -145,6 +132,9 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
               width: 20.h,
             ),
             ListingCard(
+              onButtonPressed: () {
+                Get.toNamed(AppRoutes.collaborateitemScreen);
+              },
               imagePath: ImageConstant.imgRectangle11180x264,
               title: "msg_harmony_of_nature".tr,
               subtitle: "msg_sarah_smith_david2".tr,
