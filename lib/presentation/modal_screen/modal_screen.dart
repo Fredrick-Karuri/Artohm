@@ -8,10 +8,10 @@ class ModalScreen extends StatefulWidget {
   const ModalScreen({Key? key}) : super(key: key);
 
   @override
-  _ModalScreenState createState() => _ModalScreenState();
+  ModalScreenState createState() => ModalScreenState();
 }
 
-class _ModalScreenState extends State<ModalScreen> {
+class ModalScreenState extends State<ModalScreen> {
   @override
   void initState() {
     super.initState();
@@ -24,68 +24,70 @@ class _ModalScreenState extends State<ModalScreen> {
     return Container(); // Empty container
   }
 
-
-  void showModal(BuildContext context) {
+  static void showModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: 15.h,
-            vertical: 13.v,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              SizedBox(height: 12.v),
-              Text(
-                "msg_art_unveiling_exploring2".tr,
-                style: theme.textTheme.titleMedium,
-              ),
-              SizedBox(height: 18.v),
-              Text(
-                "lbl_july_30_2023".tr,
-                style: CustomTextStyles.titleMediumLato,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: 2.h,
-                  top: 12.v,
+        return SingleChildScrollView(
+          child: Container(
+            // decoration: BoxDecoration(color: theme.primaryColorLight),
+            padding: EdgeInsets.symmetric(
+              horizontal: 15.h,
+              vertical: 13.v,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SizedBox(height: 12.v),
+                Text(
+                  "msg_art_unveiling_exploring2".tr,
+                  style: theme.textTheme.titleMedium,
                 ),
-                child: Text(
-                  "msg_artverse_gallery".tr,
-                  style: theme.textTheme.bodyLarge,
+                SizedBox(height: 18.v),
+                Text(
+                  "lbl_july_30_2023".tr,
+                  style: CustomTextStyles.titleMediumLato,
                 ),
-              ),
-              Container(
-                width: 336.h,
-                margin: EdgeInsets.only(
-                  top: 10.v,
-                  right: 21.h,
-                ),
-                child: Text(
-                  "msg_join_me_in_unveiling".tr,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.bodyMedium!.copyWith(
-                    height: 1.50,
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 2.h,
+                    top: 12.v,
+                  ),
+                  child: Text(
+                    "msg_artverse_gallery".tr,
+                    style: theme.textTheme.bodyLarge,
                   ),
                 ),
-              ),
-              CustomElevatedButton(
-                text: "lbl_book_ticket".tr,
-                margin: EdgeInsets.only(
-                  left: 16.h,
-                  right: 16.h,
-                  bottom: 24.v,
+                Container(
+                  width: 336.h,
+                  margin: EdgeInsets.only(
+                    top: 10.v,
+                    right: 21.h,
+                  ),
+                  child: Text(
+                    "msg_join_me_in_unveiling".tr,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    style: theme.textTheme.bodyMedium!.copyWith(
+                      height: 1.50,
+                    ),
+                  ),
                 ),
-                buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
-              ),
-            ],
+                CustomElevatedButton(
+                  text: "lbl_book_ticket".tr,
+                  margin: EdgeInsets.only(
+                    left: 16.h,
+                    right: 16.h,
+                    bottom: 24.v,
+                  ),
+                  buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
+                ),
+              ],
+            ),
           ),
         );
       },

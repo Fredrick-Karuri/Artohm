@@ -56,6 +56,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
       width: double.maxFinite,
       child: Column(
         children: [
+          topChips(),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -63,7 +64,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    topChips(),
                     SizedBox(height: 32.v),
                     featuredCard(),
                     SizedBox(height: 32.v),
@@ -187,22 +187,26 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
   }
 
   topChips() {
-    return Obx(
-      () => GridView.builder(
-        shrinkWrap: true,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            mainAxisExtent: 81.v,
-            crossAxisCount: 3,
-            mainAxisSpacing: 8.h,
-            crossAxisSpacing: 8.h),
-        physics: NeverScrollableScrollPhysics(),
-        itemCount: controller
-            .artMarketplaceModelObj.value.marketplacechipItemList.value.length,
-        itemBuilder: (context, index) {
-          MarketplacechipItemModel model = controller.artMarketplaceModelObj
-              .value.marketplacechipItemList.value[index];
-          return MarketplacechipItemWidget(model);
-        },
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, bottom: 8),
+      child: Obx(
+        () => GridView.builder(
+          shrinkWrap: true,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              mainAxisExtent: 72.v,
+              crossAxisCount: 3,
+              mainAxisSpacing: 8.h,
+              crossAxisSpacing: 8.h
+              ),
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: controller
+              .artMarketplaceModelObj.value.marketplaceChipItemList.value.length,
+          itemBuilder: (context, index) {
+            MarketplaceChipItemModel model = controller.artMarketplaceModelObj
+                .value.marketplaceChipItemList.value[index];
+            return MarketplaceChipItemWidget(model);
+          },
+        ),
       ),
     );
   }

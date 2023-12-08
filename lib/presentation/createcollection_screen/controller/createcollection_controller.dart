@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 /// current createcollectionModelObj
 class CreatecollectionController extends GetxController {
   TextEditingController nameController = TextEditingController();
+  TextEditingController collectionController = TextEditingController();
 
   Rx<CreatecollectionModel> createcollectionModelObj =
       CreatecollectionModel().obs;
@@ -22,5 +23,6 @@ class CreatecollectionController extends GetxController {
   void onClose() {
     super.onClose();
     nameController.dispose();
+    collectionController.dispose();
   }
 }

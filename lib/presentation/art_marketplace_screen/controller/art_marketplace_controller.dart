@@ -7,4 +7,8 @@ import 'package:artohmapp/presentation/art_marketplace_screen/models/art_marketp
 /// current artMarketplaceModelObj
 class ArtMarketplaceController extends GetxController {
   Rx<ArtMarketplaceModel> artMarketplaceModelObj = ArtMarketplaceModel().obs;
+
+  void filterArt(String id){
+    // logic to filter art based on id
+  }
 }

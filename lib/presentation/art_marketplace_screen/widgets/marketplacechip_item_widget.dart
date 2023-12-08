@@ -4,45 +4,48 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class MarketplacechipItemWidget extends StatelessWidget {
-  MarketplacechipItemWidget(
-    this.marketplacechipItemModelObj, {
+class MarketplaceChipItemWidget extends StatelessWidget {
+  MarketplaceChipItemWidget(
+    this.marketplaceChipItemModelObj, {
     Key? key,
   }) : super(
           key: key,
         );
 
-  MarketplacechipItemModel marketplacechipItemModelObj;
-
-  var controller = Get.find<ArtMarketplaceController>();
+  final MarketplaceChipItemModel marketplaceChipItemModelObj;
+  final ArtMarketplaceController controller = Get.find<ArtMarketplaceController>();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16.h,
-        vertical: 17.v,
-      ),
-      decoration: AppDecoration.fillLightBlueA.copyWith(
-        borderRadius: BorderRadiusStyle.circleBorder15,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          CustomImageView(
-            svgPath: ImageConstant.imgIconsAmber300,
-            height: 24.adaptSize,
-            width: 24.adaptSize,
-          ),
-          SizedBox(height: 2.v),
-          Obx(
-            () => Text(
-              marketplacechipItemModelObj.label!.value,
-              overflow: TextOverflow.ellipsis,
-              style: CustomTextStyles.titleSmallBlack90001,
+    return GestureDetector(
+      onTap: () {
+        controller.filterArt(marketplaceChipItemModelObj.id!.value);
+      },
+      child: Chip(
+        padding: EdgeInsets.symmetric(
+          horizontal: 8.h,
+          vertical: 12.v,
+        ),
+        backgroundColor: Theme.of(context).primaryColorLight,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        label: Column(
+          children: [
+            Icon(
+              marketplaceChipItemModelObj.iconData,
+              size: 24.adaptSize,
+              color: Theme.of(context).primaryColorDark,
             ),
-          ),
-        ],
+            Obx(
+              () => Text(
+                marketplaceChipItemModelObj.label!.value,
+                overflow: TextOverflow.ellipsis,
+                style: CustomTextStyles.titleSmallBlack90001,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:artohmapp/presentation/edit_profile_screen/widgets/user_profile_field.dart';
 
+import '../../widgets/custom_snackbar.dart';
 import '../edit_profile_screen/widgets/selectedstyles_item_widget.dart';
 import 'controller/edit_profile_controller.dart';
 import 'models/selectedstyles_item_model.dart';
@@ -17,27 +18,32 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
-        child: Scaffold(
-            appBar: AppBar(
-              leadingWidth: 46.h,
-              backgroundColor: Colors.white,
-              leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                iconSize: 40,
-                icon: Icon(Icons.close,
-                    color: Theme.of(context).colorScheme.primary),
-              ),
-            ),
-            resizeToAvoidBottomInset: false,
-            body: bodyContent(),
-            bottomNavigationBar: CustomElevatedButton(
-                text: "lbl_save_changes".tr,
-                margin: EdgeInsets.only(
-                    left: 16.h, right: 16.h, bottom: 24.v, top: 6.v),
-                buttonTextStyle:
-                    CustomTextStyles.titleSmallLatoWhiteA700Medium)));
+      child: Scaffold(
+        appBar: AppBar(
+          leadingWidth: 46.h,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            iconSize: 40,
+            icon:
+                Icon(Icons.close, color: Theme.of(context).colorScheme.primary),
+          ),
+        ),
+        resizeToAvoidBottomInset: false,
+        body: bodyContent(),
+        bottomNavigationBar: CustomElevatedButton(
+          onTap: (){
+            saveChanges(context);
+          },
+
+            text: "lbl_save_changes".tr,
+            margin: EdgeInsets.only(
+                left: 16.h, right: 16.h, bottom: 24.v, top: 6.v),
+            buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700Medium),
+      ),
+    );
   }
 
   bodyContent() {
@@ -235,7 +241,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
     );
   }
 
-  Column changeImage() {
+  changeImage() {
     return Column(
       children: [
         CustomImageView(
@@ -273,4 +279,20 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   onTapTxtWeburl() {
     // TODO: implement Actions
   }
+}
+
+void saveChanges(BuildContext context) {
+  CustomSnackBar.show(
+    context,
+    'Changes Saved!',
+    Icons.check_circle,
+    'OK',
+    AppRoutes.userProfileContainerScreen,
+  );
+  Future.delayed(
+    Duration(seconds: 2),
+    () {
+      Get.toNamed(AppRoutes.userProfileContainerScreen);
+    },
+  );
 }

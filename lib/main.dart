@@ -11,6 +11,8 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]).then((value) async {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
+    // runApp(MyApp());
+
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
     runApp(MyApp(onboardingCompleted: onboardingCompleted));
@@ -20,7 +22,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final bool onboardingCompleted;
   MyApp({required this.onboardingCompleted});
-  // This widget is the root of your application.
+  // This widget is the root of the application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -31,9 +33,10 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('en', 'US'),
       title: 'Artohm',
       initialBinding: InitialBindings(),
+      // initialRoute: AppRoutes.splashScreen,
+      getPages: AppRoutes.pages,
       initialRoute:
           onboardingCompleted ? AppRoutes.artDiscoveryContainerScreen : AppRoutes.initialRoute,
-      getPages: AppRoutes.pages,
     );
   }
 }

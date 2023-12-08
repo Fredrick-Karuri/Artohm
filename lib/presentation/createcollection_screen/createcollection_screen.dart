@@ -1,3 +1,5 @@
+import 'package:artohmapp/widgets/custom_snackbar.dart';
+
 import '../createcollection_screen/widgets/selectartwork_item_widget.dart';
 import 'controller/createcollection_controller.dart';
 import 'models/selectartwork_item_model.dart';
@@ -20,24 +22,20 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: CustomAppBar(
-            height: 59.v,
-            leadingWidth: 46.h,
-            leading: AppbarIconbutton(
-                svgPath: ImageConstant.imgArrowleft,
-                margin: EdgeInsets.only(left: 18.h, top: 31.v),
-                onTap: () {
-                  onTapArrowleftone();
-                }),
-            title: AppbarSubtitle(
-                text: "lbl_collections".tr,
-                margin: EdgeInsets.only(left: 36.h, top: 34.v, bottom: 4.v)),
-            actions: [
-              AppbarImage1(
-                  svgPath: ImageConstant.imgMask,
-                  margin: EdgeInsets.only(left: 9.h, right: 9.h, bottom: 49.v))
-            ]),
+        appBar: AppBar(
+          leadingWidth: 46.h,
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            iconSize: 40,
+            icon:
+                Icon(Icons.close, color: Theme.of(context).colorScheme.primary),
+          ),
+        ),
         body: bodyContent(),
+        bottomNavigationBar: ctaButton(context),
       ),
     );
   }
@@ -45,10 +43,8 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
   bodyContent() {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.symmetric(vertical: 7.v),
       child: Column(
         children: [
-          SizedBox(height: 32.v),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -57,12 +53,10 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     collectionName(),
-                    SizedBox(height: 27.v),
+                    SizedBox(height: 24.v),
                     collectionDescription(),
                     visibility(),
                     selectArtwork(),
-                    SizedBox(height: 24.v),
-                    ctaButton(),
                   ],
                 ),
               ),
@@ -73,13 +67,13 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
     );
   }
 
-  ctaButton() {
+  Widget ctaButton(BuildContext context) {
     return CustomElevatedButton(
       text: "msg_create_collection".tr,
-      margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 32.v),
+      margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 16.v, top: 8),
       buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700Medium,
       onTap: () {
-        onTapCreate();
+        onTapCreate(context);
       },
     );
   }
@@ -186,36 +180,16 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
       children: [
         Text("msg_collection_description".tr,
             style: theme.textTheme.bodyMedium),
-        Container(
-          width: 358.h,
-          margin: EdgeInsets.only(top: 8.v, right: 16.h),
-          padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 8.v),
-          decoration: AppDecoration.fillBlue
-              .copyWith(borderRadius: BorderRadiusStyle.customBorderTL4),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  width: 320.h,
-                  margin: EdgeInsets.only(top: 1.v, right: 5.h),
-                  child: Text("msg_embrace_the_world".tr,
-                      maxLines: 11,
-                      overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyLargeRobotoBlack90001
-                          .copyWith(height: 1.50))),
-              SizedBox(height: 3.v),
-              // SizedBox(
-              //   height: 17.v,
-              //   child: VerticalDivider(
-              //       width: 1.h,
-              //       thickness: 1.v,
-              //       color: appTheme.red300),
-              // )
-            ],
-          ),
-        ),
+        CustomTextFormField(
+            controller: controller.collectionController,
+            margin: EdgeInsets.only(top: 9.v, right: 16.h),
+            hintText: "msg_embrace_the_world".tr,
+            hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
+            textInputAction: TextInputAction.done,
+            borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
+            filled: true,
+            maxLines: 6,
+            fillColor: appTheme.blue50),
       ],
     );
   }
@@ -234,6 +208,7 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
             borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
             filled: true,
             fillColor: appTheme.blue50),
+            
       ],
     );
   }
@@ -250,9 +225,20 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
 
   /// When the action is triggered, this function uses the [Get] package to
   /// push the named route for the userProfileContainerScreen.
-  onTapCreate() {
-    Get.toNamed(
+
+  void onTapCreate(BuildContext context) {
+    CustomSnackBar.show(
+      context,
+      'Collection created!',
+      Icons.check_circle,
+      'OK',
       AppRoutes.userProfileContainerScreen,
+    );
+    Future.delayed(
+      Duration(seconds: 2),
+      () {
+        Get.toNamed(AppRoutes.userProfileContainerScreen);
+      },
     );
   }
 }

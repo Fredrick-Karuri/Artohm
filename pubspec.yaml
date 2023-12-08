@@ -1,12 +1,13 @@
 name: artohmapp
 description: A new Flutter project.
 version: 1.0.0+1
-environment: 
+environment:
   sdk: '>=2.12.0 <3.0.0'
-dependencies: 
-  flutter: 
+dependencies:
+  flutter:
     sdk: flutter
   image_picker: ^0.8.4+4
+  share_plus: ^7.2.1
   get: ^4.6.5
   connectivity_plus: ^2.3.6
   shared_preferences: ^2.0.15
@@ -16,32 +17,28 @@ dependencies:
   flutter_login_facebook: ^1.6.2
   smooth_page_indicator: ^1.0.0+2
   intl: ^0.18.0
-
 flutter_icons:
   android: true
   ios: true
   image_path: assets/images/Artohm-logo.png
-
-
-
-dev_dependencies: 
-  flutter_launcher_icons: "^0.9.2"
-  flutter_test: 
+dev_dependencies:
+  flutter_launcher_icons: ^0.9.2
+  flutter_test:
     sdk: flutter
-flutter: 
+flutter:
   uses-material-design: true
-  assets: 
+  assets:
     - assets/
     - assets/images/
-  fonts: 
+  fonts:
     - family: Libre Baskerville
-      fonts: 
+      fonts:
         - asset: assets/fonts/LibreBaskervilleBold.ttf
           weight: 700
         - asset: assets/fonts/LibreBaskervilleRegular.ttf
           weight: 400
     - family: Lato
-      fonts: 
+      fonts:
         - asset: assets/fonts/LatoRegular.ttf
           weight: 400
         - asset: assets/fonts/LatoLight.ttf
@@ -53,7 +50,7 @@ flutter:
         - asset: assets/fonts/LatoBold.ttf
           weight: 700
     - family: Roboto
-      fonts: 
+      fonts:
         - asset: assets/fonts/RobotoMedium.ttf
           weight: 500
         - asset: assets/fonts/RobotoRegular.ttf
@@ -63,7 +60,7 @@ flutter:
         - asset: assets/fonts/RobotoRomanMedium.ttf
           weight: 500
     - family: Inter
-      fonts: 
+      fonts:
         - asset: assets/fonts/InterRegular.ttf
           weight: 400
         - asset: assets/fonts/InterLight.ttf
@@ -71,6 +68,6 @@ flutter:
         - asset: assets/fonts/InterMedium.ttf
           weight: 500
     - family: Montserrat
-      fonts: 
+      fonts:
         - asset: assets/fonts/MontserratMedium.ttf
           weight: 500

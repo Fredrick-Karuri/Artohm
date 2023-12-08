@@ -1,6 +1,7 @@
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/profile_info.dart';
 
 import '../../widgets/app_bar/appbar_subtitle_1.dart';
+import '../../widgets/custom_appbar_component.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
 import 'controller/user_profile_container_controller.dart';
@@ -24,36 +25,45 @@ class UserProfileContainerScreen
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: AppbarImage(
-                svgPath: ImageConstant.imgArrowleftRed300,
-                margin: EdgeInsets.only(
-                  left: 18.h,
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                }),
-            // title: AppbarTitle(
-            title: AppbarSubtitle1(
-              
-                text: "lbl_profile".tr,
-                margin: EdgeInsets.only(
-                  left: 36.h,
-                )),
-            actions: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
-                child: AppbarImage1(
-                  svgPath: ImageConstant.imgProfileicons,
-                  margin: EdgeInsets.only( right: 24.h),
-                  onTap: () {
-                    onTapProfileicons();
-                  },
-                ),
-              ),
-            ],
-            styleType: Style.bgFill),
+        appBar: CustomAppBarComponent(
+          title: "lbl_profile".tr,
+          hasTrailingIcon: true,
+          onTapTrailingIcon: () {
+            onTapProfileicons();
+          },
+        ),
+
+        // appBar: CustomAppBar(
+        //     leadingWidth: 46.h,
+
+        //     leading: AppbarImage(
+        //         svgPath: ImageConstant.imgArrowleftRed300,
+        //         margin: EdgeInsets.only(
+        //           left: 18.h,
+        //         ),
+        //         onTap: () {
+        //           Navigator.pop(context);
+        //         }),
+        //     // title: AppbarTitle(
+        //     title: AppbarSubtitle1(
+
+        //         text: "lbl_profile".tr,
+        //         margin: EdgeInsets.only(
+        //           left: 36.h,
+        //         )),
+        //     actions: [
+        //       Padding(
+        //         padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
+        //         child: AppbarImage1(
+        //           svgPath: ImageConstant.imgProfileicons,
+        //           margin: EdgeInsets.only( right: 24.h),
+        //           onTap: () {
+        //             onTapProfileicons();
+        //           },
+        //         ),
+        //       ),
+        //     ],
+        //     styleType: Style.bgFill),
         body: SizedBox(
           width: mediaQueryData.size.width,
           child: SingleChildScrollView(
@@ -121,12 +131,13 @@ class UserProfileContainerScreen
           ),
         ),
         CustomOutlinedButton(
-            text: "msg_create_collection".tr,
-            margin: EdgeInsets.only(top: 23.v, right: 16.h),
-            buttonTextStyle: CustomTextStyles.titleSmallRobotoRed300,
-            onTap: () {
-              onTapCreate();
-            }),
+          text: "msg_create_collection".tr,
+          margin: EdgeInsets.only(top: 23.v, right: 16.h),
+          buttonTextStyle: CustomTextStyles.titleSmallRobotoRed300,
+          onTap: () {
+            onTapCreate();
+          },
+        ),
       ],
     );
   }

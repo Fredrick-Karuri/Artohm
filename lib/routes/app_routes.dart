@@ -14,6 +14,8 @@ import 'package:artohmapp/presentation/settingsitem_screen/settingsitem_screen.d
 import 'package:artohmapp/presentation/settingsitem_screen/binding/settingsitem_binding.dart';
 import 'package:artohmapp/presentation/privacy_screen/privacy_screen.dart';
 import 'package:artohmapp/presentation/privacy_screen/binding/privacy_binding.dart';
+import 'package:artohmapp/presentation/splashscreen/binding/splashscreen_binding.dart';
+import 'package:artohmapp/presentation/splashscreen/splashscreen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/user_profile_container_screen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/binding/user_profile_container_binding.dart';
 import 'package:artohmapp/presentation/art_discovery_container_screen/art_discovery_container_screen.dart';
@@ -116,6 +118,7 @@ class AppRoutes {
   static const String appNavigationScreen = '/app_navigation_screen';
 
   static const String initialRoute = '/initialRoute';
+  static const String splashScreen = '/splashScreen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -174,13 +177,7 @@ class AppRoutes {
         UserProfileContainerBinding(),
       ],
     ),
-    GetPage(
-      name: artDiscoveryContainerScreen,
-      page: () => ArtDiscoveryContainerScreen(),
-      bindings: [
-        ArtDiscoveryContainerBinding(),
-      ],
-    ),
+   
     GetPage(
       name: artistProfileScreen,
       page: () => ArtistProfileScreen(),
@@ -293,6 +290,13 @@ class AppRoutes {
         AppNavigationBinding(),
       ],
     ),
+     GetPage(
+      name: artDiscoveryContainerScreen,
+      page: () => ArtDiscoveryContainerScreen(),
+      bindings: [
+        ArtDiscoveryContainerBinding(),
+      ],
+    ),
     GetPage(
       name: homePage,
       page: () => HomePage(),
@@ -305,5 +309,10 @@ class AppRoutes {
         OnboardingBinding(),
       ],
     ),
+    GetPage(
+      name: splashScreen,
+      page: () => SplashScreen(),
+      binding: SplashBinding(),
+    )
   ];
 }

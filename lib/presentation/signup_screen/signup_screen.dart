@@ -29,11 +29,7 @@ class SignupScreen extends GetWidget<SignupController> {
             title: AppbarSubtitle(
                 text: "lbl_welcome_aboard".tr,
                 margin: EdgeInsets.only(left: 35.h, top: 41.v, bottom: 18.v)),
-            // actions: [
-            //   AppbarImage1(
-            //       svgPath: ImageConstant.imgMask,
-            //       margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-            // ],
+            
             styleType: Style.bgOutline),
         body: Container(
           width: double.maxFinite,

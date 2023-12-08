@@ -17,41 +17,8 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            // appBar: CustomAppBarComponent(title: "lbl_collaborate".tr),
-
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(
-                  60.0), // change this size as per your requirement
-              child: AppBar(
-                backgroundColor: Colors.white,
-                leadingWidth: MediaQuery.of(context)
-                    .size
-                    .width, // this will take the full width
-                leading: Container(
-                  padding: EdgeInsets.only(left: 16),
-                  child: Row(
-                    children: [
-                      CustomIconButton(
-                        height: 28.adaptSize,
-                        width: 28.adaptSize,
-                        padding: EdgeInsets.all(7.h),
-                        onTap: () {
-                          onTapBtnArrowleftone();
-                        },
-                        child:
-                            CustomImageView(svgPath: ImageConstant.imgArrowleft),
-                      ),
-                      // Expanded(
-                      //   child: Padding(
-                      //     padding: EdgeInsets.only(left: 32.h),
-                      //     child: Text("lbl_collaborate".tr,
-                      //         style: CustomTextStyles.titleMediumBlack90001),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
+            appBar: CustomAppBarComponent(
+              hasTitle: false,
             ),
             body: SizedBox(
                 width: double.maxFinite,

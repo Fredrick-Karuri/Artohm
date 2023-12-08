@@ -1,3 +1,4 @@
+import '../../widgets/custom_appbar_component.dart';
 import 'controller/settingsitem_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
@@ -15,25 +16,27 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: CustomAppBar(
-                leadingWidth: 46.h,
-                leading: AppbarImage(
-                    svgPath: ImageConstant.imgArrowleftRed300,
-                    margin:
-                        EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                    onTap: () {
-                      onTapArrowleftone();
-                    }),
-                title: AppbarTitle(
-                    text: "msg_notification_settings".tr,
-                    margin:
-                        EdgeInsets.only(left: 36.h, top: 41.v, bottom: 15.v)),
-                actions: [
-                  AppbarImage1(
-                      svgPath: ImageConstant.imgMask,
-                      margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-                ],
-                styleType: Style.bgOutline),
+            appBar: CustomAppBarComponent(title: "msg_notification_settings".tr),
+            // appBar: CustomAppBar(
+            //     leadingWidth: 46.h,
+            //     leading: AppbarImage(
+            //         svgPath: ImageConstant.imgArrowleftRed300,
+            //         margin:
+            //             EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
+            //         onTap: () {
+            //           onTapArrowleftone();
+            //         }),
+            //     title: AppbarTitle(
+            //         text: "msg_notification_settings".tr,
+            //         margin:
+            //             EdgeInsets.only(left: 36.h, top: 41.v, bottom: 15.v)),
+            //     actions: [
+            //       AppbarImage1(
+            //         svgPath: ImageConstant.imgMask,
+            //         margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v),
+            //       )
+            //     ],
+            //     styleType: Style.bgOutline),
             body: Container(
                 width: 359.h,
                 margin: EdgeInsets.fromLTRB(15.h, 34.v, 15.h, 5.v),
