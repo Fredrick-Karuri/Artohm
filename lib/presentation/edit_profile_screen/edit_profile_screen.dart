@@ -34,10 +34,9 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
         resizeToAvoidBottomInset: false,
         body: bodyContent(),
         bottomNavigationBar: CustomElevatedButton(
-          onTap: (){
-            saveChanges(context);
-          },
-
+            onTap: () {
+              saveChanges(context);
+            },
             text: "lbl_save_changes".tr,
             margin: EdgeInsets.only(
                 left: 16.h, right: 16.h, bottom: 24.v, top: 6.v),
@@ -287,12 +286,5 @@ void saveChanges(BuildContext context) {
     'Changes Saved!',
     Icons.check_circle,
     'OK',
-    AppRoutes.userProfileContainerScreen,
-  );
-  Future.delayed(
-    Duration(seconds: 2),
-    () {
-      Get.toNamed(AppRoutes.userProfileContainerScreen);
-    },
   );
 }

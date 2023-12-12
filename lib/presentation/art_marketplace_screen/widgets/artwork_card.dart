@@ -1,4 +1,8 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
+import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
+import 'package:artohmapp/widgets/custom_elevated_button.dart';
+import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,13 +17,13 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Colors.white,
+    return Container(
+      width: 200,
+      // height: double.maxFinite,
+      padding: EdgeInsets.only(right: 10),
       child: Column(
         children: [
           SizedBox(
-            height: 200.v,
-            width: 176.h,
             child: Stack(
               alignment: Alignment.bottomRight,
               children: [
@@ -29,24 +33,22 @@ class CustomCardWidget extends StatelessWidget {
                   radius: BorderRadius.circular(8.h),
                   alignment: Alignment.center,
                 ),
-                InkWell(
-                  onTap: (){
-                    showModal(context);
+                IconButton(
+                  onPressed: () {
+                    ArtworkCardModalState.showModal(context);
                   },
-                  child: CustomImageView(
-                    svgPath: card.svgPath,
-                    height: 20.v,
-                    width: 4.h,
-                    alignment: Alignment.bottomRight,
-                    margin: EdgeInsets.only(right: 18.h, bottom: 10.v),
+                  icon: Icon(
+                    Icons.more_vert_outlined,
+                    color: appTheme.whiteA700,
+                    size: 28,
                   ),
-                ),
+                )
               ],
             ),
           ),
           SizedBox(height: 12.v),
           Container(
-            padding: EdgeInsets.only(bottom: 8),
+            padding: EdgeInsets.only(bottom: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -60,86 +62,44 @@ class CustomCardWidget extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 2.h, vertical: 1.v),
-                  decoration: AppDecoration.outlinePrimary.copyWith(
-                      borderRadius: BorderRadiusStyle.roundedBorder4),
-                  child: Text(card.price.tr, style: theme.textTheme.labelMedium),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 8.h,
+                    vertical: 4.v,
+                  ),
+                  decoration: AppDecoration.outlineBlack90001.copyWith(
+                    borderRadius: BorderRadiusStyle.roundedBorder4,
+                    color: appTheme.blue50
+                  ),
+                  child: Text(
+                    card.price.tr,
+                    style: theme.textTheme.labelLarge,
+                  ),
                 ),
               ],
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Expanded(
+                child: CustomOutlinedButton(
+                  onTap: () {},
+                  text: 'Add to Cart',
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                child: CustomElevatedButton(
+                  onTap: () {},
+                  text: 'Buy',
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 }
-
-void showModal(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-    ),
-    builder: (BuildContext context) {
-      return SingleChildScrollView(
-        child: FractionallySizedBox(
-          widthFactor: 0.94,
-          child: Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFFEE9E9),
-              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-              border: Border.all(
-                color: Color.fromRGBO(245, 140, 140, 0.075),
-                width: 1.5,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromRGBO(0, 0, 0, 0.16),
-                  blurRadius: 4.0,
-                ),
-              ],
-            ),
-            padding: EdgeInsets.symmetric(
-              horizontal: 15.h,
-              vertical: 13.v,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  'Title',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                ListView(
-                  shrinkWrap: true,
-                  children: [
-                    _buildRow(Icons.info, 'View Artwork Info', () {}),
-                    _buildRow(Icons.favorite, 'Like', () {}),
-                    _buildRow(Icons.add, 'Add to Collection', () {}),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-      );
-    },
-  );
-}
-
-Widget _buildRow(IconData icon, String label, VoidCallback onTap) {
-  return InkWell(
-    onTap: onTap,
-    child: Row(
-      children: [
-        IconButton(
-          icon: Icon(icon),
-          onPressed: onTap,
-        ),
-        Text(label),
-      ],
-    ),
-  );
-}
-

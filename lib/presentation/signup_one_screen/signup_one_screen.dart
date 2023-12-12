@@ -1,10 +1,10 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import '../../data/apiClient/api_client.dart';
+import '../../widgets/onboarding_appbar.dart';
 import 'controller/signup_one_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/core/utils/validation_functions.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_subtitle.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
@@ -21,175 +21,233 @@ class SignupOneScreen extends GetWidget<SignupOneController> {
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: true,
-        appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: AppbarImage(
-                svgPath: ImageConstant.imgArrowleftRed300,
-                margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                onTap: () {
-                  onTapArrowleftone();
-                }),
-            title: AppbarSubtitle(
-                text: "lbl_welcome_aboard".tr,
-                margin: EdgeInsets.only(left: 35.h, top: 41.v, bottom: 18.v)),
-            actions: [
-              AppbarImage1(
-                  svgPath: ImageConstant.imgMask,
-                  margin: EdgeInsets.fromLTRB(9.h, 7.v, 9.h, 63.v))
-            ],
-            styleType: Style.bgOutline),
+        appBar: OnboardingAppBar(
+          text: 'Welcome Aboard',
+          showLeadingIcon: true,
+          showText: true,
+        ),
         body: SingleChildScrollView(
           child: Form(
             key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Container(
               width: double.maxFinite,
               padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 24.v),
               child: Column(
                 children: [
                   CustomImageView(
-                      svgPath: ImageConstant.imgWelcomeamico,
-                      height: 160.adaptSize,
-                      width: 160.adaptSize),
+                    svgPath: ImageConstant.imgWelcomeamico,
+                    height: 240.adaptSize,
+                    width: 240.adaptSize,
+                  ),
                   Padding(
-                    padding:
-                        EdgeInsets.only(left: 12.h, top: 34.v, right: 12.h),
+                    padding: const EdgeInsets.only(right: 12, left: 12),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("lbl_full_name".tr,
-                            style: CustomTextStyles.titleMediumLato),
-                        SizedBox(height: 5.v),
-                        CustomTextFormField(
-                          controller: controller.fullNameController,
-                          hintText: "msg_enter_your_full".tr,
-                          validator: (value) {
-                            if (!isText(value)) {
-                              return "Please enter valid text";
-                            }
-                            return null;
-                          },
-                        )
+                        name(),
+                        email(),
+                        password(),
+                        confirmPassword(),
+                        SizedBox(height: 48.v),
+                        btn(),
+                        SizedBox(height: 5.v)
                       ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 12.h, top: 34.v, right: 12.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("lbl_email_address".tr,
-                            style: CustomTextStyles.titleMediumLato),
-                        SizedBox(height: 5.v),
-                        CustomTextFormField(
-                            controller: controller.emailController,
-                            hintText: "msg_enter_your_email".tr,
-                            textInputType: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value == null ||
-                                  (!isValidEmail(value, isRequired: true))) {
-                                return "Please enter valid email";
-                              }
-                              return null;
-                            })
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 12.h, top: 34.v, right: 12.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("lbl_password".tr,
-                            style: CustomTextStyles.titleMediumLato),
-                        SizedBox(height: 5.v),
-                        Obx(() => CustomTextFormField(
-                            controller: controller.passwordController,
-                            hintText: "msg_enter_your_password".tr,
-                            textInputType: TextInputType.visiblePassword,
-                            suffix: InkWell(
-                                onTap: () {
-                                  controller.isShowPassword.value =
-                                      !controller.isShowPassword.value;
-                                },
-                                child: Container(
-                                    margin: EdgeInsets.all(12.h),
-                                    child: CustomImageView(
-                                        svgPath: controller.isShowPassword.value
-                                            ? ImageConstant.imgLightbulb
-                                            : ImageConstant.imgLightbulb))),
-                            suffixConstraints: BoxConstraints(maxHeight: 36.v),
-                            validator: (value) {
-                              if (value == null ||
-                                  (!isValidPassword(value, isRequired: true))) {
-                                return "Please enter valid password";
-                              }
-                              return null;
-                            },
-                            obscureText: controller.isShowPassword.value,
-                            contentPadding: EdgeInsets.only(
-                                left: 12.h, top: 9.v, bottom: 9.v)))
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: 12.h, top: 34.v, right: 12.h),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("msg_confirm_password".tr,
-                            style: CustomTextStyles.titleMediumLato),
-                        SizedBox(height: 5.v),
-                        Obx(() => CustomTextFormField(
-                            controller: controller.confirmpasswordController,
-                            hintText: "msg_re_enter_your_password".tr,
-                            textInputAction: TextInputAction.done,
-                            textInputType: TextInputType.visiblePassword,
-                            suffix: InkWell(
-                                onTap: () {
-                                  controller.isShowPassword1.value =
-                                      !controller.isShowPassword1.value;
-                                },
-                                child: Container(
-                                    margin: EdgeInsets.all(12.h),
-                                    child: CustomImageView(
-                                        svgPath:
-                                            controller.isShowPassword1.value
-                                                ? ImageConstant.imgLightbulb
-                                                : ImageConstant.imgLightbulb))),
-                            suffixConstraints: BoxConstraints(maxHeight: 36.v),
-                            validator: (value) {
-                              if (value == null ||
-                                  (!isValidPassword(value, isRequired: true))) {
-                                return "Please enter valid password";
-                              }
-                              return null;
-                            },
-                            obscureText: controller.isShowPassword1.value,
-                            contentPadding: EdgeInsets.only(
-                                left: 12.h, top: 9.v, bottom: 9.v)))
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 56.v),
-                  CustomElevatedButton(
-                    height: 42.v,
-                    text: "lbl_create_account".tr,
-                    buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                    buttonTextStyle:
-                        CustomTextStyles.titleMediumRobotoWhiteA700,
-                    onTap: () {
-                      onTapCreateaccount();
-                    },
-                  ),
-                  SizedBox(height: 5.v)
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  btn() {
+    return CustomElevatedButton(
+      height: 42.v,
+      text: "lbl_create_account".tr,
+      buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+      buttonTextStyle: CustomTextStyles.titleMediumRobotoWhiteA700,
+      onTap: () async {
+        if (_formKey.currentState!.validate()) {
+          // If all data are correct then save data to out variables
+          _formKey.currentState!.save();
+          onTapCreateaccount();
+
+          // // Here we will send the data to the server
+          // var response = await Get.find<ApiClient>().registerUser(
+          //   controller.fullNameController.text,
+          //   controller.emailController.text,
+          //   controller.passwordController.text,
+          // );
+
+          // if (response.statusCode == 200) {
+          //   // If the server returns a 200 OK response, then parse the JSON.
+          //   var jsonResponse = jsonDecode(response.body);
+          //   // You can now use the jsonResponse to create a user session.
+          //   // This will depend on how your backend server is set up.
+          // } else {
+          //   // If the server returns an error response, you can handle it here.
+          //   // You might want to show an error message to the user.
+          // }
+        }
+      },
+    );
+  }
+
+  // btn() {
+  //   return CustomElevatedButton(
+  //     height: 42.v,
+  //     text: "lbl_create_account".tr,
+  //     buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+  //     buttonTextStyle: CustomTextStyles.titleMediumRobotoWhiteA700,
+  //     onTap: () {
+  //       onTapCreateaccount();
+  //     },
+  //   );
+  // }
+
+  confirmPassword() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("msg_confirm_password".tr,
+              style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          Obx(() => CustomTextFormField(
+              controller: controller.confirmPasswordController,
+              focusNode: controller.confirmPasswordFocusNode,
+              hintText: "msg_re_enter_your_password".tr,
+              textInputAction: TextInputAction.done,
+              textInputType: TextInputType.visiblePassword,
+              suffix: InkWell(
+                onTap: () {
+                  controller.isShowPassword1.value =
+                      !controller.isShowPassword1.value;
+                },
+                child: Container(
+                  margin: EdgeInsets.all(12.h),
+                  child: CustomImageView(
+                      svgPath: controller.isShowPassword1.value
+                          ? ImageConstant.imgLightbulb
+                          : ImageConstant.imgLightbulb),
+                ),
+              ),
+              suffixConstraints: BoxConstraints(maxHeight: 36.v),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please confirm your password';
+                } else if (value != controller.passwordController.text) {
+                  return 'Passwords do not match';
+                }
+                return null;
+              },
+              obscureText: controller.isShowPassword1.value,
+              contentPadding:
+                  EdgeInsets.only(left: 12.h, top: 9.v, bottom: 9.v)))
+        ],
+      ),
+    );
+  }
+
+  password() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_password".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          Obx(() => CustomTextFormField(
+              controller: controller.passwordController,
+              focusNode: controller.passwordFocusNode,
+              hintText: "msg_enter_your_password".tr,
+              textInputType: TextInputType.visiblePassword,
+              suffix: InkWell(
+                  onTap: () {
+                    controller.isShowPassword.value =
+                        !controller.isShowPassword.value;
+                  },
+                  child: Container(
+                      margin: EdgeInsets.all(12.h),
+                      child: CustomImageView(
+                          svgPath: controller.isShowPassword.value
+                              ? ImageConstant.imgLightbulb
+                              : ImageConstant.imgLightbulb))),
+              suffixConstraints: BoxConstraints(maxHeight: 36.v),
+              validator: (value) {
+                String? error = isValidPassword(value);
+                if (error != null) {
+                  return error;
+                }
+                return null;
+              },
+              obscureText: controller.isShowPassword.value,
+              contentPadding:
+                  EdgeInsets.only(left: 12.h, top: 9.v, bottom: 9.v)))
+        ],
+      ),
+    );
+  }
+
+  email() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_email_address".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          CustomTextFormField(
+            controller: controller.emailController,
+            focusNode: controller.emailFocusNode,
+            hintText: "msg_enter_your_email".tr,
+            textInputType: TextInputType.emailAddress,
+            validator: (value) {
+              String? error = isValidEmail(value);
+              if (error != null) {
+                return error;
+              }
+              return null;
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  name() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_full_name".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          CustomTextFormField(
+            controller: controller.fullNameController,
+            focusNode: controller.fullNameFocusNode,
+            hintText: "msg_enter_your_full".tr,
+            validator: (value) {
+              String? error = isText(value);
+              if (error != null) {
+                return error;
+              }
+              return null;
+            },
+          )
+        ],
       ),
     );
   }

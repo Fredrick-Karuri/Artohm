@@ -25,28 +25,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBarComponent(title: "lbl_market_place2".tr),
-        // CustomAppBar(
-        //     leadingWidth: 46.h,
-        //     leading:
-        //     AppbarImage(
-        //       svgPath: ImageConstant.imgArrowleftRed300,
-        //       margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-        //       onTap: () {
-        //         // Navigator.pop(context);
-        //         // Get.back(id: 1);
-        //         Navigator.pop(context);
-        //       },
-        //     ),
-        //     title: AppbarSubtitle1(
-        //       text: "lbl_market_place2".tr,
-        //       margin: EdgeInsets.only(left: 36.h, top: 41.v, bottom: 18.v),
-        //     ),
-        //     styleType: Style.bgFill),
         body: bodyContent(),
-        // bottomNavigationBar:
-        //     CustomBottomBar(onChanged: (BottomBarEnum type) {
-        //   Get.toNamed(getCurrentRoute(type), id: 1);
-        // })
       ),
     );
   }
@@ -56,17 +35,20 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
       width: double.maxFinite,
       child: Column(
         children: [
-          topChips(),
+          Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: topChips(),
+          ),
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(left: 15.h, bottom: 32.v, right: 16.h),
+                padding: EdgeInsets.only(left: 16.h, bottom: 32.v,),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 32.v),
+                    SizedBox(height: 8.v),
                     featuredCard(),
-                    SizedBox(height: 32.v),
+                    SizedBox(height: 24.v),
                     artwork(),
                   ],
                 ),
@@ -128,60 +110,63 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
   }
 
   featuredCard() {
-    return Card(
-      color: Colors.white,
-      child: Column(
-        children: [
-          CustomImageView(
-            imagePath: ImageConstant.imgRectangle11332x358,
-            // height: 332.v,
-            // width: 358.h,
-            radius: BorderRadius.circular(8.h),
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 20.v, left: 4, right: 4, bottom: 4),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("msg_ethereal_enchantment".tr,
-                                style: theme.textTheme.titleMedium),
-                            SizedBox(height: 17.v),
-                            Text("lbl_sophia_anderson".tr,
-                                style: CustomTextStyles.bodyMediumBlack90001)
-                          ]),
-                    ),
-                    Flexible(
-                      child: CustomOutlinedButton(
-                          height: 38.v,
-                          // width: 64.h,
-                          text: "lbl_850".tr,
-                          margin: EdgeInsets.only(
-                              left: 95.h, top: 8.v, bottom: 8.v),
-                          buttonTextStyle: theme.textTheme.titleMedium!),
-                    )
-                  ],
-                ),
-                SizedBox(height: 24.v),
-                CustomElevatedButton(
-                  fullWidth: true,
-                  text: "lbl_view_artwork".tr,
-                  buttonTextStyle:
-                      CustomTextStyles.titleSmallRobotoWhiteA700Medium,
-                  onTap: () {
-                    onTapViewartwork();
-                  },
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.only(right: 16),
+      child: Card(
+        color: Colors.white,
+        child: Column(
+          children: [
+            CustomImageView(
+              imagePath: ImageConstant.imgRectangle11332x358,
+              // height: 332.v,
+              // width: 358.h,
+              radius: BorderRadius.circular(8.h),
+              fit: BoxFit.cover,
             ),
-          ),
-        ],
+            Padding(
+              padding: EdgeInsets.only(top: 20.v, left: 10, right: 10, bottom: 10),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("msg_ethereal_enchantment".tr,
+                                  style: theme.textTheme.titleMedium),
+                              SizedBox(height: 17.v),
+                              Text("lbl_sophia_anderson".tr,
+                                  style: CustomTextStyles.bodyMediumBlack90001)
+                            ]),
+                      ),
+                      Flexible(
+                        child: CustomOutlinedButton(
+                            height: 38.v,
+                            // width: 64.h,
+                            text: "lbl_850".tr,
+                            margin: EdgeInsets.only(
+                                left: 95.h, top: 8.v, bottom: 8.v),
+                            buttonTextStyle: theme.textTheme.titleMedium!),
+                      )
+                    ],
+                  ),
+                  SizedBox(height: 24.v),
+                  CustomElevatedButton(
+                    fullWidth: true,
+                    text: "lbl_view_artwork".tr,
+                    buttonTextStyle:
+                        CustomTextStyles.titleSmallRobotoWhiteA700Medium,
+                    onTap: () {
+                      onTapViewartwork();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -196,11 +181,10 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
               mainAxisExtent: 72.v,
               crossAxisCount: 3,
               mainAxisSpacing: 8.h,
-              crossAxisSpacing: 8.h
-              ),
+              crossAxisSpacing: 8.h),
           physics: NeverScrollableScrollPhysics(),
-          itemCount: controller
-              .artMarketplaceModelObj.value.marketplaceChipItemList.value.length,
+          itemCount: controller.artMarketplaceModelObj.value
+              .marketplaceChipItemList.value.length,
           itemBuilder: (context, index) {
             MarketplaceChipItemModel model = controller.artMarketplaceModelObj
                 .value.marketplaceChipItemList.value[index];
@@ -211,31 +195,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     );
   }
 
-  ///Handling route based on bottom click actions
-  String getCurrentRoute(BottomBarEnum type) {
-    switch (type) {
-      case BottomBarEnum.Home2:
-        return AppRoutes.homePage;
-      case BottomBarEnum.Marketplace2:
-        return "/";
-      case BottomBarEnum.Community2:
-        return "/";
-      case BottomBarEnum.Collaborate:
-        return "/";
-      default:
-        return "/";
-    }
-  }
-
-  ///Handling page based on route
-  Widget getCurrentPage(String currentRoute) {
-    switch (currentRoute) {
-      case AppRoutes.homePage:
-        return HomePage();
-      default:
-        return HomePage();
-    }
-  }
 
   /// Navigates to the previous screen.
   ///

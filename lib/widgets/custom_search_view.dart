@@ -2,6 +2,15 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:flutter/material.dart';
 
+
+ class SearchController extends GetxController{
+  TextEditingController textEditingController = TextEditingController();
+  void clearText(){
+    textEditingController.clear();
+    update();
+  }
+    
+  }
 class CustomSearchView extends StatelessWidget {
   CustomSearchView({
     Key? key,
@@ -25,6 +34,7 @@ class CustomSearchView extends StatelessWidget {
     this.fillColor,
     this.filled = false,
     this.validator,
+    this.contr
   }) : super(
           key: key,
         );
@@ -69,6 +79,8 @@ class CustomSearchView extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
+  final SearchController? contr;
+
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -78,6 +90,8 @@ class CustomSearchView extends StatelessWidget {
           )
         : searchViewWidget;
   }
+
+ 
 
   Widget get searchViewWidget => Padding(
         padding: const EdgeInsets.only(top: 24.0),
@@ -89,33 +103,24 @@ class CustomSearchView extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  // backButton();
                   Get.back(id: 1);
-                  // Get.toNamed(AppRoutes.homePage);
                 },
                 icon: Icon(
                   Icons.arrow_back,
                   color: appTheme.red300,
                 ),
               ),
-              Expanded(
-                child: Material(
-                  child: Container(
-                    color: Colors.white,
-                    width: width ?? double.maxFinite,
-                    margin: margin,
-                    child: TextFormField(
-                      controller: controller,
-                      focusNode: focusNode ?? FocusNode(),
-                      autofocus: autofocus!,
-                      style: textStyle ??
-                          CustomTextStyles.titleSmallLatoLightblueA700Medium,
-                      keyboardType: textInputType,
-                      maxLines: maxLines ?? 1,
-                      decoration: decoration,
-                      validator: validator,
-                    ),
-                  ),
+              Flexible(
+                child: TextFormField(
+                  controller: controller,
+                  focusNode: focusNode ?? FocusNode(),
+                  autofocus: autofocus!,
+                  style: textStyle ??
+                      CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                  keyboardType: textInputType,
+                  maxLines: maxLines ?? 1,
+                  decoration: decoration,
+                  validator: validator,
                 ),
               ),
               TextButton(
@@ -124,13 +129,6 @@ class CustomSearchView extends StatelessWidget {
                     "Search",
                     style: TextStyle(color: appTheme.red300),
                   ))
-              // InkWell(
-              //   onTap: (){},
-              //   child: Text(
-              //     "Search",
-              //     style: TextStyle(color: appTheme.red300),
-              //   ),
-              // )
             ],
           ),
         ),
@@ -147,11 +145,15 @@ class CustomSearchView extends StatelessWidget {
                 right: 15.h,
               ),
               child: IconButton(
-                onPressed: () {
-                  if (controller != null) {
-                    controller!.clear();
-                  }
+
+                onPressed: (){
+                  contr?.clearText();
                 },
+                // onPressed: () {
+                //   if (controller != null) {
+                //     controller!.clear();
+                //   }
+                // },
                 icon: Icon(
                   Icons.clear,
                   color: Colors.grey.shade600,
@@ -201,9 +203,3 @@ backButton() {
     AppRoutes.homePage,
   );
 }
-
-// onTapImgNotification() {
-//   Get.toNamed(
-//     AppRoutes.notificationsTabContainerScreen,
-//   );
-// }

@@ -170,13 +170,6 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
       'Artwork Created!',
       Icons.check_circle,
       'OK',
-      AppRoutes.userProfileContainerScreen,
-    );
-    Future.delayed(
-      Duration(seconds: 2),
-      () {
-        Get.toNamed(AppRoutes.userProfileContainerScreen);
-      },
     );
   }
 

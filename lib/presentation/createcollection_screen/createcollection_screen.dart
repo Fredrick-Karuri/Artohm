@@ -208,7 +208,6 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
             borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
             filled: true,
             fillColor: appTheme.blue50),
-            
       ],
     );
   }
@@ -232,13 +231,6 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
       'Collection created!',
       Icons.check_circle,
       'OK',
-      AppRoutes.userProfileContainerScreen,
-    );
-    Future.delayed(
-      Duration(seconds: 2),
-      () {
-        Get.toNamed(AppRoutes.userProfileContainerScreen);
-      },
     );
   }
 }

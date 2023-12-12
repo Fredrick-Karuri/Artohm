@@ -131,12 +131,15 @@ class HomePage extends StatelessWidget {
                         HomeartcolItemModel model = controller
                             .homeModelObj.value.homeartcolItemList.value[index];
 
-                        return HomeartcolItemWidget(model);
+                        return HomeartcolItemWidget(
+                            homeartcolItemModelObj: model);
                       },
                     ),
                   ),
                 ),
-                SizedBox(height: 24.v),
+                SizedBox(
+                  height: 24.v,
+                ),
               ],
             ),
           ),
@@ -145,7 +148,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  SingleChildScrollView homeFilters() {
+  homeFilters() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       padding: EdgeInsets.only(left: 16.h, top: 16.v),
@@ -170,9 +173,6 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            // icon: Container(
-            //   margin: EdgeInsets.only(right: 12),
-            // ),
             CustomElevatedButton(
                 width: 120.h,
                 text: "lbl_painting".tr,

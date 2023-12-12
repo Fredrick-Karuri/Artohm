@@ -24,21 +24,29 @@ class CustomAppBarComponent extends StatelessWidget
 
   @override
   Widget build(BuildContext context) {
-    return CustomAppBar(
-      leadingWidth: 46.h,
-      leading: AppbarImage(
-          svgPath: ImageConstant.imgArrowleftRed300,
-          margin: EdgeInsets.only(
-            left: 18.h,
-          ),
-          onTap: () {
-            Navigator.pop(context);
-          }),
+    return AppBar(
+      toolbarHeight: 60,
+      // leadingWidth: 48.h,
+      leading: IconButton(
+        padding: EdgeInsets.only(left: 12),
+        icon: Icon(Icons.arrow_back_ios),
+        onPressed: () {
+          final currentState = Get.nestedKey(1)?.currentState;
+          if (currentState != null && currentState.canPop()) {
+            Get.back(id: 1);
+          } else {
+            Get.back();
+          }
+        },
+        // color: theme.primaryColor,
+color: appTheme.red300,
+      ),
+
       title: hasTitle
           ? AppbarSubtitle1(
               text: title ?? '',
               margin: EdgeInsets.only(
-                left: 36.h,
+                left: 8.h,
               ),
             )
           : null,
@@ -50,13 +58,13 @@ class CustomAppBarComponent extends StatelessWidget
                   onPressed: () => onTapTrailingIcon(),
                   icon: Icon(
                     trailingIcon,
-                    color: Theme.of(context).primaryColor,
+                    color: appTheme.red300,
                   ),
                 ),
               ),
             ]
           : null,
-      styleType: Style.bgFill,
+      backgroundColor: Colors.white,
     );
   }
 

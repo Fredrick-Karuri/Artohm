@@ -1,3 +1,5 @@
+import 'package:artohmapp/widgets/onboarding_appbar.dart';
+
 import 'controller/signup_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
@@ -18,19 +20,11 @@ class SignupScreen extends GetWidget<SignupController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: AppbarImage(
-                svgPath: ImageConstant.imgArrowleftRed300,
-                margin: EdgeInsets.only(left: 18.h, top: 38.v, bottom: 14.v),
-                onTap: () {
-                  onTapArrowleftone();
-                }),
-            title: AppbarSubtitle(
-                text: "lbl_welcome_aboard".tr,
-                margin: EdgeInsets.only(left: 35.h, top: 41.v, bottom: 18.v)),
-            
-            styleType: Style.bgOutline),
+        appBar: OnboardingAppBar(
+          text: 'Welcome Aboard',
+          showLeadingIcon: true,
+          showText: true,
+        ),
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.only(left: 15.h, top: 119.v, right: 15.h),
@@ -38,43 +32,45 @@ class SignupScreen extends GetWidget<SignupController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomElevatedButton(
-                  height: 56.v,
-                  text: "msg_continue_with_email".tr,
-                  leftIcon: Container(
-                      margin: EdgeInsets.only(right: 30.h),
-                      child: CustomImageView(svgPath: ImageConstant.imgMail)),
-                  buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                  buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
-                  onTap: () {
-                    onTapContinuewith();
-                  }),
+                height: 56.v,
+                text: "msg_continue_with_email".tr,
+                leftIcon: Container(
+                    margin: EdgeInsets.only(right: 30.h),
+                    child: CustomImageView(svgPath: ImageConstant.imgMail)),
+                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
+                onTap: () {
+                  onTapContinuewith();
+                },
+              ),
               SizedBox(height: 24.v),
               CustomOutlinedButton(
-                  height: 56.v,
-                  text: "msg_continue_with_google".tr,
-                  leftIcon: Container(
-                      margin: EdgeInsets.only(right: 30.h),
-                      child: CustomImageView(
-                          svgPath: ImageConstant.imgGooglelogo)),
-                  buttonStyle: CustomButtonStyles.outlinePrimaryTL8,
-                  buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
-                  onTap: () {
-                    onTapContinuewith1();
-                  }),
+                height: 56.v,
+                text: "msg_continue_with_google".tr,
+                leftIcon: Container(
+                    margin: EdgeInsets.only(right: 30.h),
+                    child:
+                        CustomImageView(svgPath: ImageConstant.imgGooglelogo)),
+                buttonStyle: CustomButtonStyles.outlinePrimaryTL8,
+                buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
+                onTap: () {
+                  onTapContinuewith1();
+                },
+              ),
               SizedBox(height: 24.v),
               CustomElevatedButton(
-                  height: 56.v,
-                  text: "msg_continue_with_facebook".tr,
-                  leftIcon: Container(
-                      margin: EdgeInsets.only(right: 30.h),
-                      child: CustomImageView(
-                          svgPath:
-                              ImageConstant.imgProfileiconsWhiteA70020x20)),
-                  buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                  buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
-                  onTap: () {
-                    onTapContinuewith2();
-                  }),
+                height: 56.v,
+                text: "msg_continue_with_facebook".tr,
+                leftIcon: Container(
+                    margin: EdgeInsets.only(right: 30.h),
+                    child: CustomImageView(
+                        svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
+                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
+                onTap: () {
+                  onTapContinuewith2();
+                },
+              ),
               SizedBox(height: 24.v),
               Align(
                 alignment: Alignment.center,
@@ -82,21 +78,19 @@ class SignupScreen extends GetWidget<SignupController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                        padding: EdgeInsets.only(top: 2.v),
-                        child: Text("msg_already_have_an".tr,
-                            style: CustomTextStyles.bodyLargeRoboto)),
-                    CustomOutlinedButton(
-                      height: 22.v,
-                      width: 49.h,
-                      text: "lbl_sign_in".tr,
-                      margin: EdgeInsets.only(left: 15.h),
-                      buttonStyle: CustomButtonStyles.outlineLightBlueA,
-                      buttonTextStyle:
-                          CustomTextStyles.titleMediumRobotoLightblueA700,
-                      onTap: () {
+                      padding: EdgeInsets.only(top: 2.v, right: 10),
+                      child: Text("msg_already_have_an".tr,
+                          style: CustomTextStyles.bodyLargeRoboto),
+                    ),
+                    TextButton(
+                      onPressed: () {
                         onTapSignin();
                       },
-                    ),
+                      child: Text(
+                        ' Sign In',
+                        style: TextStyle(color: appTheme.lightBlueA700, fontSize: 12),
+                      ),
+                    )
                   ],
                 ),
               ),

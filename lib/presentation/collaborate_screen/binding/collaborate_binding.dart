@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 class CollaborateBinding extends Bindings {
   @override
   void dependencies() {
+    // Get.put(() => CollaborateController(), permanent: true);
     Get.lazyPut(() => CollaborateController());
   }
 }

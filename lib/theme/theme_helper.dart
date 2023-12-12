@@ -17,6 +17,11 @@ class ThemeHelper {
     'primary': ColorSchemes.primaryColorScheme
   };
 
+  // a map of dark color schemes supported by the app
+  
+
+  
+
   /// Changes the app theme to [_newTheme].
   void changeTheme(String _newTheme) {
     PrefUtils().setThemeData(_newTheme);

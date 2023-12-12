@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
       // initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
       initialRoute:
+          // onboardingCompleted ? AppRoutes.initialRoute : AppRoutes.initialRoute,
           onboardingCompleted ? AppRoutes.artDiscoveryContainerScreen : AppRoutes.initialRoute,
     );
   }

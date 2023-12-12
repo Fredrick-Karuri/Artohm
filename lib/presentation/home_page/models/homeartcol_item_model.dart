@@ -4,13 +4,16 @@ import '../../../core/app_export.dart';
 class HomeartcolItemModel {
   HomeartcolItemModel({
     this.aiArtPushingTex,
+    this.imagePaths,
     this.id,
   }) {
     aiArtPushingTex = aiArtPushingTex ?? Rx("AI Art: Pushing Boundaries");
     id = id ?? Rx("");
+    imagePaths = imagePaths ?? Rx<List<String>>([]);
   }
 
   Rx<String>? aiArtPushingTex;
 
   Rx<String>? id;
+  Rx<List<String>>? imagePaths;
 }

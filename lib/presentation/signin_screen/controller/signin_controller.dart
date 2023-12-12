@@ -17,11 +17,16 @@ class SigninController extends GetxController {
 
   Rx<bool> isShowPassword = true.obs;
 
+  FocusNode emailFocusNode=FocusNode();
+  FocusNode passwordFocusNode=FocusNode();
+
   @override
   void onClose() {
     super.onClose();
     fullNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
   }
 }

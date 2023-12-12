@@ -4,12 +4,73 @@ import 'homeartcol_item_model.dart';
 /// This class defines the variables used in the [home_page],
 /// and is typically used to hold data that is passed between different parts of the application.
 class HomeModel {
-  Rx<List<HomeartcolItemModel>> homeartcolItemList = Rx(
-    List.generate(
-      7,
-      (index) => HomeartcolItemModel(),
+  Rx<List<HomeartcolItemModel>> homeartcolItemList = Rx([
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('Hybrid Art: Bridging Realities'),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1601,
+          ImageConstant.imgRectangle11200x1601,
+          ImageConstant.imgRectangle11200x1601,
+        ],
+      ),
     ),
-  );
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('Traditional Art: Timeless Craftsmanship '),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1602,
+          ImageConstant.imgRectangle11200x1602,
+          ImageConstant.imgRectangle11200x1602,
+        ],
+      ),
+    ),
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('From Artists you follow '),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1603,
+          ImageConstant.imgRectangle11200x1603,
+          ImageConstant.imgRectangle11200x1603,
+        ],
+      ),
+    ),
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('Abstract art '),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1604,
+          ImageConstant.imgRectangle11200x1604,
+          ImageConstant.imgRectangle11200x1604,
+        ],
+      ),
+    ),
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('African art '),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1605,
+          ImageConstant.imgRectangle11200x1605,
+          ImageConstant.imgRectangle11200x1605,
+        ],
+      ),
+    ),
+    HomeartcolItemModel(
+      aiArtPushingTex: Rx('Pop art'),
+      imagePaths: Rx(
+        [
+          ImageConstant.imgRectangle11200x1606,
+          ImageConstant.imgRectangle11200x1606,
+          ImageConstant.imgRectangle11200x1606,
+        ],
+      ),
+    ),
+  ]
+      // List.generate(
+      //   7,
+      //   (index) => HomeartcolItemModel(),
+      // ),
+      );
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx([
     SelectionPopupModel(
       id: 1,

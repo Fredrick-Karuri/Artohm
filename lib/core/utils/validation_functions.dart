@@ -1,73 +1,72 @@
 /// Checks if string consist only Alphabet. (No Whitespace)
-bool isText(
-  String? inputString, {
-  bool isRequired = false,
-}) {
-  bool isInputStringValid = false;
-
+String? isText(String? inputString, {bool isRequired = false}) {
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
-    isInputStringValid = true;
+    return null;
   }
 
   if (inputString != null && inputString.isNotEmpty) {
-    const pattern = r'^[a-zA-Z]+$';
-
+    const pattern = r'^[a-zA-Z\s]+$';
     final regExp = RegExp(pattern);
 
-    isInputStringValid = regExp.hasMatch(inputString);
+    if (!regExp.hasMatch(inputString)) {
+      return 'Name must contain only letters and spaces';
+    }
   }
 
-  return isInputStringValid;
+  return null;
 }
 
-/// Checks if string is email.
-bool isValidEmail(
-  String? inputString, {
-  bool isRequired = false,
-}) {
-  bool isInputStringValid = false;
 
+/// Checks if string is email.
+String? isValidEmail(String? inputString, {bool isRequired = false}) {
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
-    isInputStringValid = true;
+    return null;
   }
 
   if (inputString != null && inputString.isNotEmpty) {
     const pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-
     final regExp = RegExp(pattern);
 
-    isInputStringValid = regExp.hasMatch(inputString);
+    if (!regExp.hasMatch(inputString)) {
+      if (!inputString.contains('@')) {
+        return 'Email must contain @';
+      } else if (!inputString.contains('.')) {
+        return 'Email must contain a domain';
+      } else {
+        return 'Please enter a valid email';
+      }
+    }
   }
 
-  return isInputStringValid;
+  return null;
 }
 
-/// Password should have,
-/// at least a upper case letter
-///  at least a lower case letter
-///  at least a digit
-///  at least a special character [@#$%^&+=]
-///  length of at least 4
-/// no white space allowed
-bool isValidPassword(
-  String? inputString, {
-  bool isRequired = false,
-}) {
-  bool isInputStringValid = false;
 
+String? isValidPassword(String? inputString, {bool isRequired = false}) {
   if (!isRequired && (inputString == null ? true : inputString.isEmpty)) {
-    isInputStringValid = true;
+    return null;
   }
 
   if (inputString != null && inputString.isNotEmpty) {
-    const pattern =
-        r'^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$';
-
-    final regExp = RegExp(pattern);
-
-    isInputStringValid = regExp.hasMatch(inputString);
+    if (inputString.length < 8) {
+      return 'Password must be at least 8 characters long';
+    } else if (!RegExp(r'^(?=.*?[A-Z])').hasMatch(inputString)) {
+      return 'Password must contain at least one upper case letter';
+    } else if (!RegExp(r'^(?=.*?[a-z])').hasMatch(inputString)) {
+      return 'Password must contain at least one lower case letter';
+    } else if (!RegExp(r'^(?=.*?[\d])').hasMatch(inputString)) {
+      return 'Password must contain at least one digit';
+    } else if (!RegExp(r'^(?=.*?[\\@\\#\\$\\%\\^\\&\\+\\=])')
+        .hasMatch(inputString)) {
+      return r'Password must contain at least one special character [@#$%^&+=]';
+    } else if (RegExp(r'^(?=.*?\s)').hasMatch(inputString)) {
+      return 'Password must not contain white space';
+    }
   }
 
-  return isInputStringValid;
+  return null;
 }
+
+
+

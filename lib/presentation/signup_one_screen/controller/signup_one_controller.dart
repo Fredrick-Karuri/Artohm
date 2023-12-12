@@ -13,7 +13,7 @@ class SignupOneController extends GetxController {
 
   TextEditingController passwordController = TextEditingController();
 
-  TextEditingController confirmpasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
 
   Rx<SignupOneModel> signupOneModelObj = SignupOneModel().obs;
 
@@ -21,12 +21,21 @@ class SignupOneController extends GetxController {
 
   Rx<bool> isShowPassword1 = true.obs;
 
+  FocusNode fullNameFocusNode =FocusNode();
+  FocusNode emailFocusNode =FocusNode();
+  FocusNode passwordFocusNode =FocusNode();
+  FocusNode confirmPasswordFocusNode =FocusNode();
+
   @override
   void onClose() {
     super.onClose();
     fullNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-    confirmpasswordController.dispose();
+    confirmPasswordController.dispose();
+    fullNameFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+    confirmPasswordFocusNode.dispose();
   }
 }

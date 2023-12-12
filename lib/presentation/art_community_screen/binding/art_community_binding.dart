@@ -8,6 +8,6 @@ import 'package:get/get.dart';
 class ArtCommunityBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ArtCommunityController());
+    Get.put(() => ArtCommunityController(), permanent: true);
   }
 }

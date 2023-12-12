@@ -43,7 +43,7 @@ class ListingCard extends StatelessWidget {
                   width: 244.h,
                   child: Text(
                     title,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.titleSmall!.copyWith(height: 1.40),
                   ),
@@ -80,6 +80,8 @@ class ListingCard extends StatelessWidget {
                       child: Text(
                         subtitle,
                         style: theme.textTheme.bodyMedium,
+                         maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
@@ -108,9 +110,6 @@ class ListingCard extends StatelessWidget {
                   onTap: onButtonPressed,
                   width: 250.h,
                   text: 'Curious...',
-                  // margin: EdgeInsets.only(left: 8.h),
-                  // buttonStyle: CustomButtonStyles.outlineLightBlueATL15,
-                  // buttonTextStyle: theme.textTheme.labelLarge!
                 ),
               ],
             ),

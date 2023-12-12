@@ -33,6 +33,20 @@ class ModalScreenState extends State<ModalScreen> {
       builder: (BuildContext context) {
         return SingleChildScrollView(
           child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xFFFEE9E9),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+              border: Border.all(
+                color: Color.fromRGBO(245, 140, 140, 0.075),
+                width: 1.5,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromRGBO(0, 0, 0, 0.16),
+                  blurRadius: 4.0,
+                ),
+              ],
+            ),
             // decoration: BoxDecoration(color: theme.primaryColorLight),
             padding: EdgeInsets.symmetric(
               horizontal: 15.h,
@@ -82,7 +96,8 @@ class ModalScreenState extends State<ModalScreen> {
                   margin: EdgeInsets.only(
                     left: 16.h,
                     right: 16.h,
-                    bottom: 24.v,
+                    bottom: 16.v,
+                    top: 16.v
                   ),
                   buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
                 ),

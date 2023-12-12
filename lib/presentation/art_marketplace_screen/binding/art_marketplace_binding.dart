@@ -8,6 +8,6 @@ import 'package:get/get.dart';
 class ArtMarketplaceBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ArtMarketplaceController());
+    Get.put(( ) => ArtMarketplaceController(), permanent:true);
   }
 }

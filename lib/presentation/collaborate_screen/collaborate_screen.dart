@@ -29,13 +29,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBarComponent(title: "lbl_collaborate".tr),
-
         body: BodyContent(),
-
-        // bottomNavigationBar:
-        //     CustomBottomBar(onChanged: (BottomBarEnum type) {
-        //   Get.toNamed(getCurrentRoute(type), id: 1);
-        // })
       ),
     );
   }
@@ -73,20 +67,19 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     );
   }
 
-  Column mediums() {
+  mediums() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("lbl_mediums".tr, style: theme.textTheme.bodyMedium),
-        SizedBox(height: 7.v),
+        Text("lbl_mediums".tr, style: theme.textTheme.titleMedium),
+        SizedBox(height: 6.v),
         CustomDropDown(
           width: 160.h,
-          icon: Container(
-              margin: EdgeInsets.fromLTRB(30.h, 16.v, 16.h, 14.v),
-              child: CustomImageView(svgPath: ImageConstant.imgArrowdown)),
+          
           hintText: "lbl_painting".tr,
           hintStyle: theme.textTheme.labelLarge!,
           items: controller.collaborateModelObj.value.dropdownItemList!.value,
-          contentPadding: EdgeInsets.only(left: 16.h, top: 11.v, bottom: 11.v),
+          contentPadding: EdgeInsets.only(left: 16.h, top: 11.v, bottom: 11.v, right: 8.v),
           borderDecoration: DropDownStyleHelper.fillLightBlueA,
           filled: true,
           fillColor: appTheme.lightBlueA700.withOpacity(0.08),
@@ -98,20 +91,25 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     );
   }
 
-  Obx artStyles() {
-    return Obx(() => Wrap(
+   artStyles() {
+    return Obx(
+      () => Wrap(
         runSpacing: 8.v,
         spacing: 8.h,
         children: List<Widget>.generate(
-            controller.collaborateModelObj.value.chipviewselectItemList.value
-                .length, (index) {
-          ChipviewselectItemModel model = controller
-              .collaborateModelObj.value.chipviewselectItemList.value[index];
-          return ChipviewselectItemWidget(model);
-        })));
+          controller
+              .collaborateModelObj.value.chipviewselectItemList.value.length,
+          (index) {
+            ChipviewselectItemModel model = controller
+                .collaborateModelObj.value.chipviewselectItemList.value[index];
+            return ChipviewselectItemWidget(model);
+          },
+        ),
+      ),
+    );
   }
 
-  SingleChildScrollView collaborateListings() {
+  collaborateListings() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: IntrinsicWidth(
@@ -146,7 +144,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     );
   }
 
-  Container FeaturedArtCollaborationCard() {
+  FeaturedArtCollaborationCard() {
     return Container(
       margin: EdgeInsets.only(right: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),

@@ -1,4 +1,5 @@
 import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
+import 'package:artohmapp/widgets/upcoming_events.dart';
 
 import '../../widgets/custom_appbar_component.dart';
 import 'controller/artist_profile_controller.dart';
@@ -33,7 +34,11 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
           padding: EdgeInsets.only(left: 10.h, bottom: 5.v),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [aboutArtist(), artworks(), events(context)],
+            children: [
+              aboutArtist(),
+              artworks(),
+              events(context),
+            ],
           ),
         ),
       ),
@@ -52,99 +57,26 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
-                  height: 200.v,
-                  width: 260.h,
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      CustomImageView(
-                          imagePath: ImageConstant.imgRectangle11200x260,
-                          height: 200.v,
-                          width: 260.h,
-                          radius: BorderRadius.circular(8.h),
-                          alignment: Alignment.center),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 158.v),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 19.h, vertical: 4.v),
-                          decoration: AppDecoration.fillPrimary.copyWith(
-                              borderRadius: BorderRadiusStyle.customBorderBL8),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 144.h,
-                                child: Text(
-                                  "msg_art_unveiling_exploring".tr,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: CustomTextStyles.labelLargeWhiteA700
-                                      .copyWith(height: 1.40),
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {
-                                  ModalScreenState.showModal(context);
-                                },
-                                icon: Icon(Icons.more_vert),
-                                color: Colors.white,
-                                // iconSize: 28,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                UpcomingEventsCard(
+                  onTap: () {
+                    ModalScreenState.showModal(context);
+                  },
+                  imagePath: ImageConstant.imgRectangle11200x260,
+                  text: "msg_art_unveiling_exploring".tr,
                 ),
-                Container(
-                  height: 200.v,
-                  width: 260.h,
-                  margin: EdgeInsets.only(left: 16.h),
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: [
-                      CustomImageView(
-                          imagePath: ImageConstant.imgRectangle11200x260,
-                          height: 200.v,
-                          width: 260.h,
-                          radius: BorderRadius.circular(8.h),
-                          alignment: Alignment.center),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          margin: EdgeInsets.only(top: 158.v),
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20.h, vertical: 4.v),
-                          decoration: AppDecoration.fillPrimary.copyWith(
-                              borderRadius: BorderRadiusStyle.customBorderBL8),
-                          child: Row(
-                            children: [
-                              SizedBox(
-                                  width: 144.h,
-                                  child: Text("msg_art_unveiling_exploring".tr,
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: CustomTextStyles
-                                          .labelLargeWhiteA700
-                                          .copyWith(height: 1.40))),
-                              CustomImageView(
-                                svgPath: ImageConstant.imgIconsWhiteA700,
-                                height: 20.v,
-                                width: 4.h,
-                                margin: EdgeInsets.only(
-                                    left: 54.h, top: 6.v, bottom: 6.v),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                UpcomingEventsCard(
+                  onTap: () {
+                    ModalScreenState.showModal(context);
+                  },
+                  imagePath: ImageConstant.imgRectangle11200x260,
+                  text: "msg_art_unveiling_exploring".tr,
+                ),
+                UpcomingEventsCard(
+                  onTap: () {
+                    ModalScreenState.showModal(context);
+                  },
+                  imagePath: ImageConstant.imgRectangle11200x260,
+                  text: "msg_art_unveiling_exploring".tr,
                 ),
               ],
             ),
@@ -154,7 +86,7 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
     );
   }
 
-  Column artworks() {
+  artworks() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -177,15 +109,21 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
                         child: Stack(
                           alignment: Alignment.bottomRight,
                           children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgRectangle1117,
-                                height: 200.v,
-                                width: 160.h,
-                                radius: BorderRadius.circular(8.h),
-                                alignment: Alignment.center,
-                                onTap: () {
-                                  onTapImgImageoneoneone();
-                                }),
+                            Hero(
+                              tag: 'artworkImage',
+                              child: Material(
+                                type: MaterialType.transparency,
+                                child: CustomImageView(
+                                    imagePath: ImageConstant.imgRectangle1117,
+                                    height: 200.v,
+                                    width: 160.h,
+                                    radius: BorderRadius.circular(8.h),
+                                    alignment: Alignment.center,
+                                    onTap: () {
+                                      onTapImgImageoneoneone();
+                                    }),
+                              ),
+                            ),
                             CustomImageView(
                                 svgPath: ImageConstant.imgIconsWhiteA700,
                                 height: 20.v,
@@ -257,7 +195,7 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
     );
   }
 
-  Column aboutArtist() {
+  aboutArtist() {
     return Column(
       // crossAxisAlignment: CrossAxisAlignment.start,
 

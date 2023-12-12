@@ -1,3 +1,5 @@
+import 'package:artohmapp/widgets/custom_outlined_button.dart';
+
 import '../../widgets/custom_appbar_component.dart';
 import '../collaborateitem_screen/widgets/chipviewcont2_item_widget.dart';
 import '../collaborateitem_screen/widgets/chipviewcont_item_widget.dart';
@@ -20,245 +22,336 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
             appBar: CustomAppBarComponent(
               hasTitle: false,
             ),
-            body: SizedBox(
-                width: double.maxFinite,
-                child: SingleChildScrollView(
-                    child: Column(children: [
-                  Container(
-                      margin:
-                          EdgeInsets.only(left: 18.h, top: 7.v, right: 14.h),
-                      padding: EdgeInsets.all(8.h),
-                      decoration: AppDecoration.outlineGray.copyWith(
-                          borderRadius: BorderRadiusStyle.roundedBorder8),
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgRectangle11,
-                                height: 180.v,
-                                width: 342.h,
-                                radius: BorderRadius.circular(8.h)),
-                            Padding(
-                                padding: EdgeInsets.only(left: 10.h, top: 12.v),
-                                child: Text("msg_harmony_of_nature".tr,
-                                    style: theme.textTheme.titleSmall)),
-                            Padding(
-                                padding: EdgeInsets.only(left: 10.h, top: 7.v),
-                                child: Row(children: [
-                                  SizedBox(
-                                      height: 30.v,
-                                      width: 45.h,
-                                      child: Stack(
-                                          alignment: Alignment.centerRight,
-                                          children: [
-                                            CustomImageView(
-                                                imagePath: ImageConstant
-                                                    .imgEllipse130x30,
-                                                height: 30.adaptSize,
-                                                width: 30.adaptSize,
-                                                radius:
-                                                    BorderRadius.circular(15.h),
-                                                alignment:
-                                                    Alignment.centerLeft),
-                                            CustomImageView(
-                                                imagePath:
-                                                    ImageConstant.imgEllipse11,
-                                                height: 30.adaptSize,
-                                                width: 30.adaptSize,
-                                                radius:
-                                                    BorderRadius.circular(15.h),
-                                                alignment:
-                                                    Alignment.centerRight)
-                                          ])),
-                                  Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 12.h, top: 7.v, bottom: 5.v),
-                                      child: Text("msg_sarah_smith_david2".tr,
-                                          style: theme.textTheme.bodyMedium))
-                                ])),
-                            Padding(
-                                padding: EdgeInsets.only(left: 10.h, top: 9.v),
-                                child: Text("msg_july_8_august".tr,
-                                    style: CustomTextStyles.bodyMediumLight)),
-                            Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                    width: 322.h,
-                                    margin: EdgeInsets.fromLTRB(
-                                        10.h, 8.v, 10.h, 5.v),
-                                    child: Text("msg_sarah_s_intricate".tr,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: CustomTextStyles
-                                            .bodyMediumBlack90001
-                                            .copyWith(height: 1.50))))
-                          ])),
-                  Container(
-                      margin:
-                          EdgeInsets.only(left: 18.h, top: 46.v, right: 14.h),
-                      decoration: AppDecoration.fillWhiteA,
-                      child: Column(children: [
-                        Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 15.h, vertical: 8.v),
-                            decoration: AppDecoration.fillPrimary.copyWith(
-                                borderRadius: BorderRadiusStyle.roundedBorder8),
-                            child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
+            body: bodyContent()));
+  }
+
+  bodyContent() {
+    return SizedBox(
+      width: double.maxFinite,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 18.h, top: 7.v, right: 14.h),
+              padding: EdgeInsets.all(8.h),
+              decoration: AppDecoration.outlineGray
+                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomImageView(
+                      imagePath: ImageConstant.imgRectangle11,
+                      height: 180.v,
+                      width: 342.h,
+                      radius: BorderRadius.circular(8.h)),
+                  Padding(
+                      padding: EdgeInsets.only(left: 10.h, top: 12.v),
+                      child: Text("msg_harmony_of_nature".tr,
+                          style: theme.textTheme.titleSmall)),
+                  Padding(
+                      padding: EdgeInsets.only(left: 10.h, top: 7.v),
+                      child: Row(children: [
+                        SizedBox(
+                            height: 30.v,
+                            width: 45.h,
+                            child: Stack(
+                                alignment: Alignment.centerRight,
                                 children: [
-                                  SizedBox(height: 2.v),
-                                  Text("msg_collaboration_agenda".tr,
-                                      style: theme.textTheme.titleMedium),
-                                  SizedBox(height: 9.v),
-                                  SizedBox(
-                                      width: 324.h,
-                                      child: Text("msg_blending_digital".tr,
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: CustomTextStyles
-                                              .bodyLargeBlack90001
-                                              .copyWith(height: 1.50))),
-                                  SizedBox(height: 15.v),
-                                  Obx(() => Wrap(
-                                      runSpacing: 8.v,
-                                      spacing: 8.h,
-                                      children: List<Widget>.generate(
-                                          controller
-                                              .collaborateitemModelObj
-                                              .value
-                                              .chipviewcontItemList
-                                              .value
-                                              .length, (index) {
-                                        ChipviewcontItemModel model = controller
-                                            .collaborateitemModelObj
-                                            .value
-                                            .chipviewcontItemList
-                                            .value[index];
-                                        return ChipviewcontItemWidget(model);
-                                      }))),
-                                  SizedBox(height: 16.v),
-                                  Text("lbl_materials_used".tr,
-                                      style: theme.textTheme.titleSmall),
-                                  SizedBox(height: 9.v),
-                                  Obx(() => Wrap(
-                                      runSpacing: 8.v,
-                                      spacing: 8.h,
-                                      children: List<Widget>.generate(
-                                          controller
-                                              .collaborateitemModelObj
-                                              .value
-                                              .chipviewcont2ItemList
-                                              .value
-                                              .length, (index) {
-                                        Chipviewcont2ItemModel model =
-                                            controller
-                                                .collaborateitemModelObj
-                                                .value
-                                                .chipviewcont2ItemList
-                                                .value[index];
-                                        return Chipviewcont2ItemWidget(model);
-                                      }))),
-                                  SizedBox(height: 16.v),
-                                  Text("lbl_artwork_outcome".tr,
-                                      style: theme.textTheme.titleSmall),
-                                  SizedBox(height: 13.v),
-                                  Text("msg_a_digital_artistic".tr,
-                                      style: CustomTextStyles
-                                          .bodyMediumBlack90001_4)
-                                ])),
-                        SizedBox(height: 16.v),
-                        CustomElevatedButton(
-                            height: 35.v, text: "msg_join_collaboration".tr)
-                      ])),
-                  Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                          padding: EdgeInsets.only(left: 18.h, top: 48.v),
-                          child: Text("msg_participating_artists".tr,
-                              style: theme.textTheme.titleMedium))),
-                  SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      padding:
-                          EdgeInsets.only(left: 18.h, top: 15.v, bottom: 31.v),
-                      child: IntrinsicWidth(
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                            Expanded(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                  Column(children: [
-                                    CustomImageView(
-                                        imagePath:
-                                            ImageConstant.imgEllipse180x80,
-                                        height: 80.adaptSize,
-                                        width: 80.adaptSize,
-                                        radius: BorderRadius.circular(40.h)),
-                                    SizedBox(height: 8.v),
-                                    Text("lbl_sarah_smith".tr,
-                                        style: theme.textTheme.titleSmall),
-                                    SizedBox(height: 11.v),
-                                    SizedBox(
-                                        width: 157.h,
-                                        child: Text("msg_a_digital_artist".tr,
-                                            maxLines: 3,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: CustomTextStyles
-                                                .bodySmallLatoBlack90001
-                                                .copyWith(height: 1.50)))
-                                  ]),
-                                  Padding(
-                                      padding: EdgeInsets.only(left: 18.h),
-                                      child: Column(children: [
-                                        CustomImageView(
-                                            imagePath:
-                                                ImageConstant.imgEllipse180x80,
-                                            height: 80.adaptSize,
-                                            width: 80.adaptSize,
-                                            radius:
-                                                BorderRadius.circular(40.h)),
-                                        SizedBox(height: 8.v),
-                                        Text("lbl_sarah_smith".tr,
-                                            style: theme.textTheme.titleSmall),
-                                        SizedBox(height: 11.v),
-                                        SizedBox(
-                                            width: 157.h,
-                                            child: Text(
-                                                "msg_a_digital_artist".tr,
-                                                maxLines: 3,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: CustomTextStyles
-                                                    .bodySmallLatoBlack90001
-                                                    .copyWith(height: 1.50)))
-                                      ]))
-                                ])),
-                            Padding(
-                                padding: EdgeInsets.only(left: 18.h),
-                                child: Column(children: [
                                   CustomImageView(
-                                      imagePath: ImageConstant.imgEllipse180x80,
-                                      height: 80.adaptSize,
-                                      width: 80.adaptSize,
-                                      radius: BorderRadius.circular(40.h)),
-                                  SizedBox(height: 8.v),
-                                  Text("lbl_sarah_smith".tr,
-                                      style: theme.textTheme.titleSmall),
-                                  SizedBox(height: 10.v),
-                                  SizedBox(
-                                      width: 160.h,
-                                      child: Text("msg_a_digital_artist".tr,
-                                          maxLines: 3,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: CustomTextStyles
-                                              .bodySmallLatoBlack90001
-                                              .copyWith(height: 1.50)))
-                                ]))
-                          ])))
-                ])))));
+                                      imagePath: ImageConstant.imgEllipse130x30,
+                                      height: 30.adaptSize,
+                                      width: 30.adaptSize,
+                                      radius: BorderRadius.circular(15.h),
+                                      alignment: Alignment.centerLeft),
+                                  CustomImageView(
+                                      imagePath: ImageConstant.imgEllipse11,
+                                      height: 30.adaptSize,
+                                      width: 30.adaptSize,
+                                      radius: BorderRadius.circular(15.h),
+                                      alignment: Alignment.centerRight)
+                                ])),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: 12.h, top: 7.v, bottom: 5.v),
+                            child: Text("msg_sarah_smith_david2".tr,
+                                style: theme.textTheme.bodyMedium))
+                      ])),
+                  Padding(
+                      padding: EdgeInsets.only(left: 10.h, top: 9.v),
+                      child: Text("msg_july_8_august".tr,
+                          style: CustomTextStyles.bodyMediumLight)),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 322.h,
+                      margin: EdgeInsets.fromLTRB(10.h, 8.v, 10.h, 5.v),
+                      child: Text(
+                        "msg_sarah_s_intricate".tr,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: CustomTextStyles.bodyMediumBlack90001
+                            .copyWith(height: 1.50),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 18.h, top: 46.v, right: 14.h),
+              decoration: AppDecoration.fillWhiteA,
+              child: Column(
+                children: [
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 15.h, vertical: 8.v),
+                    decoration: AppDecoration.fillPrimary.copyWith(
+                        borderRadius: BorderRadiusStyle.roundedBorder8),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 2.v),
+                        Text("msg_collaboration_agenda".tr,
+                            style: theme.textTheme.titleMedium),
+                        SizedBox(height: 9.v),
+                        SizedBox(
+                            width: 324.h,
+                            child: Text("msg_blending_digital".tr,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                                style: CustomTextStyles.bodyLargeBlack90001
+                                    .copyWith(height: 1.50))),
+                        SizedBox(height: 15.v),
+                        Obx(
+                          () => Wrap(
+                            runSpacing: 8.v,
+                            spacing: 8.h,
+                            children: List<Widget>.generate(
+                              controller.collaborateitemModelObj.value
+                                  .chipviewcontItemList.value.length,
+                              (index) {
+                                ChipviewcontItemModel model = controller
+                                    .collaborateitemModelObj
+                                    .value
+                                    .chipviewcontItemList
+                                    .value[index];
+                                return ChipviewcontItemWidget(model);
+                              },
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 16.v),
+                        Text("lbl_materials_used".tr,
+                            style: theme.textTheme.titleSmall),
+                        SizedBox(height: 9.v),
+                        Obx(() => Wrap(
+                            runSpacing: 8.v,
+                            spacing: 8.h,
+                            children: List<Widget>.generate(
+                                controller
+                                    .collaborateitemModelObj
+                                    .value
+                                    .chipviewcont2ItemList
+                                    .value
+                                    .length, (index) {
+                              Chipviewcont2ItemModel model = controller
+                                  .collaborateitemModelObj
+                                  .value
+                                  .chipviewcont2ItemList
+                                  .value[index];
+                              return Chipviewcont2ItemWidget(model);
+                            }))),
+                        SizedBox(height: 16.v),
+                        Text("lbl_artwork_outcome".tr,
+                            style: theme.textTheme.titleSmall),
+                        SizedBox(height: 13.v),
+                        Text(
+                          "msg_a_digital_artistic".tr,
+                          style: CustomTextStyles.bodyMediumBlack90001_4,
+                        )
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 16.v),
+                  CustomElevatedButton(
+                    onTap: () {
+                      Get.bottomSheet(
+                        Container(
+                          padding:
+                              EdgeInsetsDirectional.only(top: 8, bottom: 8),
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFEE9E9),
+                            borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(20.0)),
+                            border: Border.all(
+                              color: Color.fromRGBO(245, 140, 140, 0.075),
+                              width: 1.5,
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromRGBO(0, 0, 0, 0.16),
+                                blurRadius: 4.0,
+                              ),
+                            ],
+                          ),
+                          child: Wrap(
+                            children: <Widget>[
+                              ListTile(
+                                title: Text('Continue to Collaborate',style: CustomTextStyles.titleSmallBlack90001,
+                                    textAlign: TextAlign.center),
+                              ),
+                              Divider(),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 8, right: 8, top: 16),
+                                child: Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: CustomOutlinedButton(
+                                        text: 'Cancel',
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                      ),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Expanded(
+                                      child: CustomElevatedButton(
+                                        text: "I'm In",
+                                        onTap: () {
+                                          Get.back();
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                    height: 40.v,
+                    text: "msg_join_collaboration".tr,
+                  )
+                ],
+              ),
+            ),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                    padding: EdgeInsets.only(left: 18.h, top: 48.v),
+                    child: Text("msg_participating_artists".tr,
+                        style: theme.textTheme.titleMedium))),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.only(left: 18.h, top: 15.v, bottom: 31.v),
+              child: IntrinsicWidth(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Column(
+                            children: [
+                              CustomImageView(
+                                  imagePath: ImageConstant.imgEllipse180x80,
+                                  height: 80.adaptSize,
+                                  width: 80.adaptSize,
+                                  radius: BorderRadius.circular(40.h)),
+                              SizedBox(height: 8.v),
+                              Text("lbl_sarah_smith".tr,
+                                  style: theme.textTheme.titleSmall),
+                              SizedBox(height: 11.v),
+                              SizedBox(
+                                width: 157.h,
+                                child: Text(
+                                  "msg_a_digital_artist".tr,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: CustomTextStyles
+                                      .bodySmallLatoBlack90001
+                                      .copyWith(
+                                    height: 1.50,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 18.h),
+                            child: Column(
+                              children: [
+                                CustomImageView(
+                                    imagePath: ImageConstant.imgEllipse180x80,
+                                    height: 80.adaptSize,
+                                    width: 80.adaptSize,
+                                    radius: BorderRadius.circular(40.h)),
+                                SizedBox(height: 8.v),
+                                Text("lbl_sarah_smith".tr,
+                                    style: theme.textTheme.titleSmall),
+                                SizedBox(height: 11.v),
+                                SizedBox(
+                                  width: 157.h,
+                                  child: Text(
+                                    "msg_a_digital_artist".tr,
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: CustomTextStyles
+                                        .bodySmallLatoBlack90001
+                                        .copyWith(
+                                      height: 1.50,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 18.h),
+                      child: Column(
+                        children: [
+                          CustomImageView(
+                            imagePath: ImageConstant.imgEllipse180x80,
+                            height: 80.adaptSize,
+                            width: 80.adaptSize,
+                            radius: BorderRadius.circular(40.h),
+                          ),
+                          SizedBox(height: 8.v),
+                          Text("lbl_sarah_smith".tr,
+                              style: theme.textTheme.titleSmall),
+                          SizedBox(height: 10.v),
+                          SizedBox(
+                            width: 160.h,
+                            child: Text(
+                              "msg_a_digital_artist".tr,
+                              maxLines: 3,
+                              overflow: TextOverflow.ellipsis,
+                              style: CustomTextStyles.bodySmallLatoBlack90001
+                                  .copyWith(
+                                height: 1.50,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   /// Navigates to the previous screen.

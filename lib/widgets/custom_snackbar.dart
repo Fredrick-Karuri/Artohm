@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomSnackBar {
   static show(BuildContext context, String message, IconData? leadingIcon,
-      String? buttonText, String? routeName) {
+      String? buttonText) {
     final snackBar = SnackBar(
       backgroundColor: Color(0xFFFEE9E9), // Your background color
       behavior: SnackBarBehavior.floating,
@@ -24,11 +24,8 @@ class CustomSnackBar {
             TextButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                if (routeName != null) {
-                  Future.delayed(Duration(milliseconds: 30), () {
-                    Get.toNamed(routeName);
-                  });
-                }
+                Get.back();
+                
               },
               child: Text(buttonText),
             ),
