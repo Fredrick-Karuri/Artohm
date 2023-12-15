@@ -24,7 +24,12 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBarComponent(title: "lbl_market_place2".tr),
+        appBar: CustomAppBarComponent(
+          title: "lbl_market_place2".tr,
+          onBackPressed: () {
+            Get.back(id: 1);
+          },
+        ),
         body: bodyContent(),
       ),
     );
@@ -42,7 +47,10 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(left: 16.h, bottom: 32.v,),
+                padding: EdgeInsets.only(
+                  left: 16.h,
+                  bottom: 32.v,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -124,7 +132,8 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20.v, left: 10, right: 10, bottom: 10),
+              padding:
+                  EdgeInsets.only(top: 20.v, left: 10, right: 10, bottom: 10),
               child: Column(
                 children: [
                   Row(
@@ -194,7 +203,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
       ),
     );
   }
-
 
   /// Navigates to the previous screen.
   ///

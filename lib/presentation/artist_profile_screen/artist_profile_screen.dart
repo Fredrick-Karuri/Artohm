@@ -19,7 +19,12 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBarComponent(title: "lbl_artist".tr),
+        appBar: CustomAppBarComponent(
+          title: "lbl_artist".tr,
+          onBackPressed: () {
+            Get.back();
+          },
+        ),
         body: bodyContent(context),
       ),
     );

@@ -24,6 +24,7 @@ class ListingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 280.v,
       decoration: AppDecoration.outlineGray
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
       child: Column(
@@ -31,21 +32,20 @@ class ListingCard extends StatelessWidget {
         children: [
           CustomImageView(
             imagePath: imagePath,
-            height: 180.v,
-            width: 264.h,
             radius: BorderRadius.circular(8.h),
+            fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: 244.h,
                   child: Text(
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.titleSmall!.copyWith(height: 1.40),
+                    style: theme.textTheme.titleSmall!.copyWith(height: 1.40,),
                   ),
                 ),
                 SizedBox(height: 9.v),
@@ -55,7 +55,7 @@ class ListingCard extends StatelessWidget {
                       height: 30.v,
                       width: 45.h,
                       child: Stack(
-                        alignment: Alignment.centerRight,
+                        // alignment: Alignment.centerRight,
                         children: [
                           CustomImageView(
                             imagePath: ImageConstant.imgEllipse130x30,
@@ -74,14 +74,16 @@ class ListingCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.only(left: 21.h, top: 4.v, bottom: 4.v),
-                      child: Text(
-                        subtitle,
-                        style: theme.textTheme.bodyMedium,
-                         maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+                    Flexible(
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(left: 18.h, top: 4.v, bottom: 4.v),
+                        child: Text(
+                          subtitle,
+                          style: theme.textTheme.bodyMedium,
+                           maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
                   ],
@@ -96,7 +98,7 @@ class ListingCard extends StatelessWidget {
                 ),
                 SizedBox(height: 8.v),
                 SizedBox(
-                  width: 244.h,
+                  // width: 244.h,
                   child: Text(
                     description,
                     maxLines: 2,
@@ -108,7 +110,7 @@ class ListingCard extends StatelessWidget {
                 SizedBox(height: 8.v),
                 CustomElevatedButton(
                   onTap: onButtonPressed,
-                  width: 250.h,
+                  // width: 250.h,
                   text: 'Curious...',
                 ),
               ],

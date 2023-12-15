@@ -29,7 +29,12 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBarComponent(title: "lbl_community2".tr),
+        appBar: CustomAppBarComponent(
+          title: "lbl_community2".tr,
+          onBackPressed: () {
+            Get.back(id: 1);
+          },
+        ),
         body: bodyContent(context),
       ),
     );

@@ -5,43 +5,35 @@ import '../core/utils/image_constant.dart';
 import 'app_bar/appbar_image.dart';
 import 'app_bar/appbar_subtitle_1.dart';
 import 'app_bar/custom_app_bar.dart';
-
-class CustomAppBarComponent extends StatelessWidget
-    implements PreferredSizeWidget {
+class CustomAppBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final bool hasTrailingIcon;
   final IconData trailingIcon;
   final Function onTapTrailingIcon;
   final bool hasTitle;
+  final Function onBackPressed;
 
-  CustomAppBarComponent(
-      {this.title,
-      this.hasTitle = true,
-      this.hasTrailingIcon = false,
-      this.trailingIcon = Icons.settings,
-      this.onTapTrailingIcon = defaultTrailingIconFunction});
+  CustomAppBarComponent({
+    this.title,
+    this.hasTitle = true,
+    this.hasTrailingIcon = false,
+    this.trailingIcon = Icons.settings,
+    this.onTapTrailingIcon = defaultTrailingIconFunction,
+    required this.onBackPressed,
+  });
+
   static void defaultTrailingIconFunction() {}
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       toolbarHeight: 60,
-      // leadingWidth: 48.h,
       leading: IconButton(
         padding: EdgeInsets.only(left: 12),
         icon: Icon(Icons.arrow_back_ios),
-        onPressed: () {
-          final currentState = Get.nestedKey(1)?.currentState;
-          if (currentState != null && currentState.canPop()) {
-            Get.back(id: 1);
-          } else {
-            Get.back();
-          }
-        },
-        // color: theme.primaryColor,
-color: appTheme.red300,
+        onPressed: () => onBackPressed(),
+        color: appTheme.red300,
       ),
-
       title: hasTitle
           ? AppbarSubtitle1(
               text: title ?? '',

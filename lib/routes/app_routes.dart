@@ -1,3 +1,6 @@
+import 'package:artohmapp/presentation/collaborate_start_screen/binding/collaboration_start_binding.dart';
+import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/binding/collaboration_start_confirmation_binding.dart';
+import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/collaboration_start_confirmation_screen.dart';
 import 'package:artohmapp/presentation/home_page/binding/home_page_binding.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:artohmapp/presentation/onboarding_screen/onboarding_screen.dart';
@@ -53,6 +56,7 @@ import 'package:artohmapp/presentation/modal_one_screen/binding/modal_one_bindin
 import 'package:artohmapp/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:artohmapp/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
 import 'package:get/get.dart';
+import 'package:artohmapp/presentation/collaborate_start_screen/collaborate_start_screen.dart';
 
 class AppRoutes {
   static const String onboardingScreen = '/onboarding_screen';
@@ -119,6 +123,9 @@ class AppRoutes {
 
   static const String initialRoute = '/initialRoute';
   static const String splashScreen = '/splashScreen';
+  static const String newCollaborationItemPage = '/collaborate_start_screen';
+  static const String collaborationStartConfirmationPage =
+      '/collaboration_start_confirmation_screen';
 
   static List<GetPage> pages = [
     GetPage(
@@ -126,6 +133,20 @@ class AppRoutes {
       page: () => OnboardingScreen(),
       bindings: [
         OnboardingBinding(),
+      ],
+    ),
+    GetPage(
+      name: newCollaborationItemPage,
+      page: () => NewCollaborationItemPage(),
+      bindings: [
+        NewCollaborationItemBindings(),
+      ],
+    ),
+    GetPage(
+      name: collaborationStartConfirmationPage,
+      page: () => CollaborationStartConfirmationPage(),
+      bindings: [
+        CollaborationStartConfirmationBindings(),
       ],
     ),
     GetPage(
@@ -177,7 +198,6 @@ class AppRoutes {
         UserProfileContainerBinding(),
       ],
     ),
-   
     GetPage(
       name: artistProfileScreen,
       page: () => ArtistProfileScreen(),
@@ -290,7 +310,7 @@ class AppRoutes {
         AppNavigationBinding(),
       ],
     ),
-     GetPage(
+    GetPage(
       name: artDiscoveryContainerScreen,
       page: () => ArtDiscoveryContainerScreen(),
       bindings: [

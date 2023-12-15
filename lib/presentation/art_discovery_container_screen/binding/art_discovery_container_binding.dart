@@ -18,6 +18,12 @@ import 'package:get/get.dart';
 class ArtDiscoveryContainerBinding extends Bindings {
   @override
   void dependencies() {
+    // Get.lazyPut<ArtDiscoveryContainerController>(
+    //     () => ArtDiscoveryContainerController());
+    // Get.lazyPut<ArtCommunityController>(() => ArtCommunityController());
+    // Get.lazyPut<ArtCommunityController>(() => ArtCommunityController());
+    // Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController());
+
     Get.put(ArtDiscoveryContainerController());
     Get.put(ArtCommunityController());
     Get.put(CollaborateController());

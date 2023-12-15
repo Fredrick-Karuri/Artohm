@@ -16,7 +16,12 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: CustomAppBarComponent(title: "msg_notification_settings".tr),
+            appBar: CustomAppBarComponent(
+              title: "msg_notification_settings".tr,
+              onBackPressed: () {
+                Get.back();
+              },
+            ),
             // appBar: CustomAppBar(
             //     leadingWidth: 46.h,
             //     leading: AppbarImage(

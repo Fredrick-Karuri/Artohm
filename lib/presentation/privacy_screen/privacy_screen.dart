@@ -20,7 +20,12 @@ class PrivacyScreen extends GetWidget<PrivacyController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBarComponent(title: "Privacy Settings".tr),
+        appBar: CustomAppBarComponent(
+          title: "Privacy Settings".tr,
+          onBackPressed: () {
+            Get.back();
+          },
+        ),
         body: Container(
           width: double.maxFinite,
           padding: EdgeInsets.symmetric(horizontal: 22.h, vertical: 36.v),

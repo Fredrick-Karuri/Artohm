@@ -22,7 +22,7 @@ class ArtCommunityEngagementScreen
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: CustomAppBarComponent(title: "lbl_engagement".tr),
+        appBar: CustomAppBarComponent(title: "lbl_engagement".tr, onBackPressed: (){Get.back();},),
         body: bodyContent(),
       ),
     );

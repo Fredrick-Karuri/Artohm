@@ -20,6 +20,9 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
     return SafeArea(
         child: Scaffold(
             appBar: CustomAppBarComponent(
+              onBackPressed: () {
+                Get.back();
+              },
               hasTitle: false,
             ),
             body: bodyContent()));
@@ -200,7 +203,9 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                           child: Wrap(
                             children: <Widget>[
                               ListTile(
-                                title: Text('Continue to Collaborate',style: CustomTextStyles.titleSmallBlack90001,
+                                title: Text('Continue to Collaborate',
+                                    style:
+                                        CustomTextStyles.titleSmallBlack90001,
                                     textAlign: TextAlign.center),
                               ),
                               Divider(),

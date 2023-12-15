@@ -18,7 +18,12 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBarComponent(title: "msg_uploaded_artwork".tr),
+        appBar: CustomAppBarComponent(
+          title: "msg_uploaded_artwork".tr,
+          onBackPressed: () {
+            Get.back();
+          },
+        ),
         body: bodyContent(),
         bottomNavigationBar: Padding(
           padding:

@@ -21,6 +21,9 @@ class ArtworkScreen extends GetWidget<ArtworkController> {
         resizeToAvoidBottomInset: true,
         appBar: CustomAppBarComponent(
           hasTitle: false,
+          onBackPressed: () {
+            Get.back();
+          },
         ),
         body: bodyContent(),
       ),

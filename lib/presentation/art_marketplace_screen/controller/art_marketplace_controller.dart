@@ -9,6 +9,10 @@ class ArtMarketplaceController extends GetxController {
   Rx<ArtMarketplaceModel> artMarketplaceModelObj = ArtMarketplaceModel().obs;
 
   void filterArt(String id){
-    // logic to filter art based on id
+
+    // logic to filter art based on id 
+    
+
+
   }
 }

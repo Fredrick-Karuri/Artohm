@@ -19,7 +19,12 @@ class SettingsScreen extends GetWidget<SettingsController> {
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-      appBar: CustomAppBarComponent(title: "lbl_settings".tr) ,
+            appBar: CustomAppBarComponent(
+              title: "lbl_settings".tr,
+              onBackPressed: () {
+                Get.back();
+              },
+            ),
 
             // appBar: CustomAppBar(
             //     leadingWidth: 46.h,

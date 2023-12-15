@@ -26,6 +26,9 @@ class UserProfileContainerScreen
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBarComponent(
+          onBackPressed: () {
+            Get.back();
+          },
           title: "lbl_profile".tr,
           hasTrailingIcon: true,
           onTapTrailingIcon: () {
