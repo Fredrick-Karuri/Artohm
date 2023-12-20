@@ -1,6 +1,4 @@
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/profile_info.dart';
-
-import '../../widgets/app_bar/appbar_subtitle_1.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
@@ -8,10 +6,6 @@ import 'controller/user_profile_container_controller.dart';
 import 'models/collection_item_model.dart';
 import 'models/enchantedforest_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
@@ -35,38 +29,6 @@ class UserProfileContainerScreen
             onTapProfileicons();
           },
         ),
-
-        // appBar: CustomAppBar(
-        //     leadingWidth: 46.h,
-
-        //     leading: AppbarImage(
-        //         svgPath: ImageConstant.imgArrowleftRed300,
-        //         margin: EdgeInsets.only(
-        //           left: 18.h,
-        //         ),
-        //         onTap: () {
-        //           Navigator.pop(context);
-        //         }),
-        //     // title: AppbarTitle(
-        //     title: AppbarSubtitle1(
-
-        //         text: "lbl_profile".tr,
-        //         margin: EdgeInsets.only(
-        //           left: 36.h,
-        //         )),
-        //     actions: [
-        //       Padding(
-        //         padding: EdgeInsets.fromLTRB(9.h, 9.v, 9.h, 9.v),
-        //         child: AppbarImage1(
-        //           svgPath: ImageConstant.imgProfileicons,
-        //           margin: EdgeInsets.only( right: 24.h),
-        //           onTap: () {
-        //             onTapProfileicons();
-        //           },
-        //         ),
-        //       ),
-        //     ],
-        //     styleType: Style.bgFill),
         body: SizedBox(
           width: mediaQueryData.size.width,
           child: SingleChildScrollView(
@@ -78,10 +40,10 @@ class UserProfileContainerScreen
                 children: [
                   profileInfoCard(),
                   yourWork(),
-                  collections(),
-                  SizedBox(
-                    height: 24,
-                  ),
+                  SizedBox(height: 24),
+                  // collections(),
+                  buildCollectionsWidget(),
+                  SizedBox(height: 24),
                   communityEngagement(),
                 ],
               ),
@@ -92,56 +54,58 @@ class UserProfileContainerScreen
     );
   }
 
-  collections() {
+  buildCollectionsWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 4.h, top: 53.v),
-          child: Text("lbl_collections".tr, style: theme.textTheme.titleMedium),
-        ),
-        SizedBox(height: 17.v),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Row(
-            children: [
-              Flexible(
-                child: SizedBox(
-                  height: 200.v,
-                  // height: double.infinity,
-                  child: Obx(
-                    () => ListView.separated(
-                      padding: EdgeInsets.symmetric(horizontal: 16.h),
-                      scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) {
-                        return SizedBox(width: 16.h);
-                      },
-                      itemCount: controller.userProfileContainerModelObj.value
-                          .collectionItemList.value.length,
-                      itemBuilder: (context, index) {
-                        CollectionItemModel model = controller
-                            .userProfileContainerModelObj
-                            .value
-                            .collectionItemList
-                            .value[index];
-                        return CollectionItemWidget(model);
-                      },
-                    ),
-                  ),
-                ),
-              ),
-            ],
+          padding: EdgeInsets.only(left: 4.h),
+          child: Text(
+            "lbl_collections".tr,
+            style: theme.textTheme.titleMedium,
           ),
         ),
+        SizedBox(height: 17.v),
+        buildCollectionList(),
         CustomOutlinedButton(
           text: "msg_create_collection".tr,
           margin: EdgeInsets.only(top: 23.v, right: 16.h),
           buttonTextStyle: CustomTextStyles.titleSmallRobotoRed300,
-          onTap: () {
-            onTapCreate();
-          },
+          onTap: onTapCreate,
         ),
       ],
+    );
+  }
+
+  buildCollectionList() {
+    return Align(
+      child: Row(
+        children: [
+          Flexible(
+            child: SizedBox(
+              height: 200.v,
+              child: Obx(
+                () => ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  separatorBuilder: (context, index) {
+                    return SizedBox(width: 16.h);
+                  },
+                  itemCount: controller.userProfileContainerModelObj.value
+                      .collectionItemList.value.length,
+                  itemBuilder: (context, index) {
+                    CollectionItemModel model = controller
+                        .userProfileContainerModelObj
+                        .value
+                        .collectionItemList
+                        .value[index];
+                    return CollectionItemWidget(model);
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -205,7 +169,7 @@ class UserProfileContainerScreen
     );
   }
 
-  Column yourWork() {
+  yourWork() {
     return Column(
       children: [
         Padding(
@@ -262,7 +226,7 @@ class UserProfileContainerScreen
     );
   }
 
-  Container profileInfoCard() {
+  profileInfoCard() {
     return Container(
       margin: EdgeInsets.only(right: 15.h),
       padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 16.v),

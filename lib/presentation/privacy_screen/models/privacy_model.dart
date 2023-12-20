@@ -1,21 +1,22 @@
 import '../../../core/app_export.dart';
-import 'row_item_model.dart';
-import 'row2_item_model.dart';
+import 'artwork_visibilty_model.dart';
+import 'comment_visibilty_model.dart';
 
 /// This class defines the variables used in the [privacy_screen],
 /// and is typically used to hold data that is passed between different parts of the application.
 class PrivacyModel {
-  Rx<List<RowItemModel>> rowItemList = Rx(
-    List.generate(
-      2,
-      (index) => RowItemModel(),
-    ),
+  Rx<List<ArtworkVisibilityModel>> artworkVisibilityList = Rx(
+    ["Everyone", "Followers Only", "Private"].map((option) {
+      return ArtworkVisibilityModel()..select.value = option;
+    }).toList(),
   );
 
-  Rx<List<Row2ItemModel>> row2ItemList = Rx(
-    List.generate(
-      2,
-      (index) => Row2ItemModel(),
-    ),
+
+  Rx<List<CommentVisibilityModel>> commentVisibilityList = Rx(
+    ["Everyone", "Followers Only", "Private"].map((option) {
+      return CommentVisibilityModel()..select.value = option;
+    }).toList(),
   );
+
+
 }

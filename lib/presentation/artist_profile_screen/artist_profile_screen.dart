@@ -52,10 +52,11 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
 
   events(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 18.v),
+        SizedBox(height: 24.v),
         Text("msg_upcoming_events".tr, style: theme.textTheme.titleMedium),
-        SizedBox(height: 15.v),
+        SizedBox(height: 16.v),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: IntrinsicWidth(

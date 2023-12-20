@@ -1,17 +1,19 @@
-import '../models/row_item_model.dart';
+import '../models/comment_visibilty_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class RowItemWidget extends StatelessWidget {
-  RowItemWidget(
-    this.rowItemModelObj, {
+class CommentVisibilityWidget extends StatelessWidget {
+  final VoidCallback onSelected;
+  CommentVisibilityWidget(
+    this.commentVisibilityModelObj,
+     this.onSelected, {
     Key? key,
   }) : super(
           key: key,
         );
 
-  RowItemModel rowItemModelObj;
+  CommentVisibilityModel commentVisibilityModelObj;
 
   @override
   Widget build(BuildContext context) {
@@ -23,23 +25,25 @@ class RowItemWidget extends StatelessWidget {
         child: RawChip(
           padding: EdgeInsets.symmetric(
             horizontal: 16.h,
-            vertical: 31.v,
+            vertical: 32.v,
           ),
           showCheckmark: false,
           labelPadding: EdgeInsets.zero,
           label: Text(
-            rowItemModelObj.select.value,
+            commentVisibilityModelObj.select.value,
             style: TextStyle(
-              color: appTheme.lightBlueA700,
+              color: commentVisibilityModelObj.isSelected.value
+                  ? Colors.white
+                  : appTheme.lightBlueA700,
               fontSize: 14.fSize,
               fontFamily: 'Lato',
               fontWeight: FontWeight.w400,
             ),
           ),
-          selected: rowItemModelObj.isSelected.value,
+          selected: commentVisibilityModelObj.isSelected.value,
           backgroundColor: Colors.transparent,
-          selectedColor: appTheme.lightBlueA700.withOpacity(0.2),
-          shape: rowItemModelObj.isSelected.value
+          selectedColor: appTheme.lightBlueA700.withOpacity(1),
+          shape: commentVisibilityModelObj.isSelected.value
               ? RoundedRectangleBorder(
                   side: BorderSide(
                     color: appTheme.lightBlueA700,
@@ -59,7 +63,10 @@ class RowItemWidget extends StatelessWidget {
                   ),
                 ),
           onSelected: (value) {
-            rowItemModelObj.isSelected.value = value;
+            if (value) {
+              this.onSelected();
+            }
+            commentVisibilityModelObj.isSelected.value = value;
           },
         ),
       ),

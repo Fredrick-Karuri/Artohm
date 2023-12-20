@@ -13,12 +13,11 @@ import 'package:artohmapp/presentation/notifications_tab_container_screen/notifi
 import 'package:artohmapp/presentation/notifications_tab_container_screen/binding/notifications_tab_container_binding.dart';
 import 'package:artohmapp/presentation/settings_screen/settings_screen.dart';
 import 'package:artohmapp/presentation/settings_screen/binding/settings_binding.dart';
-import 'package:artohmapp/presentation/settingsitem_screen/settingsitem_screen.dart';
-import 'package:artohmapp/presentation/settingsitem_screen/binding/settingsitem_binding.dart';
+import 'package:artohmapp/presentation/settings_notifications_screen/settings_notifications_screen.dart';
+import 'package:artohmapp/presentation/settings_notifications_screen/binding/settingsitem_binding.dart';
 import 'package:artohmapp/presentation/privacy_screen/privacy_screen.dart';
 import 'package:artohmapp/presentation/privacy_screen/binding/privacy_binding.dart';
-import 'package:artohmapp/presentation/splashscreen/binding/splashscreen_binding.dart';
-import 'package:artohmapp/presentation/splashscreen/splashscreen.dart';
+import 'package:artohmapp/widgets/splashscreen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/user_profile_container_screen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/binding/user_profile_container_binding.dart';
 import 'package:artohmapp/presentation/art_discovery_container_screen/art_discovery_container_screen.dart';
@@ -291,7 +290,7 @@ class AppRoutes {
     ),
     GetPage(
       name: modalScreen,
-      page: () => ModalScreen(),
+      page: () => ModalScreen( ),
       bindings: [
         ModalBinding(),
       ],
@@ -332,7 +331,6 @@ class AppRoutes {
     GetPage(
       name: splashScreen,
       page: () => SplashScreen(),
-      binding: SplashBinding(),
     )
   ];
 }

@@ -1,23 +1,11 @@
-import 'package:artohmapp/presentation/collaborate_screen/models/collaborate_model.dart';
 import 'package:artohmapp/presentation/collaborate_screen/widgets/listing_card.dart';
-
 import '../../widgets/custom_appbar_component.dart';
 import '../collaborate_screen/widgets/chipviewselect_item_widget.dart';
 import 'controller/collaborate_controller.dart';
 import 'models/chipviewselect_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/home_page/home_page.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_screen.dart';
-import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
-
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
-import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class CollaborateScreen extends GetWidget<CollaborateController> {
@@ -34,12 +22,12 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
             Get.back(id: 1);
           },
         ),
-        body: BodyContent(),
+        body: bodyContent(),
       ),
     );
   }
 
-  BodyContent() {
+  bodyContent() {
     return SizedBox(
       width: double.maxFinite,
       child: Column(
@@ -54,7 +42,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
                   children: [
                     FeaturedArtCollaborationCard(),
                     SizedBox(height: 32.v),
-              
+
                     startCollaboration(),
                     // SizedBox(height: 32.v),
                     // artStyles(),

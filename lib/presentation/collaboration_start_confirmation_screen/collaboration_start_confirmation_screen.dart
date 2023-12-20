@@ -97,6 +97,7 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: 8,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -136,7 +137,7 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
           Expanded(
             child: CustomElevatedButton(
               onTap: () {
-                Get.toNamed(AppRoutes.collaborateScreen);
+                Get.toNamed(AppRoutes.newCollaborationItemPage);
               },
               text: 'Create Collaboration',
             ),

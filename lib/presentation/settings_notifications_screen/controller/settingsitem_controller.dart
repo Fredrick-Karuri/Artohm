@@ -1,5 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/settingsitem_screen/models/settingsitem_model.dart';
+import 'package:artohmapp/presentation/settings_notifications_screen/models/settingsitem_model.dart';
 
 /// A controller class for the SettingsitemScreen.
 ///

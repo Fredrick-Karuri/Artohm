@@ -16,4 +16,5 @@ class HomeartcolItemModel {
 
   Rx<String>? id;
   Rx<List<String>>? imagePaths;
+
 }

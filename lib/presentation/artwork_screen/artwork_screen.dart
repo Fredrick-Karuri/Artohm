@@ -29,6 +29,8 @@ class ArtworkScreen extends GetWidget<ArtworkController> {
       ),
     );
   }
+  
+
 
   bodyContent() {
     return SizedBox(

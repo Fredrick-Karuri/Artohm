@@ -11,7 +11,6 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]).then((value) async {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
-    // runApp(MyApp());
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
@@ -33,11 +32,10 @@ class MyApp extends StatelessWidget {
       fallbackLocale: Locale('en', 'US'),
       title: 'Artohm',
       initialBinding: InitialBindings(),
-      // initialRoute: AppRoutes.splashScreen,
+      initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
-      initialRoute:
-          // onboardingCompleted ? AppRoutes.initialRoute : AppRoutes.initialRoute,
-          onboardingCompleted ? AppRoutes.artDiscoveryContainerScreen : AppRoutes.initialRoute,
+      // initialRoute:
+          // onboardingCompleted ? AppRoutes.artDiscoveryContainerScreen : AppRoutes.initialRoute,
     );
   }
 }

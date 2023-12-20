@@ -1,19 +1,12 @@
 import 'package:artohmapp/presentation/art_community_screen/widgets/community_filter_widget.dart';
+import 'package:artohmapp/presentation/modal_screen/controller/modal_controller.dart';
 import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_subtitle_1.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
-
-import '../../widgets/app_bar/appbar_image_1.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../../widgets/upcoming_events.dart';
 import '../art_community_screen/widgets/userprofile_item_widget.dart';
 import 'controller/art_community_controller.dart';
 import 'models/userprofile_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/home_page/home_page.dart';
-import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
-import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 // import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
@@ -22,7 +15,11 @@ import 'package:flutter/material.dart';
 class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
   // removed keyword const
   ArtCommunityScreen({Key? key}) : super(key: key);
-  final ModalScreen modalScreen = ModalScreen();
+
+ // Create a ModalController
+ModalController modalController = ModalController();
+
+
 
   @override
   Widget build(BuildContext context) {

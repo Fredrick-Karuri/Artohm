@@ -45,11 +45,11 @@ class OnboardingController extends GetxController {
     } else {
       // Save onboarding state
       SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool('onboardingCompleted', true);
+
       // Navigate to ArtDiscoveryContainerScreen
       Get.toNamed(pages[currentPage.value].routeName);
-      // Get.toNamed(AppRoutes.artDiscoveryContainerScreen);
 
-      await prefs.setBool('onboardingCompleted', true);
     }
   }
 }

@@ -16,74 +16,106 @@ class NewCollaborationItemPage extends StatelessWidget {
     // Use GetBuilder to access the controller
     return GetBuilder<NewCollaborationItemController>(
       builder: (controller) {
-        return Scaffold(
-          appBar: CustomAppBarComponent(
-            title: "Create Something Amazing Together".tr,
-            onBackPressed: () {
-              Get.back();
-            },
-          ),
-          resizeToAvoidBottomInset: true,
-
-          // appBar: AppBar(
-          //   title: Text('Create Something Amazing Together'),
-          // ),
-          body: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 16),
-                  name(controller),
-                  SizedBox(height: 32),
-                  description(controller),
-                  SizedBox(height: 32),
-                  mediums(controller),
-                  SizedBox(height: 32),
-                  images(),
-                  SizedBox(height: 32),
-
-                  collaborators(controller),
-
-                  // Add your widgets here...
-                ],
-              ),
+        return SafeArea(
+          child: Scaffold(
+            appBar: CustomAppBarComponent(
+              title: "Create Something Amazing Together".tr,
+              onBackPressed: () {
+                Get.back();
+              },
             ),
-          ),
-          bottomNavigationBar: CustomElevatedButton(
-            onTap: () {
-              Get.toNamed(AppRoutes.collaborationStartConfirmationPage);
-            },
-            text: 'Save',
-            margin: EdgeInsets.only(top: 8, bottom: 8, right: 16, left: 16),
+            resizeToAvoidBottomInset: true,
+
+            // appBar: AppBar(
+            //   title: Text('Create Something Amazing Together'),
+            // ),
+            body: bodyContent(controller),
+            bottomNavigationBar: CustomElevatedButton(
+              onTap: () {
+                Get.toNamed(AppRoutes.collaborationStartConfirmationPage);
+              },
+              text: 'Save',
+              margin: EdgeInsets.only(top: 8, bottom: 8, right: 16, left: 16),
+            ),
           ),
         );
       },
     );
   }
 
-  Column collaborators(NewCollaborationItemController controller) {
+  bodyContent(NewCollaborationItemController controller) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 16),
+            name(controller),
+            SizedBox(height: 32),
+            description(controller),
+            SizedBox(height: 32),
+            mediums(controller),
+            SizedBox(height: 32),
+            images(),
+            SizedBox(height: 32),
+
+            collaborators(controller),
+            SizedBox(height: 32),
+
+
+            // Add your widgets here...
+          ],
+        ),
+      ),
+    );
+  }
+
+   collaborators(NewCollaborationItemController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Add Collaborators',
         ),
-        CustomTextFormField(
-          controller: controller.inputCollaboratorsController,
-          focusNode: controller.collaboratorsFocusNode,
-          margin: EdgeInsets.only(
-            top: 8.h,
-          ),
-          hintText:
-              ' Start typing the usernames of artists you want to collaborate with.'
-                  .tr,
-          hintStyle: CustomTextStyles.bodyLargeBlack90001,
-          borderDecoration: TextFormFieldStyleHelper.fillBlue,
-          filled: true,
-          fillColor: appTheme.blue50,
-        )
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            CustomTextFormField(
+              controller: controller.inputCollaboratorsController,
+              focusNode: controller.collaboratorsFocusNode,
+              margin: EdgeInsets.only(
+                top: 8.h,
+              ),
+              hintText: ' Type usernames of artists for collaboration.'.tr,
+              hintStyle: CustomTextStyles.bodyLargeBlack90001,
+              borderDecoration: TextFormFieldStyleHelper.fillBlue,
+              filled: true,
+              fillColor: appTheme.blue50,
+            ),
+            SizedBox(height: 16.h),
+            SizedBox(
+              width: 120.h,
+              child: CustomOutlinedButton(
+                
+                buttonTextStyle: TextStyle(
+                  color: appTheme.lightBlueA700,
+                ),
+                buttonStyle: OutlinedButton.styleFrom(
+                  
+                  side: BorderSide(
+                    color: appTheme.lightBlueA700,
+                  ),
+                ),
+                margin: EdgeInsets.zero,
+                onTap: () {
+                  // controller.addCollaborator();
+                },
+                text: 'Add',
+              ),
+            )
+          ],
+        ),
       ],
     );
   }
@@ -101,7 +133,7 @@ class NewCollaborationItemPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: Text(
-              ' Upload images or concept art related to your collaboration.',
+              'Upload a related image or concept art.',
             ),
           ),
           Row(
@@ -171,7 +203,7 @@ class NewCollaborationItemPage extends StatelessWidget {
           margin: EdgeInsets.only(
             top: 8.h,
           ),
-          hintText: ' A short description of your collaboration idea.'.tr,
+          hintText: ' Describe your collaboration idea.'.tr,
           hintStyle: CustomTextStyles.bodyLargeBlack90001,
           borderDecoration: TextFormFieldStyleHelper.fillBlue,
           filled: true,
@@ -194,8 +226,7 @@ class NewCollaborationItemPage extends StatelessWidget {
           margin: EdgeInsets.only(
             top: 8.h,
           ),
-          hintText:
-              'Enter a unique and inspiring name for your collaboration.'.tr,
+          hintText: 'Enter a unique name for your collaboration.'.tr,
           hintStyle: CustomTextStyles.bodyLargeBlack90001,
           borderDecoration: TextFormFieldStyleHelper.fillBlue,
           filled: true,

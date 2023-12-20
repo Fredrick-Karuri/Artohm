@@ -5,7 +5,9 @@ import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class ModalScreen extends StatefulWidget {
-  const ModalScreen({Key? key}) : super(key: key);
+  final ModalController  controller = Get.put(ModalController());
+
+   ModalScreen({Key? key}) : super(key: key);
 
   @override
   ModalScreenState createState() => ModalScreenState();
@@ -57,6 +59,10 @@ class ModalScreenState extends State<ModalScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(height: 12.v),
+                // Text( widget.controller.modalModelObj.value.title,
+                //   style: CustomTextStyles.titleMediumLato,
+                // ),
+                
                 Text(
                   "msg_art_unveiling_exploring2".tr,
                   style: theme.textTheme.titleMedium,
@@ -109,3 +115,7 @@ class ModalScreenState extends State<ModalScreen> {
     );
   }
 }
+
+// conver show mdal to a widget and call it in the artwork screen, hving parameters for the text and the button text
+// then call it in the artwork screen
+
