@@ -1,5 +1,9 @@
+import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
+import 'package:artohmapp/presentation/art_marketplace_screen/controller/art_marketplace_controller.dart';
+import 'package:artohmapp/presentation/collaborate_screen/controller/collaborate_controller.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/profile_info.dart';
 import '../../widgets/custom_appbar_component.dart';
+import '../art_discovery_container_screen/controller/art_discovery_container_controller.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
 import 'controller/user_profile_container_controller.dart';
@@ -21,7 +25,8 @@ class UserProfileContainerScreen
       child: Scaffold(
         appBar: CustomAppBarComponent(
           onBackPressed: () {
-            Get.back();
+           Get.back();
+            
           },
           title: "lbl_profile".tr,
           hasTrailingIcon: true,

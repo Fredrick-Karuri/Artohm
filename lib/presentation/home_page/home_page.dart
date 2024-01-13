@@ -28,12 +28,13 @@ class HomePage extends StatelessWidget {
         appBar: CustomAppBar(
           leadingWidth: 46.h,
           leading: CustomImageView(
-              svgPath: ImageConstant.imgArtohmlogo,
-              margin: EdgeInsets.only(
-                left: 18.h,
-              ),
-              height: 40.v,
-              width: 30.h),
+            svgPath: ImageConstant.imgArtohmlogo,
+            margin: EdgeInsets.only(
+              left: 18.h,
+            ),
+            height: 40.v,
+            width: 30.h,
+          ),
           actions: [
             Padding(
               padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
@@ -42,25 +43,23 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(width: 32.h),
-                  GestureDetector(
-                    onTap: () {
+
+                  IconButton(
+                    icon: Icon(
+                      Icons.search_outlined,
+                      color: appTheme.red300,
+                      size: 24,
+                    ),
+                    onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CustomSearchView()),
+                          builder: (context) => CustomSearchView(),
+                        ),
                       );
                     },
-                    child: 
-                    
-                    CustomImageView(
-                      svgPath: ImageConstant.imgSearchRed300,
-                      height: 24.adaptSize,
-                      width: 24.adaptSize,
-                      margin: EdgeInsets.symmetric(
-                        vertical: 8.v,
-                      ),
-                    ),
                   ),
+
                   SizedBox(width: 32.h),
                   Stack(
                     children: <Widget>[
@@ -72,7 +71,7 @@ class HomePage extends StatelessWidget {
                         icon: Icon(
                           Icons.notifications,
                           color: appTheme.red300,
-                          size: 28,
+                          size: 24,
                         ),
                       ),
                       Positioned(
@@ -105,6 +104,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 16.h),
+                  
                   CustomImageView(
                     imagePath: ImageConstant.imgFrame72,
                     height: 36.adaptSize,

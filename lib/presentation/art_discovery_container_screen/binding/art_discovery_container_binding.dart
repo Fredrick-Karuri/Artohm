@@ -24,14 +24,18 @@ class ArtDiscoveryContainerBinding extends Bindings {
     // Get.lazyPut<ArtCommunityController>(() => ArtCommunityController());
     // Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController());
 
-    Get.put(ArtDiscoveryContainerController());
-    Get.put(ArtCommunityController());
-    Get.put(CollaborateController());
-    Get.put(ArtMarketplaceController());
+    // Get.put(ArtDiscoveryContainerController());
+    // Get.put(ArtCommunityController());
+    // Get.put(CollaborateController());
+    // Get.put(ArtMarketplaceController());
+    Get.lazyPut<ArtDiscoveryContainerController>(
+        () => ArtDiscoveryContainerController(),
+        fenix: true);
+    Get.lazyPut<ArtCommunityController>(() => ArtCommunityController(),
+        fenix: true);
+    Get.lazyPut<CollaborateController>(() => CollaborateController(),
+        fenix: true);
+    Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController(),
+        fenix: true);
   }
 }
-
-    // Get.lazyPut<UserProfileContainerController>(() => UserProfileContainerController());
-    // Get.lazyPut<ArtistProfileController>(() => ArtistProfileController());
-    // Get.lazyPut<ArtworkController>(() => ArtworkController());
-    // Get.lazyPut<CollaborateitemController>(() => CollaborateitemController());

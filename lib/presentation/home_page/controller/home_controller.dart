@@ -30,4 +30,7 @@ class HomeController extends GetxController {
 
     }
   }
+ void toggleFavorite(AnArtworkModel model  ){
+  model.isFavorited.toggle();
+ }
 }

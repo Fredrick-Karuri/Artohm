@@ -1,4 +1,5 @@
 import 'package:artohmapp/presentation/edit_profile_screen/widgets/user_profile_field.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../widgets/custom_snackbar.dart';
 import '../edit_profile_screen/widgets/selectedstyles_item_widget.dart';
@@ -31,11 +32,28 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
                 Icon(Icons.close, color: Theme.of(context).colorScheme.primary),
           ),
         ),
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: true,
         body: bodyContent(),
         bottomNavigationBar: CustomElevatedButton(
             onTap: () {
-              saveChanges(context);
+              Get.snackbar(
+                'Success',
+                'Changes Saved!',
+                snackPosition: SnackPosition.BOTTOM,
+                backgroundColor: Colors.green,
+                colorText: Colors.white,
+                icon: Icon(
+                  Icons.check_circle,
+                  color: Colors.white,
+                  size: 24,
+                ),
+                duration: Duration(seconds: 3),
+              );
+              Future.delayed(Duration(seconds: 3), () {
+                Get.offNamed(AppRoutes.userProfileContainerScreen);
+                
+              });
+              // saveChanges(context);
             },
             text: "lbl_save_changes".tr,
             margin: EdgeInsets.only(
@@ -56,6 +74,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
             children: [
               editProfile(),
               artStyles(),
+              SizedBox(height: 36.v),
               socials(),
               SizedBox(height: 36.v),
               influences(),
@@ -69,108 +88,116 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
 
   socials() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          margin: EdgeInsets.only(top: 36.v, right: 7.h),
-          padding: EdgeInsets.all(16.h),
-          decoration: AppDecoration.fillPink
-              .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomImageView(
-                  svgPath: ImageConstant.imgProfileicons24x243,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  margin: EdgeInsets.only(bottom: 37.v)),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 24.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(children: [
-                        Padding(
-                            padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
-                            child: Text("lbl_artlover".tr,
-                                style: theme.textTheme.titleSmall)),
-                        CustomImageView(
-                            svgPath: ImageConstant.imgShareRed300,
-                            height: 24.v,
-                            width: 22.h)
-                      ]),
-                      SizedBox(height: 18.v),
-                      Text("lbl_pinterest".tr,
-                          style: theme.textTheme.bodyMedium)
-                    ],
+        Text("Socials".tr, style: theme.textTheme.titleSmall),
+        Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 8.v, right: 7.h),
+              padding: EdgeInsets.all(16.h),
+              decoration: AppDecoration.fillPink
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomImageView(
+                      svgPath: ImageConstant.imgProfileicons24x243,
+                      height: 24.adaptSize,
+                      width: 24.adaptSize,
+                      margin: EdgeInsets.only(bottom: 37.v)),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 24.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(children: [
+                            Padding(
+                                padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
+                                child: Text("lbl_artlover".tr,
+                                    style: theme.textTheme.titleSmall)),
+                            CustomImageView(
+                                svgPath: ImageConstant.imgShareRed300,
+                                height: 24.v,
+                                width: 22.h)
+                          ]),
+                          SizedBox(height: 18.v),
+                          Text("lbl_pinterest".tr,
+                              style: theme.textTheme.bodyMedium)
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
-        ),
-        Container(
-          margin: EdgeInsets.only(top: 8.v, right: 7.h),
-          padding: EdgeInsets.all(16.h),
-          decoration: AppDecoration.fillPink50
-              .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              CustomImageView(
-                  svgPath: ImageConstant.imgProfileicons24x244,
-                  height: 24.adaptSize,
-                  width: 24.adaptSize,
-                  margin: EdgeInsets.only(bottom: 37.v)),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 24.h),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(children: [
-                        Padding(
-                            padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
-                            child: Text("lbl_artlover".tr,
-                                style: theme.textTheme.titleSmall)),
-                        CustomImageView(
-                            svgPath: ImageConstant.imgShareRed300,
-                            height: 24.v,
-                            width: 22.h)
-                      ]),
-                      SizedBox(height: 19.v),
-                      Text("lbl_instagram".tr,
-                          style: theme.textTheme.bodyMedium)
-                    ],
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 8.v, right: 7.h),
+              padding: EdgeInsets.all(16.h),
+              decoration: AppDecoration.fillPink50
+                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  CustomImageView(
+                      svgPath: ImageConstant.imgProfileicons24x244,
+                      height: 24.adaptSize,
+                      width: 24.adaptSize,
+                      margin: EdgeInsets.only(bottom: 37.v)),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 24.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(children: [
+                            Padding(
+                                padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
+                                child: Text("lbl_artlover".tr,
+                                    style: theme.textTheme.titleSmall)),
+                            CustomImageView(
+                                svgPath: ImageConstant.imgShareRed300,
+                                height: 24.v,
+                                width: 22.h)
+                          ]),
+                          SizedBox(height: 19.v),
+                          Text("lbl_instagram".tr,
+                              style: theme.textTheme.bodyMedium)
+                        ],
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
   }
 
-  Column influences() {
+  influences() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("lbl_your_influences".tr, style: theme.textTheme.titleSmall),
         CustomTextFormField(
-            controller: controller.inputTextController,
-            margin: EdgeInsets.only(top: 9.v, right: 7.h),
-            hintText: "lbl_input_text".tr,
-            hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
-            textInputAction: TextInputAction.done,
-            borderDecoration: TextFormFieldStyleHelper.underLineRed),
+          controller: controller.inputTextController,
+          focusNode: controller.influencesFocusNode,
+          margin: EdgeInsets.only(top: 9.v, right: 7.h),
+          hintText: "lbl_input_text".tr,
+          hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
+          textInputAction: TextInputAction.done,
+          borderDecoration: TextFormFieldStyleHelper.underLineRed,
+        ),
       ],
     );
   }
 
-  Container editProfile() {
+  editProfile() {
     return Container(
       margin: EdgeInsets.only(top: 30.v, right: 6.h),
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
@@ -181,7 +208,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
         children: [
           changeImage(),
           SizedBox(height: 24.v),
-          Column(
+           Column(
             children: controller.fields
                 .map((field) => ProfileFieldWidget(field: field))
                 .toList(),

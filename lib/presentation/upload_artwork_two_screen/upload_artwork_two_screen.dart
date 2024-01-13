@@ -62,19 +62,19 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
       width: mediaQueryData.size.width,
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(left: 16.h, right: 8.h, bottom: 5.v),
+          padding: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 5.v),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 16.v),
+              SizedBox(height: 8.v),
               CustomImageView(
                 imagePath: ImageConstant.imgRectangle15,
-                height: 325.v,
-                width: 358.h,
                 radius: BorderRadius.circular(8.h),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 32, right: 16),
+                padding: const EdgeInsets.only(
+                  top: 24,
+                ),
                 child: Column(
                   children: [
                     CustomRowWidget(
@@ -106,7 +106,9 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
 
   switchCard() {
     return Container(
-      margin: EdgeInsets.only(top: 33.v, right: 7.h),
+      margin: EdgeInsets.only(
+        top: 24.v,
+      ),
       padding: EdgeInsets.all(16.h),
       decoration: AppDecoration.fillBlue
           .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
@@ -117,66 +119,107 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
         children: [
           Text("lbl_visibility".tr, style: theme.textTheme.bodyMedium),
           SizedBox(height: 22.v),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Padding(
-                padding: EdgeInsets.symmetric(vertical: 3.v),
-                child:
-                    Text("lbl_private".tr, style: theme.textTheme.bodyMedium)),
-            Obx(() => CustomSwitch(
-                value: controller.isSelectedSwitch.value,
-                onChange: (value) {
-                  controller.isSelectedSwitch.value = value;
-                }))
-          ]),
-          SizedBox(height: 16.v),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                  padding: EdgeInsets.only(top: 5.v, bottom: 1.v),
-                  child: Text("msg_visible_to_everyone".tr,
-                      style: theme.textTheme.bodyMedium)),
-              Obx(
-                () => CustomSwitch(
-                  value: controller.isSelectedSwitch1.value,
-                  onChange: (value) {
-                    controller.isSelectedSwitch1.value = value;
-                  },
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 3.v),
+                      child: Text("lbl_private".tr,
+                          style: theme.textTheme.bodyMedium)),
+                  Obx(
+                    () => CustomSwitch(
+                      value: controller.isSelectedSwitch(0),
+                      onChange: (value) {
+                        if (value) {
+                          controller.updateSelectedSwitch(0);
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.v),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(top: 5.v, bottom: 1.v),
+                      child: Text("msg_visible_to_everyone".tr,
+                          style: theme.textTheme.bodyMedium)),
+                  Obx(
+                    () => CustomSwitch(
+                      value: controller.isSelectedSwitch(1),
+                      onChange: (value) {
+                        if (value) {
+                          controller.updateSelectedSwitch(1);
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+              SizedBox(height: 16.v),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.symmetric(vertical: 3.v),
+                      child: Text("msg_visible_to_followers".tr,
+                          style: theme.textTheme.bodyMedium)),
+                  Obx(
+                    () => CustomSwitch(
+                      value: controller.isSelectedSwitch(2),
+                      onChange: (value) {
+                        if (value) {
+                          controller.updateSelectedSwitch(2);
+                        }
+                      },
+                    ),
+                  ),
+                ],
               )
             ],
           ),
-          SizedBox(height: 16.v),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                  padding: EdgeInsets.symmetric(vertical: 3.v),
-                  child: Text("msg_visible_to_followers".tr,
-                      style: theme.textTheme.bodyMedium)),
-              Obx(
-                () => CustomSwitch(
-                  value: controller.isSelectedSwitch2.value,
-                  onChange: (value) {
-                    controller.isSelectedSwitch2.value = value;
-                  },
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
   }
 
   void postArtWork(BuildContext context) {
-    CustomSnackBar.show(
-      context,
-      'Artwork Created!',
-      Icons.check_circle,
-      'OK',
-    );
+    try {
+      // code ti post artwork if the artwork is valid/ post is successful
+      Get.snackbar(
+        'Success',
+        'Artwork Created!',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+      Future.delayed(
+        Duration(seconds: 2),
+        () {
+          Get.offAllNamed(AppRoutes.userProfileContainerScreen);
+        },
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        'Artwork not created! : $e',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
   }
+  // CustomSnackBar.show(
+  //   context,
+  //   'Artwork Created!',
+  //   Icons.check_circle,
+  //   'OK',
+  // );
 
   /// Navigates to the previous screen.
   ///

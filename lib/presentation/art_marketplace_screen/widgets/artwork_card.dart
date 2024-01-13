@@ -1,4 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/modal_contact_seller/modal_contact_seller.dart';
 import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
 import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 import '../../../theme/app_decoration.dart';
 import '../../../theme/theme_helper.dart';
 import '../models/artwork_card_model.dart';
+import '../models/seller_model.dart';
 
 class CustomCardWidget extends StatelessWidget {
   final CustomCard card;
@@ -67,9 +69,8 @@ class CustomCardWidget extends StatelessWidget {
                     vertical: 4.v,
                   ),
                   decoration: AppDecoration.outlineBlack90001.copyWith(
-                    borderRadius: BorderRadiusStyle.roundedBorder4,
-                    color: appTheme.blue50
-                  ),
+                      borderRadius: BorderRadiusStyle.roundedBorder4,
+                      color: appTheme.blue50),
                   child: Text(
                     card.price.tr,
                     style: theme.textTheme.labelLarge,
@@ -79,23 +80,23 @@ class CustomCardWidget extends StatelessWidget {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Expanded(
-                child: CustomOutlinedButton(
-                  onTap: () {},
-                  text: 'Add to Cart',
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.favorite_border_outlined,
                 ),
               ),
-              SizedBox(
-                width: 10,
-              ),
+              SizedBox(width: 8),
               Expanded(
                 child: CustomElevatedButton(
-                  onTap: () {},
-                  text: 'Buy',
+                  onTap: () {
+                    Get.bottomSheet(ContactSellerBottomSheet(seller: seller));
+                  },
+                  text: 'Contact Seller',
                 ),
               ),
+             
             ],
           ),
         ],

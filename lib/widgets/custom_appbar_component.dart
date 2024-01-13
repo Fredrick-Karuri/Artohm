@@ -5,13 +5,16 @@ import '../core/utils/image_constant.dart';
 import 'app_bar/appbar_image.dart';
 import 'app_bar/appbar_subtitle_1.dart';
 import 'app_bar/custom_app_bar.dart';
-class CustomAppBarComponent extends StatelessWidget implements PreferredSizeWidget {
+
+class CustomAppBarComponent extends StatelessWidget
+    implements PreferredSizeWidget {
   final String? title;
   final bool hasTrailingIcon;
   final IconData trailingIcon;
   final Function onTapTrailingIcon;
   final bool hasTitle;
   final Function onBackPressed;
+  final int cartItemCount;
 
   CustomAppBarComponent({
     this.title,
@@ -20,6 +23,7 @@ class CustomAppBarComponent extends StatelessWidget implements PreferredSizeWidg
     this.trailingIcon = Icons.settings,
     this.onTapTrailingIcon = defaultTrailingIconFunction,
     required this.onBackPressed,
+    this.cartItemCount = 0,
   });
 
   static void defaultTrailingIconFunction() {}
@@ -45,13 +49,44 @@ class CustomAppBarComponent extends StatelessWidget implements PreferredSizeWidg
       actions: hasTrailingIcon
           ? <Widget>[
               Padding(
-                padding: const EdgeInsets.only(right: 10.0),
-                child: IconButton(
-                  onPressed: () => onTapTrailingIcon(),
-                  icon: Icon(
-                    trailingIcon,
-                    color: appTheme.red300,
-                  ),
+                padding: const EdgeInsets.only(right: 10),
+                child: Stack(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        trailingIcon,
+                        color: appTheme.red300,
+                      ),
+                      onPressed: () => onTapTrailingIcon(),
+                    ),
+                    cartItemCount == 0
+                        ? Container()
+                        : Positioned(
+                            right: 0,
+                            child: Stack(
+                              children: <Widget>[
+                                Icon(
+                                  Icons.brightness_1,
+                                  size: 20.0,
+                                  color: Colors.red,
+                                ),
+                                Positioned(
+                                  top: 3.0,
+                                  right: 6.0,
+                                  child: Center(
+                                    child: Text(
+                                      cartItemCount.toString(),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 11.0,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                  ],
                 ),
               ),
             ]

@@ -25,6 +25,9 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBarComponent(
+          cartItemCount: 1,
+          hasTrailingIcon: true,
+          trailingIcon: Icons.shopping_cart,
           title: "lbl_market_place2".tr,
           onBackPressed: () {
             Get.back(id: 1);

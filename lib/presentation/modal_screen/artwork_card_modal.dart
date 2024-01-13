@@ -51,54 +51,55 @@ class ArtworkCardModalState extends State<ArtworkCardModal> {
               horizontal: 15.h,
               vertical: 13.v,
             ),
-            child: Padding(
-              padding: const EdgeInsets.only(right: 8, left: 8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Artwork Name",
-                            style: theme.textTheme.titleMedium),
-                        Row(
-                          children: [
-                            Icon(Icons.favorite_border),
-                            Text("Likes", style: theme.textTheme.bodyMedium),
-                          ],
-                        ),
-                      ],
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Artwork Name",
+                          style: theme.textTheme.titleMedium),
+                      Row(
+                        children: [
+                          Icon(Icons.favorite_border),
+                          Text("120",
+                              style: theme.textTheme.bodyMedium,
+                              textAlign: TextAlign.center),
+                        ],
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Column(
-                      children: [
-                        TextButton.icon(
-                          onPressed: () {},
-                          icon: Icon(Icons.info_outline),
-                          label: Text(
-                            'View Artwork Info',
-                            style: CustomTextStyles.titleSmallLatoBlack90001,
-                          ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Column(
+                    children: [
+                      TextButton.icon(
+                        onPressed: () {
+                          Get.toNamed(AppRoutes.artworkScreen);
+                        },
+                        icon: Icon(Icons.info_outline),
+                        label: Text(
+                          'View Artwork Info',
+                          style: CustomTextStyles.titleSmallLatoBlack90001,
                         ),
-                        TextButton.icon(
-                          onPressed: () {},
-                          icon: Icon(Icons.collections),
-                          label: Text(
-                            'Add to Collections',
-                            style: CustomTextStyles.titleSmallLatoBlack90001,
-                          ),
+                      ),
+                      TextButton.icon(
+                        onPressed: () {},
+                        icon: Icon(Icons.collections),
+                        label: Text(
+                          'Add to Collections',
+                          style: CustomTextStyles.titleSmallLatoBlack90001,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );

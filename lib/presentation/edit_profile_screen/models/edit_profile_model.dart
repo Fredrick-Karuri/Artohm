@@ -21,10 +21,11 @@ class EditProfileModel {
       id: 3,
       title: "Surrealism",
     ),
-     SelectionPopupModel(
+    SelectionPopupModel(
       id: 4,
       title: "Abstract Expressionism",
-    ), SelectionPopupModel(
+    ),
+    SelectionPopupModel(
       id: 5,
       title: "Pop Art",
     ),
@@ -50,4 +51,5 @@ class UserProfile {
     required this.iconPath,
     required this.onChanged,
   });
+  // convert a userprofile object into a map object
 }

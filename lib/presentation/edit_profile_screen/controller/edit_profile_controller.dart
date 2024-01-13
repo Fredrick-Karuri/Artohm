@@ -14,9 +14,11 @@ class EditProfileController extends GetxController {
 
   Rx<EditProfileModel> editProfileModelObj = EditProfileModel().obs;
   RxList<UserProfile> fields = <UserProfile>[].obs;
+  FocusNode influencesFocusNode = FocusNode();
 
   @override
   void onInit() {
+
     super.onInit();
     // Initialize your fields here
     fields.addAll(
@@ -77,6 +79,8 @@ class EditProfileController extends GetxController {
   void onClose() {
     super.onClose();
     inputTextController.dispose();
+    influencesFocusNode.dispose();
+
   }
 
   onSelected(dynamic value) {
