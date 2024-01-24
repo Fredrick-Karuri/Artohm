@@ -1,6 +1,7 @@
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/widgets/artist_influences.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/widgets/social_media.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/widgets/user_profile_field.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-
 import '../../widgets/custom_snackbar.dart';
 import '../edit_profile_screen/widgets/selectedstyles_item_widget.dart';
 import 'controller/edit_profile_controller.dart';
@@ -18,6 +19,8 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
+    // final InfluencesController influencesController =
+    //     Get.find<InfluencesController>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -51,7 +54,6 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
               );
               Future.delayed(Duration(seconds: 3), () {
                 Get.offNamed(AppRoutes.userProfileContainerScreen);
-                
               });
               // saveChanges(context);
             },
@@ -64,6 +66,8 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   }
 
   bodyContent() {
+    final InfluencesController influencesController =
+        Get.find<InfluencesController>();
     return SizedBox(
       width: mediaQueryData.size.width,
       child: SingleChildScrollView(
@@ -77,7 +81,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
               SizedBox(height: 36.v),
               socials(),
               SizedBox(height: 36.v),
-              influences(),
+              InfluencesView(controller: influencesController),
               SizedBox(height: 36.v),
             ],
           ),
@@ -89,91 +93,21 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   socials() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: <Widget>[
         Text("Socials".tr, style: theme.textTheme.titleSmall),
-        Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 8.v, right: 7.h),
-              padding: EdgeInsets.all(16.h),
-              decoration: AppDecoration.fillPink
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomImageView(
-                      svgPath: ImageConstant.imgProfileicons24x243,
-                      height: 24.adaptSize,
-                      width: 24.adaptSize,
-                      margin: EdgeInsets.only(bottom: 37.v)),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 24.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(children: [
-                            Padding(
-                                padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
-                                child: Text("lbl_artlover".tr,
-                                    style: theme.textTheme.titleSmall)),
-                            CustomImageView(
-                                svgPath: ImageConstant.imgShareRed300,
-                                height: 24.v,
-                                width: 22.h)
-                          ]),
-                          SizedBox(height: 18.v),
-                          Text("lbl_pinterest".tr,
-                              style: theme.textTheme.bodyMedium)
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 8.v, right: 7.h),
-              padding: EdgeInsets.all(16.h),
-              decoration: AppDecoration.fillPink50
-                  .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomImageView(
-                      svgPath: ImageConstant.imgProfileicons24x244,
-                      height: 24.adaptSize,
-                      width: 24.adaptSize,
-                      margin: EdgeInsets.only(bottom: 37.v)),
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 24.h),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(children: [
-                            Padding(
-                                padding: EdgeInsets.only(top: 3.v, bottom: 2.v),
-                                child: Text("lbl_artlover".tr,
-                                    style: theme.textTheme.titleSmall)),
-                            CustomImageView(
-                                svgPath: ImageConstant.imgShareRed300,
-                                height: 24.v,
-                                width: 22.h)
-                          ]),
-                          SizedBox(height: 19.v),
-                          Text("lbl_instagram".tr,
-                              style: theme.textTheme.bodyMedium)
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        SocialMediaButton(
+          socialMedia: SocialMedia(
+              name: 'Instagram',
+              url: 'instagram://user?username={username}',
+              logoPath: ImageConstant.imgProfileicons24x243),
+          controller: SocialMediaController(),
+        ),
+        SocialMediaButton(
+          socialMedia: SocialMedia(
+              name: 'Pinterest',
+              url: 'pinterest://user/{username}',
+              logoPath: ImageConstant.imgProfileicons24x244),
+          controller: SocialMediaController(),
         ),
       ],
     );
@@ -208,7 +142,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
         children: [
           changeImage(),
           SizedBox(height: 24.v),
-           Column(
+          Column(
             children: controller.fields
                 .map((field) => ProfileFieldWidget(field: field))
                 .toList(),
@@ -241,7 +175,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
               hintText: "Choose Style".tr,
               hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
               items:
-                  controller.editProfileModelObj.value.dropdownItemList!.value,
+                  controller.editProfileModelObj.value.dropdownItemList.value,
               borderDecoration: DropDownStyleHelper.outlineBlackTL81,
               onChanged: (value) {
                 controller.onSelected(value);

@@ -1,19 +1,33 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'core/app_export.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() async {
+late final SupabaseClient supabase;
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((value) async {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
+    // Load the .env file
+    await dotenv.load();
+
+    // Initialize Supabase
+    await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL']!,
+      anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+    );
+
+    supabase = Supabase.instance.client;
+    final session = supabase.auth.currentSession;
+    bool onboardingCompleted = (session != null);
+
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
+    // bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
     runApp(MyApp(onboardingCompleted: onboardingCompleted));
   });
 }
@@ -34,8 +48,6 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
-      // initialRoute:
-          // onboardingCompleted ? AppRoutes.artDiscoveryContainerScreen : AppRoutes.initialRoute,
     );
   }
 }

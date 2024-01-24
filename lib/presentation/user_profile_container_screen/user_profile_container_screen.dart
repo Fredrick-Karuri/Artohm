@@ -1,9 +1,5 @@
-import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/controller/art_marketplace_controller.dart';
-import 'package:artohmapp/presentation/collaborate_screen/controller/collaborate_controller.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/widgets/profile_info.dart';
+import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
 import '../../widgets/custom_appbar_component.dart';
-import '../art_discovery_container_screen/controller/art_discovery_container_controller.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
 import 'controller/user_profile_container_controller.dart';
@@ -25,8 +21,7 @@ class UserProfileContainerScreen
       child: Scaffold(
         appBar: CustomAppBarComponent(
           onBackPressed: () {
-           Get.back();
-            
+            Get.back();
           },
           title: "lbl_profile".tr,
           hasTrailingIcon: true,
@@ -306,21 +301,27 @@ class UserProfileContainerScreen
               ],
             ),
           ),
-          Column(
-            children: [
-              CustomRow(
-                label: "lbl_location".tr,
-                value: "lbl_nairobi".tr,
-              ),
-              CustomRow(
-                label: "msg_favorite_art_styles".tr,
-                value: "msg_surrealism_digital".tr,
-              ),
-              CustomRow(
-                label: "lbl_influences".tr,
-                value: "msg_salvador_dali_frida".tr,
-              ),
-            ],
+          Padding(
+      padding: EdgeInsets.only(left: 16.h, top: 24.v),
+
+            child: Column(
+              children: [
+                CustomRowWidget(
+                  title: 'lbl_location'.tr,
+                  text: 'lbl_nairobi'.tr,
+                ),
+                CustomRowWidget(
+                  title: 'msg_favorite_art_styles'.tr,
+                  text: 'msg_surrealism_digital'.tr,
+                ),
+                CustomRowWidget(
+                  title: 'lbl_influences'.tr,
+                  text: 'msg_salvador_dali_frida'.tr,
+                ),
+               
+               
+              ],
+            ),
           ),
           CustomElevatedButton(
               text: "lbl_edit_profile".tr,

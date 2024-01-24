@@ -1,8 +1,5 @@
-import 'package:artohmapp/widgets/custom_outlined_button.dart';
 
-import 'controller/modal_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class ArtworkCardModal extends StatefulWidget {
@@ -80,7 +77,9 @@ class ArtworkCardModalState extends State<ArtworkCardModal> {
                     children: [
                       TextButton.icon(
                         onPressed: () {
+                          // Get.back();
                           Get.toNamed(AppRoutes.artworkScreen);
+                          
                         },
                         icon: Icon(Icons.info_outline),
                         label: Text(

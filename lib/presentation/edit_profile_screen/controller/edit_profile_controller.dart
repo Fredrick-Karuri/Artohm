@@ -1,9 +1,8 @@
-import 'dart:ffi';
-
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// A controller class for the EditProfileScreen.
 ///
@@ -18,7 +17,6 @@ class EditProfileController extends GetxController {
 
   @override
   void onInit() {
-
     super.onInit();
     // Initialize your fields here
     fields.addAll(
@@ -80,7 +78,6 @@ class EditProfileController extends GetxController {
     super.onClose();
     inputTextController.dispose();
     influencesFocusNode.dispose();
-
   }
 
   onSelected(dynamic value) {
@@ -116,5 +113,37 @@ class EditProfileController extends GetxController {
         break;
       }
     }
+  }
+}
+
+class SocialMediaController {
+  void launchURL(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+}
+
+class InfluencesController extends GetxController {
+  var artistsList = [
+    'Leonardo da Vinci',
+    'Vincent Van Gogh',
+    'Michelangelo',
+    'Rembrandt',
+    'Claude Monet',
+    'Pablo Picasso',
+    'Georgia O\'Keeffe',
+    'Andy Warhol',
+    'Frida Kahlo',
+    'Banksy'
+  ].obs;
+  var selectedArtists = <String>[].obs; // Add this line
+
+  // This function will be used to fetch the list of artists from the backend
+  Future<void> fetchArtists() async {
+    // TODO: Call your backend API to fetch the list of artists
+    // Update the artistsList with the result
   }
 }

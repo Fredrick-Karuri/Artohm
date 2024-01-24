@@ -1,10 +1,7 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../../theme/theme_helper.dart';
 import '../../../widgets/custom_elevated_button.dart';
-import '../../../widgets/custom_icon_button.dart';
-import '../../../widgets/custom_image_view.dart';
 
 class ListingCard extends StatelessWidget {
   final String imagePath;

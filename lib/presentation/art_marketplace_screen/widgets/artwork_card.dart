@@ -1,14 +1,9 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/modal_contact_seller/modal_contact_seller.dart';
 import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
-import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../theme/app_decoration.dart';
-import '../../../theme/theme_helper.dart';
 import '../models/artwork_card_model.dart';
 import '../models/seller_model.dart';
 

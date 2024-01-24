@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 
 import 'controller/upload_artwork_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -104,7 +103,7 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                     svgPath: ImageConstant.imgProfileiconsRed30012x18)),
             hintText: "lbl_oil_on_canvas".tr,
             items:
-                controller.uploadArtworkModelObj.value.dropdownItemList1!.value,
+                controller.uploadArtworkModelObj.value.dropdownItemList1.value,
             contentPadding:
                 EdgeInsets.only(left: 16.h, top: 10.v, bottom: 10.v),
             onChanged: (value) {
@@ -139,7 +138,7 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                     ),
                     hintText: "lbl_inches".tr,
                     items: controller
-                        .uploadArtworkModelObj.value.dropdownItemList!.value,
+                        .uploadArtworkModelObj.value.dropdownItemList.value,
                     onChanged: (value) {
                       controller.onSelected(value);
                     },

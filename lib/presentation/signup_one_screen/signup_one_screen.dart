@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../data/apiClient/api_client.dart';
+import 'package:artohmapp/main.dart';
 import '../../widgets/onboarding_appbar.dart';
 import 'controller/signup_one_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -9,7 +6,6 @@ import 'package:artohmapp/core/utils/validation_functions.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 // ignore_for_file: must_be_immutable
 class SignupOneScreen extends GetWidget<SignupOneController> {
@@ -76,56 +72,16 @@ class SignupOneScreen extends GetWidget<SignupOneController> {
           // If all data are correct then save data to out variables
           _formKey.currentState!.save();
 
-          // Here we will send the data to the server
-          var response = await Get.find<ApiClient>().registerUser(
-            controller.fullNameController.text,
-            controller.emailController.text,
-            controller.passwordController.text,
+          // Sign up the user
+          var response = await supabase.auth.signUp(
+            email: controller.emailController.text,
+            password: controller.passwordController.text,
           );
-
-          if (response.statusCode == 201) {
-            // If the server returns a 200 OK response, then parse the JSON.
-
+          if (response.user != null) {
+            print('User signed up successfully: ${response.user!.email}');
             onTapCreateaccount();
-            var jsonResponse = jsonDecode(response.body);
-            // print(jsonResponse);
-            SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setInt('userId', jsonResponse['user_id']);
-            Get.dialog(
-              AlertDialog(
-                title: Text("Success"),
-                content: Text("Your account has been created successfully"),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text("OK"),
-                  )
-                ],
-              ),
-            );
-            // You can now use the jsonResponse to create a user session.
-            // This will depend on how your backend server is set up.
           } else {
-            print('Status code: ${response.statusCode}');
-            print('Response body: ${response.body}');
-            Get.dialog(
-              AlertDialog(
-                title: Text("Error"),
-                content: Text("Something went wrong"),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    child: Text("OK"),
-                  )
-                ],
-              ),
-            );
-            // If the server returns an error response, you can handle it here.
-            // You might want to show an error message to the user.
+            print('Error signing up');
           }
         }
       },
@@ -289,8 +245,59 @@ class SignupOneScreen extends GetWidget<SignupOneController> {
   /// When the action is triggered, this function uses the [Get] package to
   /// push the named route for the artDiscoveryContainerScreen.
   onTapCreateaccount() {
-    Get.toNamed(
+    Get.offAllNamed(
       AppRoutes.artDiscoveryContainerScreen,
     );
   }
 }
+
+// var response = await Get.find<ApiClient>().registerUser(
+//   controller.fullNameController.text,
+//   controller.emailController.text,
+//   controller.passwordController.text,
+// );
+
+// if (response.statusCode == 201) {
+//   // If the server returns a 200 OK response, then parse the JSON.
+
+//   onTapCreateaccount();
+//   var jsonResponse = jsonDecode(response.body);
+//   // print(jsonResponse);
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setInt('userId', jsonResponse['user_id']);
+//   Get.dialog(
+//     AlertDialog(
+//       title: Text("Success"),
+//       content: Text("Your account has been created successfully"),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Get.back();
+//           },
+//           child: Text("OK"),
+//         )
+//       ],
+//     ),
+//   );
+//   // You can now use the jsonResponse to create a user session.
+//   // This will depend on how your backend server is set up.
+// } else {
+//   print('Status code: ${response.statusCode}');
+//   print('Response body: ${response.body}');
+//   Get.dialog(
+//     AlertDialog(
+//       title: Text("Error"),
+//       content: Text("Something went wrong"),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Get.back();
+//           },
+//           child: Text("OK"),
+//         )
+//       ],
+//     ),
+//   );
+//   // If the server returns an error response, you can handle it here.
+//   // You might want to show an error message to the user.
+// }

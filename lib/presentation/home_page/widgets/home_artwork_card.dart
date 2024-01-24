@@ -4,7 +4,6 @@ import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
 import 'package:flutter/material.dart';
 
-import '../../artwork_screen/models/artwork_model.dart';
 
 class HomeArtworkCard extends StatelessWidget {
   final String imagePath;

@@ -50,6 +50,8 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
                     // mediums(),
                     SizedBox(height: 32.v),
                     collaborateListings(),
+                    SizedBox(height: 32.v),
+                    yourListings(),
                   ],
                 ),
               ),
@@ -70,7 +72,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
           width: 160.h,
           hintText: "lbl_painting".tr,
           hintStyle: theme.textTheme.labelLarge!,
-          items: controller.collaborateModelObj.value.dropdownItemList!.value,
+          items: controller.collaborateModelObj.value.dropdownItemList.value,
           contentPadding:
               EdgeInsets.only(left: 16.h, top: 11.v, bottom: 11.v, right: 8.v),
           borderDecoration: DropDownStyleHelper.fillLightBlueA,
@@ -116,6 +118,51 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("msg_collaboration_listings".tr,
+            style: theme.textTheme.titleMedium),
+        SizedBox(
+          height: 6.v,
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: IntrinsicWidth(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListingCard(
+                  imagePath: ImageConstant.imgRectangle11180x264,
+                  onButtonPressed: () {
+                    Get.toNamed(AppRoutes.collaborateitemScreen);
+                  },
+                  title: "msg_ai_infused_sculpture".tr,
+                  subtitle: "msg_mark_turner_aiart".tr,
+                  description: "msg_mark_s_bronze_sculpture".tr,
+                ),
+                SizedBox(
+                  width: 20.h,
+                ),
+                ListingCard(
+                  onButtonPressed: () {
+                    Get.toNamed(AppRoutes.collaborateitemScreen);
+                  },
+                  imagePath: ImageConstant.imgRectangle11180x264,
+                  title: "msg_harmony_of_nature".tr,
+                  subtitle: "msg_sarah_smith_david2".tr,
+                  description: "msg_sarah_s_intricate".tr,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  yourListings() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Your Listings",
             style: theme.textTheme.titleMedium),
         SizedBox(
           height: 6.v,

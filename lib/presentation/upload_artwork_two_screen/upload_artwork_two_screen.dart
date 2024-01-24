@@ -1,9 +1,7 @@
 import '../../widgets/custom_appbar_component.dart';
-import '../../widgets/custom_snackbar.dart';
 import 'controller/upload_artwork_two_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_icon_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:artohmapp/widgets/custom_switch.dart';
 import 'package:flutter/material.dart';

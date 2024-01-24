@@ -2,10 +2,6 @@ import '../../widgets/custom_appbar_component.dart';
 import 'controller/notifications_tab_container_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/notifications_page/notifications_page.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsTabContainerScreen

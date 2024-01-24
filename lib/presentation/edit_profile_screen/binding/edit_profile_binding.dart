@@ -9,5 +9,7 @@ class EditProfileBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => EditProfileController());
+    Get.lazyPut(() => InfluencesController());
+    
   }
 }

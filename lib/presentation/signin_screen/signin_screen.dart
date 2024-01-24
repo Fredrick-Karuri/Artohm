@@ -1,15 +1,11 @@
-import 'dart:convert';
 
-import 'package:artohmapp/data/apiClient/api_client.dart';
+import 'package:artohmapp/main.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../widgets/onboarding_appbar.dart';
 import 'controller/signin_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/core/utils/validation_functions.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_subtitle.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
@@ -118,19 +114,37 @@ class SigninScreen extends GetWidget<SigninController> {
           // if all the data are correct then save the data to out variables
           _formKey.currentState!.save();
 
-          onTapLogin();
-          // send the data to the server
+          // Sign in the user
+          try {
+            var response = await supabase.auth.signInWithPassword(
+              email: controller.emailController.text,
+              password: controller.passwordController.text,
+            );
 
-          var response = await Get.find<ApiClient>().loginUser(
-              controller.emailController.text,
-              controller.passwordController.text);
-          if (response.statusCode == 200) {
-            // if server returns a 200 ok then parse the json
-            var jsonResponse = jsonDecode(response.body);
-            // use the json response to create a user session
-          } else {
-            // if the server returns an error handle it
-            // show an error to the user
+            if (response.user != null) {
+              // onTapLogin();
+              print('User signed in successfully: ${response.user!.email}');
+              Get.snackbar(
+                'Success',
+                "Welcome",
+              );
+              onTapLogin();
+            }
+          } catch (e) {
+            if (e is AuthException && e.statusCode == 400) {
+              print('Invalid login credentials');
+              Get.snackbar(
+                'Error',
+                'Invalid login credentials',
+              );
+            } else {
+              print('Error signing in:$e');
+              Get.snackbar(
+                'Error',
+                'Error signing in ',
+                backgroundColor: Colors.red.shade400,
+              );
+            }
           }
         }
       },
@@ -317,7 +331,7 @@ class SigninScreen extends GetWidget<SigninController> {
   /// When the action is triggered, this function uses the [Get] package to
   /// push the named route for the artDiscoveryContainerScreen.
   onTapLogin() {
-    Get.toNamed(
+    Get.offAllNamed(
       AppRoutes.artDiscoveryContainerScreen,
     );
   }
@@ -342,3 +356,16 @@ class SigninScreen extends GetWidget<SigninController> {
     );
   }
 }
+
+          
+          // var response = await Get.find<ApiClient>().loginUser(
+          //     controller.emailController.text,
+          //     controller.passwordController.text);
+          // if (response.statusCode == 200) {
+          //   // if server returns a 200 ok then parse the json
+          //   var jsonResponse = jsonDecode(response.body);
+          //   // use the json response to create a user session
+          // } else {
+          //   // if the server returns an error handle it
+          //   // show an error to the user
+          // }

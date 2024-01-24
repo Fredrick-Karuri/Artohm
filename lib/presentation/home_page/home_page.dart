@@ -1,6 +1,4 @@
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
-import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
@@ -8,9 +6,7 @@ import 'controller/home_controller.dart';
 import 'models/home_model.dart';
 import 'models/homeartcol_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
-import 'package:artohmapp/widgets/custom_drop_down.dart';
 
 import 'widgets/home_chip.dart';
 
@@ -43,7 +39,6 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(width: 32.h),
-
                   IconButton(
                     icon: Icon(
                       Icons.search_outlined,
@@ -59,7 +54,6 @@ class HomePage extends StatelessWidget {
                       );
                     },
                   ),
-
                   SizedBox(width: 32.h),
                   Stack(
                     children: <Widget>[
@@ -104,7 +98,6 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 16.h),
-                  
                   CustomImageView(
                     imagePath: ImageConstant.imgFrame72,
                     height: 36.adaptSize,
@@ -211,7 +204,7 @@ class HomePage extends StatelessWidget {
                 dropdownColor: appTheme.lightBlueA700,
                 width: 120.h,
                 hintText: "Filter By",
-                items: controller.homeModelObj.value.dropdownItemList!.value,
+                items: controller.homeModelObj.value.dropdownItemList.value,
                 onChanged: (value) {
                   controller.onSelected(value);
                 },

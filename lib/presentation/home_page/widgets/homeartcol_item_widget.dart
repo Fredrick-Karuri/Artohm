@@ -1,8 +1,6 @@
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/presentation/home_page/widgets/home_artwork_card.dart';
-import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
 
-import '../../../widgets/custom_elevated_button.dart';
 import '../controller/home_controller.dart';
 import '../models/homeartcol_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';

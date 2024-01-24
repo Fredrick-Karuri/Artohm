@@ -8,7 +8,6 @@ import 'models/chipviewcont2_item_model.dart';
 import 'models/chipviewcont_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class CollaborateitemScreen extends GetWidget<CollaborateitemController> {

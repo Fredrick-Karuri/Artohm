@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import '../../../core/app_export.dart';
-import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'selectedstyles_item_model.dart';
 
 /// This class defines the variables used in the [edit_profile_screen],
@@ -53,3 +50,13 @@ class UserProfile {
   });
   // convert a userprofile object into a map object
 }
+
+class SocialMedia {
+  final String logoPath;
+  final String name;
+  final String url;
+
+  SocialMedia({required this.name, required this.url, required this.logoPath});
+}
+
+

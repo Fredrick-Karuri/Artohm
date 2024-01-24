@@ -1,8 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-import '../../../theme/app_decoration.dart';
-import '../../../widgets/custom_image_view.dart';
 
 class CustomContainer extends StatefulWidget {
   final String svgPath;

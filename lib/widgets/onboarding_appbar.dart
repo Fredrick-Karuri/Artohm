@@ -1,9 +1,7 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
 import 'package:artohmapp/widgets/app_bar/appbar_subtitle.dart';
 import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;

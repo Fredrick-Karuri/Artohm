@@ -1,4 +1,3 @@
-import 'package:artohmapp/presentation/collaborate_start_screen/collaborate_start_screen.dart';
 import 'package:artohmapp/presentation/collaborate_start_screen/models/collaboration_start_models.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -2,13 +2,7 @@ import '../../widgets/custom_appbar_component.dart';
 import 'widgets/comment_visibility_widget.dart';
 import 'widgets/artwork_visibility_widget.dart';
 import 'controller/privacy_controller.dart';
-import 'models/comment_visibilty_model.dart';
-import 'models/artwork_visibilty_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:artohmapp/widgets/custom_switch.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
-import 'custom_image_view.dart';
 
 class UpcomingEventsCard extends StatelessWidget {
   final Function onTap;

@@ -4,9 +4,7 @@ import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../core/utils/size_utils.dart';
 import '../../widgets/custom_appbar_component.dart';
 import 'controller/collaboration_start_controller.dart';
 
@@ -178,7 +176,7 @@ class NewCollaborationItemPage extends StatelessWidget {
             width: 200.h,
             hintText: 'Choose Medium',
             items: controller
-                .newCollaborationItemModelObj.value.dropdownItemList!.value,
+                .newCollaborationItemModelObj.value.dropdownItemList.value,
             contentPadding:
                 EdgeInsets.only(left: 16.h, top: 10.v, bottom: 16.v, right: 16),
             onChanged: (value) {

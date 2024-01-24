@@ -6,6 +6,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  supabase_flutter: ^2.0.0
+  flutter_dotenv: ^5.1.0
   flutter_email_sender: ^6.0.2
   url_launcher: ^6.2.3
   image_picker: ^0.8.4+4
@@ -32,6 +34,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - .env
+    
   fonts:
     - family: Libre Baskerville
       fonts:

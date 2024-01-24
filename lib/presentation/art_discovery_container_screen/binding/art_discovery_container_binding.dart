@@ -1,12 +1,6 @@
-import 'package:artohmapp/presentation/art_community_engagement_screen/controller/art_community_engagement_controller.dart';
 import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
 import 'package:artohmapp/presentation/art_marketplace_screen/controller/art_marketplace_controller.dart';
-import 'package:artohmapp/presentation/artist_profile_screen/controller/artist_profile_controller.dart';
-import 'package:artohmapp/presentation/artwork_screen/controller/artwork_controller.dart';
 import 'package:artohmapp/presentation/collaborate_screen/controller/collaborate_controller.dart';
-import 'package:artohmapp/presentation/collaborateitem_screen/controller/collaborateitem_controller.dart';
-import 'package:artohmapp/presentation/home_page/controller/home_controller.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
 
 import '../controller/art_discovery_container_controller.dart';
 import 'package:get/get.dart';

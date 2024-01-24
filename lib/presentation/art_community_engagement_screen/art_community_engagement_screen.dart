@@ -5,11 +5,6 @@ import '../art_community_engagement_screen/widgets/engagementcard_item_widget.da
 import 'controller/art_community_engagement_controller.dart';
 import 'models/engagementcard_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_image_1.dart';
-import 'package:artohmapp/widgets/app_bar/appbar_subtitle.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
-import 'package:artohmapp/widgets/custom_search_view.dart';
 import 'package:flutter/material.dart';
 
 class ArtCommunityEngagementScreen

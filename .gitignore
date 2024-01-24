@@ -8,3 +8,4 @@
 !/.flutter-plugins
 .git.zip
 .git
+*.env

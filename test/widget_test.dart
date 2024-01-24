@@ -6,16 +6,10 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
-import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
-import 'package:artohmapp/presentation/artwork_screen/controller/artwork_controller.dart';
-import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
-import 'package:artohmapp/widgets/custom_appbar_component.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:artohmapp/main.dart';
 
 void main() {
 
