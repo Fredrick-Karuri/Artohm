@@ -1,8 +1,8 @@
 import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
+import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
-import 'controller/user_profile_container_controller.dart';
 import 'models/collection_item_model.dart';
 import 'models/enchantedforest_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -183,11 +183,17 @@ class UserProfileContainerScreen
                   child: Text("lbl_your_work".tr,
                       style: theme.textTheme.titleMedium)),
               CustomOutlinedButton(
-                  width: 107.h,
-                  text: "lbl_121_artworks".tr,
-                  buttonStyle: CustomButtonStyles.outlineLightBlueATL4,
-                  buttonTextStyle:
-                      CustomTextStyles.titleSmallLatoLightblueA700Medium)
+                width: 107.h,
+                text: "lbl_121_artworks".tr,
+                buttonStyle: CustomButtonStyles.outlineLightBlueATL4,
+                buttonTextStyle:
+                    CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                onTap: () {
+                  Get.toNamed(
+                    AppRoutes.yourArtworksPage,
+                  );
+                },
+              )
             ],
           ),
         ),
@@ -302,8 +308,7 @@ class UserProfileContainerScreen
             ),
           ),
           Padding(
-      padding: EdgeInsets.only(left: 16.h, top: 24.v),
-
+            padding: EdgeInsets.only(left: 16.h, top: 24.v),
             child: Column(
               children: [
                 CustomRowWidget(
@@ -318,8 +323,6 @@ class UserProfileContainerScreen
                   title: 'lbl_influences'.tr,
                   text: 'msg_salvador_dali_frida'.tr,
                 ),
-               
-               
               ],
             ),
           ),

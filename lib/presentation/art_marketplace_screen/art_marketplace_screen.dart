@@ -1,9 +1,9 @@
+import 'package:artohmapp/presentation/art_marketplace_screen/models/art_marketplace_model.dart';
 import 'package:artohmapp/presentation/art_marketplace_screen/widgets/artwork_card.dart';
 
 import '../../widgets/custom_appbar_component.dart';
 import '../art_marketplace_screen/widgets/marketplacechip_item_widget.dart';
 import 'controller/art_marketplace_controller.dart';
-import 'models/artwork_card_model.dart';
 import 'models/marketplacechip_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
@@ -66,53 +66,82 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
   }
 
   artwork() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: IntrinsicWidth(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomCardWidget(
-                    card: CustomCard(
-                      imagePath: ImageConstant.imgRectangle1120,
-                      svgPath: ImageConstant.imgIconsWhiteA700,
-                      title: "lbl_sunset_serenity",
-                      artist: "lbl_emily_davis",
-                      price: "lbl_620",
+    return Obx(() {
+      return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: IntrinsicWidth(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: controller.filteredArtworks.map((artwork) {
+              return Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomCardWidget(
+                      artwork: artwork,
+                      card: artwork,
                     ),
-                  ),
-                  SizedBox(width: 8),
-                  CustomCardWidget(
-                    card: CustomCard(
-                      imagePath: ImageConstant.imgRectangle1121,
-                      svgPath: ImageConstant.imgIconsWhiteA700,
-                      title: "lbl_sunset_serenity",
-                      artist: "lbl_emily_davis",
-                      price: "lbl_620",
-                    ),
-                  ),
-                  SizedBox(width: 8),
-                  CustomCardWidget(
-                    card: CustomCard(
-                      imagePath: ImageConstant.imgRectangle1120,
-                      svgPath: ImageConstant.imgIconsWhiteA700,
-                      title: "lbl_sunset_serenity",
-                      artist: "lbl_emily_davis",
-                      price: "lbl_620",
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                    SizedBox(width: 8),
+                    // Add more CustomCardWidgets here...
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
+
+  // artwork() {
+  //   return SingleChildScrollView(
+  //     scrollDirection: Axis.horizontal,
+  //     child: IntrinsicWidth(
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: [
+  //           Expanded(
+  //             child: Row(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               children: [
+  //                 CustomCardWidget(
+  //                   card: MarketPlaceArtwork(
+  //                     imagePath: ImageConstant.imgRectangle1120,
+  //                     svgPath: ImageConstant.imgIconsWhiteA700,
+  //                     title: "lbl_sunset_serenity",
+  //                     artist: "lbl_emily_davis",
+  //                     price: "lbl_620",
+
+  //                   ),
+  //                 ),
+  //                 SizedBox(width: 8),
+  //                 CustomCardWidget(
+  //                   card: MarketPlaceArtwork(
+  //                     imagePath: ImageConstant.imgRectangle1121,
+  //                     svgPath: ImageConstant.imgIconsWhiteA700,
+  //                     title: "lbl_sunset_serenity",
+  //                     artist: "lbl_emily_davis",
+  //                     price: "lbl_620",
+  //                   ),
+  //                 ),
+  //                 SizedBox(width: 8),
+  //                 CustomCardWidget(
+  //                   card: MarketPlaceArtwork(
+  //                     imagePath: ImageConstant.imgRectangle1120,
+  //                     svgPath: ImageConstant.imgIconsWhiteA700,
+  //                     title: "lbl_sunset_serenity",
+  //                     artist: "lbl_emily_davis",
+  //                     price: "lbl_620",
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   featuredCard() {
     return Padding(

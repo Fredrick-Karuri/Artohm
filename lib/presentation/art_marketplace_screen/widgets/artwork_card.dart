@@ -1,16 +1,17 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/art_marketplace_screen/models/art_marketplace_model.dart';
 import 'package:artohmapp/presentation/modal_contact_seller/modal_contact_seller.dart';
 import 'package:artohmapp/presentation/modal_screen/artwork_card_modal.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
-import '../models/artwork_card_model.dart';
 import '../models/seller_model.dart';
 
 class CustomCardWidget extends StatelessWidget {
-  final CustomCard card;
+  final MarketPlaceArtwork card;
+  final MarketPlaceArtwork artwork;
 
-  CustomCardWidget({required this.card});
+  CustomCardWidget({required this.card, required this.artwork});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,8 @@ class CustomCardWidget extends StatelessWidget {
               children: [
                 CustomImageView(
                   fit: BoxFit.fill,
-                  imagePath: card.imagePath,
+                  // imagePath: card.imagePath,
+                  imagePath: artwork.imagePath,
                   radius: BorderRadius.circular(8.h),
                   alignment: Alignment.center,
                 ),
@@ -53,9 +55,15 @@ class CustomCardWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(card.title.tr, style: theme.textTheme.titleSmall),
+                    Text(
+                      artwork.title.tr,
+                      style: theme.textTheme.titleSmall,
+                    ),
                     SizedBox(height: 6.v),
-                    Text(card.artist.tr, style: theme.textTheme.bodyMedium),
+                    Text(
+                      artwork.artist.tr,
+                      style: theme.textTheme.bodyMedium,
+                    ),
                   ],
                 ),
                 Container(
@@ -67,7 +75,7 @@ class CustomCardWidget extends StatelessWidget {
                       borderRadius: BorderRadiusStyle.roundedBorder4,
                       color: appTheme.blue50),
                   child: Text(
-                    card.price.tr,
+                    artwork.price.tr,
                     style: theme.textTheme.labelLarge,
                   ),
                 ),
@@ -91,7 +99,6 @@ class CustomCardWidget extends StatelessWidget {
                   text: 'Contact Seller',
                 ),
               ),
-             
             ],
           ),
         ],

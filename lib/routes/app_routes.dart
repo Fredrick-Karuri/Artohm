@@ -17,6 +17,8 @@ import 'package:artohmapp/presentation/settings_notifications_screen/settings_no
 import 'package:artohmapp/presentation/settings_notifications_screen/binding/settingsitem_binding.dart';
 import 'package:artohmapp/presentation/privacy_screen/privacy_screen.dart';
 import 'package:artohmapp/presentation/privacy_screen/binding/privacy_binding.dart';
+import 'package:artohmapp/presentation/your_artworks/binding/your_artworks._binding.dart';
+import 'package:artohmapp/presentation/your_artworks/your_artworks.dart';
 import 'package:artohmapp/widgets/splashscreen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/user_profile_container_screen.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/binding/user_profile_container_binding.dart';
@@ -125,6 +127,7 @@ class AppRoutes {
   static const String newCollaborationItemPage = '/collaborate_start_screen';
   static const String collaborationStartConfirmationPage =
       '/collaboration_start_confirmation_screen';
+  static const String yourArtworksPage = '/your_artworks_page';
 
   static List<GetPage> pages = [
     GetPage(
@@ -290,7 +293,7 @@ class AppRoutes {
     ),
     GetPage(
       name: modalScreen,
-      page: () => ModalScreen( ),
+      page: () => ModalScreen(),
       bindings: [
         ModalBinding(),
       ],
@@ -331,6 +334,13 @@ class AppRoutes {
     GetPage(
       name: splashScreen,
       page: () => SplashScreen(),
-    )
+    ),
+    GetPage(
+      name: yourArtworksPage,
+      page: () => YourArtworksPage(),
+      bindings: [
+        YourArtworksBinding(),
+      ],
+    ),
   ];
 }

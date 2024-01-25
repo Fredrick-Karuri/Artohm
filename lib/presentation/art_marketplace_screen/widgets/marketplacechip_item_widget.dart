@@ -4,6 +4,7 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
+
 class MarketplaceChipItemWidget extends StatelessWidget {
   //  change color of the tapped chip
 
@@ -22,9 +23,17 @@ class MarketplaceChipItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Reset isSelected for all chips
+        controller.artMarketplaceModelObj.value.marketplaceChipItemList.value
+            .forEach((item) {
+          item.isSelected!.value = false;
+        });
+
+        // Set isSelected for the tapped chip
+        marketplaceChipItemModelObj.isSelected!.value = true;
+
+        // Filter the art based on the selected chip id
         controller.filterArt(marketplaceChipItemModelObj.id!.value);
-        marketplaceChipItemModelObj.isSelected!.value =
-            !marketplaceChipItemModelObj.isSelected!.value;
       },
       child: Obx(
         () => Chip(

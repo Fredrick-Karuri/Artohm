@@ -18,20 +18,21 @@ class EnchantedforestItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        // Handle your tap here.
-      },
+    return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: CustomImageView(
-              imagePath: ImageConstant.imgRectangle11135x1081,
-              height: 120.v,
-              width: 108.h,
-              radius: BorderRadius.circular(
-                8.h,
+            child: InkWell(
+              onTap: () {
+                Get.toNamed(AppRoutes.artworkScreen);
+                // Handle your tap here.
+              },
+              child: CustomImageView(
+                imagePath: ImageConstant.imgRectangle11135x1081,
+                radius: BorderRadius.circular(
+                  8.h,
+                ),
               ),
             ),
           ),
@@ -48,7 +49,6 @@ class EnchantedforestItemWidget extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(
-              left: 8.h,
               top: 4.v,
             ),
             child: Obx(
