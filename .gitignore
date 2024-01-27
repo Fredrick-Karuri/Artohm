@@ -3,9 +3,9 @@
 /build/
 /.vscode/
 !/pubspec.lock
-!/.packages
-!/.flutter-plugins-dependencies
-!/.flutter-plugins
+/.packages
+/.flutter-plugins-dependencies
+/.flutter-plugins
 .git.zip
 .git
 *.env
