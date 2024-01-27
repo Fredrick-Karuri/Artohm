@@ -9,18 +9,24 @@ class ArtMarketplaceModel {
   Rx<List<MarketplaceChipItemModel>> marketplaceChipItemList = Rx(
     [
       MarketplaceChipItemModel(
+        label: Rx("All"),
+        id: Rx("all"),
+        iconData: Icons.all_inclusive,
+        isSelected: Rx(true),
+      ),
+      MarketplaceChipItemModel(
         label: Rx("Paintings"),
-        id: Rx("1"),
+        id: Rx("ptg"),
         iconData: Icons.brush,
       ),
       MarketplaceChipItemModel(
         label: Rx("Photography"),
-        id: Rx("2"),
+        id: Rx("pho"),
         iconData: Icons.camera,
       ),
       MarketplaceChipItemModel(
         label: Rx("Digital Art"),
-        id: Rx("3"),
+        id: Rx("dgt"),
         iconData: Icons.art_track,
       ),
       // Add more art types here...
@@ -34,8 +40,8 @@ class ArtMarketplaceModel {
         title: "lbl_sunset_serenity",
         artist: "lbl_emily_davis",
         price: "lbl_620",
-        id: "1",
-        type: "Paintings",
+        // id: "1",
+        type: "ptg",
       ),
       MarketPlaceArtwork(
         imagePath: ImageConstant.imgRectangle1120,
@@ -43,8 +49,8 @@ class ArtMarketplaceModel {
         title: "lbl_sunset_serenity",
         artist: "lbl_emily_davis",
         price: "lbl_620",
-        id: "2",
-        type: "Digital Art",
+        // id: "2",
+        type: "dgt",
       ),
       MarketPlaceArtwork(
         imagePath: ImageConstant.imgRectangle1120,
@@ -52,8 +58,16 @@ class ArtMarketplaceModel {
         title: "lbl_sunset_serenity",
         artist: "lbl_emily_davis",
         price: "lbl_620",
-        id: "3",
-        type: "Photography",
+        // id: "2",
+        type: "pho",
+      ),MarketPlaceArtwork(
+        imagePath: ImageConstant.imgRectangle1120,
+        svgPath: ImageConstant.imgIconsWhiteA700,
+        title: "lbl_sunset_serenity",
+        artist: "lbl_emily_davis",
+        price: "lbl_620",
+        // id: "2",
+        type: "pho",
       ),
       // Add more artworks here...
     ],
@@ -66,7 +80,7 @@ class MarketPlaceArtwork {
   final String title;
   final String artist;
   final String price;
-  final String id;
+  // final String id;
   final String type;
 
   MarketPlaceArtwork({
@@ -75,7 +89,7 @@ class MarketPlaceArtwork {
     required this.title,
     required this.artist,
     required this.price,
-    required this.id,
+    // required this.id,
     required this.type,
   });
 }
