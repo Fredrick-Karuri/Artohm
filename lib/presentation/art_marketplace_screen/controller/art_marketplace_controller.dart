@@ -8,20 +8,24 @@ import 'package:artohmapp/presentation/art_marketplace_screen/models/marketplace
 /// current artMarketplaceModelObj
 class ArtMarketplaceController extends GetxController {
   Rx<ArtMarketplaceModel> artMarketplaceModelObj = ArtMarketplaceModel().obs;
-  // In ArtMarketplaceController
   RxList<MarketPlaceArtwork> filteredArtworks = RxList<MarketPlaceArtwork>();
 
-  // list of filtered items
-  RxList<MarketplaceChipItemModel> filteredItems =
-      RxList<MarketplaceChipItemModel>();
-  RxString selectedChipId = RxString("");
+  @override
+  void onInit() {
+    super.onInit();
+    // Initialize filteredArtworks with all artworks
+    filteredArtworks.addAll(artMarketplaceModelObj.value.artList.value);
+  }
 
   void filterArt(String id) {
-    selectedChipId.value = id;
-
-    // Filter the artworks based on the selected chip id
-    filteredArtworks.value = artMarketplaceModelObj.value.artList.value
-        .where((art) => art.type == id)
-        .toList();
+    if (id == "all") {
+      // If "all" is selected, show all artworks
+      filteredArtworks.assignAll(artMarketplaceModelObj.value.artList.value);
+    } else {
+      // Filter the artworks based on the selected chip id
+      filteredArtworks.assignAll(
+        artMarketplaceModelObj.value.artList.value.where((art) => art.type == id).toList(),
+      );
+    }
   }
 }

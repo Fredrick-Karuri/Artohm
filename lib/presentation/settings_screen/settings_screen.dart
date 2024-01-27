@@ -226,6 +226,30 @@ class SettingsScreen extends GetWidget<SettingsController> {
     );
   }
 
+  // logout of the application
+  
+  // onTapLogout() async {
+  //   Get.defaultDialog(
+  //     contentPadding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 16.v),
+  //     titlePadding: EdgeInsets.only(top: 16.v, ),
+  //     title: "Confirm Logout",
+  //     titleStyle: CustomTextStyles.titleLargeBlack90001,
+  //     middleText: "Are you sure you want to logout?".tr,
+  //     textConfirm: "Yes".tr,
+  //     textCancel: "Cancel".tr,
+
+  //     confirmTextColor:Colors.white,
+  //     buttonColor: appTheme.red300,
+  //     cancelTextColor: appTheme.red300,
+  //     backgroundColor: appTheme.pink50,
+  //     onConfirm: () async {
+  //       await supabase.auth.signOut();
+  //       Get.offAllNamed(AppRoutes.signinScreen);
+  //     },
+  //     onCancel: () {},
+  //   );
+  // }
+
   /// Navigates to the previous screen.
   ///
   /// When the action is triggered, this function uses the [Get] package to

@@ -21,51 +21,54 @@ class MarketplaceChipItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        // Reset isSelected for all chips
-        controller.artMarketplaceModelObj.value.marketplaceChipItemList.value
-            .forEach((item) {
-          item.isSelected!.value = false;
-        });
-
-        // Set isSelected for the tapped chip
-        marketplaceChipItemModelObj.isSelected!.value = true;
-
-        // Filter the art based on the selected chip id
-        controller.filterArt(marketplaceChipItemModelObj.id!.value);
-      },
-      child: Obx(
-        () => Chip(
-          padding: EdgeInsets.symmetric(
-            horizontal: 8.h,
-            vertical: 12.v,
-          ),
-          backgroundColor: marketplaceChipItemModelObj.isSelected!.value
-              ? appTheme.lightBlueA700
-              : appTheme.blue50,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          label: Column(
-            children: [
-              Icon(
-                marketplaceChipItemModelObj.iconData,
-                size: 24.adaptSize,
-                color: marketplaceChipItemModelObj.isSelected!.value
-                    ? Colors.white
-                    : theme.primaryColorDark,
-              ),
-              Obx(
-                () => Text(
-                  marketplaceChipItemModelObj.label!.value,
-                  overflow: TextOverflow.ellipsis,
-                  style: marketplaceChipItemModelObj.isSelected!.value
-                      ? CustomTextStyles.titleSmallWhite
-                      : CustomTextStyles.titleSmallBlack90001,
+    return Container(
+      margin: EdgeInsets.only(right: 10.h),
+      child: GestureDetector(
+        onTap: () {
+          // Reset isSelected for all chips
+          controller.artMarketplaceModelObj.value.marketplaceChipItemList.value
+              .forEach((item) {
+            item.isSelected!.value = false;
+          });
+      
+          // Set isSelected for the tapped chip
+          marketplaceChipItemModelObj.isSelected!.value = true;
+      
+          // Filter the art based on the selected chip id
+          controller.filterArt(marketplaceChipItemModelObj.id!.value);
+        },
+        child: Obx(
+          () => Chip(
+            padding: EdgeInsets.symmetric(
+              horizontal: 8.h,
+              vertical: 12.v,
+            ),
+            backgroundColor: marketplaceChipItemModelObj.isSelected!.value
+                ? appTheme.lightBlueA700
+                : appTheme.blue50,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            label: Column(
+              children: [
+                Icon(
+                  marketplaceChipItemModelObj.iconData,
+                  size: 24.adaptSize,
+                  color: marketplaceChipItemModelObj.isSelected!.value
+                      ? Colors.white
+                      : theme.primaryColorDark,
                 ),
-              ),
-            ],
+                Obx(
+                  () => Text(
+                    marketplaceChipItemModelObj.label!.value,
+                    overflow: TextOverflow.ellipsis,
+                    style: marketplaceChipItemModelObj.isSelected!.value
+                        ? CustomTextStyles.titleSmallWhite
+                        : CustomTextStyles.titleSmallBlack90001,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
