@@ -1,11 +1,16 @@
-import 'package:artohmapp/main.dart';
-
 import '../../widgets/custom_appbar_component.dart';
 import 'controller/settings_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+Future<bool> signOut() async {
+  final storage = new FlutterSecureStorage();
+  await storage.delete(key: 'accessToken');
+  return false;
+}
 
 class SettingsScreen extends GetWidget<SettingsController> {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -44,10 +49,10 @@ class SettingsScreen extends GetWidget<SettingsController> {
                     text: "Logout".tr,
                     buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700,
                     onTap: () async {
-                      await supabase.auth.signOut();
-                      Get.toNamed(
-                        AppRoutes.signinScreen,
-                      );
+                      bool isLoggedIn = await signOut();
+                      if (!isLoggedIn) {
+                        Get.toNamed(AppRoutes.signinScreen);
+                      }
                     },
                   ),
                 ],

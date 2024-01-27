@@ -8,41 +8,6 @@ import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dar
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-// class ArtDiscoveryContainerScreen extends StatelessWidget {
-//   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//       future: _checkOnboardingStatus(),
-//       builder: (context, snapshot) {
-//         if (!snapshot.hasData) {
-//           // show a loading spinner when waiting for the future to complete
-//           return CircularProgressIndicator();
-//         }
-//         String initialRoute = (snapshot.data is bool && snapshot.data as bool)
-//             ? AppRoutes.homePage
-//             : AppRoutes.onboardingScreen;
-
-//         return SafeArea(
-//           child: Scaffold(
-//             body: Navigator(
-//               key: Get.nestedKey(1),
-//               initialRoute: initialRoute, // Use the initialRoute variable here
-//               onGenerateRoute: (routeSetting) => GetPageRoute(
-//                   page: () => getCurrentPage(routeSetting.name!),
-//                   transition: Transition.noTransition),
-//             ),
-//             bottomNavigationBar: CustomBottomBar(
-//               onChanged: (BottomBarEnum type) {
-//                 Get.toNamed(getCurrentRoute(type), id: 1);
-//               },
-//             ),
-//           ),
-//         );
-//       },
-//     );
-//   }
 
 class ArtDiscoveryContainerScreen extends StatelessWidget {
   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
@@ -109,3 +74,39 @@ Widget getCurrentPage(String currentRoute) {
       return HomePage();
   }
 }
+
+// class ArtDiscoveryContainerScreen extends StatelessWidget {
+//   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder(
+//       future: _checkOnboardingStatus(),
+//       builder: (context, snapshot) {
+//         if (!snapshot.hasData) {
+//           // show a loading spinner when waiting for the future to complete
+//           return CircularProgressIndicator();
+//         }
+//         String initialRoute = (snapshot.data is bool && snapshot.data as bool)
+//             ? AppRoutes.homePage
+//             : AppRoutes.onboardingScreen;
+
+//         return SafeArea(
+//           child: Scaffold(
+//             body: Navigator(
+//               key: Get.nestedKey(1),
+//               initialRoute: initialRoute, // Use the initialRoute variable here
+//               onGenerateRoute: (routeSetting) => GetPageRoute(
+//                   page: () => getCurrentPage(routeSetting.name!),
+//                   transition: Transition.noTransition),
+//             ),
+//             bottomNavigationBar: CustomBottomBar(
+//               onChanged: (BottomBarEnum type) {
+//                 Get.toNamed(getCurrentRoute(type), id: 1);
+//               },
+//             ),
+//           ),
+//         );
+//       },
+//     );
+//   }
