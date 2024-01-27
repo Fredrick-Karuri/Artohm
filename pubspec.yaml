@@ -7,6 +7,7 @@ dependencies:
   flutter:
     sdk: flutter
   supabase_flutter: ^2.0.0
+  flutter_secure_storage: ^5.0.2
   flutter_dotenv: ^5.1.0
   flutter_email_sender: ^6.0.2
   url_launcher: ^6.2.3

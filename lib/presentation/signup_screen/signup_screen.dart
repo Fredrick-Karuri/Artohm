@@ -141,7 +141,7 @@ class SignupScreen extends GetWidget<SignupController> {
   /// push the named route for the signupOneScreen.
   onTapContinuewith() {
     Get.toNamed(
-      AppRoutes.signupOneScreen,
+      AppRoutes.signupOneScreen
     );
   }
 

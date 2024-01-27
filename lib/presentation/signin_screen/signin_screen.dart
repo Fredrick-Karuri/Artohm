@@ -1,4 +1,3 @@
-
 import 'package:artohmapp/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -12,6 +11,7 @@ import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:artohmapp/domain/googleauth/google_auth_helper.dart';
 import 'package:artohmapp/domain/facebookauth/facebook_auth_helper.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 // ignore_for_file: must_be_immutable
 class SigninScreen extends GetWidget<SigninController> {
@@ -114,6 +114,7 @@ class SigninScreen extends GetWidget<SigninController> {
           // if all the data are correct then save the data to out variables
           _formKey.currentState!.save();
 
+          final storage = new FlutterSecureStorage();
           // Sign in the user
           try {
             var response = await supabase.auth.signInWithPassword(
@@ -129,6 +130,8 @@ class SigninScreen extends GetWidget<SigninController> {
                 "Welcome",
               );
               onTapLogin();
+              String? accessToken = response.session?.accessToken;
+              await storage.write(key: 'accessToken', value: accessToken);
             }
           } catch (e) {
             if (e is AuthException && e.statusCode == 400) {
