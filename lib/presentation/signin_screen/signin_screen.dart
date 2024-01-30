@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:artohmapp/domain/googleauth/google_auth_helper.dart';
 import 'package:artohmapp/domain/facebookauth/facebook_auth_helper.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:artohmapp/global_states.dart';
 
 // ignore_for_file: must_be_immutable
 class SigninScreen extends GetWidget<SigninController> {
@@ -132,6 +133,8 @@ class SigninScreen extends GetWidget<SigninController> {
               onTapLogin();
               String? accessToken = response.session?.accessToken;
               await storage.write(key: 'accessToken', value: accessToken);
+              // Set isLoggedIn to true
+              Get.find<LoginController>().setIsLoggedIn(true);
             }
           } catch (e) {
             if (e is AuthException && e.statusCode == 400) {
