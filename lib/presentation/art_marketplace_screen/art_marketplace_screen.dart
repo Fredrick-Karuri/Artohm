@@ -1,6 +1,4 @@
-import 'package:artohmapp/presentation/art_marketplace_screen/models/art_marketplace_model.dart';
 import 'package:artohmapp/presentation/art_marketplace_screen/widgets/artwork_card.dart';
-
 import '../../widgets/custom_appbar_component.dart';
 import '../art_marketplace_screen/widgets/marketplacechip_item_widget.dart';
 import 'controller/art_marketplace_controller.dart';
@@ -19,9 +17,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     return SafeArea(
       child: Scaffold(
         appBar: CustomAppBarComponent(
-          cartItemCount: 1,
-          hasTrailingIcon: true,
-          trailingIcon: Icons.shopping_cart,
           title: "lbl_market_place2".tr,
           onBackPressed: () {
             Get.back(id: 1);
@@ -93,56 +88,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     });
   }
 
-  // artwork() {
-  //   return SingleChildScrollView(
-  //     scrollDirection: Axis.horizontal,
-  //     child: IntrinsicWidth(
-  //       child: Row(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: [
-  //           Expanded(
-  //             child: Row(
-  //               mainAxisAlignment: MainAxisAlignment.center,
-  //               children: [
-  //                 CustomCardWidget(
-  //                   card: MarketPlaceArtwork(
-  //                     imagePath: ImageConstant.imgRectangle1120,
-  //                     svgPath: ImageConstant.imgIconsWhiteA700,
-  //                     title: "lbl_sunset_serenity",
-  //                     artist: "lbl_emily_davis",
-  //                     price: "lbl_620",
-
-  //                   ),
-  //                 ),
-  //                 SizedBox(width: 8),
-  //                 CustomCardWidget(
-  //                   card: MarketPlaceArtwork(
-  //                     imagePath: ImageConstant.imgRectangle1121,
-  //                     svgPath: ImageConstant.imgIconsWhiteA700,
-  //                     title: "lbl_sunset_serenity",
-  //                     artist: "lbl_emily_davis",
-  //                     price: "lbl_620",
-  //                   ),
-  //                 ),
-  //                 SizedBox(width: 8),
-  //                 CustomCardWidget(
-  //                   card: MarketPlaceArtwork(
-  //                     imagePath: ImageConstant.imgRectangle1120,
-  //                     svgPath: ImageConstant.imgIconsWhiteA700,
-  //                     title: "lbl_sunset_serenity",
-  //                     artist: "lbl_emily_davis",
-  //                     price: "lbl_620",
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
-
   featuredCard() {
     return Padding(
       padding: const EdgeInsets.only(right: 16),
@@ -152,8 +97,6 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
           children: [
             CustomImageView(
               imagePath: ImageConstant.imgRectangle11332x358,
-              // height: 332.v,
-              // width: 358.h,
               radius: BorderRadius.circular(8.h),
               fit: BoxFit.cover,
             ),
@@ -206,18 +149,15 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     );
   }
 
-  topChips() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10, bottom: 8),
-      child: Obx(
-        () => GridView.builder(
+topChips() {
+  return Padding(
+    padding: const EdgeInsets.only(left: 10, bottom: 8, right: 10),
+    child: Obx(
+      () => SizedBox(
+        height: 72, // Adjust this value as needed
+        child: ListView.builder(
           shrinkWrap: true,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 72.v,
-              crossAxisCount: 3,
-              mainAxisSpacing: 8.h,
-              crossAxisSpacing: 8.h),
-          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
           itemCount: controller.artMarketplaceModelObj.value
               .marketplaceChipItemList.value.length,
           itemBuilder: (context, index) {
@@ -227,8 +167,10 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
           },
         ),
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   /// Navigates to the previous screen.
   ///
