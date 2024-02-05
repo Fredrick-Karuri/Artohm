@@ -111,9 +111,8 @@ class UserProfileContainerScreen
 
   communityEngagement() {
     return Container(
-      width: 360.h,
       margin: EdgeInsets.only(right: 16.h),
-      padding: EdgeInsets.symmetric(horizontal: 7.h, vertical: 15.v),
+      padding: EdgeInsets.symmetric(horizontal: 4.h, vertical: 4.v),
       decoration: AppDecoration.outlineRed
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder4),
       child: Column(
@@ -125,8 +124,15 @@ class UserProfileContainerScreen
             onTap: () {
               onTapImgArrowrightone();
             },
-            child: Padding(
-              padding: EdgeInsets.only(top: 4.v, right: 16.h),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4.h),
+                color: appTheme.pink50,
+              ),
+              padding: EdgeInsets.symmetric(
+                horizontal: 12.h,
+                vertical: 12.v,
+              ),
               child: Row(
                 children: [
                   Text("msg_art_community_engagement".tr,
@@ -136,34 +142,49 @@ class UserProfileContainerScreen
                     height: 18.v,
                     width: 10.h,
                     margin: EdgeInsets.only(left: 69.h, bottom: 2.v),
-                    onTap: () {
-                      onTapImgArrowrightone();
-                    },
                   )
                 ],
               ),
             ),
           ),
           SizedBox(height: 16.v),
-          Text("lbl_recent_comments".tr, style: theme.textTheme.bodyLarge),
           Padding(
-              padding: EdgeInsets.only(left: 4.h, top: 11.v),
-              child: Text("msg_beautiful_use_of".tr,
-                  style: CustomTextStyles.bodyMediumBlack90001)),
-          Container(
-              width: 289.h,
-              margin: EdgeInsets.only(left: 4.h, top: 7.v, right: 48.h),
-              child: Text("msg_your_creations".tr,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: CustomTextStyles.bodyMediumBlack90001)),
-          Container(
-              width: 289.h,
-              margin: EdgeInsets.only(left: 4.h, top: 7.v, right: 48.h),
-              child: Text("msg_your_creations".tr,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: CustomTextStyles.bodyMediumBlack90001)),
+            padding: const EdgeInsets.only(left: 4.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("lbl_recent_comments".tr,
+                    style: theme.textTheme.bodyLarge),
+                Padding(
+                  padding: EdgeInsets.only(left: 4.h, top: 11.v),
+                  child: Text(
+                    "msg_beautiful_use_of".tr,
+                    style: CustomTextStyles.bodyMediumBlack90001,
+                  ),
+                ),
+                Container(
+                  width: 289.h,
+                  margin: EdgeInsets.only(left: 4.h, top: 7.v, right: 48.h),
+                  child: Text(
+                    "msg_your_creations".tr,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: CustomTextStyles.bodyMediumBlack90001,
+                  ),
+                ),
+                Container(
+                  width: 289.h,
+                  margin: EdgeInsets.only(left: 4.h, top: 7.v, right: 48.h),
+                  child: Text(
+                    "msg_your_creations".tr,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: CustomTextStyles.bodyMediumBlack90001,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

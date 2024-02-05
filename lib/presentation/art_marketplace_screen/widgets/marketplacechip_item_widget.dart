@@ -30,10 +30,10 @@ class MarketplaceChipItemWidget extends StatelessWidget {
               .forEach((item) {
             item.isSelected!.value = false;
           });
-      
+
           // Set isSelected for the tapped chip
           marketplaceChipItemModelObj.isSelected!.value = true;
-      
+
           // Filter the art based on the selected chip id
           controller.filterArt(marketplaceChipItemModelObj.id!.value);
         },

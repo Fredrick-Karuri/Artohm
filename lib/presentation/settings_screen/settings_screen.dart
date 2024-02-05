@@ -1,5 +1,4 @@
 import 'package:artohmapp/main.dart';
-
 import '../../widgets/custom_appbar_component.dart';
 import 'controller/settings_controller.dart';
 import 'package:artohmapp/core/app_export.dart';

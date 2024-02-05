@@ -24,8 +24,6 @@ class HomeArtworkCard extends StatelessWidget {
           children: [
             CustomImageView(
               imagePath: imagePath,
-              height: 200.v,
-              width: 160.h,
               radius: BorderRadius.circular(
                 8.h,
               ),

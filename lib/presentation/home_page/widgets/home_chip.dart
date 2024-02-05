@@ -1,43 +1,45 @@
+import 'package:artohmapp/presentation/home_page/controller/home_controller.dart';
+import 'package:artohmapp/presentation/home_page/models/HomeChipFilterModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../theme/theme_helper.dart';
-import '../controller/chip_controller.dart';
 
 class HomeChip extends StatelessWidget {
-  final String labelText;
-  final ChipController controller =
-      Get.put(ChipController(), tag: UniqueKey().toString());
+  final HomeChipFilterModel chip;
+  final HomeController controller = Get.find();
 
   HomeChip({
     Key? key,
-    required this.labelText,
+    required this.chip,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: GestureDetector(
-            onTap: controller.toggleChipSelection,
-            child: Chip(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-                side: BorderSide(
-                  color:
-                      controller.isSelected.value ? Colors.black : Colors.blue,
-                  width: 1.0,
-                ),
+    return Obx(
+      () => Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: GestureDetector(
+          onTap: () => controller.toggleChipSelection(chip.id.value),
+          child: Chip(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+              side: BorderSide(
+                color: chip.isSelected.value ? Colors.black : Colors.blue,
+                width: 1.0,
               ),
-              label: Text(
-                labelText.tr,
-              ),
-              backgroundColor: controller.isSelected.value
-                  ? appTheme.lightBlueA700
-                  : appTheme.blue50,
-              labelStyle: theme.textTheme.labelLarge!,
+            ),
+            label: Text(
+              chip.label.value,
+            ),
+            backgroundColor: chip.isSelected.value
+                ? appTheme.lightBlueA700
+                : appTheme.blue50,
+            labelStyle: theme.textTheme.labelLarge!.copyWith(
+              color: chip.isSelected.value ? Colors.white : Colors.black,
             ),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

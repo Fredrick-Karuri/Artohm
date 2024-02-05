@@ -1,6 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/art_marketplace_screen/models/art_marketplace_model.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/models/marketplacechip_item_model.dart';
 
 /// A controller class for the ArtMarketplaceScreen.
 ///

@@ -186,44 +186,39 @@ class HomePage extends StatelessWidget {
   }
 
   homeFilters() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.only(left: 16.h, top: 16.v),
-      child: IntrinsicWidth(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: CustomDropDown(
-                borderDecoration: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 1.0,
-                    )),
-                dropdownColor: appTheme.lightBlueA700,
-                width: 120.h,
-                hintText: "Filter By",
-                items: controller.homeModelObj.value.dropdownItemList.value,
-                onChanged: (value) {
-                  controller.onSelected(value);
-                },
-              ),
+  HomeController controller = Get.find();
+  return SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+    padding: EdgeInsets.only(left: 16.h, top: 16.v),
+    child: IntrinsicWidth(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
+            child: CustomDropDown(
+              borderDecoration: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(20),
+                  borderSide: BorderSide(
+                    color: Colors.blue,
+                    width: 1.0,
+                  )),
+              dropdownColor: appTheme.lightBlueA700,
+              width: 120.h,
+              hintText: "Filter By",
+              items: controller.homeModelObj.value.dropdownItemList.value,
+              onChanged: (value) {
+                controller.onSelected(value);
+              },
             ),
-            HomeChip(
-              labelText: 'Art',
-            ),
-            HomeChip(
-              labelText: 'Painting',
-            ),
-            HomeChip(
-              labelText: 'Photography',
-            ),
-          ],
-        ),
+          ),
+          for (var chip in controller.homeChipFilterList.value)
+            HomeChip(chip: chip),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}
+
 
   /// Navigates to the notificationsTabContainerScreen when the action is triggered.
 
