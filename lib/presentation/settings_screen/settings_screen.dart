@@ -258,7 +258,6 @@ class SettingsScreen extends GetWidget<SettingsController> {
     );
   }
 
-
   /// Navigates to the previous screen.
   ///
   /// When the action is triggered, this function uses the [Get] package to

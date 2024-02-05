@@ -1,9 +1,11 @@
+import 'package:artohmapp/presentation/onboarding_screen/controller/onboarding_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'core/app_export.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:artohmapp/global_states.dart';
 
 late final SupabaseClient supabase;
 Future main() async {
@@ -24,8 +26,11 @@ Future main() async {
 
     supabase = Supabase.instance.client;
     final session = supabase.auth.currentSession;
-    bool onboardingCompleted = (session != null);
-
+    Get.put(GlobalOnboardingController());
+    GlobalOnboardingController globalOnboardingController = Get.find();
+    bool onboardingCompleted =
+        globalOnboardingController.onboardingCompleted.value;
+    Get.put(LoginController());
     // SharedPreferences prefs = await SharedPreferences.getInstance();
     // bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
     runApp(MyApp(onboardingCompleted: onboardingCompleted));

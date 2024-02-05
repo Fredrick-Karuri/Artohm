@@ -1,6 +1,7 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/onboarding_screen/models/onboarding_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:artohmapp/global_states.dart';
 
 /// A controller class for the OnboardingScreen.
 ///
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // }
 class OnboardingController extends GetxController {
   var currentPage = 0.obs;
+  GlobalOnboardingController globalOnboardingController = Get.find();
   List<OnboardingPage> pages = [
     OnboardingPage(
       logoPath: ImageConstant.imgAirplaneBlack90001,
@@ -43,13 +45,13 @@ class OnboardingController extends GetxController {
     if (currentPage.value < pages.length - 1) {
       currentPage.value++;
     } else {
-      // Save onboarding state
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('onboardingCompleted', true);
+      globalOnboardingController.setOnboardingCompleted(true);
+      // // Save onboarding state
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      // await prefs.setBool('onboardingCompleted', true);
 
       // Navigate to ArtDiscoveryContainerScreen
       Get.toNamed(pages[currentPage.value].routeName);
-
     }
   }
 }
