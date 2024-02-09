@@ -19,100 +19,103 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBar(
-          leadingWidth: 46.h,
-          leading: CustomImageView(
-            svgPath: ImageConstant.imgArtohmlogo,
-            margin: EdgeInsets.only(
-              left: 18.h,
-            ),
-            height: 40.v,
-            width: 30.h,
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: 32.h),
-                  IconButton(
-                    icon: Icon(
-                      Icons.search_outlined,
-                      color: appTheme.red300,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CustomSearchView(),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(width: 32.h),
-                  Stack(
-                    children: <Widget>[
-                      IconButton(
-                        // padding: EdgeInsets.only(left: 32.h),
-                        onPressed: () {
-                          onTapImgNotification();
-                        },
-                        icon: Icon(
-                          Icons.notifications,
-                          color: appTheme.red300,
-                          size: 24,
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        child: Container(
-                          padding: EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            color: appTheme.red300,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          constraints: BoxConstraints(
-                            minWidth: 12,
-                            minHeight: 12,
-                          ),
-                          child: Text(
-                            '5',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.w400,
-                              height: 1,
-                              fontFamily: 'lato',
-                              decoration: TextDecoration.none,
-                              letterSpacing: 0.5,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 16.h),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgFrame72,
-                    height: 36.adaptSize,
-                    width: 36.adaptSize,
-                    margin: EdgeInsets.only(left: 32.h, right: 12.h),
-                    onTap: () {
-                      onTapImgProfileoneone();
-                    },
-                  )
-                ],
+    return Container(
+      color: Get.theme.scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: CustomAppBar(
+            leadingWidth: 46.h,
+            leading: CustomImageView(
+              svgPath: ImageConstant.imgArtohmlogo,
+              margin: EdgeInsets.only(
+                left: 18.h,
               ),
+              height: 40.v,
+              width: 30.h,
             ),
-          ],
+            actions: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    SizedBox(width: 32.h),
+                    IconButton(
+                      icon: Icon(
+                        Icons.search_outlined,
+                        color: appTheme.red300,
+                        size: 24,
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CustomSearchView(),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(width: 32.h),
+                    Stack(
+                      children: <Widget>[
+                        IconButton(
+                          // padding: EdgeInsets.only(left: 32.h),
+                          onPressed: () {
+                            onTapImgNotification();
+                          },
+                          icon: Icon(
+                            Icons.notifications,
+                            color: appTheme.red300,
+                            size: 24,
+                          ),
+                        ),
+                        Positioned(
+                          right: 0,
+                          child: Container(
+                            padding: EdgeInsets.all(2),
+                            decoration: BoxDecoration(
+                              color: appTheme.red300,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            constraints: BoxConstraints(
+                              minWidth: 12,
+                              minHeight: 12,
+                            ),
+                            child: Text(
+                              '5',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 8,
+                                fontWeight: FontWeight.w400,
+                                height: 1,
+                                fontFamily: 'lato',
+                                decoration: TextDecoration.none,
+                                letterSpacing: 0.5,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: 16.h),
+                    CustomImageView(
+                      imagePath: ImageConstant.imgFrame72,
+                      height: 36.adaptSize,
+                      width: 36.adaptSize,
+                      margin: EdgeInsets.only(left: 32.h, right: 12.h),
+                      onTap: () {
+                        onTapImgProfileoneone();
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+          body: bodyContent(),
         ),
-        body: bodyContent(),
       ),
     );
   }

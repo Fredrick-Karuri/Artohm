@@ -17,35 +17,38 @@ class UserProfileContainerScreen
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBarComponent(
-          onBackPressed: () {
-            Get.back();
-          },
-          title: "lbl_profile".tr,
-          hasTrailingIcon: true,
-          onTapTrailingIcon: () {
-            onTapProfileicons();
-          },
-        ),
-        body: SizedBox(
-          width: mediaQueryData.size.width,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
-            child: Padding(
-              padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  profileInfoCard(),
-                  yourWork(),
-                  SizedBox(height: 24),
-                  // collections(),
-                  buildCollectionsWidget(),
-                  SizedBox(height: 24),
-                  communityEngagement(),
-                ],
+    return Container(
+      color: Get.theme.scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: CustomAppBarComponent(
+            onBackPressed: () {
+              Get.back();
+            },
+            title: "lbl_profile".tr,
+            hasTrailingIcon: true,
+            onTapTrailingIcon: () {
+              onTapProfileicons();
+            },
+          ),
+          body: SizedBox(
+            width: mediaQueryData.size.width,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
+              child: Padding(
+                padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    profileInfoCard(),
+                    yourWork(),
+                    SizedBox(height: 24),
+                    // collections(),
+                    buildCollectionsWidget(),
+                    SizedBox(height: 24),
+                    communityEngagement(),
+                  ],
+                ),
               ),
             ),
           ),
