@@ -1,12 +1,13 @@
+import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
-import 'models/home_model.dart';
-import 'models/homeartcol_item_model.dart';
+import 'models/home_model_populated.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
+import 'package:artohmapp/widgets/custom_search_view.dart' as customSearch;
 
 import 'widgets/home_chip.dart';
 
@@ -48,10 +49,16 @@ class HomePage extends StatelessWidget {
                         size: 24,
                       ),
                       onPressed: () {
+                        customSearch.SearchController searchController =
+                            customSearch.SearchController();
+
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => CustomSearchView(),
+                            builder: (context) => CustomSearchView(
+                              controller:
+                                  searchController.textEditingController,
+                            ),
                           ),
                         );
                       },
@@ -60,7 +67,6 @@ class HomePage extends StatelessWidget {
                     Stack(
                       children: <Widget>[
                         IconButton(
-                          // padding: EdgeInsets.only(left: 32.h),
                           onPressed: () {
                             onTapImgNotification();
                           },
@@ -72,29 +78,10 @@ class HomePage extends StatelessWidget {
                         ),
                         Positioned(
                           right: 0,
-                          child: Container(
-                            padding: EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: appTheme.red300,
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            constraints: BoxConstraints(
-                              minWidth: 12,
-                              minHeight: 12,
-                            ),
-                            child: Text(
-                              '5',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 8,
-                                fontWeight: FontWeight.w400,
-                                height: 1,
-                                fontFamily: 'lato',
-                                decoration: TextDecoration.none,
-                                letterSpacing: 0.5,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                          child: Badge.count(
+                            backgroundColor: appTheme.red300,
+                            textColor: appTheme.whiteA700,
+                            count: 1,
                           ),
                         ),
                       ],
@@ -188,40 +175,65 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  homeFilters() {
+homeFilters() {
   HomeController controller = Get.find();
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    padding: EdgeInsets.only(left: 16.h, top: 16.v),
-    child: IntrinsicWidth(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Flexible(
-            child: CustomDropDown(
-              borderDecoration: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(
-                    color: Colors.blue,
-                    width: 1.0,
-                  )),
-              dropdownColor: appTheme.lightBlueA700,
-              width: 120.h,
-              hintText: "Filter By",
-              items: controller.homeModelObj.value.dropdownItemList.value,
-              onChanged: (value) {
-                controller.onSelected(value);
-              },
-            ),
-          ),
-          for (var chip in controller.homeChipFilterList.value)
-            HomeChip(chip: chip),
-        ],
+  return Padding(
+    padding: const EdgeInsets.only(left: 16, top: 8,),
+    child: Container(
+      height: 50.0, // Adjust this value as needed
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: ListView(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          children: [
+            for (var chip in controller.homeChipFilterList.value)
+              HomeChip(chip: chip),
+          ],
+        ),
       ),
     ),
   );
 }
 
+
+
+
+  // homeFilterss() {
+  //   HomeController controller = Get.find();
+  //   return SingleChildScrollView(
+  //     scrollDirection: Axis.horizontal,
+  //     padding: EdgeInsets.only(left: 16.h, top: 16.v),
+  //     child: IntrinsicWidth(
+  //       child: Row(
+  //         mainAxisAlignment: MainAxisAlignment.start,
+  //         children: [
+  //           Flexible(
+  //             child: CustomDropDown(
+  //               borderDecoration: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(20),
+  //                 borderSide: BorderSide(
+  //                   color: appTheme.lightBlueA700,
+  //                   width: 1.0,
+  //                 ),
+  //               ),
+  //               dropdownColor: appTheme.blue50,
+  //               width: 120.h,
+  //               hintText: "Filter By",
+  //               items: controller.homeModelObj.value.dropdownItemList.value,
+  //               onChanged: (value) {
+  //                 controller.onSelected(value);
+  //               },
+  //             ),
+  //           ),
+  //           for (var chip in controller.homeChipFilterList.value)
+  //             HomeChip(chip: chip),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 
   /// Navigates to the notificationsTabContainerScreen when the action is triggered.
 

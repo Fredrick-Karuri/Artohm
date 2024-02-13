@@ -1,8 +1,8 @@
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
+import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:artohmapp/presentation/home_page/widgets/home_artwork_card.dart';
 
 import '../controller/home_controller.dart';
-import '../models/homeartcol_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 

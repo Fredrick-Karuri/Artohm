@@ -1,6 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/home_page/models/HomeChipFilterModel.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
+import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:flutter/material.dart';
 
 /// A controller class for the HomePage.
@@ -13,6 +13,14 @@ class HomeController extends GetxController {
 
   Rx<HomeModel> homeModelObj;
   SelectionPopupModel? selectedDropDownValue;
+  Rx<List<HomeartcolItemModel>> allItems = Rx<List<HomeartcolItemModel>>([]);
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    allItems.value = List.from(homeModelObj.value.homeartcolItemList.value);
+  }
 
   Rx<List<HomeChipFilterModel>> homeChipFilterList = Rx(
     [
@@ -62,6 +70,34 @@ class HomeController extends GetxController {
         item.isSelected.value = false;
       }
     }
+    filterItems();
+    update();
+  }
+
+  void filterItems() {
+    List<HomeartcolItemModel> filteredList = [];
+    List<HomeChipFilterModel> selectedChips = this.selectedChips;
+
+    for (var item in homeModelObj.value.homeartcolItemList.value) {
+      for (var chip in selectedChips) {
+        if (item.id!.value == chip.id.value) {
+          filteredList.add(item);
+          break;
+        }
+      }
+    }
+    homeModelObj.value.homeartcolItemList.value = filteredList;
+    update();
+  }
+
+  void clearFilter() {
+    for (var item in homeChipFilterList.value) {
+      item.isSelected.value = false;
+    }
+    // Restore all items when the filter is cleared
+    homeModelObj.value.homeartcolItemList.value = List.from(allItems.value);
+
+    // filterItems();
     update();
   }
 

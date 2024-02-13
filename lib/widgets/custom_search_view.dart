@@ -16,7 +16,7 @@ class CustomSearchView extends StatelessWidget {
     this.alignment,
     this.width,
     this.margin,
-    this.controller,
+    required this.controller,
     this.focusNode,
     this.autofocus = true,
     this.textStyle,
@@ -33,7 +33,6 @@ class CustomSearchView extends StatelessWidget {
     this.fillColor,
     this.filled = false,
     this.validator,
-    this.contr
   }) : super(
           key: key,
         );
@@ -44,7 +43,8 @@ class CustomSearchView extends StatelessWidget {
 
   final EdgeInsetsGeometry? margin;
 
-  final TextEditingController? controller;
+
+  final TextEditingController controller;
 
   final FocusNode? focusNode;
 
@@ -78,7 +78,6 @@ class CustomSearchView extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
-  final SearchController? contr;
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +145,7 @@ class CustomSearchView extends StatelessWidget {
               child: IconButton(
 
                 onPressed: (){
-                  contr?.clearText();
+                  controller.clear();
                 },
                 // onPressed: () {
                 //   if (controller != null) {
