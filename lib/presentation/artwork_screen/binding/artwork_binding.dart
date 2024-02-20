@@ -8,6 +8,6 @@ import 'package:get/get.dart';
 class ArtworkBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ArtworkController());
+    Get.lazyPut<ArtworkController>(() => ArtworkController(Get.arguments, Get.find()));
   }
 }

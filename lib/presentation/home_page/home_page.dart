@@ -1,10 +1,11 @@
+import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/presentation/home_page/widgets/homeArtworkCard.dart';
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
-import 'package:artohmapp/widgets/custom_drop_down.dart';
+import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
-import '../home_page/widgets/homeartcol_item_widget.dart';
 import 'controller/home_controller.dart';
-import 'models/home_model_populated.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart' as customSearch;
@@ -16,6 +17,7 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   HomeController controller = Get.put(HomeController(HomeModel().obs));
+  LikedArtworksController likedArtworksController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +110,7 @@ class HomePage extends StatelessWidget {
   }
 
   bodyContent() {
+    
     return Container(
       width: double.maxFinite,
       child: Column(
@@ -117,18 +120,14 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                SizedBox(height: 16.v),
+                SizedBox(height: 2.v),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),
                   child: Container(
-                    height: 400.v,
-                    width: 340.h,
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                          // color: Colors.black.withOpacity(0.5),
                           color: appTheme.blueGray400.withOpacity(0.5),
-
                           spreadRadius: 5,
                           blurRadius: 7,
                           offset: Offset(0, 3), // changes position of shadow
@@ -143,29 +142,48 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15.h, top: 18.v),
-                  child: Obx(
-                    () => ListView.separated(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      separatorBuilder: (context, index) {
-                        return SizedBox(height: 26.v);
-                      },
-                      itemCount: controller
-                          .homeModelObj.value.homeartcolItemList.value.length,
-                      itemBuilder: (context, index) {
-                        HomeartcolItemModel model = controller
-                            .homeModelObj.value.homeartcolItemList.value[index];
-
-                        return HomeartcolItemWidget(
-                            homeartcolItemModelObj: model);
-                      },
-                    ),
-                  ),
-                ),
                 SizedBox(
                   height: 24.v,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Obx(() {
+                    
+                    return Column(
+                      children: controller.categories.value.map((category) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              category.categoryName,
+                              overflow: TextOverflow.ellipsis,
+                              style: theme.textTheme.titleMedium,
+                            ),
+                            SizedBox(height: 16.v),
+                            // Category title
+                            Container(
+                              height: 200.v,
+                              margin:
+                                  EdgeInsets.only(right: 15.h, bottom: 24.h),
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: category.artworks.length,
+                                itemBuilder: (context, index) {
+                                  final artwork = category.artworks[index];
+                                  return HomeArtworkCardNew(
+                                    artwork: artwork,
+                                    
+                                  );
+                                  // log artwork to se its data
+                                  // Log the artwork details to the console
+                                },
+                              ),
+                            )
+                          ],
+                        );
+                      }).toList(),
+                    );
+                  }), // Close Obx here
                 ),
               ],
             ),
@@ -175,30 +193,51 @@ class HomePage extends StatelessWidget {
     );
   }
 
-homeFilters() {
-  HomeController controller = Get.find();
-  return Padding(
-    padding: const EdgeInsets.only(left: 16, top: 8,),
-    child: Container(
-      height: 50.0, // Adjust this value as needed
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: ListView(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.horizontal,
-          children: [
-            for (var chip in controller.homeChipFilterList.value)
-              HomeChip(chip: chip),
-          ],
+  homeFilters() {
+    HomeController controller = Get.find();
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 16,
+        top: 8,
+      ),
+      child: Container(
+        height: 50.0, // Adjust this value as needed
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: ListView(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            children: [
+              for (var chip in controller.homeChipFilterList.value)
+                HomeChip(chip: chip),
+            ],
+          ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
+  // Padding(
+  //   padding: EdgeInsets.only(left: 15.h, top: 18.v),
+  //   child: Obx(
+  //     () => ListView.separated(
+  //       physics: NeverScrollableScrollPhysics(),
+  //       shrinkWrap: true,
+  //       separatorBuilder: (context, index) {
+  //         return SizedBox(height: 26.v);
+  //       },
+  //       itemCount: controller
+  //           .homeModelObj.value.homeCategoriesList.value.length,
+  //       itemBuilder: (context, index) {
+  //         HomeCategoriesModel model = controller
+  //             .homeModelObj.value.homeCategoriesList.value[index];
 
-
-
+  //         return HomeCategoriesWidget(
+  //             homeCategoriesModelObj: model);
+  //       },
+  //     ),
+  //   ),
+  // ),
 
   // homeFilterss() {
   //   HomeController controller = Get.find();

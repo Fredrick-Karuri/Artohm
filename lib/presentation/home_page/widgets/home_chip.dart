@@ -21,12 +21,8 @@ class HomeChip extends StatelessWidget {
         child: GestureDetector(
           // onTap: () => controller.toggleChipSelection(chip.id.value),
           onTap: () {
-            if (chip.isSelected.value) {
-              // Clear the filter if the chip is selected
-              controller.clearFilter();
-            } else {
               controller.toggleChipSelection(chip.id.value);
-            }
+
           },
           child: Chip(
             shape: RoundedRectangleBorder(
@@ -40,14 +36,9 @@ class HomeChip extends StatelessWidget {
               chip.label.value,
             ),
             avatar: chip.isSelected.value
-                ? GestureDetector(
-                    onTap: () {
-                      controller.clearFilter();
-                    },
-                    child: Icon(
-                      Icons.close,
-                    ),
-                  )
+                ? Icon(
+                  Icons.close,
+                )
                 : null,
             backgroundColor: chip.isSelected.value
                 ? appTheme.lightBlueA700

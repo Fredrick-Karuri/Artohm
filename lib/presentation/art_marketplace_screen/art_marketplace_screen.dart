@@ -80,6 +80,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                       card: artwork,
                     ),
                     SizedBox(width: 8),
+                    
                     // Add more CustomCardWidgets here...
                   ],
                 ),

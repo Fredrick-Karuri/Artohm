@@ -1,3 +1,5 @@
+import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/collaborate_start_screen/binding/collaboration_start_binding.dart';
 import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/binding/collaboration_start_confirmation_binding.dart';
 import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/collaboration_start_confirmation_screen.dart';
@@ -17,6 +19,10 @@ import 'package:artohmapp/presentation/settings_notifications_screen/settings_no
 import 'package:artohmapp/presentation/settings_notifications_screen/binding/settingsitem_binding.dart';
 import 'package:artohmapp/presentation/privacy_screen/privacy_screen.dart';
 import 'package:artohmapp/presentation/privacy_screen/binding/privacy_binding.dart';
+import 'package:artohmapp/presentation/signup_select_account/binding/signup_select_account_binding.dart';
+import 'package:artohmapp/presentation/signup_select_account/controller/signup_select_account_controller.dart';
+import 'package:artohmapp/presentation/signup_select_account/signup_select_account.dart';
+import 'package:artohmapp/presentation/signup_select_account/widgets/artist_track_view.dart';
 import 'package:artohmapp/presentation/your_artworks/binding/your_artworks._binding.dart';
 import 'package:artohmapp/presentation/your_artworks/your_artworks.dart';
 import 'package:artohmapp/widgets/splashscreen.dart';
@@ -32,10 +38,10 @@ import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
 import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 import 'package:artohmapp/presentation/art_community_screen/binding/art_community_binding.dart';
+import 'package:artohmapp/presentation/signup_landing_screen/signup_landing_screen.dart';
+import 'package:artohmapp/presentation/signup_landing_screen/binding/signup_landing_binding.dart';
 import 'package:artohmapp/presentation/signup_screen/signup_screen.dart';
 import 'package:artohmapp/presentation/signup_screen/binding/signup_binding.dart';
-import 'package:artohmapp/presentation/signup_one_screen/signup_one_screen.dart';
-import 'package:artohmapp/presentation/signup_one_screen/binding/signup_one_binding.dart';
 import 'package:artohmapp/presentation/signin_screen/signin_screen.dart';
 import 'package:artohmapp/presentation/signin_screen/binding/signin_binding.dart';
 import 'package:artohmapp/presentation/forgot_password_screen/forgot_password_screen.dart';
@@ -128,8 +134,11 @@ class AppRoutes {
   static const String collaborationStartConfirmationPage =
       '/collaboration_start_confirmation_screen';
   static const String yourArtworksPage = '/your_artworks_page';
+  static const String selectAccountTypePage = '/signup_select_account';
+  static const String artistTrackPage = '/artist_track_page';
 
   static List<GetPage> pages = [
+    
     GetPage(
       name: onboardingScreen,
       page: () => OnboardingScreen(),
@@ -195,7 +204,10 @@ class AppRoutes {
     ),
     GetPage(
       name: userProfileContainerScreen,
-      page: () => UserProfileContainerScreen(),
+      page: () => UserProfileContainerScreen(LikedArtworksController(
+        artworksController: ArtworksController(),
+        localStorageService: LocalStorageService(),
+      )),
       bindings: [
         UserProfileContainerBinding(),
       ],
@@ -232,14 +244,14 @@ class AppRoutes {
       name: signupScreen,
       page: () => SignupScreen(),
       bindings: [
-        SignupBinding(),
+        SignupLandingBinding(),
       ],
     ),
     GetPage(
       name: signupOneScreen,
       page: () => SignupOneScreen(),
       bindings: [
-        SignupOneBinding(),
+        SignupBinding(),
       ],
     ),
     GetPage(
@@ -341,6 +353,18 @@ class AppRoutes {
       bindings: [
         YourArtworksBinding(),
       ],
+    ),
+    GetPage(
+      name: selectAccountTypePage,
+      page: () => SelectAccountTypePage(),
+      binding: SelectAccountBinding(),
+    ),
+    GetPage(
+      name: artistTrackPage,
+      page: () => ArtistTrackPage(),
+      binding: BindingsBuilder(() {
+        Get.lazyPut<ArtistTrackController>(() => ArtistTrackController());
+      }),
     ),
   ];
 }

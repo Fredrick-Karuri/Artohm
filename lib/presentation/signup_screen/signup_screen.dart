@@ -1,128 +1,234 @@
-import 'package:artohmapp/widgets/onboarding_appbar.dart';
-
+import 'package:artohmapp/main.dart';
+import '../../widgets/onboarding_appbar.dart';
 import 'controller/signup_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/core/utils/validation_functions.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_outlined_button.dart';
+import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:artohmapp/domain/googleauth/google_auth_helper.dart';
-import 'package:artohmapp/domain/facebookauth/facebook_auth_helper.dart';
 
-class SignupScreen extends GetWidget<SignupController> {
-  const SignupScreen({Key? key}) : super(key: key);
+// ignore_for_file: must_be_immutable
+class SignupOneScreen extends GetWidget<SignupController> {
+  SignupOneScreen({Key? key}) : super(key: key);
+
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: OnboardingAppBar(
           text: 'Welcome Aboard',
           showLeadingIcon: true,
           showText: true,
         ),
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.only(left: 15.h, top: 119.v, right: 15.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CustomElevatedButton(
-                height: 56.v,
-                text: "msg_continue_with_email".tr,
-                leftIcon: Container(
-                    margin: EdgeInsets.only(right: 30.h),
-                    child: CustomImageView(svgPath: ImageConstant.imgMail)),
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
-                onTap: () {
-                  onTapContinuewith();
-                },
-              ),
-              SizedBox(height: 24.v),
-              CustomOutlinedButton(
-                height: 56.v,
-                text: "msg_continue_with_google".tr,
-                leftIcon: Container(
-                    margin: EdgeInsets.only(right: 30.h),
-                    child:
-                        CustomImageView(svgPath: ImageConstant.imgGooglelogo)),
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
-                onTap: () {
-                  onTapContinuewith1();
-                },
-              ),
-              SizedBox(height: 24.v),
-              CustomElevatedButton(
-                height: 56.v,
-                text: "msg_continue_with_facebook".tr,
-                leftIcon: Container(
-                    margin: EdgeInsets.only(right: 30.h),
-                    child: CustomImageView(
-                        svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
-                onTap: () {
-                  onTapContinuewith2();
-                },
-              ),
-              SizedBox(height: 24.v),
-              Align(
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 2.v, right: 10),
-                      child: Text("msg_already_have_an".tr,
-                          style: CustomTextStyles.bodyLargeRoboto),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        onTapSignin();
-                      },
-                      child: Text(
-                        ' Sign In',
-                        style: TextStyle(color: appTheme.lightBlueA700, fontSize: 12),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              SizedBox(height: 64.v),
-              Divider(),
-              Container(
-                width: 327.h,
-                margin: EdgeInsets.fromLTRB(10.h, 24.v, 22.h, 5.v),
-                child: RichText(
-                    text: TextSpan(
+        body: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: Container(
+              width: double.maxFinite,
+              padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 24.v),
+              child: Column(
+                children: [
+                  CustomImageView(
+                    svgPath: ImageConstant.imgWelcomeamico,
+                    height: 240.adaptSize,
+                    width: 240.adaptSize,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12, left: 12),
+                    child: Column(
                       children: [
-                        TextSpan(
-                            text: "msg_by_continuing2".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
-                        TextSpan(
-                            text: "msg_terms_of_service".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3),
-                        TextSpan(
-                            text: "msg_we_will_manage_information".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
-                        TextSpan(
-                            text: "lbl_privacy_policy2".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3),
-                        TextSpan(
-                            text: "lbl_and".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
-                        TextSpan(
-                            text: "lbl_cookie_policy".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3)
+                        name(),
+                        email(),
+                        password(),
+                        confirmPassword(),
+                        SizedBox(height: 48.v),
+                        btn(),
+                        SizedBox(height: 5.v)
                       ],
                     ),
-                    textAlign: TextAlign.left),
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
+      ),
+    );
+  }
+
+  btn() {
+    return CustomElevatedButton(
+      height: 42.v,
+      text: "lbl_create_account".tr,
+      buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+      buttonTextStyle: CustomTextStyles.titleMediumRobotoWhiteA700,
+      onTap: () async {
+        if (_formKey.currentState!.validate()) {
+          // If all data are correct then save data to out variables
+          _formKey.currentState!.save();
+
+          // Sign up the user
+          var response = await supabase.auth.signUp(
+            email: controller.emailController.text,
+            password: controller.passwordController.text,
+          );
+          if (response.user != null) {
+            print('User signed up successfully: ${response.user!.email}');
+            Get.toNamed(AppRoutes.selectAccountTypePage);
+            // onTapCreateaccount();
+          } else {
+            print('Error signing up');
+          }
+        }
+      },
+    );
+  }
+
+  confirmPassword() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("msg_confirm_password".tr,
+              style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          Obx(() => CustomTextFormField(
+              controller: controller.confirmPasswordController,
+              focusNode: controller.confirmPasswordFocusNode,
+              hintText: "msg_re_enter_your_password".tr,
+              textInputAction: TextInputAction.done,
+              textInputType: TextInputType.visiblePassword,
+              suffix: InkWell(
+                onTap: () {
+                  controller.isShowPassword1.value =
+                      !controller.isShowPassword1.value;
+                },
+                child: Container(
+                  margin: EdgeInsets.all(12.h),
+                  child: CustomImageView(
+                      svgPath: controller.isShowPassword1.value
+                          ? ImageConstant.imgLightbulb
+                          : ImageConstant.imgLightbulb),
+                ),
+              ),
+              suffixConstraints: BoxConstraints(maxHeight: 36.v),
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please confirm your password';
+                } else if (value != controller.passwordController.text) {
+                  return 'Passwords do not match';
+                }
+                return null;
+              },
+              obscureText: controller.isShowPassword1.value,
+              contentPadding:
+                  EdgeInsets.only(left: 12.h, top: 9.v, bottom: 9.v)))
+        ],
+      ),
+    );
+  }
+
+  password() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_password".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          Obx(() => CustomTextFormField(
+              controller: controller.passwordController,
+              focusNode: controller.passwordFocusNode,
+              hintText: "msg_enter_your_password".tr,
+              textInputType: TextInputType.visiblePassword,
+              suffix: InkWell(
+                  onTap: () {
+                    controller.isShowPassword.value =
+                        !controller.isShowPassword.value;
+                  },
+                  child: Container(
+                      margin: EdgeInsets.all(12.h),
+                      child: CustomImageView(
+                          svgPath: controller.isShowPassword.value
+                              ? ImageConstant.imgLightbulb
+                              : ImageConstant.imgLightbulb))),
+              suffixConstraints: BoxConstraints(maxHeight: 36.v),
+              validator: (value) {
+                String? error = isValidPassword(value);
+                if (error != null) {
+                  return error;
+                }
+                return null;
+              },
+              obscureText: controller.isShowPassword.value,
+              contentPadding:
+                  EdgeInsets.only(left: 12.h, top: 9.v, bottom: 9.v)))
+        ],
+      ),
+    );
+  }
+
+  email() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_email_address".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          CustomTextFormField(
+            controller: controller.emailController,
+            focusNode: controller.emailFocusNode,
+            hintText: "msg_enter_your_email".tr,
+            textInputType: TextInputType.emailAddress,
+            validator: (value) {
+              String? error = isValidEmail(value);
+              if (error != null) {
+                return error;
+              }
+              return null;
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  name() {
+    return Padding(
+      padding: EdgeInsets.only(
+        top: 32.v,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text("lbl_full_name".tr, style: CustomTextStyles.titleMediumLato),
+          SizedBox(height: 5.v),
+          CustomTextFormField(
+            controller: controller.fullNameController,
+            focusNode: controller.fullNameFocusNode,
+            hintText: "msg_enter_your_full".tr,
+            validator: (value) {
+              String? error = isText(value);
+              if (error != null) {
+                return error;
+              }
+              return null;
+            },
+          )
+        ],
       ),
     );
   }
@@ -135,57 +241,64 @@ class SignupScreen extends GetWidget<SignupController> {
     Get.back();
   }
 
-  /// Navigates to the signupOneScreen when the action is triggered.
+  /// Navigates to the artDiscoveryContainerScreen when the action is triggered.
 
   /// When the action is triggered, this function uses the [Get] package to
-  /// push the named route for the signupOneScreen.
-  onTapContinuewith() {
-    Get.toNamed(
-      AppRoutes.signupOneScreen
-    );
-  }
-
-  /// Performs a Google sign-in and returns a [GoogleUser] object.
-  ///
-  /// If the sign-in is successful, the [onSuccess] callback will be called with
-  /// a TODO comment needed to be modified by you.
-  /// If the sign-in fails, the [onError] callback will be called with the error message.
-  ///
-  /// Throws an exception if the Google sign-in process fails.
-  onTapContinuewith1() async {
-    await GoogleAuthHelper().googleSignInProcess().then((googleUser) {
-      if (googleUser != null) {
-        //TODO Actions to be performed after signin
-      } else {
-        Get.snackbar('Error', 'user data is empty');
-      }
-    }).catchError((onError) {
-      Get.snackbar('Error', onError.toString());
-    });
-  }
-
-  /// Performs a Facebook sign-in and returns a [FacebookUser] object.
-  ///
-  /// If the sign-in is successful, the [onSuccess] callback will be called with
-  /// a TODO comment needed to be modified by you.
-  /// If the sign-in fails, the [onError] callback will be called with the error message.
-  ///
-  /// Throws an exception if the Facebook sign-in process fails.
-  onTapContinuewith2() async {
-    await FacebookAuthHelper().facebookSignInProcess().then((facebookUser) {
-      //TODO Actions to be performed after signin
-    }).catchError((onError) {
-      Get.snackbar('Error', onError.toString());
-    });
-  }
-
-  /// Navigates to the signinScreen when the action is triggered.
-
-  /// When the action is triggered, this function uses the [Get] package to
-  /// push the named route for the signinScreen.
-  onTapSignin() {
-    Get.toNamed(
-      AppRoutes.signinScreen,
+  /// push the named route for the artDiscoveryContainerScreen.
+  onTapCreateaccount() {
+    Get.offAllNamed(
+      AppRoutes.artDiscoveryContainerScreen,
     );
   }
 }
+
+// var response = await Get.find<ApiClient>().registerUser(
+//   controller.fullNameController.text,
+//   controller.emailController.text,
+//   controller.passwordController.text,
+// );
+
+// if (response.statusCode == 201) {
+//   // If the server returns a 200 OK response, then parse the JSON.
+
+//   onTapCreateaccount();
+//   var jsonResponse = jsonDecode(response.body);
+//   // print(jsonResponse);
+//   SharedPreferences prefs = await SharedPreferences.getInstance();
+//   await prefs.setInt('userId', jsonResponse['user_id']);
+//   Get.dialog(
+//     AlertDialog(
+//       title: Text("Success"),
+//       content: Text("Your account has been created successfully"),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Get.back();
+//           },
+//           child: Text("OK"),
+//         )
+//       ],
+//     ),
+//   );
+//   // You can now use the jsonResponse to create a user session.
+//   // This will depend on how your backend server is set up.
+// } else {
+//   print('Status code: ${response.statusCode}');
+//   print('Response body: ${response.body}');
+//   Get.dialog(
+//     AlertDialog(
+//       title: Text("Error"),
+//       content: Text("Something went wrong"),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Get.back();
+//           },
+//           child: Text("OK"),
+//         )
+//       ],
+//     ),
+//   );
+//   // If the server returns an error response, you can handle it here.
+//   // You might want to show an error message to the user.
+// }

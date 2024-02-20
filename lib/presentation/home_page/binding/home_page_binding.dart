@@ -1,3 +1,4 @@
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/controller/home_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,10 @@ import 'package:get/get.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
-    // Get.lazyPut(() => ForgotPasswordController());
-    Get.lazyPut(() => HomeController(Rx<HomeModel>(HomeModel())));
+    Get.put(HomeController(HomeModel().obs));
+    // Get.put(LikedArtworksController());
   }
 }
+
+    // Get.lazyPut(() => ForgotPasswordController());
+    // Get.lazyPut(() => HomeController(Rx<HomeModel>(HomeModel())));

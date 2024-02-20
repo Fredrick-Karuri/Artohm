@@ -1,10 +1,10 @@
 import '../controller/signup_controller.dart';
 import 'package:get/get.dart';
 
-/// A binding class for the SignupScreen.
+/// A binding class for the SignupOneScreen.
 ///
 /// This class ensures that the SignupController is created when the
-/// SignupScreen is first loaded.
+/// SignupOneScreen is first loaded.
 class SignupBinding extends Bindings {
   @override
   void dependencies() {

@@ -1,23 +1,40 @@
+import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
+
 import '../../../core/app_export.dart';
 
 /// This class is used in the [homeartcol_item_widget] screen.
-class HomeartcolItemModel {
-  HomeartcolItemModel({
-    this.aiArtPushingTex,
-    this.imagePaths,
+class HomeCategoriesModel {
+  HomeCategoriesModel({
+    this.title,
+    //to delete
+    this.imagePaths, 
     this.id,
   }) {
-    aiArtPushingTex = aiArtPushingTex ?? Rx("AI Art: Pushing Boundaries");
+    title = title ?? Rx("AI Art: Pushing Boundaries");
     id = id ?? Rx("");
     imagePaths = imagePaths ?? Rx<List<String>>([]);
   }
+  
 
-  Rx<String>? aiArtPushingTex;
+  Rx<String>? title;
 
   Rx<String>? id;
   Rx<List<String>>? imagePaths;
 
 }
+//main and using this one 
+class HomeCategoriesModelNew {
+  final String categoryName;
+  RxList<Artwork> artworks; // Make this an RxList
+
+  HomeCategoriesModelNew({
+    required this.categoryName,
+    required this.artworks,
+  });
+}
+
+
+
 
 
 /// This class is used in the [home_model] screen.
