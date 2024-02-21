@@ -63,7 +63,9 @@ String getCurrentRoute(BottomBarEnum type) {
 Widget getCurrentPage(String currentRoute) {
   switch (currentRoute) {
     case AppRoutes.homePage:
-      return HomePage();
+      return HomePage(
+        
+      );
     case AppRoutes.artMarketplaceScreen:
       return ArtMarketplaceScreen();
     case AppRoutes.artCommunityScreen:
@@ -71,7 +73,8 @@ Widget getCurrentPage(String currentRoute) {
     case AppRoutes.collaborateScreen:
       return CollaborateScreen();
     default:
-      return HomePage();
+      return HomePage(
+      );
   }
 }
 

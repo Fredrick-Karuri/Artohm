@@ -1,5 +1,6 @@
 import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
 import 'package:artohmapp/presentation/art_marketplace_screen/controller/art_marketplace_controller.dart';
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/collaborate_screen/controller/collaborate_controller.dart';
 
 import '../controller/art_discovery_container_controller.dart';
@@ -31,5 +32,11 @@ class ArtDiscoveryContainerBinding extends Bindings {
         fenix: true);
     Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController(),
         fenix: true);
+        Get.lazyPut(()=>LikedArtworksController(
+          artworksController:
+              Get.find(), // Get the instance of ArtworksController
+          localStorageService:
+              Get.find(), // Get the instance of LocalStorageService
+        ));
   }
 }

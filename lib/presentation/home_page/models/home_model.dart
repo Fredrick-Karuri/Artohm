@@ -1,113 +1,53 @@
-import 'package:artohmapp/presentation/home_page/models/HomeChipFilterModel.dart';
+import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 
 import '../../../core/app_export.dart';
-import 'homeartcol_item_model.dart';
 
-/// This class defines the variables used in the [home_page],
-/// and is typically used to hold data that is passed between different parts of the application.
-class HomeModel {
-  Rx<List<HomeartcolItemModel>> homeartcolItemList = Rx(
-    [
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('Hybrid Art: Bridging Realities'),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1601,
-            ImageConstant.imgRectangle11200x1601,
-            ImageConstant.imgRectangle11200x1601,
-          ],
-        ),
-      ),
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('Traditional Art: Timeless Craftsmanship '),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1602,
-            ImageConstant.imgRectangle11200x1602,
-            ImageConstant.imgRectangle11200x1602,
-          ],
-        ),
-      ),
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('From Artists you follow '),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1603,
-            ImageConstant.imgRectangle11200x1603,
-            ImageConstant.imgRectangle11200x1603,
-          ],
-        ),
-      ),
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('Abstract art '),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1604,
-            ImageConstant.imgRectangle11200x1604,
-            ImageConstant.imgRectangle11200x1604,
-          ],
-        ),
-      ),
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('African art '),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1605,
-            ImageConstant.imgRectangle11200x1605,
-            ImageConstant.imgRectangle11200x1605,
-          ],
-        ),
-      ),
-      HomeartcolItemModel(
-        aiArtPushingTex: Rx('Pop art'),
-        imagePaths: Rx(
-          [
-            ImageConstant.imgRectangle11200x1606,
-            ImageConstant.imgRectangle11200x1606,
-            ImageConstant.imgRectangle11200x1606,
-          ],
-        ),
-      ),
-    ],
-  );
-  Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
-    [
-      SelectionPopupModel(
-        id: 1,
-        title: "Genre",
-        isSelected: true,
-      ),
-      SelectionPopupModel(
-        id: 2,
-        title: "Theme",
-      ),
-      SelectionPopupModel(
-        id: 3,
-        title: "Art Style",
-      )
-    ],
-  );
-  Rx<List<HomeChipFilterModel>> homeChipFilterList = Rx(
-    [
-      HomeChipFilterModel(
-        label: 'Art',
-        id: 'art',
-        isSelected: false,
-      ),
-      HomeChipFilterModel(
-        label: 'Photography',
-        id: 'pho',
-        isSelected: false,
-      ),
-      HomeChipFilterModel(
-        label: 'Painting',
-        id: 'ptg',
-        isSelected: false,
-      )
-    ],
-  );
+/// This class is used in the [homeartcol_item_widget] screen.
+class HomeCategoriesModel {
+  HomeCategoriesModel({
+    this.title,
+    //to delete
+    this.imagePaths, 
+    this.id,
+  }) {
+    title = title ?? Rx("AI Art: Pushing Boundaries");
+    id = id ?? Rx("");
+    imagePaths = imagePaths ?? Rx<List<String>>([]);
+  }
+  
+
+  Rx<String>? title;
+
+  Rx<String>? id;
+  Rx<List<String>>? imagePaths;
+
+}
+//main and using this one 
+class HomeCategoriesModelNew {
+  final String categoryName;
+  RxList<Artwork> artworks; // Make this an RxList
+
+  HomeCategoriesModelNew({
+    required this.categoryName,
+    required this.artworks,
+  });
 }
 
-class AnArtworkModel {
-  RxBool isFavorited = false.obs;
+
+
+
+
+/// This class is used in the [home_model] screen.
+class HomeChipFilterModel {
+  Rx<String> label;
+  Rx<String> id;
+  Rx<bool> isSelected;
+
+  HomeChipFilterModel({
+    String? label,
+    String? id,
+    bool? isSelected,
+  })  : this.label = Rx<String>(label ?? ""),
+        this.id = Rx<String>(id ?? ""),
+        this.isSelected = Rx<bool>(isSelected ?? false);
 }

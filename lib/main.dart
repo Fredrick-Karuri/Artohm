@@ -8,6 +8,10 @@ import 'package:artohmapp/global_states.dart';
 
 late final SupabaseClient supabase;
 Future main() async {
+  Get.put(() => EditProfileController());
+  Get.lazyPut(() => ArtworksController()); // Register ArtworksController
+  Get.lazyPut(() => LocalStorageService()); // Register LocalStorageService
+
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

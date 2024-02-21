@@ -16,10 +16,8 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
   // removed keyword const
   ArtCommunityScreen({Key? key}) : super(key: key);
 
- // Create a ModalController
-ModalController modalController = ModalController();
-
-
+  // Create a ModalController
+  ModalController modalController = ModalController();
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +70,25 @@ ModalController modalController = ModalController();
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("lbl_featured_artist".tr, style: theme.textTheme.titleMedium),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "lbl_featured_artist".tr,
+                  style: theme.textTheme.titleMedium,
+                ),
+                CustomElevatedButton(
+                  height: 28.v,
+                  width: 109.h,
+                  text: "lbl_discover_more".tr,
+                  buttonTextStyle: CustomTextStyles.labelLargeRobotoWhiteA700,
+                  onTap: () {
+                    onTapDiscovermore();
+                  },
+                  alignment: Alignment.centerRight,
+                )
+              ],
+            ),
             Padding(
               padding: EdgeInsets.only(top: 17.v, right: 31.h),
               child: Row(
@@ -112,15 +128,6 @@ ModalController modalController = ModalController();
               ),
             ),
             SizedBox(height: 4.v),
-            CustomElevatedButton(
-                height: 28.v,
-                width: 109.h,
-                text: "lbl_discover_more".tr,
-                buttonTextStyle: CustomTextStyles.labelLargeRobotoWhiteA700,
-                onTap: () {
-                  onTapDiscovermore();
-                },
-                alignment: Alignment.centerRight)
           ],
         ),
       ),

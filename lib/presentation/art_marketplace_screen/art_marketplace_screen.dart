@@ -14,15 +14,18 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBarComponent(
-          title: "lbl_market_place2".tr,
-          onBackPressed: () {
-            Get.back(id: 1);
-          },
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: CustomAppBarComponent(
+            title: "lbl_market_place2".tr,
+            onBackPressed: () {
+              Get.back(id: 1);
+            },
+          ),
+          body: bodyContent(),
         ),
-        body: bodyContent(),
       ),
     );
   }
@@ -77,6 +80,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                       card: artwork,
                     ),
                     SizedBox(width: 8),
+                    
                     // Add more CustomCardWidgets here...
                   ],
                 ),
@@ -104,30 +108,33 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
               padding:
                   EdgeInsets.only(top: 20.v, left: 10, right: 10, bottom: 10),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Flexible(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("msg_ethereal_enchantment".tr,
-                                  style: theme.textTheme.titleMedium),
-                              SizedBox(height: 17.v),
-                              Text("lbl_sophia_anderson".tr,
-                                  style: CustomTextStyles.bodyMediumBlack90001)
-                            ]),
+                      Text(
+                        "msg_ethereal_enchantment".tr,
+                        style: theme.textTheme.titleSmall,
                       ),
-                      Flexible(
-                        child: CustomOutlinedButton(
-                            height: 38.v,
-                            // width: 64.h,
-                            text: "lbl_850".tr,
-                            margin: EdgeInsets.only(
-                                left: 95.h, top: 8.v, bottom: 8.v),
-                            buttonTextStyle: theme.textTheme.titleMedium!),
-                      )
+                    ],
+                  ),
+                  SizedBox(height: 8.v),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "lbl_sophia_anderson".tr,
+                        style: CustomTextStyles.bodyMediumBlack90001,
+                      ),
+                      CustomOutlinedButton(
+                          width: 64.h,
+                          text: "lbl_850".tr,
+                          margin: EdgeInsets.only(
+                            top: 8.v,
+                            bottom: 8.v,
+                          ),
+                          buttonTextStyle: theme.textTheme.titleSmall!)
                     ],
                   ),
                   SizedBox(height: 24.v),
@@ -149,28 +156,27 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     );
   }
 
-topChips() {
-  return Padding(
-    padding: const EdgeInsets.only(left: 10, bottom: 8, right: 10),
-    child: Obx(
-      () => SizedBox(
-        height: 72, // Adjust this value as needed
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: controller.artMarketplaceModelObj.value
-              .marketplaceChipItemList.value.length,
-          itemBuilder: (context, index) {
-            MarketplaceChipItemModel model = controller.artMarketplaceModelObj
-                .value.marketplaceChipItemList.value[index];
-            return MarketplaceChipItemWidget(model);
-          },
+  topChips() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 10, bottom: 8, right: 10),
+      child: Obx(
+        () => SizedBox(
+          height: 72, // Adjust this value as needed
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.artMarketplaceModelObj.value
+                .marketplaceChipItemList.value.length,
+            itemBuilder: (context, index) {
+              MarketplaceChipItemModel model = controller.artMarketplaceModelObj
+                  .value.marketplaceChipItemList.value[index];
+              return MarketplaceChipItemWidget(model);
+            },
+          ),
         ),
       ),
-    ),
-  );
-}
-
+    );
+  }
 
   /// Navigates to the previous screen.
   ///

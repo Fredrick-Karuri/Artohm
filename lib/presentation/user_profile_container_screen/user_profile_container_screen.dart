@@ -1,3 +1,5 @@
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
+import 'package:artohmapp/presentation/artworks/widgets/likedArtworksView.dart';
 import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
 import '../../widgets/custom_appbar_component.dart';
@@ -12,44 +14,110 @@ import 'package:flutter/material.dart';
 
 class UserProfileContainerScreen
     extends GetWidget<UserProfileContainerController> {
-  const UserProfileContainerScreen({Key? key}) : super(key: key);
+  final LikedArtworksController likedArtworksController;
+  const UserProfileContainerScreen(this.likedArtworksController, {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBarComponent(
-          onBackPressed: () {
-            Get.back();
-          },
-          title: "lbl_profile".tr,
-          hasTrailingIcon: true,
-          onTapTrailingIcon: () {
-            onTapProfileicons();
-          },
-        ),
-        body: SizedBox(
-          width: mediaQueryData.size.width,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
-            child: Padding(
-              padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  profileInfoCard(),
-                  yourWork(),
-                  SizedBox(height: 24),
-                  // collections(),
-                  buildCollectionsWidget(),
-                  SizedBox(height: 24),
-                  communityEngagement(),
-                ],
+    return Container(
+      color: Get.theme.scaffoldBackgroundColor,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: CustomAppBarComponent(
+            onBackPressed: () {
+              Get.back();
+            },
+            title: "lbl_profile".tr,
+            hasTrailingIcon: true,
+            onTapTrailingIcon: () {
+              onTapProfileicons();
+            },
+          ),
+          body: SizedBox(
+            width: mediaQueryData.size.width,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
+              child: Padding(
+                padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    profileInfoCard(),
+                    SizedBox(height: 24),
+
+                    // likedArtworks(),
+                    Container(
+                      height: 200,
+                      child: LikedArtworksView(),
+                    ),
+                    yourWork(),
+                    SizedBox(height: 24),
+                    // collections(),
+                    buildCollectionsWidget(),
+                    SizedBox(height: 24),
+                    communityEngagement(),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  // liked artworks page
+  likedArtworks() {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                "liked artworks",
+                style: theme.textTheme.titleMedium,
+              ),
+              Text("20"),
+            ],
+          ),
+          Container(
+            height: 200, // Adjust this value as needed
+            child: Row(
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 16.v, right: 2.h),
+                    child: Obx(
+                      () => ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.userProfileContainerModelObj.value
+                            .enchantedforestItemList.value.length,
+                        itemBuilder: (context, index) {
+                          EnchantedforestItemModel model = controller
+                              .userProfileContainerModelObj
+                              .value
+                              .enchantedforestItemList
+                              .value[index];
+                          return EnchantedforestItemWidget(model);
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: 100,
+                  height: 100, // Adjust this value to match the image size
+                  child: CustomOutlinedButton(
+                    onTap: () {},
+                    text: "See All",
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
     );
   }
