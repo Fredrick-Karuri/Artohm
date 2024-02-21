@@ -1,4 +1,3 @@
-import 'package:artohmapp/presentation/onboarding_screen/controller/onboarding_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -25,7 +24,7 @@ Future main() async {
     );
 
     supabase = Supabase.instance.client;
-    final session = supabase.auth.currentSession;
+    // final session = supabase.auth.currentSession;
     Get.put(GlobalOnboardingController());
     GlobalOnboardingController globalOnboardingController = Get.find();
     bool onboardingCompleted =
