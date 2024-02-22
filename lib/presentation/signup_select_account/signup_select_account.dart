@@ -20,12 +20,11 @@ class SelectAccountTypePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             AccountTypeCard(
-              accountType: AccountType.artist,
-              title: 'Artist',
-              description: 'I create art and want to showcase my work.',
-              icon: Icons.brush,
-              color: appTheme.red300,
-            ),
+                accountType: AccountType.artist,
+                title: 'Artist',
+                description: 'I create art and want to showcase my work.',
+                icon: Icons.brush,
+                color: appTheme.red300),
             SizedBox(height: 32.0),
             AccountTypeCard(
               accountType: AccountType.enthusiast,
@@ -36,27 +35,26 @@ class SelectAccountTypePage extends StatelessWidget {
             ),
             SizedBox(height: 56.0),
             Obx(
-  () => CustomElevatedButton(
-    buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-    buttonTextStyle: CustomTextStyles.titleMediumWhiteA700,
-    text: 'Next',
-    onTap: controller.selectedType.value == AccountType.none
-        ? null
-        : () {
-            if (controller.selectedType.value == AccountType.artist) {
-              // Navigate to ArtistTrackPage
-              Get.toNamed( AppRoutes.artistTrackPage);
-            } else if (controller.selectedType.value == AccountType.enthusiast) {
-              // Navigate to ArtEnthusiastTrackPage
-              // Get.toNamed( AppRoutes.artEnthusiastTrackPage);
-              Get.toNamed( AppRoutes.artistTrackPage);
-
-
-            }
-          },
-  ),
-)
-
+              () => CustomElevatedButton(
+                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
+                buttonTextStyle: CustomTextStyles.titleMediumWhiteA700,
+                text: 'Next',
+                onTap: controller.selectedType.value == AccountType.none
+                    ? null
+                    : () {
+                        if (controller.selectedType.value ==
+                            AccountType.artist) {
+                          // Navigate to ArtistTrackPage
+                          Get.toNamed(AppRoutes.artistTrackPage);
+                        } else if (controller.selectedType.value ==
+                            AccountType.enthusiast) {
+                          // Navigate to ArtEnthusiastTrackPage
+                          // Get.toNamed( AppRoutes.artEnthusiastTrackPage);
+                          Get.toNamed(AppRoutes.artistTrackPage);
+                        }
+                      },
+              ),
+            )
           ],
         ),
       ),

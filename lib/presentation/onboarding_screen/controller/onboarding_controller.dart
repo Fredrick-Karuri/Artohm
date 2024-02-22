@@ -1,6 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/onboarding_screen/models/onboarding_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:artohmapp/global_states.dart';
 
 /// A controller class for the OnboardingScreen.
