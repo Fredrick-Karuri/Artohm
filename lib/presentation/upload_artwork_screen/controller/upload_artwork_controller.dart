@@ -1,4 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/models/upload_artwork_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,24 +29,26 @@ class UploadArtworkController extends GetxController {
     inputtextoneController.dispose();
   }
 
-  onSelected(dynamic value) {
-    for (var element in uploadArtworkModelObj.value.dropdownItemList.value) {
+  onSelectedDimensions(int value) {
+    for (var element in uploadArtworkModelObj.value.dimensionsDropdownItemList.value) {
       element.isSelected = false;
-      if (element.id == value.id) {
+      if (element.id == value) {
+        // Now we're comparing two integers
         element.isSelected = true;
       }
     }
-    uploadArtworkModelObj.value.dropdownItemList.refresh();
+    uploadArtworkModelObj.value.dimensionsDropdownItemList.refresh();
   }
 
-  onSelected1(dynamic value) {
-    for (var element in uploadArtworkModelObj.value.dropdownItemList1.value) {
+  onSelectedMedium(int value) {
+    for (var element in uploadArtworkModelObj.value.mediumDropdownItemList.value) {
       element.isSelected = false;
-      if (element.id == value.id) {
+      if (element.id == value) {
+        // Now we're comparing two integers
         element.isSelected = true;
       }
     }
-    uploadArtworkModelObj.value.dropdownItemList1.refresh();
+    uploadArtworkModelObj.value.mediumDropdownItemList.refresh();
   }
 
   Future<void> pickImage() async {

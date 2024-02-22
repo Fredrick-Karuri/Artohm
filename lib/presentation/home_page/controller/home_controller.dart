@@ -1,5 +1,7 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:flutter/material.dart';

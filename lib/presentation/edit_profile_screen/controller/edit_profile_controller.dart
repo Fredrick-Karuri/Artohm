@@ -1,5 +1,6 @@
-import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
+import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,9 +71,6 @@ class EditProfileController extends GetxController {
     );
   }
 
-  SelectionPopupModel? selectedDropDownValue;
-  final ImagePicker _picker = ImagePicker();
-
   @override
   void onClose() {
     super.onClose();
@@ -80,14 +78,53 @@ class EditProfileController extends GetxController {
     influencesFocusNode.dispose();
   }
 
-  onSelected(dynamic value) {
-    for (var element in editProfileModelObj.value.dropdownItemList.value) {
-      element.isSelected = false;
-      if (element.id == value.id) {
-        element.isSelected = true;
+  final ImagePicker _picker = ImagePicker();
+  SelectionPopupModel? selectedDropDownValue;
+  
+  onSelected(int id) {
+    var selectedItem = editProfileModelObj.value.dropdownItemList.value
+        .firstWhereOrNull((item) => item.id == id);
+    if (selectedItem != null) {
+      // Create a new SelectedstylesItemModel with the selected style
+      SelectedstylesItemModel newStyle = SelectedstylesItemModel();
+      newStyle.chips2filterb.value = selectedItem.title;
+      // Add the new style to the selectedstylesItemList
+      editProfileModelObj.value.selectedstylesItemList.value.add(newStyle);
+      // Remove the selected style from the dropdownItemList
+      editProfileModelObj.value.dropdownItemList.value.remove(selectedItem);
+      // Update the DropdownButtonFormField's value
+      if (editProfileModelObj.value.dropdownItemList.value.isNotEmpty) {
+        selectedDropDownValue =
+            editProfileModelObj.value.dropdownItemList.value.first;
+      } else {
+        selectedDropDownValue = null;
       }
     }
     editProfileModelObj.value.dropdownItemList.refresh();
+    editProfileModelObj.value.selectedstylesItemList.refresh();
+  }
+
+  // method to remove a selected style
+  removeSelectedStyle(SelectedstylesItemModel style) {
+    // Generate a unique id for the style to be added back to the dropdownItemList
+    int newId = 1;
+    if (editProfileModelObj.value.dropdownItemList.value.isNotEmpty) {
+      newId = (editProfileModelObj.value.dropdownItemList.value
+                  .map((item) => item.id)
+                  .where((id) => id != null)
+                  .reduce((a, b) => a! > b! ? a : b) ??
+              0) +
+          1;
+    }
+
+    // Add the style back to the dropdownItemList
+    editProfileModelObj.value.dropdownItemList.value.add(SelectionPopupModel(
+      title: style.chips2filterb.value,
+    ));
+    // Remove the selected style from the selectedstylesItemList
+    editProfileModelObj.value.selectedstylesItemList.value.remove(style);
+    editProfileModelObj.value.dropdownItemList.refresh();
+    editProfileModelObj.value.selectedstylesItemList.refresh();
   }
 
   Future<void> changeProfilePhoto() async {

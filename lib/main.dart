@@ -1,6 +1,5 @@
 import 'package:artohmapp/data/localStorage.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
-import 'package:artohmapp/presentation/edit_profile_screen/controller/edit_profile_controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +10,6 @@ import 'package:artohmapp/global_states.dart';
 
 late final SupabaseClient supabase;
 Future main() async {
-  Get.put(() => EditProfileController());
   Get.lazyPut(() => ArtworksController()); // Register ArtworksController
   Get.lazyPut(() => LocalStorageService()); // Register LocalStorageService
 

@@ -1,4 +1,3 @@
-
 import 'controller/upload_artwork_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
@@ -103,11 +102,11 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                     svgPath: ImageConstant.imgProfileiconsRed30012x18)),
             hintText: "lbl_oil_on_canvas".tr,
             items:
-                controller.uploadArtworkModelObj.value.dropdownItemList1.value,
+                controller.uploadArtworkModelObj.value.mediumDropdownItemList.value,
             contentPadding:
                 EdgeInsets.only(left: 16.h, top: 10.v, bottom: 10.v),
             onChanged: (value) {
-              controller.onSelected1(value);
+              controller.onSelectedMedium(value);
             },
           ),
         ],
@@ -138,18 +137,18 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                     ),
                     hintText: "lbl_inches".tr,
                     items: controller
-                        .uploadArtworkModelObj.value.dropdownItemList.value,
+                        .uploadArtworkModelObj.value.dimensionsDropdownItemList.value,
                     onChanged: (value) {
-                      controller.onSelected(value);
+                      controller.onSelectedDimensions(value);
                     },
                   ),
                   SizedBox(height: 16.v),
                   CustomElevatedButton(
-                      width: 101.h,
-                      text: "lbl_24_x_36_inches".tr,
-                      buttonStyle: CustomButtonStyles.fillWhiteA,
-                      buttonTextStyle:
-                          CustomTextStyles.bodySmallLatoBlack9000112),
+                    width: 101.h,
+                    text: "lbl_24_x_36_inches".tr,
+                    buttonStyle: CustomButtonStyles.fillWhiteA,
+                    buttonTextStyle: CustomTextStyles.bodySmallLatoBlack9000112,
+                  ),
                 ],
               ),
             ),

@@ -34,7 +34,7 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
               text: text,
             )
           : null,
-      styleType: Style.bgOutline,
+      // styleType: Style.bgOutline,
     );
   }
 

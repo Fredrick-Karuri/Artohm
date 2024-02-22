@@ -1,17 +1,20 @@
-import '../models/selectedstyles_item_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/controller/edit_profile_controller.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
+
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class SelectedstylesItemWidget extends StatelessWidget {
+  final SelectedstylesItemModel selectedstylesItemModelObj;
+  final EditProfileController controller = Get.find<EditProfileController>();
+
   SelectedstylesItemWidget(
     this.selectedstylesItemModelObj, {
     Key? key,
   }) : super(
           key: key,
         );
-
-  SelectedstylesItemModel selectedstylesItemModelObj;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,7 @@ class SelectedstylesItemWidget extends StatelessWidget {
                 ),
               ),
         onSelected: (value) {
-          selectedstylesItemModelObj.isSelected.value = value;
+          controller.removeSelectedStyle(selectedstylesItemModelObj);
         },
       ),
     );

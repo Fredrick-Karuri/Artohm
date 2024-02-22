@@ -1,4 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 
 class NewCollaborationItemModel {
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
@@ -6,47 +8,37 @@ class NewCollaborationItemModel {
       SelectionPopupModel(
         title: 'Oil',
         isSelected: false,
-        id: 1,
       ),
       SelectionPopupModel(
         title: 'Acrylic',
         isSelected: false,
-        id: 1,
       ),
       SelectionPopupModel(
         title: 'Watercolor',
         isSelected: false,
-        id: 2,
       ),
       SelectionPopupModel(
         title: 'Gouache',
         isSelected: false,
-        id: 3,
       ),
       SelectionPopupModel(
         title: 'Ink',
         isSelected: false,
-        id: 4,
       ),
       SelectionPopupModel(
         title: 'Pastel',
         isSelected: false,
-        id: 5,
       ),
       SelectionPopupModel(
         title: 'Charcoal',
         isSelected: false,
-        id: 6,
       ),
       SelectionPopupModel(
         title: 'Pencil',
         isSelected: false,
-        id: 7,
       ),
       SelectionPopupModel(
         title: 'Digital',
-        isSelected: false,
-        id: 8,
       ),
     ],
   );
