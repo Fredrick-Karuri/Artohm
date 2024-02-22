@@ -27,4 +27,15 @@ class SelectionPopupModel {
     this.value,
   })  : id = _counter++,
         super();
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is SelectionPopupModel &&
+        other.id == id &&
+        other.title == title;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ title.hashCode;
 }

@@ -24,6 +24,7 @@ import 'package:artohmapp/presentation/signup_select_account/controller/signup_s
 import 'package:artohmapp/presentation/signup_select_account/signup_select_account.dart';
 import 'package:artohmapp/presentation/signup_select_account/widgets/art_enthusiast_track_view.dart';
 import 'package:artohmapp/presentation/signup_select_account/widgets/artist_track_view.dart';
+import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_details_Screen.dart';
 import 'package:artohmapp/presentation/your_artworks/binding/your_artworks._binding.dart';
 import 'package:artohmapp/presentation/your_artworks/your_artworks.dart';
 import 'package:artohmapp/widgets/splashscreen.dart';
@@ -138,6 +139,7 @@ class AppRoutes {
   static const String selectAccountTypePage = '/signup_select_account';
   static const String artistTrackPage = '/artist_track_page';
   static const String artEnthusiastTrackPage = '/art_enthusiast_track_page';
+  static const String collectionDetailPage = '/collection_detail_page';
 
   static List<GetPage> pages = [
     GetPage(
@@ -370,10 +372,18 @@ class AppRoutes {
     GetPage(
       name: artEnthusiastTrackPage,
       page: () => ArtEnthusiastTrackPage(),
-      binding: BindingsBuilder(() {
-        Get.lazyPut<ArtEnthusiastDetailsController>(
-            () => ArtEnthusiastDetailsController());
-      }),
+      binding: BindingsBuilder(
+        () {
+          Get.lazyPut<ArtEnthusiastDetailsController>(
+              () => ArtEnthusiastDetailsController());
+        },
+      ),
+    ),
+    GetPage(
+      name: AppRoutes.collectionDetailPage,
+      page: () => CollectionDetailScreen(
+        collection: Get.arguments,
+      ),
     ),
   ];
 }

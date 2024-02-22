@@ -162,8 +162,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Your Listings",
-            style: theme.textTheme.titleMedium),
+        Text("Your Listings", style: theme.textTheme.titleMedium),
         SizedBox(
           height: 6.v,
         ),

@@ -1,5 +1,4 @@
 import 'package:artohmapp/core/utils/image_constant.dart';
-
 class Artwork {
   final String title;
   final String artist;
@@ -22,9 +21,37 @@ class Artwork {
     this.likes = 0,
     required this.comments,
   });
-  @override
-  String toString() {
-    return 'Artwork(id: $id, imageUrl: $imageUrl)';
+
+  // Convert an Artwork to a Map
+  Map<String, dynamic> toJson() {
+    return {
+      'title': title,
+      'artist': artist,
+      'imageUrl': imageUrl,
+      'id': id,
+      'type': type,
+      'category': category,
+      'description': description,
+      'likes': likes,
+      'comments': comments.map((comment) => comment.toJson()).toList(),
+    };
+  }
+
+  // Create a new Artwork from a map
+  static Artwork fromJson(Map<String, dynamic> json) {
+    return Artwork(
+      title: json['title'],
+      artist: json['artist'],
+      imageUrl: json['imageUrl'],
+      id: json['id'],
+      type: json['type'],
+      category: json['category'],
+      description: json['description'],
+      likes: json['likes'],
+      comments: (json['comments'] as List)
+          .map((comment) => Comment.fromJson(comment))
+          .toList(),
+    );
   }
 }
 

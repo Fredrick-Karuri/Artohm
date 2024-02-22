@@ -5,6 +5,7 @@ import '../../../core/app_export.dart';
 /// This class defines the variables used in the [edit_profile_screen],
 /// and is typically used to hold data that is passed between different parts of the application.
 class EditProfileModel {
+  Rx<List<SelectionPopupModel>> regionItemList = Rx([]);
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
     [
       SelectionPopupModel(
@@ -51,15 +52,27 @@ class EditProfileModel {
       ),
     ],
   );
-
-  Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx(
-    List.generate(
-      0,
-      (index) => SelectedstylesItemModel(),
-    ),
-  );
+  Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx([]);
 }
 
+class SelectedstylesItemModel {
+  int id;
+  Rx<String> chips2filterb = Rx("");
+
+  Rx<bool> isSelected = Rx(false);
+
+  SelectedstylesItemModel(
+      {required this.id, required String chips2filterbValue}) {
+    this.chips2filterb.value = chips2filterbValue;
+  }
+}
+
+// Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx(
+//   List.generate(
+//     0,
+//     (index) => SelectedstylesItemModel(),
+//   ),
+// );
 // class SelectionPopupModel {
 //   static int _counter = 0;
 //   final int id;
@@ -67,20 +80,11 @@ class EditProfileModel {
 //   bool isSelected;
 //   dynamic value;
 
-
-
 //   SelectionPopupModel({required this.title, this.isSelected = false, this.value})
 //       : id = _counter++,
 //         super();
 // }
 //list
-
-
-class SelectedstylesItemModel {
-  Rx<String> chips2filterb = Rx("");
-
-  Rx<bool> isSelected = Rx(false);
-}
 
 class UserProfile {
   final String label;

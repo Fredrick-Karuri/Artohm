@@ -1,7 +1,11 @@
+import 'dart:convert';
+
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/data/models/collections/collections_model.dart';
 import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:uuid/uuid.dart';
 
 class ArtworksController extends GetxController {
   Future<List<Artwork>> fetchArtworks() async {
@@ -81,4 +85,56 @@ class LikedArtworksController extends GetxController {
   }
 
   bool isLiked(Artwork artwork) => _likedArtworksIds.contains(artwork.id);
+}
+
+class CollectionsController extends GetxController {
+  var collections = <Collection>[].obs;
+  final LocalStorageService localStorageService;
+
+  CollectionsController({required this.localStorageService});
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadCollections();
+  }
+
+  void createCollection(String name) {
+    collections.add(Collection(id: Uuid().v1(), name: name, artworks: []));
+    saveCollections();
+  }
+
+  void addToCollection(String collectionId, Artwork artwork) {
+    collections[collections
+            .indexWhere((collection) => collection.id == collectionId)]
+        .artworks
+        .add(artwork);
+    saveCollections();
+  }
+
+  void saveCollections() {
+    List<String> collectionsJson = collections
+        .map((collection) => jsonEncode(collection.toJson()))
+        .toList();
+    localStorageService.setStringList('collections', collectionsJson);
+  }
+
+  void loadCollections() async {
+    List<String>? collectionsJson =
+        await localStorageService.getStringList('collections');
+    if (collectionsJson != null) {
+      collections.value = collectionsJson
+          .map((collectionJson) =>
+              Collection.fromJson(jsonDecode(collectionJson)))
+          .toList();
+    }
+  }
+
+  void removeFromCollection(String collectionId, Artwork artwork) {
+    collections[collections
+            .indexWhere((collection) => collection.id == collectionId)]
+        .artworks
+        .remove(artwork);
+    saveCollections();
+  }
 }

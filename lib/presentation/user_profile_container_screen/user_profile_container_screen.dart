@@ -2,6 +2,7 @@ import 'package:artohmapp/presentation/artworks/controller/artworks_controller.d
 import 'package:artohmapp/presentation/artworks/widgets/likedArtworksView.dart';
 import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
+import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_list_screen.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../user_profile_container_screen/widgets/collection_item_widget.dart';
 import '../user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
@@ -15,11 +16,14 @@ import 'package:flutter/material.dart';
 class UserProfileContainerScreen
     extends GetWidget<UserProfileContainerController> {
   final LikedArtworksController likedArtworksController;
+
   const UserProfileContainerScreen(this.likedArtworksController, {Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    CollectionsController collectionsController = Get.find();
+
     mediaQueryData = MediaQuery.of(context);
     return Container(
       color: Get.theme.scaffoldBackgroundColor,
@@ -54,6 +58,8 @@ class UserProfileContainerScreen
                     ),
                     yourWork(),
                     SizedBox(height: 24),
+                    CollectionListWidget(
+                        collections: collectionsController.collections),
                     // collections(),
                     buildCollectionsWidget(),
                     SizedBox(height: 24),

@@ -1,3 +1,5 @@
+import 'package:artohmapp/data/localStorage.dart';
+
 import '../controller/artwork_controller.dart';
 import 'package:get/get.dart';
 
@@ -8,6 +10,9 @@ import 'package:get/get.dart';
 class ArtworkBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<ArtworkController>(() => ArtworkController(Get.arguments, Get.find()));
+    // find local storage else initialize it
+    Get.lazyPut(() => LocalStorageService());
+    Get.lazyPut<ArtworkController>(
+        () => ArtworkController(Get.arguments, Get.find()));
   }
 }

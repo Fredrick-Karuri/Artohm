@@ -101,8 +101,8 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                 child: CustomImageView(
                     svgPath: ImageConstant.imgProfileiconsRed30012x18)),
             hintText: "lbl_oil_on_canvas".tr,
-            items:
-                controller.uploadArtworkModelObj.value.mediumDropdownItemList.value,
+            items: controller
+                .uploadArtworkModelObj.value.mediumDropdownItemList.value,
             contentPadding:
                 EdgeInsets.only(left: 16.h, top: 10.v, bottom: 10.v),
             onChanged: (value) {
@@ -136,8 +136,8 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                       margin: EdgeInsetsDirectional.only(end: 2),
                     ),
                     hintText: "lbl_inches".tr,
-                    items: controller
-                        .uploadArtworkModelObj.value.dimensionsDropdownItemList.value,
+                    items: controller.uploadArtworkModelObj.value
+                        .dimensionsDropdownItemList.value,
                     onChanged: (value) {
                       controller.onSelectedDimensions(value);
                     },

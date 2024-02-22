@@ -45,8 +45,10 @@ class ArtStyles extends StatelessWidget {
     );
   }
 
-  Widget buildDropDown(EditProfileController controller) {
-    return CustomDropDown(
+
+Widget buildDropDown(EditProfileController controller) {
+  return GetBuilder<EditProfileController>(
+    builder: (controller) =>  CustomDropDown(
       hintText: "Choose Style".tr,
       hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
       items: controller.editProfileModelObj.value.dropdownItemList.value,
@@ -56,8 +58,25 @@ class ArtStyles extends StatelessWidget {
       onChanged: (value) {
         controller.onSelected(value);
       },
-    );
-  }
+    )
+  );
+}
+
+  // Widget buildDropDown(EditProfileController controller) {
+  //   return
+    
+  //    CustomDropDown(
+  //     hintText: "Choose Style".tr,
+  //     hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
+  //     items: controller.editProfileModelObj.value.dropdownItemList.value,
+
+
+  //     borderDecoration: DropDownStyleHelper.outlineBlackTL81,
+  //     onChanged: (value) {
+  //       controller.onSelected(value);
+  //     },
+  //   );
+  // }
 
   Widget buildSelectedStyles(EditProfileController controller) {
     return Obx(

@@ -54,7 +54,11 @@ class SelectedstylesItemWidget extends StatelessWidget {
                   16.h,
                 ),
               ),
-        onSelected: (value) {
+        // onSelected: (value) {
+        //   controller.removeSelectedStyle(selectedstylesItemModelObj);
+        // },
+
+        onPressed: (){
           controller.removeSelectedStyle(selectedstylesItemModelObj);
         },
       ),

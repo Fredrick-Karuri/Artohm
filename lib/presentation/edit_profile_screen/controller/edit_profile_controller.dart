@@ -1,3 +1,4 @@
+import 'package:artohmapp/data/localStorage.dart';
 import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -15,6 +16,7 @@ class EditProfileController extends GetxController {
   Rx<EditProfileModel> editProfileModelObj = EditProfileModel().obs;
   RxList<UserProfile> fields = <UserProfile>[].obs;
   FocusNode influencesFocusNode = FocusNode();
+  final localStorageService = Get.put(LocalStorageService());
 
   @override
   void onInit() {
@@ -79,52 +81,34 @@ class EditProfileController extends GetxController {
   }
 
   final ImagePicker _picker = ImagePicker();
-  SelectionPopupModel? selectedDropDownValue;
-  
+
+  final removedItems = <SelectionPopupModel>[].obs;
+  // SelectionPopupModel? selectedDropDownValue;
+  int? selectedDropDownValue;
+
   onSelected(int id) {
     var selectedItem = editProfileModelObj.value.dropdownItemList.value
         .firstWhereOrNull((item) => item.id == id);
     if (selectedItem != null) {
-      // Create a new SelectedstylesItemModel with the selected style
-      SelectedstylesItemModel newStyle = SelectedstylesItemModel();
-      newStyle.chips2filterb.value = selectedItem.title;
-      // Add the new style to the selectedstylesItemList
-      editProfileModelObj.value.selectedstylesItemList.value.add(newStyle);
-      // Remove the selected style from the dropdownItemList
+      // Add the selected item to the selectedstylesItemList
+      editProfileModelObj.value.selectedstylesItemList.value.add(
+          SelectedstylesItemModel(
+              id: selectedItem.id, chips2filterbValue: selectedItem.title));
+      // Remove the selected item from the dropdownItemList
       editProfileModelObj.value.dropdownItemList.value.remove(selectedItem);
-      // Update the DropdownButtonFormField's value
-      if (editProfileModelObj.value.dropdownItemList.value.isNotEmpty) {
-        selectedDropDownValue =
-            editProfileModelObj.value.dropdownItemList.value.first;
-      } else {
-        selectedDropDownValue = null;
-      }
+      // Set the value of the dropdown to null or to the id of another item in the list
+      selectedDropDownValue = 0; // or some other id in the list
     }
     editProfileModelObj.value.dropdownItemList.refresh();
     editProfileModelObj.value.selectedstylesItemList.refresh();
   }
 
-  // method to remove a selected style
+// method to remove a selected style
   removeSelectedStyle(SelectedstylesItemModel style) {
-    // Generate a unique id for the style to be added back to the dropdownItemList
-    int newId = 1;
-    if (editProfileModelObj.value.dropdownItemList.value.isNotEmpty) {
-      newId = (editProfileModelObj.value.dropdownItemList.value
-                  .map((item) => item.id)
-                  .where((id) => id != null)
-                  .reduce((a, b) => a! > b! ? a : b) ??
-              0) +
-          1;
-    }
-
-    // Add the style back to the dropdownItemList
-    editProfileModelObj.value.dropdownItemList.value.add(SelectionPopupModel(
-      title: style.chips2filterb.value,
-    ));
+    // Add the removed style to the removedItems list
+    removedItems.add(SelectionPopupModel(title: style.chips2filterb.value));
     // Remove the selected style from the selectedstylesItemList
     editProfileModelObj.value.selectedstylesItemList.value.remove(style);
-    editProfileModelObj.value.dropdownItemList.refresh();
-    editProfileModelObj.value.selectedstylesItemList.refresh();
   }
 
   Future<void> changeProfilePhoto() async {
