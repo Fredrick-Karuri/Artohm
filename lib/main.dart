@@ -29,7 +29,7 @@ Future main() async {
     );
 
     supabase = Supabase.instance.client;
-    final session = supabase.auth.currentSession;
+    // final session = supabase.auth.currentSession;
     Get.put(GlobalOnboardingController());
     GlobalOnboardingController globalOnboardingController = Get.find();
     bool onboardingCompleted =

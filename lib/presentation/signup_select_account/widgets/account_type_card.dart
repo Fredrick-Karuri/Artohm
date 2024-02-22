@@ -9,13 +9,12 @@ class AccountTypeCard extends StatelessWidget {
   final IconData icon;
   final Color color;
 
-  AccountTypeCard({
-    required this.accountType,
-    required this.title,
-    required this.description,
-    required this.icon,
-    required this.color,
-  });
+  AccountTypeCard(
+      {required this.accountType,
+      required this.title,
+      required this.description,
+      required this.icon,
+      required this.color});
 
   @override
   Widget build(BuildContext context) {
