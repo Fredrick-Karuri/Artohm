@@ -1,39 +1,85 @@
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+
 import '../../../core/app_export.dart';
-import 'selectedstyles_item_model.dart';
 
 /// This class defines the variables used in the [edit_profile_screen],
 /// and is typically used to hold data that is passed between different parts of the application.
 class EditProfileModel {
-  Rx<List<SelectionPopupModel>> dropdownItemList = Rx([
-    SelectionPopupModel(
-      id: 1,
-      title: "Impressionism",
-      isSelected: true,
-    ),
-    SelectionPopupModel(
-      id: 2,
-      title: "Cubism",
-    ),
-    SelectionPopupModel(
-      id: 3,
-      title: "Surrealism",
-    ),
-    SelectionPopupModel(
-      id: 4,
-      title: "Abstract Expressionism",
-    ),
-    SelectionPopupModel(
-      id: 5,
-      title: "Pop Art",
-    ),
-  ]);
+  Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
+    [
+      SelectionPopupModel(
+        title: "Impressionism",
+      ),
+      SelectionPopupModel(
+        title: "Cubism",
+      ),
+      SelectionPopupModel(
+        title: "Surrealism",
+      ),
+      SelectionPopupModel(
+        title: "Abstract Expressionism",
+      ),
+      SelectionPopupModel(
+        title: "Pop Art",
+      ),
+      SelectionPopupModel(
+        title: "Art Deco",
+      ),
+      SelectionPopupModel(
+        title: "Minimalism",
+      ),
+      SelectionPopupModel(
+        title: "Expressionism",
+      ),
+      SelectionPopupModel(
+        title: "Baroque",
+      ),
+      SelectionPopupModel(
+        title: "Realism",
+      ),
+      SelectionPopupModel(
+        title: "Rococo",
+      ),
+      SelectionPopupModel(
+        title: "Art Nouveau",
+      ),
+      SelectionPopupModel(
+        title: "Modernism",
+      ),
+      SelectionPopupModel(
+        title: "Neoclassicism",
+      ),
+    ],
+  );
 
   Rx<List<SelectedstylesItemModel>> selectedstylesItemList = Rx(
     List.generate(
-      2,
+      0,
       (index) => SelectedstylesItemModel(),
     ),
   );
+}
+
+// class SelectionPopupModel {
+//   static int _counter = 0;
+//   final int id;
+//   final String title;
+//   bool isSelected;
+//   dynamic value;
+
+
+
+//   SelectionPopupModel({required this.title, this.isSelected = false, this.value})
+//       : id = _counter++,
+//         super();
+// }
+//list
+
+
+class SelectedstylesItemModel {
+  Rx<String> chips2filterb = Rx("");
+
+  Rx<bool> isSelected = Rx(false);
 }
 
 class UserProfile {
@@ -58,5 +104,3 @@ class SocialMedia {
 
   SocialMedia({required this.name, required this.url, required this.logoPath});
 }
-
-

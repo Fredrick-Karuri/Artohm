@@ -7,7 +7,7 @@ export 'package:artohmapp/core/utils/initial_bindings.dart';
 export 'package:artohmapp/core/utils/logger.dart';
 export 'package:artohmapp/core/utils/pref_utils.dart';
 export 'package:artohmapp/core/utils/size_utils.dart';
-export 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+// export 'package:artohmapp/data/models/SelectionPopupModelNew/selection_popup_model.dart';
 export 'package:artohmapp/localization/app_localization.dart';
 export 'package:artohmapp/routes/app_routes.dart';
 export 'package:artohmapp/theme/app_decoration.dart';

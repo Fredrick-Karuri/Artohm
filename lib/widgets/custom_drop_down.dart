@@ -1,34 +1,36 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDown extends StatelessWidget {
-  CustomDropDown({
-    Key? key,
-    this.alignment,
-    this.width,
-    this.margin,
-    this.focusNode,
-    this.icon,
-    this.autofocus = true,
-    this.textStyle,
-    this.items,
-    this.hintText,
-    this.hintStyle,
-    this.prefix,
-    this.prefixConstraints,
-    this.suffix,
-    this.suffixConstraints,
-    this.contentPadding,
-    this.borderDecoration,
-    this.fillColor,
-    this.filled = false,
-    this.validator,
-    this.onChanged,
-    this.dropdownColor = Colors.blue
-  }) : super(
+  CustomDropDown(
+      {Key? key,
+      this.alignment,
+      this.width,
+      this.margin,
+      this.focusNode,
+      this.icon,
+      this.autofocus = true,
+      this.textStyle,
+      this.items,
+      this.hintText,
+      this.hintStyle,
+      this.prefix,
+      this.prefixConstraints,
+      this.suffix,
+      this.suffixConstraints,
+      this.contentPadding,
+      this.borderDecoration,
+      this.fillColor,
+      this.filled = false,
+      this.validator,
+      this.onChanged,
+      this.dropdownColor = Colors.blue})
+      : super(
           key: key,
         );
-final Color dropdownColor;
+  final Color dropdownColor;
   final Alignment? alignment;
 
   final double? width;
@@ -64,10 +66,9 @@ final Color dropdownColor;
   final Color? fillColor;
 
   final bool? filled;
+  final FormFieldValidator<int>? validator;
 
-  final FormFieldValidator<SelectionPopupModel>? validator;
-
-  final Function(SelectionPopupModel)? onChanged;
+  final Function(int)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -80,18 +81,22 @@ final Color dropdownColor;
   }
 
   Widget get dropDownWidget => Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
+        padding: const EdgeInsets.only(
+          right: 8,
+          bottom: 8,
+          top: 8,
+        ),
+        child: Container(
           width: width ?? double.maxFinite,
           margin: margin,
-          child: DropdownButtonFormField<SelectionPopupModel>(
+          child: DropdownButtonFormField<int>(
             focusNode: focusNode ?? FocusNode(),
             icon: icon,
             autofocus: autofocus!,
             style: textStyle ?? theme.textTheme.bodyMedium,
             items: items?.map((SelectionPopupModel item) {
-              return DropdownMenuItem<SelectionPopupModel>(
-                value: item,
+              return DropdownMenuItem<int>(
+                value: item.id,
                 child: Text(
                   item.title,
                   overflow: TextOverflow.ellipsis,
@@ -101,14 +106,17 @@ final Color dropdownColor;
             }).toList(),
             decoration: decoration,
             validator: validator,
-            onChanged: (value) {
-              onChanged!(value!);
+            onChanged: (int? value) {
+              if (value != null && onChanged != null) {
+                onChanged!(value);
+              }
             },
+
+            // onChanged: onChanged,
             dropdownColor: dropdownColor,
-            
           ),
         ),
-  );
+      );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? theme.textTheme.bodyMedium,
@@ -118,12 +126,7 @@ final Color dropdownColor;
         suffixIconConstraints: suffixConstraints,
         isDense: true,
         contentPadding: contentPadding ??
-            EdgeInsets.only(
-              left: 12.h,
-              top: 6.v,
-              bottom: 6.v,
-              right: 8.v
-            ),
+            EdgeInsets.only(left: 12.h, top: 8.v, bottom: 8.v, right: 8.v),
         fillColor: fillColor,
         filled: filled,
         border: borderDecoration ??
@@ -167,3 +170,30 @@ extension DropDownStyleHelper on CustomDropDown {
         ),
       );
 }
+
+        // child: Container(
+        //   width: width ?? double.maxFinite,
+        //   margin: margin,
+        //   child: DropdownButtonFormField<SelectionPopupModel>(
+        //     focusNode: focusNode ?? FocusNode(),
+        //     icon: icon,
+        //     autofocus: autofocus!,
+        //     style: textStyle ?? theme.textTheme.bodyMedium,
+        //     items: items?.map((SelectionPopupModel item) {
+        //       return DropdownMenuItem<SelectionPopupModel>(
+        //         value: item,
+        //         child: Text(
+        //           item.title,
+        //           overflow: TextOverflow.ellipsis,
+        //           style: hintStyle ?? theme.textTheme.bodyMedium,
+        //         ),
+        //       );
+        //     }).toList(),
+        //     decoration: decoration,
+        // validator: validator,
+        //     onChanged: (value) {
+        //       onChanged!(value!);
+        //     },
+        //     dropdownColor: dropdownColor,
+        //   ),
+        // ),

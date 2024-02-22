@@ -1,4 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
 import 'package:artohmapp/presentation/collaborate_screen/models/collaborate_model.dart';
 
 /// A controller class for the CollaborateScreen.

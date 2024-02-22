@@ -1,3 +1,5 @@
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 
 import '../../../core/app_export.dart';
@@ -78,16 +80,13 @@ class HomeModel {
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
     [
       SelectionPopupModel(
-        id: 1,
         title: "Genre",
         isSelected: true,
       ),
       SelectionPopupModel(
-        id: 2,
         title: "Theme",
       ),
       SelectionPopupModel(
-        id: 3,
         title: "Art Style",
       )
     ],

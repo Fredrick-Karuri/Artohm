@@ -1,3 +1,6 @@
+import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
+import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
+
 import '../../../core/app_export.dart';
 import 'chipviewselect_item_model.dart';
 
@@ -10,16 +13,12 @@ class CollaborateModel {
   Rx<List<SelectionPopupModel>> dropdownItemList = Rx(
     [
       SelectionPopupModel(
-        id: 1,
         title: "Item One",
-        isSelected: true,
       ),
       SelectionPopupModel(
-        id: 2,
         title: "Item Two",
       ),
       SelectionPopupModel(
-        id: 3,
         title: "Item Three",
       )
     ],
