@@ -1,5 +1,5 @@
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
-import 'package:artohmapp/presentation/artworks/widgets/likedArtworksView.dart';
+import 'package:artohmapp/presentation/artworks/widgets/favorite_artworks_view.dart';
 import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_list_screen.dart';
@@ -15,9 +15,9 @@ import 'package:flutter/material.dart';
 
 class UserProfileContainerScreen
     extends GetWidget<UserProfileContainerController> {
-  final LikedArtworksController likedArtworksController;
+  final FavoriteArtworksController favoriteArtworksController;
 
-  const UserProfileContainerScreen(this.likedArtworksController, {Key? key})
+  const UserProfileContainerScreen(this.favoriteArtworksController, {Key? key})
       : super(key: key);
 
   @override
@@ -52,10 +52,12 @@ class UserProfileContainerScreen
                     SizedBox(height: 24),
 
                     // likedArtworks(),
-                    Container(
-                      height: 200,
-                      child: LikedArtworksView(),
-                    ),
+                    // Container(
+                    //   height: 200,
+                    //   child: LikedArtworksView(),
+                    // ),
+                   FavoriteArtworksView(),
+
                     yourWork(),
                     SizedBox(height: 24),
                     CollectionListWidget(

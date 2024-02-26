@@ -12,5 +12,5 @@ class NotificationsTabContainerController extends GetxController
       NotificationsTabContainerModel().obs;
 
   late TabController tabviewController =
-      Get.put(TabController(vsync: this, length: 4));
+      Get.put(TabController(vsync: this, length: 5));
 }

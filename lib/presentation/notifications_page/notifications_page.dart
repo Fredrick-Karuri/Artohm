@@ -1,12 +1,14 @@
-import '../notifications_page/widgets/notificationcar_item_widget.dart';
+import 'widgets/notification_card_item_widget.dart';
 import 'controller/notifications_controller.dart';
-import 'models/notificationcar_item_model.dart';
+import 'models/notification_card_item_model.dart';
 import 'models/notifications_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 
 class NotificationsPage extends StatelessWidget {
-  NotificationsPage({Key? key})
+  final NotificationType? type;
+
+  NotificationsPage({Key? key, this.type})
       : super(
           key: key,
         );
@@ -31,37 +33,27 @@ class NotificationsPage extends StatelessWidget {
             ),
             child: Obx(
               () => ListView.separated(
-                physics: BouncingScrollPhysics(),
-                shrinkWrap: true,
-                separatorBuilder: (
-                  context,
-                  index,
-                ) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(vertical: 11.0.v),
-                    child: SizedBox(
-                      width: 358.h,
-                      child: Divider(
-                        height: 1.v,
-                        thickness: 1.v,
-                        color: appTheme.gray90033.withOpacity(0.08),
-                      ),
-                    ),
-                  );
-                },
-                itemCount: controller.notificationsModelObj.value
-                    .notificationcarItemList.value.length,
-                itemBuilder: (context, index) {
-                  NotificationcarItemModel model = controller
-                      .notificationsModelObj
-                      .value
-                      .notificationcarItemList
-                      .value[index];
-                  return NotificationcarItemWidget(
-                    model,
-                  );
-                },
-              ),
+  physics: BouncingScrollPhysics(),
+  shrinkWrap: true,
+  separatorBuilder: (context, index) => Container(),
+  itemCount: controller.notificationsModelObj.value
+      .notificationCardItemList.value.length,
+  itemBuilder: (context, index) {
+    NotificationCardItemModel model = controller
+        .notificationsModelObj
+        .value
+        .notificationCardItemList
+        .value[index];
+    if (type == null || model.type!.value == type) {
+      return NotificationCardItemWidget(
+        notificationCardItemModelObj: model,
+      );
+    } else {
+      return Container();
+    }
+  },
+),
+
             ),
           ),
         ),

@@ -32,11 +32,11 @@ class ArtDiscoveryContainerBinding extends Bindings {
         fenix: true);
     Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController(),
         fenix: true);
-        Get.lazyPut(()=>LikedArtworksController(
-          artworksController:
-              Get.find(), // Get the instance of ArtworksController
-          localStorageService:
-              Get.find(), // Get the instance of LocalStorageService
-        ));
+    Get.lazyPut(
+        () => FavoriteArtworksController(
+              artworksController: Get.find(),
+              localStorageService: Get.find(),
+            ),
+        fenix: true);
   }
 }

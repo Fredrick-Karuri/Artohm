@@ -276,6 +276,8 @@ class SigninScreen extends GetWidget<SigninController> {
           SizedBox(height: 5.v),
           CustomTextFormField(
             controller: controller.fullNameController,
+
+            focusNode: controller.fullNameFocusNode,
             hintText: "msg_enter_your_full".tr,
             validator: (value) {
               String? error = isText(value);

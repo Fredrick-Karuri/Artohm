@@ -207,7 +207,7 @@ class AppRoutes {
     ),
     GetPage(
       name: userProfileContainerScreen,
-      page: () => UserProfileContainerScreen(LikedArtworksController(
+      page: () => UserProfileContainerScreen(FavoriteArtworksController(
         artworksController: ArtworksController(),
         localStorageService: LocalStorageService(),
       )),

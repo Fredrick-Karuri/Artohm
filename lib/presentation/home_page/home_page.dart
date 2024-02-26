@@ -3,6 +3,8 @@ import 'package:artohmapp/presentation/home_page/widgets/homeArtworkCard.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
+import 'package:artohmapp/presentation/notifications_page/controller/notifications_controller.dart';
+import 'package:artohmapp/presentation/notifications_page/models/notifications_model.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
 import '../../widgets/app_bar/custom_app_bar.dart';
 import 'controller/home_controller.dart';
@@ -17,10 +19,13 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   HomeController controller = Get.put(HomeController(HomeModel().obs));
-  LikedArtworksController likedArtworksController = Get.find();
+  NotificationsController nc = Get.put(NotificationsController(NotificationsModel().obs));
+  // final NotificationsController nc = Get.find();
 
   @override
   Widget build(BuildContext context) {
+
+
     mediaQueryData = MediaQuery.of(context);
     return Container(
       color: Get.theme.scaffoldBackgroundColor,
@@ -70,9 +75,11 @@ class HomePage extends StatelessWidget {
                       children: <Widget>[
                         IconButton(
                           onPressed: () {
+                            nc.reset();
                             onTapImgNotification();
                           },
                           icon: Icon(
+                            
                             Icons.notifications,
                             color: appTheme.red300,
                             size: 24,
@@ -83,7 +90,7 @@ class HomePage extends StatelessWidget {
                           child: Badge.count(
                             backgroundColor: appTheme.red300,
                             textColor: appTheme.whiteA700,
-                            count: 1,
+                            count: nc.notificationCount.value,
                           ),
                         ),
                       ],
@@ -120,6 +127,7 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
+                
                 SizedBox(height: 2.v),
                 Padding(
                   padding: const EdgeInsets.only(left: 16, right: 16),

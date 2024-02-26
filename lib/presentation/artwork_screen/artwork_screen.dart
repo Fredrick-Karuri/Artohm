@@ -148,9 +148,8 @@ Widget comment(ArtworkController controller, context) {
   );
 }
 
-Row artworkInfo(Artwork artwork) {
-  LikedArtworksController likedArtworksController =
-      Get.find(); // Get the instance of LikedArtworksController
+ artworkInfo(Artwork artwork) {
+  // Get the instance of LikedArtworksController
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,21 +163,21 @@ Row artworkInfo(Artwork artwork) {
             padding: EdgeInsets.only(left: 8.h, top: 14.v),
             child: Row(
               children: [
-                IconButton(
-                  color: theme.primaryColor,
-                  onPressed: () {
-                    LikedArtworksController likedArtworksController = Get
-                        .find(); // Get the instance of LikedArtworksController
-                    likedArtworksController
-                        .toggleLike(artwork); // Call toggleLike function
-                  },
-                  iconSize: 28,
-                  icon: Icon(likedArtworksController.likedArtworksIds
-                          .toList()
-                          .contains(artwork.id)
-                      ? Icons.favorite
-                      : Icons.favorite_outline),
-                ),
+                // IconButton(
+                //   color: theme.primaryColor,
+                //   onPressed: () {
+                //     FavoriteArtworksController favoriteArtworksController = Get
+                //         .find(); // Get the instance of LikedArtworksController
+                //     favoriteArtworksController
+                //         .toggleLike(artwork); // Call toggleLike function
+                //   },
+                //   iconSize: 28,
+                //   icon: Icon(favoriteArtworksController.likedArtworksIds
+                //           .toList()
+                //           .contains(artwork.id)
+                //       ? Icons.favorite
+                //       : Icons.favorite_outline),
+                // ),
                 IconButton(
                   color: theme.primaryColor,
                   onPressed: () {

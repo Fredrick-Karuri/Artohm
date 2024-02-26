@@ -1,4 +1,7 @@
+import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/core/utils/image_constant.dart';
+import 'package:uuid/uuid.dart';
+
 class Artwork {
   final String title;
   final String artist;
@@ -7,6 +10,7 @@ class Artwork {
   final String type;
   final String category;
   final String description;
+  RxBool isFavorite = false.obs;
   int likes;
   List<Comment> comments;
 
@@ -55,12 +59,13 @@ class Artwork {
   }
 }
 
+var uuid = Uuid();
 List<Artwork> artworks = [
   Artwork(
     title: 'Ethereal Enchantment',
     artist: 'Sophia Anderson',
     imageUrl: ImageConstant.imgRectangle11200x1601,
-    id: 'art101',
+    id: uuid.v4(),
     type: 'art',
     category: 'abstract_art',
     description: 'an abstract artwork to make you think',
@@ -70,7 +75,7 @@ List<Artwork> artworks = [
     title: 'Ethereal Enchantment',
     artist: 'Sophia Anderson',
     imageUrl: ImageConstant.imgRectangle11200x1602,
-    id: 'art100',
+    id: uuid.v4(),
     type: 'art',
     category: 'african_art',
     description: 'an african resonating with the world',
@@ -80,7 +85,7 @@ List<Artwork> artworks = [
     title: 'Surreal Void',
     artist: 'Jenifer Johnson',
     imageUrl: ImageConstant.imgRectangle11200x1603,
-    id: 'ptg101',
+    id: uuid.v4(),
     type: 'ptg',
     category: 'african_art',
     description: 'an african resonating with the world',
@@ -90,7 +95,7 @@ List<Artwork> artworks = [
     title: 'Trailing Edge',
     artist: 'Mia Thomson',
     imageUrl: ImageConstant.imgRectangle11200x1604,
-    id: 'pho101',
+    id: uuid.v4(),
     type: 'pho',
     category: 'photography',
     description: "that good photo you cant stop looking at!",
@@ -100,7 +105,7 @@ List<Artwork> artworks = [
     title: 'Trailing Edge',
     artist: 'Oliver Reynolds',
     imageUrl: ImageConstant.imgRectangle11200x1605,
-    id: 'pho102',
+    id: uuid.v4(),
     type: 'pho',
     category: 'photography',
     description: "that good photo you cant stop looking at!",
@@ -110,7 +115,7 @@ List<Artwork> artworks = [
     title: 'Shrewd Pursuit',
     artist: 'Oliver Reynolds',
     imageUrl: ImageConstant.imgRectangle11200x1606,
-    id: 'art103',
+    id: uuid.v4(),
     type: 'art',
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
@@ -120,7 +125,7 @@ List<Artwork> artworks = [
     title: 'Trailing Edge',
     artist: 'Oliver Reynolds',
     imageUrl: ImageConstant.imgRectangle11200x1607,
-    id: 'art104',
+    id: uuid.v4(),
     type: 'ptg',
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
@@ -130,7 +135,7 @@ List<Artwork> artworks = [
     title: 'Given Direction',
     artist: 'Mia Thomson',
     imageUrl: ImageConstant.imgRectangle11200x1607,
-    id: 'art105',
+    id: uuid.v4(),
     type: 'art',
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
@@ -140,7 +145,7 @@ List<Artwork> artworks = [
     title: 'Given Direction',
     artist: 'Mia Thomson',
     imageUrl: ImageConstant.imgRectangle11200x1607,
-    id: 'art106',
+    id: uuid.v4(),
     type: 'art',
     category: 'pop_art',
     description: "let the world be filled with art",
@@ -150,7 +155,7 @@ List<Artwork> artworks = [
     title: 'drop of water',
     artist: 'Mia Thomson',
     imageUrl: ImageConstant.imgRectangle11200x1607,
-    id: 'art107',
+    id: uuid.v4(),
     type: 'ptg',
     category: 'pop_art',
     description: "let the world be filled with art",

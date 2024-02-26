@@ -1,3 +1,5 @@
+import 'package:artohmapp/presentation/notifications_page/models/notification_card_item_model.dart';
+
 import '../../widgets/custom_appbar_component.dart';
 import 'controller/notifications_tab_container_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -30,21 +32,10 @@ class NotificationsTabContainerScreen
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 8.v),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: Text("lbl_filter_by_type".tr,
-                    style: CustomTextStyles.bodyLargeLibreBaskerville),
-              ),
           Container(
-            // height: 36.v,
-            // width: 360.h,
-            margin: EdgeInsets.only( top: 14.v),
+            margin: EdgeInsets.only(top: 14.v),
             child: TabBar(
-              tabAlignment: TabAlignment.start ,
+              tabAlignment: TabAlignment.start,
               controller: controller.tabviewController,
               isScrollable: true,
               labelColor: appTheme.whiteA700,
@@ -62,18 +53,13 @@ class NotificationsTabContainerScreen
                   color: appTheme.lightBlueA700,
                   borderRadius: BorderRadius.circular(17.h)),
               tabs: [
-                Tab(
-                    child: Text("lbl_all".tr)),
-                Tab(
-                    child: Text("lbl_comments".tr)),
-                Tab(
-                    child: Text("lbl_follows".tr)),
-                Tab(
-                    child: Text("lbl_likes".tr)),
+                Tab(child: Text("lbl_all".tr)),
+                Tab(child: Text("lbl_comments".tr)),
+                Tab(child: Text("lbl_follows".tr)),
+                Tab(child: Text("lbl_likes".tr)),
+                Tab(child: Text("mentions")),  
               ],
             ),
-          ),
-            ],
           ),
           Expanded(
             child: SizedBox(
@@ -81,10 +67,22 @@ class NotificationsTabContainerScreen
               child: TabBarView(
                 controller: controller.tabviewController,
                 children: [
-                  NotificationsPage(),
-                  NotificationsPage(),
-                  NotificationsPage(),
-                  NotificationsPage()
+                  NotificationsPage(
+                    type: null,
+                  ),
+                  NotificationsPage(
+                    type: NotificationType.comment,
+                  ),
+                  NotificationsPage(
+                    type: NotificationType.follow,
+                  ),
+                  NotificationsPage(
+                    type: NotificationType.like,
+                  ),
+                  NotificationsPage(
+                    type: NotificationType.mention,
+                  ),
+
                 ],
               ),
             ),

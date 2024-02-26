@@ -16,13 +16,15 @@ class HomeArtworkCardNew extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    LikedArtworksController likedArtworksController =
+    FavoriteArtworksController favoriteArtworksController =
         Get.find(); // Get the instance of LikedArtworksController
     Get.lazyPut(() => CollectionsController(
-        localStorageService:
-            Get.find(), // Get the instance of LocalStorageService
-    ));
+          localStorageService:
+              Get.find(), // Get the instance of LocalStorageService
+        ));
     CollectionsController collectionsController = Get.find();
+
+    final artworksController = Get.put(ArtworksController());
 
     return GestureDetector(
       onTap: () {
@@ -47,17 +49,21 @@ class HomeArtworkCardNew extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Obx(() => IconButton(
-                          icon: Icon(
-                            likedArtworksController.isLiked(artwork)
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: Colors.white,
-                          ),
-                          onPressed: () async {
-                            await likedArtworksController.toggleLike(artwork);
-                          },
-                        )),
+                    Obx(
+                      () => IconButton(
+                        icon: Icon(
+                          artwork.isFavorite.value
+                              ? Icons.favorite
+                              : Icons.favorite_border,
+                          color: Colors.white,
+                        ),
+                        
+                        onPressed: () {
+                          artwork.isFavorite.toggle();
+                          favoriteArtworksController.updateFavoriteArtworks();
+                        },
+                      ),
+                    ),
                     IconButton(
                       icon: Icon(
                         Icons.collections,
@@ -95,8 +101,7 @@ class HomeArtworkCardNew extends StatelessWidget {
                 children: [
                   Text(
                     'Available Collections',
-                              style: theme.textTheme.titleMedium,
-
+                    style: theme.textTheme.titleMedium,
                   ),
                   SizedBox(height: 8),
                   Wrap(
@@ -129,7 +134,9 @@ class HomeArtworkCardNew extends StatelessWidget {
               CustomElevatedButton(
                 text: 'Create New Collection',
                 onTap: () {
-                  collectionsController.createCollection(collectionName);
+                  collectionsController.createCollection(
+                    collectionName,
+                  );
                   Navigator.pop(context);
                 },
               ),
@@ -140,3 +147,13 @@ class HomeArtworkCardNew extends StatelessWidget {
     );
   }
 }
+
+                    // icon: Icon(
+                    //   likedArtworksController.isLiked(artwork)
+                    //       ? Icons.favorite
+                    //       : Icons.favorite_border,
+                    //   color: Colors.white,
+                    // ),
+                    // onPressed: () async {
+                    //   await likedArtworksController.toggleLike(artwork);
+                    // },

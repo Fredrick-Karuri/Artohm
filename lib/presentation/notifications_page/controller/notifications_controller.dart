@@ -9,4 +9,9 @@ class NotificationsController extends GetxController {
   NotificationsController(this.notificationsModelObj);
 
   Rx<NotificationsModel> notificationsModelObj;
+
+  var notificationCount = 0.obs;
+  void increment() => notificationCount.value++;
+  void reset() => notificationCount.value = 0;
+  
 }

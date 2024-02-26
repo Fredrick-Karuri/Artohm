@@ -19,6 +19,7 @@ class SigninController extends GetxController {
 
   FocusNode emailFocusNode=FocusNode();
   FocusNode passwordFocusNode=FocusNode();
+  FocusNode fullNameFocusNode=FocusNode();
 
   @override
   void onClose() {
@@ -28,5 +29,6 @@ class SigninController extends GetxController {
     passwordController.dispose();
     emailFocusNode.dispose();
     passwordFocusNode.dispose();
+    fullNameFocusNode.dispose();
   }
 }

@@ -17,6 +17,16 @@ class LocalStorageService {
     return prefs.getStringList(key);
   }
 
+  Future<void> setString(String key, String value) async {
+    final prefs = await _prefs;
+    await prefs.setString(key, value);
+  }
+
+  Future<String?> getString(String key) async {
+    final prefs = await _prefs;
+    return prefs.getString(key);
+  }
+
   Future<void> clearLocalStorage() async {
     final prefs = await _prefs;
     await prefs.clear();

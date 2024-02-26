@@ -1,3 +1,7 @@
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
+import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
+import 'package:artohmapp/presentation/createcollection_screen/widgets/artwork_list.dart';
+import 'package:artohmapp/presentation/signup_select_account/controller/signup_select_account_controller.dart';
 import 'package:artohmapp/widgets/custom_snackbar.dart';
 
 import '../createcollection_screen/widgets/selectartwork_item_widget.dart';
@@ -9,7 +13,7 @@ import 'package:artohmapp/widgets/custom_switch.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
+class CreatecollectionScreen extends GetWidget<CollectionFormController> {
   const CreatecollectionScreen({Key? key}) : super(key: key);
 
   @override
@@ -63,6 +67,23 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
     );
   }
 
+  selectArtwork() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+            padding: EdgeInsets.only(left: 4.h, top: 24.v),
+            child: Text("lbl_select_artwork".tr,
+                style: theme.textTheme.titleMedium)),
+        SizedBox(height: 9.v),
+        Container(
+          height: 250.v,
+          child: ArtworkList(),
+        ),
+      ],
+    );
+  }
+
   Widget ctaButton(BuildContext context) {
     return CustomElevatedButton(
       text: "msg_create_collection".tr,
@@ -74,42 +95,49 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
     );
   }
 
-  selectArtwork() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-            padding: EdgeInsets.only(left: 4.h, top: 24.v),
-            child: Text("lbl_select_artwork".tr,
-                style: theme.textTheme.titleMedium)),
-        SizedBox(height: 9.v),
-        Align(
-          alignment: Alignment.centerRight,
-          child: SizedBox(
-            height: 240.v,
-            child: Obx(
-              () => ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) {
-                  return SizedBox(width: 13.h);
-                },
-                itemCount: controller.createcollectionModelObj.value
-                    .selectartworkItemList.value.length,
-                itemBuilder: (context, index) {
-                  SelectartworkItemModel model = controller
-                      .createcollectionModelObj
-                      .value
-                      .selectartworkItemList
-                      .value[index];
-                  return SelectartworkItemWidget(model);
-                },
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  // ...artworksController.artworks
+  //     .map(
+  //       (artwork) => Obx(
+  //         () => CheckboxListTile(
+  //           // child: CustomImageView(
+  //           //   imagePath: artwork.imageUrl,
+  //           //   radius: BorderRadius.circular(8.h),
+  //           // ),
+
+  //           title: Text(artwork.title),
+  //           value: formController.selectedArtworks.contains(artwork),
+  //           onChanged: (bool? value) {
+  //             formController.toggleArtworkSelection(artwork);
+  //           },
+  //         ),
+  //       ),
+  //     )
+  //     .toList(),
+
+  // Align(
+  //   alignment: Alignment.centerRight,
+  //   child: SizedBox(
+  //     height: 240.v,
+  //     child: Obx(
+  //       () => ListView.separated(
+  //         scrollDirection: Axis.horizontal,
+  //         separatorBuilder: (context, index) {
+  //           return SizedBox(width: 13.h);
+  //         },
+  //         itemCount: controller.CollectionFormModelObj.value
+  //             .selectartworkItemList.value.length,
+  //         itemBuilder: (context, index) {
+  //           SelectartworkItemModel model = controller
+  //               .CollectionFormModelObj
+  //               .value
+  //               .selectartworkItemList
+  //               .value[index];
+  //           return SelectartworkItemWidget(model);
+  //         },
+  //       ),
+  //     ),
+  //   ),
+  // ),
 
   visibility() {
     return Container(
@@ -130,9 +158,12 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
                 child: Text("msg_private_collection".tr,
                     style: theme.textTheme.bodyMedium)),
             Obx(() => CustomSwitch(
-                value: controller.isSelectedSwitch.value,
+                value: controller.currentSetting.value ==
+                    VisibilitySetting.Private,
                 onChange: (value) {
-                  controller.isSelectedSwitch.value = value;
+                  if (value) {
+                    controller.updateSwitchState(VisibilitySetting.Private);
+                  }
                 }))
           ]),
           SizedBox(height: 16.v),
@@ -142,9 +173,12 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
                 child: Text("msg_public_collection".tr,
                     style: theme.textTheme.bodyMedium)),
             Obx(() => CustomSwitch(
-                value: controller.isSelectedSwitch1.value,
+                value:
+                    controller.currentSetting.value == VisibilitySetting.Public,
                 onChange: (value) {
-                  controller.isSelectedSwitch1.value = value;
+                  if (value) {
+                    controller.updateSwitchState(VisibilitySetting.Public);
+                  }
                 }))
           ]),
           SizedBox(height: 16.v),
@@ -157,9 +191,13 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
                       style: theme.textTheme.bodyMedium)),
               Obx(
                 () => CustomSwitch(
-                  value: controller.isSelectedSwitch2.value,
+                  value: controller.currentSetting.value ==
+                      VisibilitySetting.FollowersOnly,
                   onChange: (value) {
-                    controller.isSelectedSwitch2.value = value;
+                    if (value) {
+                      controller
+                          .updateSwitchState(VisibilitySetting.FollowersOnly);
+                    }
                   },
                 ),
               ),
@@ -177,14 +215,15 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
         Text("msg_collection_description".tr,
             style: theme.textTheme.bodyMedium),
         CustomTextFormField(
-            controller: controller.collectionController,
+            controller: controller.descriptionController,
+            focusNode: controller.descriptionFocusNode,
             margin: EdgeInsets.only(top: 9.v, right: 16.h),
             hintText: "msg_embrace_the_world".tr,
             hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
             textInputAction: TextInputAction.done,
             borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
             filled: true,
-            maxLines: 6,
+            maxLines: 3,
             fillColor: appTheme.blue50),
       ],
     );
@@ -197,6 +236,7 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
         Text("lbl_collection_name".tr, style: theme.textTheme.bodyMedium),
         CustomTextFormField(
             controller: controller.nameController,
+            focusNode: controller.nameFocusNode,
             margin: EdgeInsets.only(top: 9.v, right: 16.h),
             hintText: "msg_abstract_masterpieces".tr,
             hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
@@ -222,11 +262,23 @@ class CreatecollectionScreen extends GetWidget<CreatecollectionController> {
   /// push the named route for the userProfileContainerScreen.
 
   void onTapCreate(BuildContext context) {
-    CustomSnackBar.show(
-      context,
-      'Collection created!',
-      Icons.check_circle,
-      'OK',
+  final formController = Get.put(CollectionFormController(Get.find()));
+  final collectionsController = Get.put(
+      CollectionsController(localStorageService: localStorageService));
+
+  if (formController.nameController.text.isNotEmpty) {
+    collectionsController.createCollection(
+      formController.nameController.text,
+      // artworks: formController.selectedArtworks.toList(),
+      // visibility: formController.currentSetting.value,
     );
   }
+  CustomSnackBar.show(
+    context,
+    'Collection created!',
+    Icons.check_circle,
+    'OK',
+  );
+}
+
 }

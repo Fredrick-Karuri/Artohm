@@ -8,14 +8,7 @@ class ArtworksBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => LocalStorageService());
     Get.lazyPut(() => ArtworksController());
-    Get.lazyPut(
-      () => LikedArtworksController(
-        artworksController:
-            Get.find(), // Get the instance of ArtworksController
-        localStorageService:
-            Get.find(), // Get the instance of LocalStorageService
-      ),
-    );
+   
     Get.lazyPut(() => CollectionsController(
         localStorageService:
             Get.find(), // Get the instance of LocalStorageService
