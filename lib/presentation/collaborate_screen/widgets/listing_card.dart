@@ -100,7 +100,7 @@ class ListingCard extends StatelessWidget {
                     description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack90001
+                    style: CustomTextStyles.bodyMediumBlack
                         .copyWith(height: 1.50),
                   ),
                 ),

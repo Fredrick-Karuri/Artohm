@@ -219,7 +219,7 @@ class ArtistProfileScreen extends GetWidget<ArtistProfileController> {
             child: Text("msg_a_nature_enthusiast".tr,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
-                style: CustomTextStyles.bodyLargeBlack90001_6
+                style: CustomTextStyles.bodyLargeBlack
                     .copyWith(height: 1.50))),
         SizedBox(height: 12.v),
         CustomElevatedButton(

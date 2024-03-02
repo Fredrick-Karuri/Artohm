@@ -158,7 +158,7 @@ class CustomDropDown extends StatelessWidget {
 
 /// Extension on [CustomDropDown] to facilitate inclusion of all types of border style etc
 extension DropDownStyleHelper on CustomDropDown {
-  static OutlineInputBorder get fillLightBlueA => OutlineInputBorder(
+  static OutlineInputBorder get fillSecondaryOpacity => OutlineInputBorder(
         borderRadius: BorderRadius.circular(16.h),
         borderSide: BorderSide.none,
       );

@@ -248,7 +248,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
         top: 16.v,
       ),
       title: "Confirm Logout",
-      titleStyle: CustomTextStyles.titleLargeBlack90001,
+      titleStyle: CustomTextStyles.titleLargeBlack,
       middleText: "Are you sure you want to logout?".tr,
       textConfirm: "Yes".tr,
       textCancel: "Cancel".tr,

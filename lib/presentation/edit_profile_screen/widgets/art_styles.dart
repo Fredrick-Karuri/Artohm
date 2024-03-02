@@ -50,7 +50,7 @@ Widget buildDropDown(EditProfileController controller) {
   return GetBuilder<EditProfileController>(
     builder: (controller) =>  CustomDropDown(
       hintText: "Choose Style".tr,
-      hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
+      hintStyle: CustomTextStyles.bodyLargeBlack,
       items: controller.editProfileModelObj.value.dropdownItemList.value,
 
 
@@ -67,7 +67,7 @@ Widget buildDropDown(EditProfileController controller) {
     
   //    CustomDropDown(
   //     hintText: "Choose Style".tr,
-  //     hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
+  //     hintStyle: CustomTextStyles.bodyLargeBlack,
   //     items: controller.editProfileModelObj.value.dropdownItemList.value,
 
 

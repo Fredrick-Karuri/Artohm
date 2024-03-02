@@ -124,7 +124,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
           focusNode: controller.influencesFocusNode,
           margin: EdgeInsets.only(top: 9.v, right: 7.h),
           hintText: "lbl_input_text".tr,
-          hintStyle: CustomTextStyles.bodyLargeRobotoBlack90001,
+          hintStyle: CustomTextStyles.bodyLargeLatoBlack,
           textInputAction: TextInputAction.done,
           borderDecoration: TextFormFieldStyleHelper.underLineRed,
         ),
@@ -174,7 +174,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   //         CustomDropDown(
   //             width: 240.h,
   //             hintText: "Choose Style".tr,
-  //             hintStyle: CustomTextStyles.bodyLargeBlack90001_2,
+  //             hintStyle: CustomTextStyles.bodyLargeBlack,
   //             items:
   //                 controller.editProfileModelObj.value.dropdownItemList.value,
   //             borderDecoration: DropDownStyleHelper.outlineBlackTL81,

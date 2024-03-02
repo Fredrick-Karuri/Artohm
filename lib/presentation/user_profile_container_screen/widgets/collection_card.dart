@@ -19,21 +19,48 @@ class CollectionCard extends StatelessWidget {
         );
       },
       child: Container(
-        
         color: appTheme.whiteA700,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             if (collection.artworks.isNotEmpty)
               Container(
                 height: 200.v,
-                child: Image.asset(collection.artworks[0].imageUrl),
+                child: Image.asset(
+                  collection.artworks[0].imageUrl,
+                ),
               ), // Thumbnail image
-            Text(collection.name), // Collection name
-            Text('${collection.artworks.length} artworks'), // Number of artworks
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 8, top: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        collection.name,
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      Text(
+                        '${collection.artworks.length} artworks',
+                        style: theme.textTheme.bodyMedium,
+                      ), // Number of artworks
+                    ],
+                  ),
+                ),
+                
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.more_vert_rounded,
+                  ),
+                ),
+              ],
+            ), // Collection name
           ],
         ),
       ),
     );
   }
 }
-

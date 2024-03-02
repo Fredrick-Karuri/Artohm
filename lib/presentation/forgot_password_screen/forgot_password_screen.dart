@@ -71,9 +71,9 @@ class ForgotPasswordScreen extends GetWidget<ForgotPasswordController> {
                 CustomElevatedButton(
                     height: 42.v,
                     text: "lbl_send".tr,
-                    buttonStyle: CustomButtonStyles.fillLightBlueA,
+                    buttonStyle: CustomButtonStyles.fillSecondaryOpacity,
                     buttonTextStyle:
-                        CustomTextStyles.titleMediumRobotoWhiteA700),
+                        CustomTextStyles.titleMediumLatoWhite),
                 SizedBox(height: 5.v)
               ],
             ),

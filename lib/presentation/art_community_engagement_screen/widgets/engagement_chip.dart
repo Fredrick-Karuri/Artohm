@@ -28,7 +28,7 @@ class _CustomContainerState extends State<CustomContainer> {
         padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 16.v),
         decoration: _isTapped
             ? AppDecoration
-                .fillLightblueA700 // Change this to your filled decoration
+                .fillSecondaryOpacity700 // Change this to your filled decoration
             : AppDecoration.outlineLightblueA700
                 .copyWith(borderRadius: BorderRadiusStyle.circleBorder20),
         child: Row(

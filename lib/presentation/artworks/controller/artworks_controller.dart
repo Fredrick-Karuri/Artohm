@@ -15,17 +15,16 @@ class ArtworksController extends GetxController {
   void onInit() {
     super.onInit();
     fetchArtworks();
-    
   }
 
   Future<void> fetchArtworks() async {
     artworks.assignAll(artworks);
   }
-
-  // List<Artwork> get artworksList {
-  //   return artworks;
-  // }
 }
+
+// List<Artwork> get artworksList {
+//   return artworks;
+// }
 
 Future<int> getArtworkCount() async {
   return artworks.length;

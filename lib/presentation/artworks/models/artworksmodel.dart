@@ -13,6 +13,10 @@ class Artwork {
   RxBool isFavorite = false.obs;
   int likes;
   List<Comment> comments;
+  final double? price;
+  final bool forSale;
+  final List<String>? tools;
+  final List<String>? tags;
 
   Artwork({
     required this.title,
@@ -24,6 +28,10 @@ class Artwork {
     required this.description,
     this.likes = 0,
     required this.comments,
+    this.price,
+    this.forSale = false,
+    this.tools,
+    this.tags,
   });
 
   // Convert an Artwork to a Map
@@ -38,6 +46,10 @@ class Artwork {
       'description': description,
       'likes': likes,
       'comments': comments.map((comment) => comment.toJson()).toList(),
+      'price': price,
+      'forSale': forSale,
+      'tools': tools,
+      'tags': tags
     };
   }
 
@@ -55,6 +67,10 @@ class Artwork {
       comments: (json['comments'] as List)
           .map((comment) => Comment.fromJson(comment))
           .toList(),
+      price: json['price'],
+      forSale: json['forSale'],
+      tools: json['tools'] != null ? List<String>.from(json['tools']) : null,
+      tags: json['tags'] != null ? List<String>.from(json['tags']) : null,
     );
   }
 }
@@ -70,6 +86,10 @@ List<Artwork> artworks = [
     category: 'abstract_art',
     description: 'an abstract artwork to make you think',
     comments: [],
+    forSale: true,
+    price: 100.0,
+    tools: ['Brush', 'Acrylic Paint'],
+    tags: ['abstract', 'art', 'colorful'],
   ),
   Artwork(
     title: 'Ethereal Enchantment',
@@ -80,6 +100,10 @@ List<Artwork> artworks = [
     category: 'african_art',
     description: 'an african resonating with the world',
     comments: [],
+    forSale: true,
+    price: 200.0,
+    tools: ['Oil'],
+    tags: ['african', 'art'],
   ),
   Artwork(
     title: 'Surreal Void',
@@ -90,27 +114,32 @@ List<Artwork> artworks = [
     category: 'african_art',
     description: 'an african resonating with the world',
     comments: [],
+    forSale: true,
+    price: 300.0,
+    tools: ['Pastel', 'Watercolor'],
   ),
   Artwork(
-    title: 'Trailing Edge',
-    artist: 'Mia Thomson',
-    imageUrl: ImageConstant.imgRectangle11200x1604,
-    id: uuid.v4(),
-    type: 'pho',
-    category: 'photography',
-    description: "that good photo you cant stop looking at!",
-    comments: [],
-  ),
+      title: 'Trailing Edge',
+      artist: 'Mia Thomson',
+      imageUrl: ImageConstant.imgRectangle11200x1604,
+      id: uuid.v4(),
+      type: 'pho',
+      category: 'photography',
+      description: "that good photo you cant stop looking at!",
+      comments: [],
+      tools: ['camera']),
   Artwork(
-    title: 'Trailing Edge',
-    artist: 'Oliver Reynolds',
-    imageUrl: ImageConstant.imgRectangle11200x1605,
-    id: uuid.v4(),
-    type: 'pho',
-    category: 'photography',
-    description: "that good photo you cant stop looking at!",
-    comments: [],
-  ),
+      title: 'Trailing Edge',
+      artist: 'Oliver Reynolds',
+      imageUrl: ImageConstant.imgRectangle11200x1605,
+      id: uuid.v4(),
+      type: 'pho',
+      category: 'photography',
+      description: "that good photo you cant stop looking at!",
+      comments: [],
+      forSale: true,
+      price: 100.0,
+      tools: ['camera']),
   Artwork(
     title: 'Shrewd Pursuit',
     artist: 'Oliver Reynolds',
@@ -120,6 +149,8 @@ List<Artwork> artworks = [
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
     comments: [],
+    forSale: false,
+    tools: ['Brush', 'Acrylic Paint'],
   ),
   Artwork(
     title: 'Trailing Edge',
@@ -130,6 +161,9 @@ List<Artwork> artworks = [
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
     comments: [],
+    forSale: true,
+    price: 800.0,
+    tools: ['Charcoal'],
   ),
   Artwork(
     title: 'Given Direction',
@@ -140,6 +174,8 @@ List<Artwork> artworks = [
     category: 'abstract_art',
     description: "more abstract artwork to make you think",
     comments: [],
+    forSale: false,
+    tools: ['Brush', 'Pastel'],
   ),
   Artwork(
     title: 'Given Direction',
@@ -150,6 +186,9 @@ List<Artwork> artworks = [
     category: 'pop_art',
     description: "let the world be filled with art",
     comments: [],
+    forSale: true,
+    price: 900.0,
+    tools: ['Brush', 'Pastel'],
   ),
   Artwork(
     title: 'drop of water',
@@ -160,6 +199,8 @@ List<Artwork> artworks = [
     category: 'pop_art',
     description: "let the world be filled with art",
     comments: [],
+    forSale: false,
+    tools: ['Brush', 'Pastel', 'Watercolor'],
   ),
 ];
 

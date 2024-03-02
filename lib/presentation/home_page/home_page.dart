@@ -165,7 +165,7 @@ class HomePage extends StatelessWidget {
                             Text(
                               category.categoryName,
                               overflow: TextOverflow.ellipsis,
-                              style: theme.textTheme.titleMedium,
+                              style:CustomTextStyles.titleMedium
                             ),
                             SizedBox(height: 16.v),
                             // Category title

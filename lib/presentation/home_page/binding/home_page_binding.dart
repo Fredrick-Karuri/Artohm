@@ -1,6 +1,7 @@
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/controller/home_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
+import 'package:artohmapp/widgets/custom_search_view.dart';
 import 'package:get/get.dart';
 
 /// A binding class for the ForgotPasswordScreen.

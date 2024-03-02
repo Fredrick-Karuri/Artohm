@@ -50,18 +50,14 @@ class UserProfileContainerScreen
                   children: [
                     profileInfoCard(),
                     SizedBox(height: 24),
-
-                    // likedArtworks(),
-                    // Container(
-                    //   height: 200,
-                    //   child: LikedArtworksView(),
-                    // ),
-                   FavoriteArtworksView(),
-
+                    FavoriteArtworksView(),
                     yourWork(),
                     SizedBox(height: 24),
                     CollectionListWidget(
-                        collections: collectionsController.collections),
+                      collections: collectionsController.collections,
+                    ),
+                    SizedBox(height: 24),
+
                     // collections(),
                     buildCollectionsWidget(),
                     SizedBox(height: 24),
@@ -143,12 +139,6 @@ class UserProfileContainerScreen
         ),
         SizedBox(height: 17.v),
         buildCollectionList(),
-        CustomOutlinedButton(
-          text: "msg_create_collection".tr,
-          margin: EdgeInsets.only(top: 23.v, right: 16.h),
-          buttonTextStyle: CustomTextStyles.titleSmallRobotoRed300,
-          onTap: onTapCreate,
-        ),
       ],
     );
   }
@@ -235,7 +225,7 @@ class UserProfileContainerScreen
                   padding: EdgeInsets.only(left: 4.h, top: 11.v),
                   child: Text(
                     "msg_beautiful_use_of".tr,
-                    style: CustomTextStyles.bodyMediumBlack90001,
+                    style: CustomTextStyles.bodyMediumBlack,
                   ),
                 ),
                 Container(
@@ -245,7 +235,7 @@ class UserProfileContainerScreen
                     "msg_your_creations".tr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack90001,
+                    style: CustomTextStyles.bodyMediumBlack,
                   ),
                 ),
                 Container(
@@ -255,7 +245,7 @@ class UserProfileContainerScreen
                     "msg_your_creations".tr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack90001,
+                    style: CustomTextStyles.bodyMediumBlack,
                   ),
                 ),
               ],
@@ -273,23 +263,36 @@ class UserProfileContainerScreen
           padding: EdgeInsets.only(left: 4.h, top: 53.v, right: 16.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                  padding: EdgeInsets.only(top: 5.v, bottom: 7.v),
-                  child: Text("lbl_your_work".tr,
-                      style: theme.textTheme.titleMedium)),
-              CustomOutlinedButton(
-                width: 107.h,
-                text: "lbl_121_artworks".tr,
-                buttonStyle: CustomButtonStyles.outlineLightBlueATL4,
-                buttonTextStyle:
-                    CustomTextStyles.titleSmallLatoLightblueA700Medium,
-                onTap: () {
+                padding: EdgeInsets.only(top: 5.v, bottom: 7.v),
+                child: Text("lbl_your_work".tr,
+                    style: theme.textTheme.titleMedium),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.h,
+                  ),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: theme.colorScheme.secondary,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8.h),
+                  ),
+                ),
+                onPressed: () {
                   Get.toNamed(
                     AppRoutes.yourArtworksPage,
                   );
                 },
+                child: Text(
+                  '121 Artworks',
+                  style: CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                ),
               )
             ],
           ),
@@ -488,11 +491,6 @@ class UserProfileContainerScreen
 
   /// When the action is triggered, this function uses the [Get] package to
   /// push the named route for the createcollectionScreen.
-  onTapCreate() {
-    Get.toNamed(
-      AppRoutes.createcollectionScreen,
-    );
-  }
 
   /// Navigates to the artCommunityEngagementScreen when the action is triggered.
 

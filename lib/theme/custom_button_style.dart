@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 /// A class that offers pre-defined button styles for customizing button appearance.
 class CustomButtonStyles {
   // Filled button style
-  static ButtonStyle get fillLightBlueA => ElevatedButton.styleFrom(
+  static ButtonStyle get fillSecondaryOpacity => ElevatedButton.styleFrom(
         backgroundColor: appTheme.lightBlueA700,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.h),
         ),
       );
-  static ButtonStyle get fillLightBlueATL16 => ElevatedButton.styleFrom(
+  static ButtonStyle get fillSecondaryOpacityTL16 => ElevatedButton.styleFrom(
         backgroundColor: appTheme.lightBlueA700.withOpacity(0.08),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.h),
+          borderRadius: BorderRadius.circular(8.h),
         ),
       );
-   static ButtonStyle get fillLightBlueATL15 => ElevatedButton.styleFrom(
+   static ButtonStyle get fillSecondaryOpacityTL15 => ElevatedButton.styleFrom(
         backgroundColor: appTheme.lightBlueA700,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.h),
+          borderRadius: BorderRadius.circular(8.h),
         ),
       );
   static ButtonStyle get fillPrimaryTL8 => ElevatedButton.styleFrom(
@@ -31,7 +31,7 @@ class CustomButtonStyles {
   static ButtonStyle get fillWhiteA => ElevatedButton.styleFrom(
         backgroundColor: appTheme.whiteA700,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.h),
+          borderRadius: BorderRadius.circular(8.h),
         ),
       );
 
@@ -62,7 +62,7 @@ class CustomButtonStyles {
           width: 1,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.h),
+          borderRadius: BorderRadius.circular(8.h),
         ),
       );
   static ButtonStyle get outlineLightBlueATL15 => OutlinedButton.styleFrom(
@@ -74,7 +74,7 @@ class CustomButtonStyles {
           width: 1,
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.h),
+          borderRadius: BorderRadius.circular(8.h),
         ),
       );
   static ButtonStyle get outlineLightBlueATL4 => OutlinedButton.styleFrom(

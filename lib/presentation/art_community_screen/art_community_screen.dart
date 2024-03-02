@@ -17,7 +17,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
   ArtCommunityScreen({Key? key}) : super(key: key);
 
   // Create a ModalController
-  ModalController modalController = ModalController();
+  final ModalController modalController = ModalController();
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +108,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                         children: [
                           Text("lbl_mia_thompson".tr,
                               style:
-                                  CustomTextStyles.titleMediumLatoBlack90001),
+                                  CustomTextStyles.titleMediumLato),
                           SizedBox(height: 10.v),
                           SizedBox(
                             width: 218.h,
@@ -116,7 +116,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                               "msg_art_is_my_way_of".tr,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: CustomTextStyles.bodyLargeBlack90001_5
+                              style: CustomTextStyles.bodyLargeBlack
                                   .copyWith(height: 1.50),
                             ),
                           ),
@@ -390,7 +390,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                 radius: BorderRadius.circular(40.h),
               ),
               SizedBox(height: 10.v),
-              Text(labelText, style: CustomTextStyles.bodyMediumBlack900),
+              Text(labelText, style: CustomTextStyles.bodyMediumBlack),
             ],
           ),
         ),

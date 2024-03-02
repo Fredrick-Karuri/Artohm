@@ -1,16 +1,41 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
+import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:flutter/material.dart';
 
-
- class SearchController extends GetxController{
+class SearchController extends GetxController {
   TextEditingController textEditingController = TextEditingController();
-  void clearText(){
+  final ArtworksController artworksController = Get.find();
+  List<Artwork> results = [];
+  void clearText() {
     textEditingController.clear();
     update();
   }
-    
+  
+
+  void search(String query) {
+    results = artworksController.artworks
+        .where((artwork) =>
+            artwork.title.toLowerCase().contains(query.toLowerCase()) ||
+            artwork.artist.toLowerCase().contains(query.toLowerCase()) ||
+            artwork.type.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
+    update();
   }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+}
+
+SearchController searchController = SearchController();
+
 class CustomSearchView extends StatelessWidget {
+  // final SearchController searchController = Get.find();
+
   CustomSearchView({
     Key? key,
     this.alignment,
@@ -42,7 +67,6 @@ class CustomSearchView extends StatelessWidget {
   final double? width;
 
   final EdgeInsetsGeometry? margin;
-
 
   final TextEditingController controller;
 
@@ -78,7 +102,6 @@ class CustomSearchView extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
-
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -89,44 +112,68 @@ class CustomSearchView extends StatelessWidget {
         : searchViewWidget;
   }
 
- 
-
   Widget get searchViewWidget => Padding(
         padding: const EdgeInsets.only(top: 24.0),
         child: FractionallySizedBox(
           widthFactor: 0.9,
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
             children: [
-              IconButton(
-                onPressed: () {
-                  Get.back(id: 1);
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: appTheme.red300,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Get.back(id: 1);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: appTheme.red300,
+                    ),
+                  ),
+                  Flexible(
+                    child: TextFormField(
+                      controller: controller,
+                      focusNode: focusNode ?? FocusNode(),
+                      autofocus: autofocus!,
+                      style: textStyle ??
+                          CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                      keyboardType: textInputType,
+                      maxLines: maxLines ?? 1,
+                      decoration: decoration,
+                      validator: validator,
+                    ),
+                  ),
+                  TextButton(
+                      onPressed: () {
+                        SearchController searchController = Get.put(
+                          SearchController(),
+                        );
+
+                        searchController.search(controller.text);
+                      },
+                      child: Text(
+                        "Search",
+                        style: TextStyle(color: appTheme.red300),
+                      ))
+                ],
               ),
-              Flexible(
-                child: TextFormField(
-                  controller: controller,
-                  focusNode: focusNode ?? FocusNode(),
-                  autofocus: autofocus!,
-                  style: textStyle ??
-                      CustomTextStyles.titleSmallLatoLightblueA700Medium,
-                  keyboardType: textInputType,
-                  maxLines: maxLines ?? 1,
-                  decoration: decoration,
-                  validator: validator,
+              Expanded(
+                  child: 
+                  ListView.builder(
+                    
+                    itemCount: searchController.results.length,
+                    itemBuilder: (context, index) {
+                      final artwork = searchController.results[index];
+                      return ListTile(
+                        leading: Image.asset(artwork.imageUrl),
+                        title: Text(artwork.title),
+                        subtitle: Text('By ${artwork.artist}'),
+                      );
+                    },
+                  ),
                 ),
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Search",
-                    style: TextStyle(color: appTheme.red300),
-                  ))
+              
             ],
           ),
         ),
@@ -143,15 +190,9 @@ class CustomSearchView extends StatelessWidget {
                 right: 15.h,
               ),
               child: IconButton(
-
-                onPressed: (){
+                onPressed: () {
                   controller.clear();
                 },
-                // onPressed: () {
-                //   if (controller != null) {
-                //     controller!.clear();
-                //   }
-                // },
                 icon: Icon(
                   Icons.clear,
                   color: Colors.grey.shade600,

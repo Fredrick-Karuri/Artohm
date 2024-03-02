@@ -17,9 +17,6 @@ class ThemeHelper {
   };
 
   // a map of dark color schemes supported by the app
-  
-
-  
 
   /// Changes the app theme to [_newTheme].
   void changeTheme(String _newTheme) {
@@ -160,16 +157,16 @@ class ColorSchemes {
     // Primary colors
     primary: Color(0XFFFF6B88),
     primaryContainer: Color(0XFF1C274C),
-    secondary: Color(0XFF1C274C),
+    secondary: Color(0XFF007BFF),
     secondaryContainer: Color(0X14FF6B88),
     tertiary: Color(0XFF1C274C),
     tertiaryContainer: Color(0X14FF6B88),
 
     // Background colors
-    background: Color(0XFF1C274C),
+    background: Color.fromARGB(255, 255, 255, 255),
 
     // Surface colors
-    surface: Color(0XFF1C274C),
+    surface: Color(0XFFFF6B88),
     surfaceTint: Color(0XFF231F20),
     surfaceVariant: Color(0X14FF6B88),
 
@@ -180,23 +177,69 @@ class ColorSchemes {
     onErrorContainer: Color(0XFF231F20),
 
     // On colors(text colors)
-    onBackground: Color(0XFFD9D9D9),
-    onInverseSurface: Color(0XFFFFD561),
-    onPrimary: Color(0XFF231F20),
-    onPrimaryContainer: Color(0XFFD9D9D9),
-    onSecondary: Color(0XFFD9D9D9),
-    onSecondaryContainer: Color(0XFF231F20),
-    onTertiary: Color(0XFFD9D9D9),
-    onTertiaryContainer: Color(0XFF231F20),
+    onBackground: Colors.black, // black text on background
+    onInverseSurface: Colors.black, // black text on inverse surface
+    onPrimary: Colors.black, // black text on primary color
+    onPrimaryContainer: Colors.black, // black text on primary container
+    onSecondary: Colors.black, // black text on secondary color
+    onSecondaryContainer: Colors.black, // black text on secondary container
+    onTertiary: Colors.black, // black text on tertiary color
+    onTertiaryContainer: Colors.black, // black text on tertiary container
 
     // Other colors
-    outline: Color(0XFF231F20),
-    outlineVariant: Color(0XFF1C274C),
+    outline: Color(0XFFD45971),
+    outlineVariant: Colors.grey,
     scrim: Color(0XFF1C274C),
     shadow: Color(0XFF231F20),
 
     // Inverse colors
     inversePrimary: Color(0XFF1C274C),
+    inverseSurface: Color(0XFF231F20),
+
+    // Pending colors
+    onSurface: Color(0XFFD9D9D9),
+    onSurfaceVariant: Color(0XFF231F20),
+  );
+
+  static final darkColorScheme = ColorScheme.dark(
+    // Primary colors
+    primary: Color.fromARGB(255, 119, 50, 64),
+    primaryContainer: Color(0XFF1C274C),
+    secondary: Color(0XFF1C274C),
+    secondaryContainer: Color(0X14FF6B88),
+    tertiary: Color(0XFF1C274C),
+    tertiaryContainer: Color(0X14FF6B88),
+
+    // Background colors
+    background: Color.fromARGB(255, 19, 17, 17),
+
+    // Surface colors
+    surface: Color(0XFFD45971),
+    surfaceTint: Color(0XFF1C274C),
+    surfaceVariant: Color(0X14FF6B88),
+
+    // Error colors
+    error: Color.fromARGB(255, 230, 17, 42),
+    errorContainer: Color(0X3F407BFF),
+    onError: Color(0XFFFFD561),
+    onErrorContainer: Color.fromARGB(255, 216, 4, 57),
+
+    // On colors(text colors)
+    onBackground: Color.fromARGB(255, 253, 253, 253),
+    onInverseSurface: Color(0XFFD9D9D9),
+    onPrimary: Color.fromARGB(255, 252, 250, 250),
+    onPrimaryContainer: Color.fromARGB(255, 252, 252, 252),
+    onSecondary: Color.fromARGB(255, 252, 251, 251),
+    onSecondaryContainer: Color(0XFFD9D9D9),
+
+    // Other colors
+    outline: Color.fromARGB(255, 253, 253, 253),
+    outlineVariant: Color.fromARGB(255, 219, 219, 219),
+    scrim: Color(0XFF1C274C),
+    shadow: Color(0XFF231F20),
+
+    // Inverse colors
+    inversePrimary: Color.fromARGB(255, 245, 245, 245),
     inverseSurface: Color(0XFF231F20),
 
     // Pending colors

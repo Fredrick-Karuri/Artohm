@@ -91,7 +91,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
-          style: textStyle ?? CustomTextStyles.bodyMediumBlack90001_2,
+          style: textStyle ?? CustomTextStyles.bodyMediumBlack,
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,
@@ -102,7 +102,7 @@ class CustomTextFormField extends StatelessWidget {
       );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? CustomTextStyles.bodyMediumBlack90001_2,
+        hintStyle: hintStyle ?? CustomTextStyles.bodyMediumBlack,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
@@ -155,7 +155,7 @@ class CustomTextFormField extends StatelessWidget {
 
 /// Extension on [CustomTextFormField] to facilitate inclusion of all types of border style etc
 extension TextFormFieldStyleHelper on CustomTextFormField {
-  static OutlineInputBorder get fillLightBlueA => OutlineInputBorder(
+  static OutlineInputBorder get fillSecondaryOpacity => OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.h),
         borderSide: BorderSide.none,
       );

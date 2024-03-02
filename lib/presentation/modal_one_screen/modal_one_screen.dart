@@ -34,7 +34,7 @@ class ModalOneScreen extends GetWidget<ModalOneController> {
                         text: "lbl_public".tr,
                         buttonStyle: CustomButtonStyles.outlineLightBlueATL8,
                         buttonTextStyle:
-                            CustomTextStyles.bodyLargeLightblueA700)
+                            CustomTextStyles.bodyLargeLatoBlue)
                   ]),
               SizedBox(height: 18.v),
               Text("lbl_12_artworks".tr,
@@ -81,7 +81,7 @@ class ModalOneScreen extends GetWidget<ModalOneController> {
                   child: Text("msg_embrace_the_world".tr,
                       maxLines: 5,
                       overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyLargeBlack90001_1
+                      style: CustomTextStyles.bodyLargeBlack
                           .copyWith(height: 1.50)))
             ],
           ),

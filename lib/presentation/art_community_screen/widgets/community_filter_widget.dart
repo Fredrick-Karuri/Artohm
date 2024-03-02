@@ -16,7 +16,7 @@ class CommunityFilterWidget extends StatelessWidget {
       onTap: () => onTap(),
       child: Container(
         margin: EdgeInsets.only(right: 8),
-        decoration: AppDecoration.fillPrimary1.copyWith(
+        decoration: AppDecoration.fillPrimaryOpacity.copyWith(
           borderRadius: BorderRadiusStyle.roundedBorder8,
         ),
         child: Column(

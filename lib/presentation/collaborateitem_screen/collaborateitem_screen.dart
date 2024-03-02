@@ -92,7 +92,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                         "msg_sarah_s_intricate".tr,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodyMediumBlack90001
+                        style: CustomTextStyles.bodyMediumBlack
                             .copyWith(height: 1.50),
                       ),
                     ),
@@ -124,7 +124,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                             child: Text("msg_blending_digital".tr,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: CustomTextStyles.bodyLargeBlack90001
+                                style: CustomTextStyles.bodyLargeBlack
                                     .copyWith(height: 1.50))),
                         SizedBox(height: 15.v),
                         Obx(
@@ -172,7 +172,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                         SizedBox(height: 13.v),
                         Text(
                           "msg_a_digital_artistic".tr,
-                          style: CustomTextStyles.bodyMediumBlack90001_4,
+                          style: CustomTextStyles.bodyMediumBlack,
                         )
                       ],
                     ),

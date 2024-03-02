@@ -69,7 +69,7 @@ class EngagementcardItemWidget extends StatelessWidget {
                         ),
                         child: Text(
                           "lbl_artwork".tr,
-                          style: CustomTextStyles.titleMediumLatoBlack90001,
+                          style: CustomTextStyles.titleMediumLato,
                         ),
                       ),
                       CustomOutlinedButton(

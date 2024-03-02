@@ -3,6 +3,7 @@ import 'package:artohmapp/presentation/artworks/controller/artworks_controller.d
 import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
 import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
+import 'package:artohmapp/presentation/createcollection_screen/widgets/create_collections_modal.dart';
 import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +24,6 @@ class HomeArtworkCardNew extends StatelessWidget {
               Get.find(), // Get the instance of LocalStorageService
         ));
     CollectionsController collectionsController = Get.find();
-
-    final artworksController = Get.put(ArtworksController());
 
     return GestureDetector(
       onTap: () {
@@ -57,7 +56,6 @@ class HomeArtworkCardNew extends StatelessWidget {
                               : Icons.favorite_border,
                           color: Colors.white,
                         ),
-                        
                         onPressed: () {
                           artwork.isFavorite.toggle();
                           favoriteArtworksController.updateFavoriteArtworks();
@@ -70,7 +68,10 @@ class HomeArtworkCardNew extends StatelessWidget {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        collectionsModal(context, collectionsController);
+                        if (Get.isDialogOpen!) {
+                          Get.back();
+                        }
+                        Get.dialog(CollectionsModal(artwork: artwork));
                       },
                     ),
                   ],
@@ -80,70 +81,6 @@ class HomeArtworkCardNew extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Future<dynamic> collectionsModal(
-      BuildContext context, CollectionsController collectionsController) {
-    return showModalBottomSheet(
-      backgroundColor: appTheme.pink50,
-      context: context,
-      builder: (context) {
-        String collectionName = '';
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Available Collections',
-                    style: theme.textTheme.titleMedium,
-                  ),
-                  SizedBox(height: 8),
-                  Wrap(
-                    spacing: 8.0, // gap between adjacent chips
-                    runSpacing: 4.0, // gap between lines
-                    children: collectionsController.collections
-                        .map((collection) => ActionChip(
-                              backgroundColor: appTheme.whiteA700,
-                              label: Text(collection.name),
-                              onPressed: () {
-                                collectionsController.addToCollection(
-                                    collection.id, artwork);
-                                Navigator.pop(context);
-                              },
-                            ))
-                        .toList(),
-                  ),
-                ],
-              ),
-              SizedBox(height: 16),
-              TextField(
-                onChanged: (value) {
-                  collectionName = value;
-                },
-                decoration: InputDecoration(
-                  labelText: 'New Collection Name',
-                ),
-              ),
-              SizedBox(height: 16),
-              CustomElevatedButton(
-                text: 'Create New Collection',
-                onTap: () {
-                  collectionsController.createCollection(
-                    collectionName,
-                  );
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

@@ -58,7 +58,7 @@ class UserprofileItemWidget extends StatelessWidget {
                   () => Text(
                     userprofileItemModelObj.userDescription!.value,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack90001_1,
+                    style: CustomTextStyles.bodyMediumBlack,
                   ),
                 ),
               ),

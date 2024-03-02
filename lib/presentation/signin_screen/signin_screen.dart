@@ -62,7 +62,7 @@ class SigninScreen extends GetWidget<SigninController> {
                         Padding(
                           padding: EdgeInsets.only(top: 2.v, right: 10),
                           child: Text("msg_don_t_have_an_account".tr,
-                              style: CustomTextStyles.bodyLargeRoboto),
+                              style: CustomTextStyles.bodyLargeLatoBlack),
                         ),
                         TextButton(
                           onPressed: () {
@@ -95,7 +95,7 @@ class SigninScreen extends GetWidget<SigninController> {
           height: 42.v,
           text: "lbl_forgot_password".tr,
           buttonStyle: CustomButtonStyles.outlinePrimaryTL81,
-          buttonTextStyle: CustomTextStyles.titleMediumRobotoPrimary,
+          buttonTextStyle: CustomTextStyles.titleMediumLato,
           onTap: () {
             onTapForgotpassword();
           },
@@ -109,7 +109,7 @@ class SigninScreen extends GetWidget<SigninController> {
       height: 42.v,
       text: "lbl_login".tr,
       buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-      buttonTextStyle: CustomTextStyles.titleMediumRobotoWhiteA700,
+      buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
       onTap: () async {
         if (_formKey.currentState!.validate()) {
           // if all the data are correct then save the data to out variables
@@ -181,7 +181,7 @@ class SigninScreen extends GetWidget<SigninController> {
               child: CustomImageView(
                   svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
           buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-          buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
+          buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
           onTap: () {
             onTapContinuewith1();
           },

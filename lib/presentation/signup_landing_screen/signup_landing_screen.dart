@@ -34,7 +34,7 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     margin: EdgeInsets.only(right: 30.h),
                     child: CustomImageView(svgPath: ImageConstant.imgMail)),
                 buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
+                buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
                 onTap: () {
                   // onTapContinueWithEmail();
             Get.toNamed(AppRoutes.selectAccountTypePage);
@@ -64,7 +64,7 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     child: CustomImageView(
                         svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
                 buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhiteA700,
+                buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
                 onTap: () {
                   onTapContinuewith2();
                 },
@@ -78,7 +78,7 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     Padding(
                       padding: EdgeInsets.only(top: 2.v, right: 10),
                       child: Text("msg_already_have_an".tr,
-                          style: CustomTextStyles.bodyLargeRoboto),
+                          style: CustomTextStyles.bodyLargeLatoBlack),
                     ),
                     TextButton(
                       onPressed: () {
@@ -103,22 +103,22 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                       children: [
                         TextSpan(
                             text: "msg_by_continuing2".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
+                            style: CustomTextStyles.bodyLargeBlack),
                         TextSpan(
                             text: "msg_terms_of_service".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3),
+                            style: CustomTextStyles.bodyLargeBlack),
                         TextSpan(
                             text: "msg_we_will_manage_information".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
+                            style: CustomTextStyles.bodyLargeBlack),
                         TextSpan(
                             text: "lbl_privacy_policy2".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3),
+                            style: CustomTextStyles.bodyLargeBlack),
                         TextSpan(
                             text: "lbl_and".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_4),
+                            style: CustomTextStyles.bodyLargeBlack),
                         TextSpan(
                             text: "lbl_cookie_policy".tr,
-                            style: CustomTextStyles.bodyLargeBlack90001_3)
+                            style: CustomTextStyles.bodyLargeBlack)
                       ],
                     ),
                     textAlign: TextAlign.left),

@@ -6,8 +6,8 @@ class AppDecoration {
   static BoxDecoration get fillBlue => BoxDecoration(
         color: appTheme.blue50,
       );
-  static BoxDecoration get fillLightBlueA => BoxDecoration(
-        color: appTheme.lightBlueA700.withOpacity(0.08),
+  static BoxDecoration get fillSecondaryOpacity => BoxDecoration(
+        color: theme.colorScheme.secondary.withOpacity(0.08),
       );
   static BoxDecoration get fillPink => BoxDecoration(
         color: appTheme.pink5002,
@@ -21,7 +21,7 @@ class AppDecoration {
   static BoxDecoration get fillPrimary => BoxDecoration(
         color: theme.colorScheme.primary.withOpacity(0.16),
       );
-  static BoxDecoration get fillPrimary1 => BoxDecoration(
+  static BoxDecoration get fillPrimaryOpacity => BoxDecoration(
         color: theme.colorScheme.primary.withOpacity(0.2),
       );
   static BoxDecoration get fillSecondaryContainer => BoxDecoration(
@@ -109,7 +109,7 @@ class AppDecoration {
           width: 1.h,
         ),
       );
-  static BoxDecoration get fillLightblueA700 => BoxDecoration(
+  static BoxDecoration get fillSecondaryOpacity700 => BoxDecoration(
         color: appTheme.lightBlueA700,
         borderRadius: BorderRadius.circular(20.h),
 

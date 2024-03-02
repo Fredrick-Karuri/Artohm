@@ -49,7 +49,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: theme,
+      // theme: theme,
+      theme: ThemeData.from(colorScheme: ColorSchemes.primaryColorScheme),
+      darkTheme: ThemeData.from(colorScheme: ColorSchemes.darkColorScheme),
+      themeMode: ThemeMode.light,
+      // themeMode: ThemeMode.light,
+
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
       fallbackLocale: Locale('en', 'US'),

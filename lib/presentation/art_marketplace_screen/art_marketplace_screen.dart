@@ -1,4 +1,7 @@
-import 'package:artohmapp/presentation/art_marketplace_screen/widgets/artwork_card.dart';
+import 'package:artohmapp/presentation/art_marketplace_screen/widgets/artwork_to_sell.dart';
+import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
+import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../art_marketplace_screen/widgets/marketplacechip_item_widget.dart';
 import 'controller/art_marketplace_controller.dart';
@@ -9,7 +12,13 @@ import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 
 class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
-  const ArtMarketplaceScreen({Key? key}) : super(key: key);
+  ArtMarketplaceScreen({Key? key}) : super(key: key);
+
+  final FeaturedArtworksController featuredArtworksController =
+      Get.put(FeaturedArtworksController());
+
+  final ArtworkForSaleController artworkForSaleController =
+      Get.put(ArtworkForSaleController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,35 +33,47 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
               Get.back(id: 1);
             },
           ),
-          body: bodyContent(),
+          body: bodyContent(context),
         ),
       ),
     );
   }
 
-  bodyContent() {
+  bodyContent(BuildContext context) {
     return SizedBox(
       width: double.maxFinite,
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(top: 8),
-            child: topChips(),
+          Wrap(
+            children: artworkForSaleController.categories.map(
+              (category) {
+                return ChoiceChip(
+                  label: Text(category),
+                  selected: false,
+                  onSelected: (selected) {
+                    // artworkForSaleController.fetchArtworksForSale(category);
+                  },
+                );
+              },
+            ).toList(),
           ),
+          // Padding(
+          //   padding: EdgeInsets.only(top: 8),
+          //   child: topChips(),
+          // ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.only(
-                  left: 16.h,
-                  bottom: 32.v,
-                ),
+            child: Padding(
+              padding: EdgeInsets.only(
+                left: 8.h,
+              ),
+              child: SingleChildScrollView(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 8.v),
-                    featuredCard(),
-                    SizedBox(height: 24.v),
-                    artwork(),
+                    // featuredCard(),
+                    featuredArtwork(),
+                    SizedBox(height: 8.v),
+                    ArtworkToSell(),
                   ],
                 ),
               ),
@@ -63,31 +84,104 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     );
   }
 
-  artwork() {
-    return Obx(() {
-      return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: IntrinsicWidth(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: controller.filteredArtworks.map((artwork) {
-              return Expanded(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomCardWidget(
-                      artwork: artwork,
-                      card: artwork,
-                    ),
-                    SizedBox(width: 8),
-                    
-                    // Add more CustomCardWidgets here...
-                  ],
+  featuredArtwork() {
+    return Column(
+      children: [
+        SizedBox(height: 16),
+        Obx(
+          () => CarouselSlider.builder(
+            itemCount: featuredArtworksController.featuredArtworks.length,
+            itemBuilder: (context, index, realIndex) {
+              var artwork = featuredArtworksController.featuredArtworks[index];
+              return GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => ArtworkScreen(),
+                    arguments: artwork,
+                    binding: ArtworkBinding(),
+                  );
+                },
+                child: Container(
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          artwork.imageUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  artwork.title,
+                                  style: CustomTextStyles.titleSmallBlack90001,
+                                ),
+                                Spacer(),
+                                Text(
+                                  "\$${artwork.price}",
+                                  style: CustomTextStyles.titleMediumLato,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              artwork.artist,
+                              style: CustomTextStyles.bodyMediumBlack,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 8),
+                    ],
+                  ),
                 ),
               );
-            }).toList(),
+            },
+            options: CarouselOptions(
+              autoPlay: true,
+              enlargeCenterPage: true,
+              // aspectRatio: 16 / 9,
+              aspectRatio: 12 / 16,
+              viewportFraction: 0.8,
+              autoPlayInterval: Duration(seconds: 10),
+            ),
           ),
         ),
+      ],
+    );
+  }
+
+  artwork() {
+    return Obx(() {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: controller.filteredArtworks.map((artwork) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Container(
+                  height: 200, // Adjust this value as needed
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      ArtworkToSell(),
+                      SizedBox(width: 8),
+                      // Add more ArtworkToSells here...
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        }).toList(),
       );
     });
   }
@@ -113,9 +207,18 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "msg_ethereal_enchantment".tr,
-                        style: theme.textTheme.titleSmall,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "msg_ethereal_enchantment".tr,
+                            style: theme.textTheme.titleSmall,
+                          ),
+                          Text(
+                            'lbl_850'.tr,
+                            style: theme.textTheme.titleSmall,
+                          )
+                        ],
                       ),
                     ],
                   ),
@@ -125,16 +228,8 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                     children: [
                       Text(
                         "lbl_sophia_anderson".tr,
-                        style: CustomTextStyles.bodyMediumBlack90001,
+                        style: CustomTextStyles.bodyMediumBlack,
                       ),
-                      CustomOutlinedButton(
-                          width: 64.h,
-                          text: "lbl_850".tr,
-                          margin: EdgeInsets.only(
-                            top: 8.v,
-                            bottom: 8.v,
-                          ),
-                          buttonTextStyle: theme.textTheme.titleSmall!)
                     ],
                   ),
                   SizedBox(height: 24.v),
@@ -156,7 +251,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     );
   }
 
-  topChips() {
+  topChipss() {
     return Padding(
       padding: const EdgeInsets.only(left: 10, bottom: 8, right: 10),
       child: Obx(

@@ -66,7 +66,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
       height: 42.v,
       text: "lbl_create_account".tr,
       buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-      buttonTextStyle: CustomTextStyles.titleMediumRobotoWhiteA700,
+      buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
       onTap: () async {
         if (_formKey.currentState!.validate()) {
           // If all data are correct then save data to out variables

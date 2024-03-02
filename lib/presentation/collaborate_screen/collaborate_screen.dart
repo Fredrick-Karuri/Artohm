@@ -75,7 +75,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
           items: controller.collaborateModelObj.value.dropdownItemList.value,
           contentPadding:
               EdgeInsets.only(left: 16.h, top: 11.v, bottom: 11.v, right: 8.v),
-          borderDecoration: DropDownStyleHelper.fillLightBlueA,
+          borderDecoration: DropDownStyleHelper.fillSecondaryOpacity,
           filled: true,
           fillColor: appTheme.lightBlueA700.withOpacity(0.08),
           onChanged: (value) {

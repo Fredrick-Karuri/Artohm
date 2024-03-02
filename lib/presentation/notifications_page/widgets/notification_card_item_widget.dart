@@ -46,7 +46,7 @@ class NotificationCardItemWidget extends StatelessWidget {
                       () => Text(
                         notificationCardItemModelObj.notificationText!.value,
                         overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.titleMediumLatoBlack90001,
+                        style: CustomTextStyles.titleMediumLato,
                       ),
                     ),
                     SizedBox(height: 12.v),
@@ -54,7 +54,7 @@ class NotificationCardItemWidget extends StatelessWidget {
                       () => Text(
                         notificationCardItemModelObj.notificationTime!.value,
                         overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodyMediumBlack90001,
+                        style: CustomTextStyles.bodyMediumBlack,
                       ),
                     ),
                     SizedBox(height: 10.v),
@@ -66,7 +66,7 @@ class NotificationCardItemWidget extends StatelessWidget {
                               .notificationComment!.value,
                           overflow: TextOverflow.ellipsis,
                           style:
-                              CustomTextStyles.bodyMediumBlack90001_3.copyWith(
+                              CustomTextStyles.bodyMediumBlack.copyWith(
                             height: 1.50,
                           ),
                         ),
