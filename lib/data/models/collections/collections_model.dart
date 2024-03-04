@@ -4,14 +4,14 @@ import 'package:artohmapp/presentation/createcollection_screen/controller/create
 class Collection {
   final String id;
   final String name;
-  // final VisibilitySetting visibility;
+  final VisibilitySetting visibility;
   final List<Artwork> artworks;
 
   Collection({
     required this.id,
     required this.name,
     required this.artworks,
-    // required this.visibility,
+    required this.visibility,
   });
 
   // Convert a Collection to a Map
@@ -20,7 +20,7 @@ class Collection {
       'id': id,
       'name': name,
       'artworks': artworks.map((artwork) => artwork.toJson()).toList(),
-      // 'visibility': visibility.toString().split('.').last,
+      'visibility': visibility.toString().split('.').last,
     };
   }
 
@@ -32,8 +32,9 @@ class Collection {
       artworks: (json['artworks'] as List)
           .map((artwork) => Artwork.fromJson(artwork))
           .toList(),
-      // visibility: VisibilitySetting.values.firstWhere(
-      //     (e) => e.toString().split('.').last == json['visibility']),
+      visibility: VisibilitySetting.values.firstWhere(
+          (e) => e.toString().split('.').last == json['visibility'],
+          orElse: () => VisibilitySetting.Private),
     );
   }
 }

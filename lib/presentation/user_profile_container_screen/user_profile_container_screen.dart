@@ -50,6 +50,7 @@ class UserProfileContainerScreen
                   children: [
                     profileInfoCard(),
                     SizedBox(height: 24),
+                    
                     FavoriteArtworksView(),
                     yourWork(),
                     SizedBox(height: 24),
@@ -260,7 +261,7 @@ class UserProfileContainerScreen
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 4.h, top: 53.v, right: 16.h),
+          padding: EdgeInsets.only(left: 4.h, top: 32.v, right: 16.h),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,

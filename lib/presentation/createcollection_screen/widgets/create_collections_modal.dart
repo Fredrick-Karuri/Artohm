@@ -9,17 +9,21 @@ class CollectionsModal extends StatelessWidget {
 
   CollectionsModal({required this.artwork});
 
-  void _showModal(BuildContext context, CollectionsController collectionsController) {
+  void _showModal(
+      BuildContext context, CollectionsController collectionsController) {
     String collectionName = '';
     showModalBottomSheet(
       backgroundColor: appTheme.pink50,
       context: context,
       isScrollControlled: true, // make the modal full screen
       builder: (context) {
-        return SingleChildScrollView( // make the content scrollable
+        return SingleChildScrollView(
+          // make the content scrollable
           child: Padding(
             padding: EdgeInsets.only(
-              bottom: MediaQuery.of(context).viewInsets.bottom, // make space for the keyboard
+              bottom: MediaQuery.of(context)
+                  .viewInsets
+                  .bottom, // make space for the keyboard
             ),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
@@ -27,54 +31,118 @@ class CollectionsModal extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Available Collections',
-                      style: theme.textTheme.titleMedium,
-                    ),
-                    SizedBox(height: 8),
-                    Wrap(
-                      spacing: 8.0, // gap between adjacent chips
-                      runSpacing: 4.0, // gap between lines
-                      children: collectionsController.collections
-                          .map((collection) => ActionChip(
-                                backgroundColor: appTheme.whiteA700,
-                                label: Text(collection.name),
-                                onPressed: () {
-                                  collectionsController.addToCollection(
-                                      collection.id, artwork);
-                                  Get.back();
-                                },
-                              ))
-                          .toList(),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16),
-                TextField(
-                  onChanged: (value) {
-                    collectionName = value;
-                  },
-                  decoration: InputDecoration(
-                    labelText: 'New Collection Name',
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Available Collections',
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      SizedBox(height: 8),
+                      Obx(
+                        () {
+                          print(
+                              'Building ActionChips for ${collectionsController.collections.length} collections');
+                          return Wrap(
+                            spacing: 8.0, // gap between adjacent chips
+                            runSpacing: 4.0, // gap between lines
+                            children: collectionsController.collections.map(
+                              (collection) {
+                                bool alreadyAdded =
+                                    collectionsController.isArtworkInCollection(
+                                        collection.id, artwork.id);
+
+                                print(
+                                    'Collection ${collection.name} already added: $alreadyAdded');
+                                return GestureDetector(
+                                  onLongPress: () {
+                                    collectionsController
+                                        .deleteCollection(collection.id);
+                                    Get.snackbar(
+                                      'Deleted',
+                                      'Collection ${collection.name} deleted successfully',
+                                      backgroundColor: Colors.red,
+                                      colorText: Colors.white,
+                                      snackPosition: SnackPosition.BOTTOM,
+                                    );
+                                  },
+                                  child: ActionChip(
+                                    backgroundColor: alreadyAdded
+                                        ? Colors.grey
+                                        : appTheme.whiteA700,
+                                    label: Text(collection.name,
+                                        style: theme.textTheme.bodyMedium),
+                                    onPressed: alreadyAdded
+                                        ? null
+                                        : () {
+                                            bool added = collectionsController
+                                                .addToCollection(
+                                                    collection.id, artwork);
+                                            if (added) {
+                                              Get.back();
+                                            } else {
+                                              Get.snackbar(
+                                                'Error',
+                                                'Artwork already exists in collection',
+                                                backgroundColor: Colors.red,
+                                                colorText: Colors.white,
+                                                snackPosition:
+                                                    SnackPosition.BOTTOM,
+                                              );
+                                            }
+                                          },
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          );
+                        },
+                      )
+                    ],
                   ),
-                ),
-                SizedBox(height: 16),
-                CustomElevatedButton(
-                  text: 'Create New Collection',
-                  onTap: () {
-                    collectionsController.createCollection(
-                      collectionName,
-                    );
-                    Get.back();
-                  },
-                ),
-              ],
+                  SizedBox(height: 16),
+                  TextField(
+                    onChanged: (value) {
+                      collectionName = value;
+                    },
+                    decoration: InputDecoration(
+                      labelText: 'New Collection Name',
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  CustomElevatedButton(
+                    text: 'Create New Collection',
+                    onTap: () {
+                      String? error = collectionsController.createCollection(
+                        collectionName,
+                      );
+
+                      if (error == null) {
+                        Get.snackbar(
+                          'Success',
+                          'Collection $collectionName created successfully',
+                          backgroundColor: Colors.green,
+                          colorText: Colors.white,
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                        Future.delayed(Duration(seconds: 3), () {
+                          Get.back();
+                        });
+                      } else {
+                        Get.snackbar(
+                          'Error',
+                          error,
+                          backgroundColor: Colors.red,
+                          colorText: Colors.white,
+                          snackPosition: SnackPosition.BOTTOM,
+                        );
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
         );
       },
     ).then((_) {

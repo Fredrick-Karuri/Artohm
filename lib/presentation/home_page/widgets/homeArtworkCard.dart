@@ -57,11 +57,14 @@ class HomeArtworkCardNew extends StatelessWidget {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          artwork.isFavorite.toggle();
-                          favoriteArtworksController.updateFavoriteArtworks();
+                          favoriteArtworksController.toggleFavorite(artwork);
                         },
                       ),
                     ),
+                    // onPressed: () {
+                    //   artwork.isFavorite.toggle();
+                    //   favoriteArtworksController.updateFavoriteArtworks();
+                    // },
                     IconButton(
                       icon: Icon(
                         Icons.collections,

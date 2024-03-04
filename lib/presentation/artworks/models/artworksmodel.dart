@@ -1,5 +1,4 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/core/utils/image_constant.dart';
 import 'package:uuid/uuid.dart';
 
 class Artwork {
@@ -17,6 +16,7 @@ class Artwork {
   final bool forSale;
   final List<String>? tools;
   final List<String>? tags;
+  final Dimension? dimensions;
 
   Artwork({
     required this.title,
@@ -32,6 +32,7 @@ class Artwork {
     this.forSale = false,
     this.tools,
     this.tags,
+    this.dimensions,
   });
 
   // Convert an Artwork to a Map
@@ -49,7 +50,8 @@ class Artwork {
       'price': price,
       'forSale': forSale,
       'tools': tools,
-      'tags': tags
+      'tags': tags,
+      'dimensions': dimensions?.toJson(),
     };
   }
 
@@ -71,6 +73,9 @@ class Artwork {
       forSale: json['forSale'],
       tools: json['tools'] != null ? List<String>.from(json['tools']) : null,
       tags: json['tags'] != null ? List<String>.from(json['tags']) : null,
+      dimensions: json['dimensions'] != null
+          ? Dimension.fromJson(json['dimensions'])
+          : null,
     );
   }
 }
@@ -90,6 +95,7 @@ List<Artwork> artworks = [
     price: 100.0,
     tools: ['Brush', 'Acrylic Paint'],
     tags: ['abstract', 'art', 'colorful'],
+    dimensions: Dimension(width: 100, height: 200),
   ),
   Artwork(
     title: 'Ethereal Enchantment',
@@ -104,6 +110,7 @@ List<Artwork> artworks = [
     price: 200.0,
     tools: ['Oil'],
     tags: ['african', 'art'],
+    dimensions: Dimension(width: 150, height: 200),
   ),
   Artwork(
     title: 'Surreal Void',
@@ -151,6 +158,8 @@ List<Artwork> artworks = [
     comments: [],
     forSale: false,
     tools: ['Brush', 'Acrylic Paint'],
+    tags: ['abstract', 'art', 'colorful'],
+    dimensions: Dimension(width: 100, height: 200),
   ),
   Artwork(
     title: 'Trailing Edge',
@@ -219,4 +228,25 @@ class Comment {
       : text = json['text'],
         userName = json['userName'],
         timestamp = DateTime.parse(json['timestamp']);
+}
+
+class Dimension {
+  final double width;
+  final double height;
+  Dimension({required this.width, required this.height});
+// convert a dimension to Map
+  Map<String, dynamic> toJson() {
+    return {
+      'width': width,
+      'height': height,
+    };
+  }
+  // create a new Dimension from a map
+
+  static Dimension fromJson(Map<String, dynamic> json) {
+    return Dimension(
+      width: json['width'],
+      height: json['height'],
+    );
+  }
 }

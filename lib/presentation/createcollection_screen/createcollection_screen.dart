@@ -18,6 +18,7 @@ class CreatecollectionScreen extends GetWidget<CollectionFormController> {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => ArtworksController());
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
       child: Scaffold(
