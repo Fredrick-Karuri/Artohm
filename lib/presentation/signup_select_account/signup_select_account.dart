@@ -41,7 +41,7 @@ class SelectAccountTypePage extends StatelessWidget {
                 title: 'Artist',
                 description: 'I create art and want to showcase my work.',
                 icon: Icons.brush,
-                color: appTheme.red300,
+                color: theme.colorScheme.tertiary,
               ),
               SizedBox(height: 32.0),
               AccountTypeCard(
@@ -50,13 +50,13 @@ class SelectAccountTypePage extends StatelessWidget {
                 description:
                     'I appreciate art and want to discover new artists.',
                 icon: Icons.favorite,
-                color: appTheme.lightBlueA700,
+                color: theme.colorScheme.secondary,
               ),
               SizedBox(height: 56.0),
               Obx(
                 () => CustomElevatedButton(
                   buttonStyle: controller.selectedType.value == AccountType.none
-                      ? CustomButtonStyles.fillPrimaryTL8.copyWith(
+                      ? CustomButtonStyles.fillPrimaryButton.copyWith(
                           backgroundColor:
                               MaterialStateProperty.resolveWith<Color>(
                             (Set<MaterialState> states) {
@@ -67,8 +67,8 @@ class SelectAccountTypePage extends StatelessWidget {
                             },
                           ),
                         )
-                      : CustomButtonStyles.fillPrimaryTL8,
-                  buttonTextStyle: CustomTextStyles.titleMediumWhiteA700,
+                      : CustomButtonStyles.fillPrimaryButton,
+                  buttonTextStyle: CustomTextStyles.buttonText,
                   text: 'Next',
                   onTap: controller.selectedType.value == AccountType.none
                       ? null

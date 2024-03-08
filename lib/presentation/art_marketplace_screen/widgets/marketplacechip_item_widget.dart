@@ -44,8 +44,8 @@ class MarketplaceChipItemWidget extends StatelessWidget {
               vertical: 12.v,
             ),
             backgroundColor: marketplaceChipItemModelObj.isSelected!.value
-                ? appTheme.lightBlueA700
-                : appTheme.blue50,
+                ? theme.colorScheme.secondary
+                : theme.colorScheme.secondary.withOpacity(.08),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
@@ -63,8 +63,8 @@ class MarketplaceChipItemWidget extends StatelessWidget {
                     marketplaceChipItemModelObj.label!.value,
                     overflow: TextOverflow.ellipsis,
                     style: marketplaceChipItemModelObj.isSelected!.value
-                        ? CustomTextStyles.titleSmallWhite
-                        : CustomTextStyles.titleSmallBlack90001,
+                        ? CustomTextStyles.titleSmallBackground
+                        : CustomTextStyles.titleSmallOnBackground,
                   ),
                 ),
               ],

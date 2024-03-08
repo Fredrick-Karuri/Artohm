@@ -36,7 +36,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
             Container(
               margin: EdgeInsets.only(left: 18.h, top: 7.v, right: 14.h),
               padding: EdgeInsets.all(8.h),
-              decoration: AppDecoration.outlineGray
+              decoration: AppDecoration.outlineBlack
                   .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -92,8 +92,8 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                         "msg_sarah_s_intricate".tr,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodyMediumBlack
-                            .copyWith(height: 1.50),
+                        style:
+                            CustomTextStyles.bodyMedium.copyWith(height: 1.50),
                       ),
                     ),
                   ),
@@ -102,7 +102,6 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
             ),
             Container(
               margin: EdgeInsets.only(left: 18.h, top: 46.v, right: 14.h),
-              decoration: AppDecoration.fillWhiteA,
               child: Column(
                 children: [
                   Container(
@@ -124,7 +123,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                             child: Text("msg_blending_digital".tr,
                                 maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
-                                style: CustomTextStyles.bodyLargeBlack
+                                style: CustomTextStyles.bodyLarge
                                     .copyWith(height: 1.50))),
                         SizedBox(height: 15.v),
                         Obx(
@@ -172,13 +171,14 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                         SizedBox(height: 13.v),
                         Text(
                           "msg_a_digital_artistic".tr,
-                          style: CustomTextStyles.bodyMediumBlack,
+                          style: CustomTextStyles.bodyMedium,
                         )
                       ],
                     ),
                   ),
                   SizedBox(height: 16.v),
                   CustomElevatedButton(
+                    buttonStyle: CustomButtonStyles.fillPrimaryButton,
                     onTap: () {
                       Get.bottomSheet(
                         Container(
@@ -203,8 +203,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                             children: <Widget>[
                               ListTile(
                                 title: Text('Continue to Collaborate',
-                                    style:
-                                        CustomTextStyles.titleSmallBlack90001,
+                                    style: CustomTextStyles.titleSmallOnBackground,
                                     textAlign: TextAlign.center),
                               ),
                               Divider(),
@@ -224,6 +223,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                                     SizedBox(width: 10),
                                     Expanded(
                                       child: CustomElevatedButton(
+                                        buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                                         text: "I'm In",
                                         onTap: () {
                                           Get.back();
@@ -245,11 +245,15 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
               ),
             ),
             Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                    padding: EdgeInsets.only(left: 18.h, top: 48.v),
-                    child: Text("msg_participating_artists".tr,
-                        style: theme.textTheme.titleMedium))),
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 18.h, top: 48.v),
+                child: Text(
+                  "msg_participating_artists".tr,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ),
+            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: EdgeInsets.only(left: 18.h, top: 15.v, bottom: 31.v),
@@ -278,9 +282,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                                   "msg_a_digital_artist".tr,
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
-                                  style: CustomTextStyles
-                                      .bodySmallLatoBlack90001
-                                      .copyWith(
+                                  style: CustomTextStyles.bodySmall.copyWith(
                                     height: 1.50,
                                   ),
                                 ),
@@ -306,9 +308,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                                     "msg_a_digital_artist".tr,
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
-                                    style: CustomTextStyles
-                                        .bodySmallLatoBlack90001
-                                        .copyWith(
+                                    style: CustomTextStyles.bodySmall.copyWith(
                                       height: 1.50,
                                     ),
                                   ),
@@ -339,8 +339,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                               "msg_a_digital_artist".tr,
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
-                              style: CustomTextStyles.bodySmallLatoBlack90001
-                                  .copyWith(
+                              style: CustomTextStyles.bodySmall.copyWith(
                                 height: 1.50,
                               ),
                             ),

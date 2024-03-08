@@ -48,7 +48,7 @@ class UserprofileItemWidget extends StatelessWidget {
                 () => Text(
                   userprofileItemModelObj.userBio!.value,
                   overflow: TextOverflow.ellipsis,
-                  style: CustomTextStyles.titleSmallLatoBlack90001,
+                  style: CustomTextStyles.bodySmall,
                 ),
               ),
               SizedBox(height: 12.v),
@@ -58,7 +58,7 @@ class UserprofileItemWidget extends StatelessWidget {
                   () => Text(
                     userprofileItemModelObj.userDescription!.value,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ),
               ),

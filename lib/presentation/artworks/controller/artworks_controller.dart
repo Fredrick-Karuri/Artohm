@@ -33,7 +33,6 @@ Future<int> getArtworkCount() async {
 class FavoriteArtworksController extends GetxController {
   RxList<Artwork> favoriteArtworks = <Artwork>[].obs;
 
-  // var favoriteArtworks = <Artwork>[].obs;
   // function to add artwork to the favorite list
   void addToFavoriteList(Artwork artwork) {
     if (!isFavorite(artwork)) {
@@ -58,53 +57,6 @@ class FavoriteArtworksController extends GetxController {
         : addToFavoriteList(artwork);
   }
 }
-
-// class FavoriteArtworksController extends GetxController {
-//   final ArtworksController artworksController; // Inject ArtworkController
-//   final LocalStorageService localStorageService; // Inject local storage service
-
-//   FavoriteArtworksController({
-//     required this.artworksController,
-//     required this.localStorageService,
-//   });
-
-//   @override
-//   void onInit() {
-//     super.onInit();
-//     loadFavoriteArtworks();
-//   }
-
-//   var favoriteArtworks = <Artwork>[].obs;
-
-//   void updateFavoriteArtworks() {
-//     favoriteArtworks.assignAll(
-//       artworksController.artworks.where((artwork) => artwork.isFavorite.value),
-//     );
-//     saveFavoriteArtworks();
-//   }
-
-//   List<Artwork> get favoriteArtworksList {
-//     return favoriteArtworks;
-//   }
-
-//   void saveFavoriteArtworks() {
-//     List<String> favoriteArtworksJson = favoriteArtworks
-//         .map((artwork) => jsonEncode(artwork.toJson()))
-//         .toList();
-
-//     localStorageService.setStringList('favoriteArtworks', favoriteArtworksJson);
-//   }
-
-//   void loadFavoriteArtworks() async {
-//     List<String>? favoriteArtworksJson =
-//         await localStorageService.getStringList('favoriteArtworks');
-//     if (favoriteArtworksJson != null) {
-//       favoriteArtworks.value = favoriteArtworksJson
-//           .map((artworkJson) => Artwork.fromJson(jsonDecode(artworkJson)))
-//           .toList();
-//     }
-//   }
-// }
 
 class CollectionsController extends GetxController {
   var collections = <Collection>[].obs;
@@ -142,6 +94,7 @@ class CollectionsController extends GetxController {
     collections.removeWhere((collection) => collection.id == collectionId);
     saveCollections();
   }
+  
 
   bool addToCollection(String collectionId, Artwork artwork) {
     var collectionIndex =

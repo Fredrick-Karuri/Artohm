@@ -113,11 +113,11 @@ class ArtworkScreen extends GetView<ArtworkController> {
             children: [
               Text(
                 artwork.title,
-                style: CustomTextStyles.titleLargeBlack,
+                style: CustomTextStyles.titleLarge,
               ),
               Text(
                 "\$${artwork.price}",
-                style: CustomTextStyles.bodyLarge18.copyWith(),
+                style: CustomTextStyles.bodyLarge.copyWith(),
               ),
             ],
           ),
@@ -126,7 +126,7 @@ class ArtworkScreen extends GetView<ArtworkController> {
             artwork.description, // Use the description from the Artwork object
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: CustomTextStyles.bodyLargeBlack.copyWith(
+            style: CustomTextStyles.bodyLarge.copyWith(
               height: 1.50,
             ),
           ),
@@ -188,7 +188,7 @@ class ArtworkScreen extends GetView<ArtworkController> {
           if (artwork.tools != null && artwork.tools!.isNotEmpty) ...[
             Text(
               'Tools',
-              style: CustomTextStyles.titleMediumLato,
+              style: CustomTextStyles.titleMediumLatoOnBackground,
             ),
             SizedBox(height: 8.v),
             Column(
@@ -231,6 +231,7 @@ actions(controller) {
   //if artworks is marked as sellable then button to contact the seller
 
   return CustomElevatedButton(
+    buttonStyle: CustomButtonStyles.fillPrimaryButton,
     height: 36.v,
     onTap: () {
       Get.bottomSheet(
@@ -247,7 +248,7 @@ comment(ArtworkController controller, context) {
   return Container(
     margin: EdgeInsets.only(bottom: 32.v),
     padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 18.v),
-    decoration: AppDecoration.outlineLightBlueA
+    decoration: AppDecoration.outlineSecondary
         .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
     child: Column(
       mainAxisSize: MainAxisSize.min,
@@ -281,12 +282,12 @@ comment(ArtworkController controller, context) {
                     CustomTextFormField(
                       controller: controller.commentController,
                       hintText: "lbl_add_a_comment".tr,
-                      hintStyle: CustomTextStyles.bodyMediumBlack,
+                      hintStyle: CustomTextStyles.bodyMedium,
                       textInputAction: TextInputAction.done,
                       borderDecoration:
                           TextFormFieldStyleHelper.fillSecondaryOpacity,
                       filled: true,
-                      fillColor: appTheme.lightBlueA700.withOpacity(
+                      fillColor: theme.colorScheme.secondary.withOpacity(
                         0.08,
                       ),
                     ),
@@ -353,12 +354,12 @@ artistInfo(Artwork artwork, context, controller) {
                       Text(
                         artwork
                             .artist, // Use the artist from the Artwork object
-                        style: CustomTextStyles.bodyLargeBlack,
+                        style: CustomTextStyles.bodyLarge,
                       ),
                       SizedBox(height: 4.v),
                       Text(
                         ' 4 Followers',
-                        style: CustomTextStyles.bodyMediumBlack,
+                        style: CustomTextStyles.bodyMedium,
                       ),
                     ],
                   ),
@@ -411,7 +412,7 @@ artistInfo(Artwork artwork, context, controller) {
                   Text(
                     favoriteArtworksController.favoriteArtworks.length
                         .toString(),
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ],
               ),
@@ -452,7 +453,7 @@ artistInfo(Artwork artwork, context, controller) {
                     //change to collection count
                     favoriteArtworksController.favoriteArtworks.length
                         .toString(),
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ],
               ),

@@ -14,14 +14,14 @@ class OnboardingController extends GetxController {
   GlobalOnboardingController globalOnboardingController = Get.find();
   List<OnboardingPage> pages = [
     OnboardingPage(
-      logoPath: ImageConstant.imgAirplaneBlack90001,
+      logoPath: ImageConstant.imgAirplaneblack900,
       imagePath: ImageConstant.imgHellocuate,
       message: 'msg_discover_a_world'.tr,
       buttonText: 'lbl_next'.tr,
       routeName: 'AppRoutes.onboarding1Screen',
     ),
     OnboardingPage(
-      logoPath: ImageConstant.imgAirplaneBlack90001,
+      logoPath: ImageConstant.imgAirplaneblack900,
       imagePath: ImageConstant.imgArtistcuate,
       message:
           'Unleash your inner artist! Experiment with AI-enhanced tools, collaborate with fellow creators, and turn your visions into reality.'
@@ -30,7 +30,7 @@ class OnboardingController extends GetxController {
       routeName: 'AppRoutes.onboarding2Screen',
     ),
     OnboardingPage(
-      logoPath: ImageConstant.imgAirplaneBlack90001,
+      logoPath: ImageConstant.imgAirplaneblack900,
       imagePath: ImageConstant.imgFireplacebro,
       message:
           'Tailor your experience by following your favorite artists and creating collections that reflect your unique tastes.'

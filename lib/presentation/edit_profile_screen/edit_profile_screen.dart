@@ -4,10 +4,8 @@ import 'package:artohmapp/presentation/edit_profile_screen/widgets/artist_influe
 import 'package:artohmapp/presentation/edit_profile_screen/widgets/social_media.dart';
 import 'package:artohmapp/presentation/edit_profile_screen/widgets/user_profile_field.dart';
 import '../../widgets/custom_snackbar.dart';
-import '../edit_profile_screen/widgets/selectedstyles_item_widget.dart';
 import 'controller/edit_profile_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/widgets/custom_drop_down.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:artohmapp/widgets/custom_text_form_field.dart';
@@ -19,13 +17,11 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    // final InfluencesController influencesController =
-    //     Get.find<InfluencesController>();
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           leadingWidth: 46.h,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -38,29 +34,35 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
         resizeToAvoidBottomInset: true,
         body: bodyContent(),
         bottomNavigationBar: CustomElevatedButton(
-            onTap: () {
-              Get.snackbar(
-                'Success',
-                'Changes Saved!',
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: Colors.green,
-                colorText: Colors.white,
-                icon: Icon(
-                  Icons.check_circle,
-                  color: Colors.white,
-                  size: 24,
-                ),
-                duration: Duration(seconds: 3),
-              );
-              Future.delayed(Duration(seconds: 3), () {
-                Get.offNamed(AppRoutes.userProfileContainerScreen);
-              });
-              // saveChanges(context);
-            },
-            text: "lbl_save_changes".tr,
-            margin: EdgeInsets.only(
-                left: 16.h, right: 16.h, bottom: 24.v, top: 6.v),
-            buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700Medium),
+          onTap: () {
+            Get.snackbar(
+              'Success',
+              'Changes Saved!',
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.green,
+              colorText: Colors.white,
+              icon: Icon(
+                Icons.check_circle,
+                color: Colors.white,
+                size: 24,
+              ),
+              duration: Duration(seconds: 3),
+            );
+            Future.delayed(Duration(seconds: 3), () {
+              Get.offNamed(AppRoutes.userProfileContainerScreen);
+            });
+            // saveChanges(context);
+          },
+          text: "lbl_save_changes".tr,
+          margin: EdgeInsets.only(
+            left: 16.h,
+            right: 16.h,
+            bottom: 16.v,
+            top: 6.v,
+          ),
+          buttonTextStyle: CustomTextStyles.buttonText,
+          buttonStyle: CustomButtonStyles.fillPrimaryButton,
+        ),
       ),
     );
   }
@@ -78,7 +80,6 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
             children: [
               editProfile(),
               ArtStyles(' Favorite Art Styles'),
-
               SizedBox(height: 36.v),
               socials(),
               SizedBox(height: 36.v),
@@ -124,7 +125,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
           focusNode: controller.influencesFocusNode,
           margin: EdgeInsets.only(top: 9.v, right: 7.h),
           hintText: "lbl_input_text".tr,
-          hintStyle: CustomTextStyles.bodyLargeLatoBlack,
+          hintStyle: CustomTextStyles.bodyLarge,
           textInputAction: TextInputAction.done,
           borderDecoration: TextFormFieldStyleHelper.underLineRed,
         ),
@@ -136,7 +137,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
     return Container(
       margin: EdgeInsets.only(top: 30.v, right: 6.h),
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
-      decoration: AppDecoration.outlineBlack900011
+      decoration: AppDecoration.outlineBlack
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -161,7 +162,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   //       top: 36.v,
   //     ),
   //     padding: EdgeInsets.all(16.h),
-  //     decoration: AppDecoration.fillBlue
+  //     decoration: AppDecoration.fillSecondaryOpacity
   //         .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
   //     child: Column(
   //       mainAxisSize: MainAxisSize.min,
@@ -174,7 +175,7 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
   //         CustomDropDown(
   //             width: 240.h,
   //             hintText: "Choose Style".tr,
-  //             hintStyle: CustomTextStyles.bodyLargeBlack,
+  //             hintStyle: CustomTextStyles.bodyLarge,
   //             items:
   //                 controller.editProfileModelObj.value.dropdownItemList.value,
   //             borderDecoration: DropDownStyleHelper.outlineBlackTL81,
@@ -212,16 +213,15 @@ class EditProfileScreen extends GetWidget<EditProfileController> {
           radius: BorderRadius.circular(40.h),
         ),
         SizedBox(height: 16.v),
-        CustomOutlinedButton(
-          width: 157.h,
-          text: "lbl_change_image".tr,
-          rightIcon: Container(
-            margin: EdgeInsets.only(left: 8.h),
-            child: CustomImageView(svgPath: ImageConstant.imgClock),
-          ),
-          onTap: () {
+        TextButton.icon(
+          style: CustomButtonStyles.outlinePrimaryButton,
+          onPressed: () {
             controller.changeProfilePhoto();
           },
+          label: Text(
+            'Change Image',
+          ),
+          icon: Icon(Icons.upload),
         ),
       ],
     );

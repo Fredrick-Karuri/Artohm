@@ -17,7 +17,7 @@ class NewCollaborationItemPage extends StatelessWidget {
         return SafeArea(
           child: Scaffold(
             appBar: CustomAppBarComponent(
-              title: "Create Something Amazing Together".tr,
+              title: "Create Something Amazing Together ".tr,
               onBackPressed: () {
                 Get.back();
               },
@@ -29,6 +29,7 @@ class NewCollaborationItemPage extends StatelessWidget {
             // ),
             body: bodyContent(controller),
             bottomNavigationBar: CustomElevatedButton(
+              buttonStyle: CustomButtonStyles.fillPrimaryButton,
               onTap: () {
                 Get.toNamed(AppRoutes.collaborationStartConfirmationPage);
               },
@@ -61,7 +62,6 @@ class NewCollaborationItemPage extends StatelessWidget {
             collaborators(controller),
             SizedBox(height: 32),
 
-
             // Add your widgets here...
           ],
         ),
@@ -69,12 +69,13 @@ class NewCollaborationItemPage extends StatelessWidget {
     );
   }
 
-   collaborators(NewCollaborationItemController controller) {
+  collaborators(NewCollaborationItemController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'Add Collaborators',
+          style: CustomTextStyles.titleSmallOnBackground,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -86,32 +87,22 @@ class NewCollaborationItemPage extends StatelessWidget {
                 top: 8.h,
               ),
               hintText: ' Type usernames of artists for collaboration.'.tr,
-              hintStyle: CustomTextStyles.bodyLargeBlack,
-              borderDecoration: TextFormFieldStyleHelper.fillBlue,
+              // hintStyle: CustomTextStyles.bodyLarge,
+              borderDecoration: TextFormFieldStyleHelper.fillSecondaryOpacity,
               filled: true,
-              fillColor: appTheme.blue50,
+              fillColor: theme.colorScheme.secondary.withOpacity(.08),
             ),
-            SizedBox(height: 16.h),
-            SizedBox(
-              width: 120.h,
-              child: CustomOutlinedButton(
-                
-                buttonTextStyle: TextStyle(
-                  color: appTheme.lightBlueA700,
+            SizedBox(height: 8.h),
+            TextButton(
+              style: CustomButtonStyles.outlineSecondaryButton,
+              onPressed: () {},
+              child: Text(
+                'Add',
+                style: TextStyle(
+                  color: theme.colorScheme.secondary,
                 ),
-                buttonStyle: OutlinedButton.styleFrom(
-                  
-                  side: BorderSide(
-                    color: appTheme.lightBlueA700,
-                  ),
-                ),
-                margin: EdgeInsets.zero,
-                onTap: () {
-                  // controller.addCollaborator();
-                },
-                text: 'Add',
               ),
-            )
+            ),
           ],
         ),
       ],
@@ -122,7 +113,7 @@ class NewCollaborationItemPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       decoration: BoxDecoration(
-        color: appTheme.blue50,
+        color: theme.colorScheme.secondary.withOpacity(.08),
         borderRadius: BorderRadius.circular(8),
       ),
       // width: 320.v,
@@ -138,6 +129,7 @@ class NewCollaborationItemPage extends StatelessWidget {
             children: [
               Expanded(
                 child: CustomElevatedButton(
+                  buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                   text: 'Choose Image',
                 ),
               ),
@@ -161,7 +153,7 @@ class NewCollaborationItemPage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       width: double.maxFinite,
       decoration: BoxDecoration(
-        color: appTheme.blue50,
+        color: theme.colorScheme.secondary.withOpacity(.08),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -172,7 +164,7 @@ class NewCollaborationItemPage extends StatelessWidget {
             child: Text('Medium'),
           ),
           CustomDropDown(
-            dropdownColor: appTheme.blue50,
+            dropdownColor: theme.colorScheme.secondary.withOpacity(.08),
             width: 200.h,
             hintText: 'Choose Medium',
             items: controller
@@ -202,10 +194,10 @@ class NewCollaborationItemPage extends StatelessWidget {
             top: 8.h,
           ),
           hintText: ' Describe your collaboration idea.'.tr,
-          hintStyle: CustomTextStyles.bodyLargeBlack,
-          borderDecoration: TextFormFieldStyleHelper.fillBlue,
+          hintStyle: CustomTextStyles.bodyLarge,
+          borderDecoration: TextFormFieldStyleHelper.fillSecondaryOpacity,
           filled: true,
-          fillColor: appTheme.blue50,
+          fillColor: theme.colorScheme.secondary.withOpacity(.08),
         )
       ],
     );
@@ -225,10 +217,10 @@ class NewCollaborationItemPage extends StatelessWidget {
             top: 8.h,
           ),
           hintText: 'Enter a unique name for your collaboration.'.tr,
-          hintStyle: CustomTextStyles.bodyLargeBlack,
-          borderDecoration: TextFormFieldStyleHelper.fillBlue,
+          // hintStyle: CustomTextStyles.bodyLarge,
+          borderDecoration: TextFormFieldStyleHelper.fillSecondaryOpacity,
           filled: true,
-          fillColor: appTheme.blue50,
+          fillColor: theme.colorScheme.secondary.withOpacity(.08),
         )
       ],
     );

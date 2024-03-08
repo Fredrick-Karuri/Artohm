@@ -15,6 +15,7 @@ class SignupScreen extends GetWidget<SignupLandingController> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
+      top: false,
       child: Scaffold(
         appBar: OnboardingAppBar(
           text: 'Welcome Aboard',
@@ -33,12 +34,11 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                 leftIcon: Container(
                     margin: EdgeInsets.only(right: 30.h),
                     child: CustomImageView(svgPath: ImageConstant.imgMail)),
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
+                buttonStyle: CustomButtonStyles.fillPrimaryButton,
+                buttonTextStyle: CustomTextStyles.buttonText,
                 onTap: () {
                   // onTapContinueWithEmail();
-            Get.toNamed(AppRoutes.selectAccountTypePage);
-
+                  Get.toNamed(AppRoutes.selectAccountTypePage);
                 },
               ),
               SizedBox(height: 24.v),
@@ -49,8 +49,9 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     margin: EdgeInsets.only(right: 30.h),
                     child:
                         CustomImageView(svgPath: ImageConstant.imgGooglelogo)),
-                buttonStyle: CustomButtonStyles.outlinePrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
+                buttonStyle: CustomButtonStyles.outlinePrimaryButton,
+                buttonTextStyle: CustomTextStyles.buttonText!
+                    .copyWith(color: theme.colorScheme.tertiary),
                 onTap: () {
                   onTapContinuewith1();
                 },
@@ -63,8 +64,8 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     margin: EdgeInsets.only(right: 30.h),
                     child: CustomImageView(
                         svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
+                buttonStyle: CustomButtonStyles.fillPrimaryButton,
+                buttonTextStyle: CustomTextStyles.buttonText,
                 onTap: () {
                   onTapContinuewith2();
                 },
@@ -78,7 +79,7 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                     Padding(
                       padding: EdgeInsets.only(top: 2.v, right: 10),
                       child: Text("msg_already_have_an".tr,
-                          style: CustomTextStyles.bodyLargeLatoBlack),
+                          style: CustomTextStyles.bodyLarge),
                     ),
                     TextButton(
                       onPressed: () {
@@ -86,8 +87,8 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                       },
                       child: Text(
                         ' Sign In',
-                        style: TextStyle(
-                            color: appTheme.lightBlueA700, fontSize: 12),
+                        style: CustomTextStyles.bodyLargeSecondary,
+                      
                       ),
                     )
                   ],
@@ -103,22 +104,22 @@ class SignupScreen extends GetWidget<SignupLandingController> {
                       children: [
                         TextSpan(
                             text: "msg_by_continuing2".tr,
-                            style: CustomTextStyles.bodyLargeBlack),
+                            style: CustomTextStyles.bodyLarge),
                         TextSpan(
                             text: "msg_terms_of_service".tr,
-                            style: CustomTextStyles.bodyLargeBlack),
+                            style: CustomTextStyles.bodyLarge),
                         TextSpan(
                             text: "msg_we_will_manage_information".tr,
-                            style: CustomTextStyles.bodyLargeBlack),
+                            style: CustomTextStyles.bodyLarge),
                         TextSpan(
                             text: "lbl_privacy_policy2".tr,
-                            style: CustomTextStyles.bodyLargeBlack),
+                            style: CustomTextStyles.bodyLarge),
                         TextSpan(
                             text: "lbl_and".tr,
-                            style: CustomTextStyles.bodyLargeBlack),
+                            style: CustomTextStyles.bodyLarge),
                         TextSpan(
                             text: "lbl_cookie_policy".tr,
-                            style: CustomTextStyles.bodyLargeBlack)
+                            style: CustomTextStyles.bodyLarge)
                       ],
                     ),
                     textAlign: TextAlign.left),

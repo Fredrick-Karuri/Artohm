@@ -32,13 +32,12 @@ class ModalOneScreen extends GetWidget<ModalOneController> {
                     CustomOutlinedButton(
                         width: 75.h,
                         text: "lbl_public".tr,
-                        buttonStyle: CustomButtonStyles.outlineLightBlueATL8,
-                        buttonTextStyle:
-                            CustomTextStyles.bodyLargeLatoBlue)
+                        buttonStyle: CustomButtonStyles.outlineSecondaryButton,
+                        buttonTextStyle: CustomTextStyles.bodyLargeSecondary)
                   ]),
               SizedBox(height: 18.v),
               Text("lbl_12_artworks".tr,
-                  style: CustomTextStyles.titleMediumLato),
+                  style: CustomTextStyles.titleMediumLatoOnBackground),
               SizedBox(height: 9.v),
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 CustomImageView(
@@ -74,15 +73,14 @@ class ModalOneScreen extends GetWidget<ModalOneController> {
               ]),
               SizedBox(height: 19.v),
               Text("msg_collection_description".tr,
-                  style: CustomTextStyles.titleMediumLato),
+                  style: CustomTextStyles.titleMediumLatoOnBackground),
               Container(
                   width: 349.h,
                   margin: EdgeInsets.only(top: 10.v, right: 8.h),
                   child: Text("msg_embrace_the_world".tr,
                       maxLines: 5,
                       overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyLargeBlack
-                          .copyWith(height: 1.50)))
+                      style: CustomTextStyles.bodyLarge.copyWith(height: 1.50)))
             ],
           ),
         ),
@@ -99,11 +97,13 @@ class ModalOneScreen extends GetWidget<ModalOneController> {
                         onTapEditcollection();
                       })),
               Expanded(
-                  child: CustomElevatedButton(
-                      text: "msg_delete_collection".tr,
-                      margin: EdgeInsets.only(left: 12.h),
-                      buttonTextStyle:
-                          CustomTextStyles.titleSmallRobotoWhiteA700))
+                child: CustomElevatedButton(
+                  buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
+                  text: "msg_delete_collection".tr,
+                  margin: EdgeInsets.only(left: 12.h),
+                  buttonTextStyle: CustomTextStyles.buttonTextSmall,
+                ),
+              ),
             ],
           ),
         ),

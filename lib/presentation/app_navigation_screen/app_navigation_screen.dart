@@ -15,7 +15,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           child: Column(
             children: [
               Container(
-                decoration: AppDecoration.fillWhiteA,
+                decoration: AppDecoration.fillBackground,
                 child: Column(
                   children: [
                     Align(
@@ -27,7 +27,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                           "lbl_app_navigation".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400),
@@ -51,14 +51,14 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     ),
                     SizedBox(height: 5.v),
                     Divider(
-                        height: 1.v, thickness: 1.v, color: appTheme.black90001)
+                        height: 1.v, thickness: 1.v, color: appTheme.black900)
                   ],
                 ),
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
-                    decoration: AppDecoration.fillWhiteA,
+                    decoration: AppDecoration.fillBackground,
                     child: Column(
                       children: [
                         onboarding(),
@@ -105,7 +105,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapModalOne();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -116,7 +116,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_modal_one".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -134,7 +134,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapModal();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -144,7 +144,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_modal".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -159,7 +159,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapArtCommunityEngagement();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -170,7 +170,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("msg_art_community_engagement".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -188,7 +188,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapCreateCollection();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -199,7 +199,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("msg_createcollection2".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -217,7 +217,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapUploadArtworkTwo();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -227,7 +227,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("msg_upload_artwork_two".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -242,7 +242,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapUploadArtwork();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -252,7 +252,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_upload_artwork".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -267,7 +267,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapEditProfile();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -277,7 +277,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_edit_profile".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -292,7 +292,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapForgotpassword();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -303,7 +303,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_forgot_password2".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -321,7 +321,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapSignin();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -331,7 +331,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_signin2".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -346,7 +346,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapSignupOne();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -356,7 +356,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_signup_one".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -371,7 +371,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapSignup();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -382,7 +382,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_signup".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -400,7 +400,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapOnboardingOne();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -411,7 +411,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_onboarding_one".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -429,7 +429,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapOnboarding1();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -440,7 +440,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_onboarding".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -458,7 +458,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapArtcommunity();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -469,7 +469,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_art_community".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -487,7 +487,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapArtwork();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -498,7 +498,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_artwork".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -516,7 +516,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapArtmarketplace();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -527,7 +527,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_art_marketplace".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -545,7 +545,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
           onTapArtistprofile();
         },
         child: Container(
-            decoration: AppDecoration.fillWhiteA,
+            decoration: AppDecoration.fillBackground,
             child: Column(children: [
               Align(
                   alignment: Alignment.centerLeft,
@@ -555,7 +555,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                       child: Text("lbl_artist_profile".tr,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              color: appTheme.black90001,
+                              color: appTheme.black900,
                               fontSize: 20.fSize,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w400)))),
@@ -570,7 +570,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapArtDiscoveryContainer();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -581,7 +581,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("msg_art_discovery".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -599,7 +599,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapUserprofileContainer();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -610,7 +610,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "msg_user_profile_container".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -631,7 +631,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapPrivacy();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -642,7 +642,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "lbl_privacy".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -663,7 +663,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapSettingsItem();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -674,7 +674,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "lbl_settingsitem".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -695,7 +695,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapSettings();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -706,7 +706,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "lbl_settings2".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -727,7 +727,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapNotificationsTabContainer();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -738,7 +738,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "msg_notifications".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -759,7 +759,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapCollaborate();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -770,7 +770,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                     child: Text("lbl_collaborate2".tr,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            color: appTheme.black90001,
+                            color: appTheme.black900,
                             fontSize: 20.fSize,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.w400)))),
@@ -788,7 +788,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapCollaborateItem();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -799,7 +799,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "lbl_collaborateitem".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),
@@ -820,7 +820,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
         onTapOnboarding();
       },
       child: Container(
-        decoration: AppDecoration.fillWhiteA,
+        decoration: AppDecoration.fillBackground,
         child: Column(
           children: [
             Align(
@@ -831,7 +831,7 @@ class AppNavigationScreen extends GetWidget<AppNavigationController> {
                   "lbl_onboarding".tr,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: appTheme.black90001,
+                      color: appTheme.black900,
                       fontSize: 20.fSize,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w400),

@@ -17,6 +17,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
+      top: false,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: OnboardingAppBar(
@@ -65,8 +66,8 @@ class SignupOneScreen extends GetWidget<SignupController> {
     return CustomElevatedButton(
       height: 42.v,
       text: "lbl_create_account".tr,
-      buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-      buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
+      buttonStyle: CustomButtonStyles.fillPrimaryButton,
+      buttonTextStyle: CustomTextStyles.buttonText,
       onTap: () async {
         if (_formKey.currentState!.validate()) {
           // If all data are correct then save data to out variables
@@ -98,7 +99,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text("msg_confirm_password".tr,
-              style: CustomTextStyles.titleMediumLato),
+              style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           Obx(() => CustomTextFormField(
               controller: controller.confirmPasswordController,
@@ -144,7 +145,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_password".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_password".tr, style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           Obx(() => CustomTextFormField(
               controller: controller.passwordController,
@@ -186,7 +187,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_email_address".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_email_address".tr, style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           CustomTextFormField(
             controller: controller.emailController,
@@ -214,7 +215,7 @@ class SignupOneScreen extends GetWidget<SignupController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_full_name".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_full_name".tr, style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           CustomTextFormField(
             controller: controller.fullNameController,

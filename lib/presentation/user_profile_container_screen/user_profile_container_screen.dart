@@ -27,45 +27,33 @@ class UserProfileContainerScreen
     mediaQueryData = MediaQuery.of(context);
     return Container(
       color: Get.theme.scaffoldBackgroundColor,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: CustomAppBarComponent(
-            onBackPressed: () {
-              Get.back();
-            },
-            title: "lbl_profile".tr,
-            hasTrailingIcon: true,
-            onTapTrailingIcon: () {
-              onTapProfileicons();
-            },
-          ),
-          body: SizedBox(
-            width: mediaQueryData.size.width,
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
-              child: Padding(
-                padding: EdgeInsets.only(left: 15.h, bottom: 5.v),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    profileInfoCard(),
-                    SizedBox(height: 24),
-                    
-                    FavoriteArtworksView(),
-                    yourWork(),
-                    SizedBox(height: 24),
-                    CollectionListWidget(
-                      collections: collectionsController.collections,
-                    ),
-                    SizedBox(height: 24),
-
-                    // collections(),
-                    buildCollectionsWidget(),
-                    SizedBox(height: 24),
-                    communityEngagement(),
-                  ],
-                ),
-              ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: CustomAppBarComponent(
+          onBackPressed: () {
+            Get.back();
+          },
+          title: "lbl_profile".tr,
+          hasTrailingIcon: true,
+          onTapTrailingIcon: () {
+            onTapProfileicons();
+          },
+        ),
+        body: SizedBox(
+          width: mediaQueryData.size.width,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                profileInfoCard(),
+                FavoriteArtworksView(),
+                yourWork(),
+                CollectionListWidget(
+                    collections: collectionsController.collections),
+                buildCollectionsWidget(),
+                communityEngagement(),
+              ],
             ),
           ),
         ),
@@ -132,14 +120,17 @@ class UserProfileContainerScreen
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: 4.h),
+          padding: EdgeInsets.only(left: 16.h),
           child: Text(
             "lbl_collections".tr,
             style: theme.textTheme.titleMedium,
           ),
         ),
         SizedBox(height: 17.v),
-        buildCollectionList(),
+        Padding(
+          padding: EdgeInsets.only(left: 16),
+          child: buildCollectionList(),
+        ),
       ],
     );
   }
@@ -178,9 +169,9 @@ class UserProfileContainerScreen
 
   communityEngagement() {
     return Container(
-      margin: EdgeInsets.only(right: 16.h),
+      margin: EdgeInsets.only(left: 16.h, right: 16.h, top: 32.v),
       padding: EdgeInsets.symmetric(horizontal: 4.h, vertical: 4.v),
-      decoration: AppDecoration.outlineRed
+      decoration: AppDecoration.outlineTertiary
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder4),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -194,7 +185,7 @@ class UserProfileContainerScreen
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(4.h),
-                color: appTheme.pink50,
+                color: theme.colorScheme.surface,
               ),
               padding: EdgeInsets.symmetric(
                 horizontal: 12.h,
@@ -226,7 +217,7 @@ class UserProfileContainerScreen
                   padding: EdgeInsets.only(left: 4.h, top: 11.v),
                   child: Text(
                     "msg_beautiful_use_of".tr,
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ),
                 Container(
@@ -236,7 +227,7 @@ class UserProfileContainerScreen
                     "msg_your_creations".tr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ),
                 Container(
@@ -246,7 +237,7 @@ class UserProfileContainerScreen
                     "msg_your_creations".tr,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack,
+                    style: CustomTextStyles.bodyMedium,
                   ),
                 ),
               ],
@@ -258,11 +249,11 @@ class UserProfileContainerScreen
   }
 
   yourWork() {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(left: 4.h, top: 32.v, right: 16.h),
-          child: Row(
+    return Padding(
+      padding: EdgeInsets.only(left: 16, right: 16, top: 32.v, bottom: 32.h),
+      child: Column(
+        children: [
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -292,52 +283,57 @@ class UserProfileContainerScreen
                 },
                 child: Text(
                   '121 Artworks',
-                  style: CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                  style: CustomTextStyles.titleSmallLatoSecondaryMedium,
                 ),
               )
             ],
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 16.v, right: 25.h),
-          child: Obx(
-            () => GridView.builder(
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisExtent: 172.v,
-                  crossAxisCount: 3,
-                  mainAxisSpacing: 13.h,
-                  crossAxisSpacing: 13.h),
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: controller.userProfileContainerModelObj.value
-                  .enchantedforestItemList.value.length,
-              itemBuilder: (context, index) {
-                EnchantedforestItemModel model = controller
-                    .userProfileContainerModelObj
-                    .value
-                    .enchantedforestItemList
-                    .value[index];
-                return EnchantedforestItemWidget(model);
-              },
+          Padding(
+            padding: EdgeInsets.only(
+              top: 16.v,
+            ),
+            child: Obx(
+              () => GridView.builder(
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisExtent: 172.v,
+                    crossAxisCount: 3,
+                    mainAxisSpacing: 13.h,
+                    crossAxisSpacing: 13.h),
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: controller.userProfileContainerModelObj.value
+                    .enchantedforestItemList.value.length,
+                itemBuilder: (context, index) {
+                  EnchantedforestItemModel model = controller
+                      .userProfileContainerModelObj
+                      .value
+                      .enchantedforestItemList
+                      .value[index];
+                  return EnchantedforestItemWidget(model);
+                },
+              ),
             ),
           ),
-        ),
-        CustomOutlinedButton(
-          text: "lbl_add_new".tr,
-          margin: EdgeInsets.only(top: 23.v, right: 16.h),
-          onTap: () {
-            onTapAddnew();
-          },
-        ),
-      ],
+          CustomOutlinedButton(
+            buttonStyle: CustomButtonStyles.outlinePrimaryButton,
+            text: "lbl_add_new".tr,
+            margin: EdgeInsets.only(
+              top: 24.v,
+            ),
+            onTap: () {
+              onTapAddnew();
+            },
+          ),
+        ],
+      ),
     );
   }
 
   profileInfoCard() {
     return Container(
-      margin: EdgeInsets.only(right: 15.h),
-      padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 16.v),
-      decoration: AppDecoration.outlineBlack900011
+      margin: EdgeInsets.only(right: 16.h, bottom: 24.v, left: 16),
+      padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 16.v),
+      decoration: AppDecoration.outlineBlack
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -375,12 +371,12 @@ class UserProfileContainerScreen
                                     TextSpan(
                                         text: "lbl_1_56k".tr,
                                         style: CustomTextStyles
-                                            .titleSmallLatoLightblueA700),
+                                            .titleSmallLatoSecondary),
                                     TextSpan(text: "  ".tr),
                                     TextSpan(
                                         text: "lbl_followers".tr,
                                         style: CustomTextStyles
-                                            .bodyMediumLightblueA700)
+                                            .bodyMediumSecondary)
                                   ]),
                                   textAlign: TextAlign.left)),
                           Padding(
@@ -391,11 +387,11 @@ class UserProfileContainerScreen
                                     TextSpan(
                                         text: "lbl_21".tr,
                                         style: CustomTextStyles
-                                            .titleSmallLatoLightblueA700),
+                                            .titleSmallLatoSecondary),
                                     TextSpan(
                                         text: "lbl_following".tr,
                                         style: CustomTextStyles
-                                            .bodyMediumLightblueA700)
+                                            .bodyMediumSecondary)
                                   ],
                                 ),
                                 textAlign: TextAlign.left),
@@ -428,9 +424,10 @@ class UserProfileContainerScreen
             ),
           ),
           CustomElevatedButton(
+              buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
               text: "lbl_edit_profile".tr,
-              margin: EdgeInsets.only(left: 41.h, top: 22.v, right: 41.h),
-              buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700Medium,
+              margin: EdgeInsets.only(left: 16.h, top: 22.v, right: 16.h),
+              buttonTextStyle: CustomTextStyles.buttonTextSmall,
               onTap: () {
                 onTapEditprofile();
               },

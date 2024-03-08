@@ -24,94 +24,90 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     mediaQueryData = MediaQuery.of(context);
     return Container(
       color: Get.theme.scaffoldBackgroundColor,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: CustomAppBar(
-            leadingWidth: 46.h,
-            leading: CustomImageView(
-              svgPath: ImageConstant.imgArtohmlogo,
-              margin: EdgeInsets.only(
-                left: 18.h,
-              ),
-              height: 40.v,
-              width: 30.h,
+      child: Scaffold(
+        appBar: CustomAppBar(
+          leadingWidth: 46.h,
+          leading: CustomImageView(
+            svgPath: ImageConstant.imgArtohmlogo,
+            margin: EdgeInsets.only(
+              left: 18.h,
             ),
-            actions: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    SizedBox(width: 32.h),
-                    IconButton(
-                      icon: Icon(
-                        Icons.search_outlined,
-                        color: appTheme.red300,
-                        size: 24,
-                      ),
-                      onPressed: () {
-                        customSearch.SearchController searchController =
-                            customSearch.SearchController();
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CustomSearchView(
-                              controller:
-                                  searchController.textEditingController,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    SizedBox(width: 32.h),
-                    Stack(
-                      children: <Widget>[
-                        IconButton(
-                          onPressed: () {
-                            nc.reset();
-                            onTapImgNotification();
-                          },
-                          icon: Icon(
-                            
-                            Icons.notifications,
-                            color: appTheme.red300,
-                            size: 24,
-                          ),
-                        ),
-                        Positioned(
-                          right: 0,
-                          child: Badge.count(
-                            backgroundColor: appTheme.red300,
-                            textColor: appTheme.whiteA700,
-                            count: nc.notificationCount.value,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 16.h),
-                    CustomImageView(
-                      imagePath: ImageConstant.imgFrame72,
-                      height: 36.adaptSize,
-                      width: 36.adaptSize,
-                      margin: EdgeInsets.only(left: 32.h, right: 12.h),
-                      onTap: () {
-                        onTapImgProfileoneone();
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ],
+            height: 40.v,
+            width: 30.h,
           ),
-          body: bodyContent(),
+          actions: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(width: 32.h),
+                  IconButton(
+                    icon: Icon(
+                      Icons.search_outlined,
+                      color: theme.colorScheme.tertiary,
+                      size: 24,
+                    ),
+                    onPressed: () {
+                      customSearch.SearchController searchController =
+                          customSearch.SearchController();
+      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomSearchView(
+                            controller:
+                                searchController.textEditingController,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(width: 32.h),
+                  Stack(
+                    children: <Widget>[
+                      IconButton(
+                        onPressed: () {
+                          nc.reset();
+                          onTapImgNotification();
+                        },
+                        icon: Icon(
+                          
+                          Icons.notifications,
+                          color: theme.colorScheme.tertiary,
+                          size: 24,
+                        ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        child: Badge.count(
+                          backgroundColor: theme.colorScheme.tertiary,
+                          textColor: theme.colorScheme.background,
+                          count: nc.notificationCount.value,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 16.h),
+                  CustomImageView(
+                    imagePath: ImageConstant.imgFrame72,
+                    height: 36.adaptSize,
+                    width: 36.adaptSize,
+                    margin: EdgeInsets.only(left: 32.h, right: 12.h),
+                    onTap: () {
+                      onTapImgProfileoneone();
+                    },
+                  )
+                ],
+              ),
+            ),
+          ],
         ),
+        body: bodyContent(),
       ),
     );
   }
@@ -209,12 +205,12 @@ class HomePage extends StatelessWidget {
         top: 8,
       ),
       child: Container(
-        height: 50.0, // Adjust this value as needed
+        height: 40.0, // Adjust this value as needed
         child: Align(
           alignment: Alignment.centerLeft,
           child: ListView(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            // physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: [
               for (var chip in controller.homeChipFilterList.value)

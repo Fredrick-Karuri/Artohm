@@ -32,39 +32,40 @@ class HomeController extends GetxController {
   }
 
   void _loadCategories() {
-  originalArtworks.addAll(artworks); // Add this line
+    originalArtworks.addAll(artworks); // Add this line
 
-  var allCategories = [
-    HomeCategoriesModelNew(
-      categoryName: "African Art",
-      artworks: RxList<Artwork>(artworks
-          .where((artwork) => artwork.category == "african_art")
-          .toList()),
-    ),
-    HomeCategoriesModelNew(
-      categoryName: "Abstract Art",
-      artworks: RxList<Artwork>(artworks
-          .where((artwork) => artwork.category == "abstract_art")
-          .toList()),
-    ),
-    HomeCategoriesModelNew(
-      categoryName: "Pop Art",
-      artworks: RxList<Artwork>(artworks
-          .where((artwork) => artwork.category == "pop_art")
-          .toList()),
-    ),
-    HomeCategoriesModelNew(
-      categoryName: "Photography",
-      artworks: RxList<Artwork>(artworks
-          .where((artwork) => artwork.category == "photography")
-          .toList()),
-    )
-  ];
+    var allCategories = [
+      HomeCategoriesModelNew(
+        categoryName: "African Art",
+        artworks: RxList<Artwork>(artworks
+            .where((artwork) => artwork.category == "african_art")
+            .toList()),
+      ),
+      HomeCategoriesModelNew(
+        categoryName: "Abstract Art",
+        artworks: RxList<Artwork>(artworks
+            .where((artwork) => artwork.category == "abstract_art")
+            .toList()),
+      ),
+      HomeCategoriesModelNew(
+        categoryName: "Pop Art",
+        artworks: RxList<Artwork>(artworks
+            .where((artwork) => artwork.category == "pop_art")
+            .toList()),
+      ),
+      HomeCategoriesModelNew(
+        categoryName: "Photography",
+        artworks: RxList<Artwork>(artworks
+            .where((artwork) => artwork.category == "photography")
+            .toList()),
+      )
+    ];
 
-  // Only include categories that have at least one artwork
-  categories.value = allCategories.where((category) => category.artworks.isNotEmpty).toList();
-}
-
+    // Only include categories that have at least one artwork
+    categories.value = allCategories
+        .where((category) => category.artworks.isNotEmpty)
+        .toList();
+  }
 
   Rx<List<HomeChipFilterModel>> homeChipFilterList = Rx(
     [
@@ -81,6 +82,11 @@ class HomeController extends GetxController {
       HomeChipFilterModel(
         label: 'Painting',
         id: 'ptg',
+        isSelected: false,
+      ),
+      HomeChipFilterModel(
+        label: 'Sculpture',
+        id: 'scl',
         isSelected: false,
       )
     ],

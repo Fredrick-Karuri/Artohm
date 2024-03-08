@@ -28,12 +28,10 @@ class ContactSellerBottomSheet extends StatelessWidget {
           vertical: 13.v,
         ),
         decoration: BoxDecoration(
-          color: Color(0xFFFEE9E9),
+          color: theme.colorScheme.surface,
+          // color: Color(0xFFFEE9E9),
           borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
-          border: Border.all(
-            color: Color.fromRGBO(245, 140, 140, 0.075),
-            width: 1.5,
-          ),
+          
           boxShadow: [
             BoxShadow(
               color: Color.fromRGBO(0, 0, 0, 0.16),
@@ -43,79 +41,91 @@ class ContactSellerBottomSheet extends StatelessWidget {
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
-                'Contact ${seller.name}',
-                style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
+              IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(
+                  Icons.close,
+                  color: theme.colorScheme.tertiary,
+                  size: 32,
+                ),
               ),
-              SizedBox(height: 20.0),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Divider(
+                color: theme.colorScheme.onBackground.withOpacity(0.08),
+              ),
+              SizedBox(height:8),
+              Column(
                 children: [
-                  Expanded(
-                    child: CustomElevatedButton(
-                      leftIcon: Icon(
-                        Icons.phone,
-                        color: Colors.white,
-                      ),
-                      text: 'Call',
-                      onTap: () async {
-                        final String phoneUrl = 'tel:${seller.phone}';
-                        try {
-                          await _launchUrl(phoneUrl);
-                        } catch (e) {
-                          print('Could not launch $phoneUrl');
-                        }
-                      },
-                    ),
+                  Text(
+                    'Contact ${seller.name}',
+                    style: CustomTextStyles.titleAppBar,
                   ),
-                  SizedBox(width: 10.0),
-                  Expanded(
-                    child: CustomOutlinedButton(
-                      leftIcon: Icon(Icons.email),
-                      // text: '${seller.email}',
-                      text: 'Send Email',
-                      onTap: () async {
-                        final Email email = Email(
-                          body: 'Hello ${seller.name},',
-                          subject: 'Interested in your artwork',
-                          recipients: [seller.email],
-                          isHTML: false,
-                        );
-                        try {
-                          await FlutterEmailSender.send(email);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Email sent!'),
-                            ),
-                          );
-                        } catch (error) {
-                          print('Could not send the email: $error');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text('Failed to send email.'),
-                            ),
-                          );
-                        }
-                      },
-                    ),
+                  SizedBox(height: 20.0),
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: CustomElevatedButton(
+                          buttonStyle:
+                              CustomButtonStyles.fillPrimaryButtonRounded,
+                          leftIcon: Icon(
+                            Icons.phone,
+                            color: Colors.white,
+                          ),
+                          text: 'Call',
+                          onTap: () async {
+                            final String phoneUrl = 'tel:${seller.phone}';
+                            try {
+                              await _launchUrl(phoneUrl);
+                            } catch (e) {
+                              print('Could not launch $phoneUrl');
+                            }
+                          },
+                        ),
+                      ),
+                      SizedBox(width: 10.0),
+                      Expanded(
+                        child: CustomOutlinedButton(
+                          leftIcon: Icon(Icons.email),
+                          // text: '${seller.email}',
+                          text: 'Send Email',
+                          onTap: () async {
+                            final Email email = Email(
+                              body: 'Hello ${seller.name},',
+                              subject: 'Interested in your artwork',
+                              recipients: [seller.email],
+                              isHTML: false,
+                            );
+                            try {
+                              await FlutterEmailSender.send(email);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Email sent!'),
+                                ),
+                              );
+                            } catch (error) {
+                              print('Could not send the email: $error');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Failed to send email.'),
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
 
               SizedBox(height: 20.0),
-              // Add more seller contact details here
-              CustomElevatedButton(
-                buttonStyle: ElevatedButton.styleFrom(
-                  backgroundColor: appTheme.lightBlueA700,
-                ),
-                text: 'Go Back',
-                onTap: () {
-                  Get.back();
-                },
-              ),
+             
             ],
           ),
         ),

@@ -87,9 +87,10 @@ class CreatecollectionScreen extends GetWidget<CollectionFormController> {
 
   Widget ctaButton(BuildContext context) {
     return CustomElevatedButton(
+      buttonStyle: CustomButtonStyles.fillPrimaryButton,
       text: "msg_create_collection".tr,
       margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 16.v, top: 8),
-      buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700Medium,
+      buttonTextStyle: CustomTextStyles.buttonTextSmall,
       onTap: () {
         onTapCreate(context);
       },
@@ -144,7 +145,7 @@ class CreatecollectionScreen extends GetWidget<CollectionFormController> {
     return Container(
       margin: EdgeInsets.only(top: 24.v, right: 16.h),
       padding: EdgeInsets.all(16.h),
-      decoration: AppDecoration.fillBlue
+      decoration: AppDecoration.fillSecondaryOpacity
           .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -220,12 +221,14 @@ class CreatecollectionScreen extends GetWidget<CollectionFormController> {
             focusNode: controller.descriptionFocusNode,
             margin: EdgeInsets.only(top: 9.v, right: 16.h),
             hintText: "msg_embrace_the_world".tr,
-            hintStyle: CustomTextStyles.bodyLargeLatoBlack,
+            hintStyle: CustomTextStyles.bodyLarge!.copyWith(
+              color: theme.colorScheme.onBackground.withOpacity(0.4),
+            ),
             textInputAction: TextInputAction.done,
-            borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
+            borderDecoration: TextFormFieldStyleHelper.fillSecondaryOpacityTL4,
             filled: true,
             maxLines: 3,
-            fillColor: appTheme.blue50),
+            fillColor: theme.colorScheme.secondary.withOpacity(.08)),
       ],
     );
   }
@@ -240,11 +243,13 @@ class CreatecollectionScreen extends GetWidget<CollectionFormController> {
             focusNode: controller.nameFocusNode,
             margin: EdgeInsets.only(top: 9.v, right: 16.h),
             hintText: "msg_abstract_masterpieces".tr,
-            hintStyle: CustomTextStyles.bodyLargeLatoBlack,
+            hintStyle: CustomTextStyles.bodyLarge!.copyWith(
+              color: theme.colorScheme.onBackground.withOpacity(0.4),
+            ),
             textInputAction: TextInputAction.done,
-            borderDecoration: TextFormFieldStyleHelper.fillBlueTL4,
+            borderDecoration: TextFormFieldStyleHelper.fillSecondaryOpacityTL4,
             filled: true,
-            fillColor: appTheme.blue50),
+            fillColor: theme.colorScheme.secondary.withOpacity(.08)),
       ],
     );
   }

@@ -1,6 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/widgets/app_bar/appbar_title.dart';
 import 'package:flutter/material.dart';
-import 'app_bar/appbar_subtitle_1.dart';
 
 class CustomAppBarComponent extends StatelessWidget
     implements PreferredSizeWidget {
@@ -32,10 +32,10 @@ class CustomAppBarComponent extends StatelessWidget
         padding: EdgeInsets.only(left: 12),
         icon: Icon(Icons.arrow_back_ios),
         onPressed: () => onBackPressed(),
-        color: appTheme.red300,
+        color: theme.colorScheme.tertiary,
       ),
       title: hasTitle
-          ? AppbarSubtitle1(
+          ? AppbarTitle(
               text: title ?? '',
               margin: EdgeInsets.only(
                 left: 8.h,
@@ -51,7 +51,7 @@ class CustomAppBarComponent extends StatelessWidget
                     IconButton(
                       icon: Icon(
                         trailingIcon,
-                        color: appTheme.red300,
+                        color: theme.colorScheme.tertiary,
                       ),
                       onPressed: () => onTapTrailingIcon(),
                     ),
@@ -87,7 +87,7 @@ class CustomAppBarComponent extends StatelessWidget
               ),
             ]
           : null,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
     );
   }
 

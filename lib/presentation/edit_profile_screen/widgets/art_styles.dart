@@ -19,7 +19,7 @@ class ArtStyles extends StatelessWidget {
         top: 36.v,
       ),
       padding: EdgeInsets.all(16.h),
-      decoration: AppDecoration.fillBlue
+      decoration: AppDecoration.fillSecondaryOpacity
           .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -50,7 +50,7 @@ Widget buildDropDown(EditProfileController controller) {
   return GetBuilder<EditProfileController>(
     builder: (controller) =>  CustomDropDown(
       hintText: "Choose Style".tr,
-      hintStyle: CustomTextStyles.bodyLargeBlack,
+      hintStyle: CustomTextStyles.bodyLarge,
       items: controller.editProfileModelObj.value.dropdownItemList.value,
 
 
@@ -67,7 +67,7 @@ Widget buildDropDown(EditProfileController controller) {
     
   //    CustomDropDown(
   //     hintText: "Choose Style".tr,
-  //     hintStyle: CustomTextStyles.bodyLargeBlack,
+  //     hintStyle: CustomTextStyles.bodyLarge,
   //     items: controller.editProfileModelObj.value.dropdownItemList.value,
 
 

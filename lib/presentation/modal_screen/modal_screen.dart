@@ -60,7 +60,7 @@ class ModalScreenState extends State<ModalScreen> {
               children: [
                 SizedBox(height: 12.v),
                 // Text( widget.controller.modalModelObj.value.title,
-                //   style: CustomTextStyles.titleMediumLato,
+                //   style: CustomTextStyles.titleMediumLatoOnBackground,
                 // ),
                 
                 Text(
@@ -70,7 +70,7 @@ class ModalScreenState extends State<ModalScreen> {
                 SizedBox(height: 18.v),
                 Text(
                   "lbl_july_30_2023".tr,
-                  style: CustomTextStyles.titleMediumLato,
+                  style: CustomTextStyles.titleMediumLatoOnBackground,
                 ),
                 Padding(
                   padding: EdgeInsets.only(
@@ -98,6 +98,7 @@ class ModalScreenState extends State<ModalScreen> {
                   ),
                 ),
                 CustomElevatedButton(
+                  buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                   text: "lbl_book_ticket".tr,
                   margin: EdgeInsets.only(
                     left: 16.h,
@@ -105,7 +106,7 @@ class ModalScreenState extends State<ModalScreen> {
                     bottom: 16.v,
                     top: 16.v
                   ),
-                  buttonTextStyle: CustomTextStyles.titleSmallRobotoWhiteA700,
+                  buttonTextStyle: CustomTextStyles.buttonTextSmall,
                 ),
               ],
             ),

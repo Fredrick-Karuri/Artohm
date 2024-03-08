@@ -72,7 +72,7 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: appTheme.pink50),
+          borderRadius: BorderRadius.circular(8), color: theme.colorScheme.surface),
       margin: EdgeInsets.only(top: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,7 +80,7 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 16),
             child: Text('Toggle Visibility',
-                style: CustomTextStyles.titleMediumLato),
+                style: CustomTextStyles.titleMediumLatoOnBackground),
           ),
           Column(
             children: [
@@ -97,7 +97,9 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 8,),
+              SizedBox(
+                height: 8,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -122,26 +124,28 @@ class CollaborationStartConfirmationPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(left: 16, right: 16, top: 8, bottom: 10),
       child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
             child: CustomOutlinedButton(
+              buttonTextStyle: TextStyle(),
               onTap: () {
                 Get.back();
               },
-              text: 'Edit Collaboration',
+              text: 'Edit ',
             ),
           ),
-          SizedBox(
-            width: 10,
-          ),
+           const SizedBox(width: 4.0), // Add some fixed spacing between buttons
           Expanded(
             child: CustomElevatedButton(
+              buttonStyle:CustomButtonStyles.fillPrimaryButtonRounded,
               onTap: () {
                 Get.toNamed(AppRoutes.newCollaborationItemPage);
               },
               text: 'Create Collaboration',
             ),
           ),
+
         ],
       ),
     );

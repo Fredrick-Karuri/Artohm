@@ -17,7 +17,7 @@ class SocialMediaButton extends StatelessWidget {
       margin: EdgeInsets.only(top: 8.0, right: 7.0),
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: appTheme.pink50, // Replace with your desired color
+        color: theme.colorScheme.surface, // Replace with your desired color
         borderRadius: BorderRadius.circular(15.0), // Replace with your desired border radius
       ),
       child: Row(

@@ -26,7 +26,7 @@ class AccountTypeCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               color: controller.selectedType.value == accountType
                   ? color
-                  : Colors.white,
+                  : Colors.transparent,
               border: Border.all(
                 color: color,
               ),
@@ -42,8 +42,8 @@ class AccountTypeCard extends StatelessWidget {
                       style: theme.textTheme.titleMedium!.copyWith(
                         fontSize: 20,
                         color: controller.selectedType.value == accountType
-                            ? Colors.white
-                            : Colors.black,
+                            ? theme.colorScheme.background
+                            : theme.colorScheme.onBackground,
                       ),
                     ),
                     SizedBox(

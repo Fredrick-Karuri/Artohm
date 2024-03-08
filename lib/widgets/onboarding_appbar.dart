@@ -24,7 +24,7 @@ class OnboardingAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onTapArrowleftone();
               },
               icon: Icon(Icons.arrow_back_ios),
-              color: appTheme.red300,
+              color: theme.colorScheme.tertiary,
               padding: EdgeInsets.only(left: 12),
             )
           : null,

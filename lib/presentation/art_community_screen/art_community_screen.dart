@@ -22,16 +22,14 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBarComponent(
-          title: "lbl_community2".tr,
-          onBackPressed: () {
-            Get.back(id: 1);
-          },
-        ),
-        body: bodyContent(context),
+    return Scaffold(
+      appBar: CustomAppBarComponent(
+        title: "lbl_community2".tr,
+        onBackPressed: () {
+          Get.back(id: 1);
+        },
       ),
+      body: bodyContent(context),
     );
   }
 
@@ -64,7 +62,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
         width: 358.h,
         margin: EdgeInsets.only(left: 16.h, right: 16.h),
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 6.v),
-        decoration: AppDecoration.outlineRed300
+        decoration: AppDecoration.outlineTertiaryFillPrimary
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -77,16 +75,16 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                   "lbl_featured_artist".tr,
                   style: theme.textTheme.titleMedium,
                 ),
-                CustomElevatedButton(
-                  height: 28.v,
-                  width: 109.h,
-                  text: "lbl_discover_more".tr,
-                  buttonTextStyle: CustomTextStyles.labelLargeRobotoWhiteA700,
-                  onTap: () {
-                    onTapDiscovermore();
-                  },
-                  alignment: Alignment.centerRight,
-                )
+                // CustomElevatedButton(
+                //   height: 28.v,
+                //   width: 109.h,
+                //   text: "lbl_discover_more".tr,
+                //   buttonTextStyle: CustomTextStyles.labelLargeBackground,
+                //   onTap: () {
+                //     onTapDiscovermore();
+                //   },
+                //   alignment: Alignment.centerRight,
+                // )
               ],
             ),
             Padding(
@@ -108,7 +106,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                         children: [
                           Text("lbl_mia_thompson".tr,
                               style:
-                                  CustomTextStyles.titleMediumLato),
+                                  CustomTextStyles.titleMediumLatoOnBackground),
                           SizedBox(height: 10.v),
                           SizedBox(
                             width: 218.h,
@@ -116,7 +114,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                               "msg_art_is_my_way_of".tr,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: CustomTextStyles.bodyLargeBlack
+                              style: CustomTextStyles.bodyLarge
                                   .copyWith(height: 1.50),
                             ),
                           ),
@@ -256,7 +254,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
             child: Container(
               margin: EdgeInsets.only(top: 16.v, right: 16.h),
               padding: EdgeInsets.all(8.h),
-              decoration: AppDecoration.outlineGray
+              decoration: AppDecoration.outlineBlack
                   .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -310,6 +308,8 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                           style: CustomTextStyles.bodyMediumLight)),
                   SizedBox(height: 8.v),
                   CustomElevatedButton(
+                    buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
+
                       onTap: () {
                         Get.toNamed(AppRoutes.collaborateitemScreen);
                       },
@@ -390,7 +390,7 @@ class ArtCommunityScreen extends GetWidget<ArtCommunityController> {
                 radius: BorderRadius.circular(40.h),
               ),
               SizedBox(height: 10.v),
-              Text(labelText, style: CustomTextStyles.bodyMediumBlack),
+              Text(labelText, style: CustomTextStyles.bodyMedium),
             ],
           ),
         ),

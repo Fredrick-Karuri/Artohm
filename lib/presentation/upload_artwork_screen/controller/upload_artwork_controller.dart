@@ -10,10 +10,6 @@ import 'package:image_picker/image_picker.dart';
 /// This class manages the state of the UploadArtworkScreen, including the
 /// current uploadArtworkModelObj
 class UploadArtworkController extends GetxController {
-  TextEditingController inputTextController = TextEditingController();
-
-  TextEditingController inputtextoneController = TextEditingController();
-
   Rx<UploadArtworkModel> uploadArtworkModelObj = UploadArtworkModel().obs;
 
   SelectionPopupModel? selectedDropDownValue;
@@ -22,15 +18,30 @@ class UploadArtworkController extends GetxController {
 
   final ImagePicker _picker = ImagePicker();
 
+  TextEditingController inputTitleController = TextEditingController();
+  TextEditingController inputDescriptionController = TextEditingController();
+  TextEditingController inputWidthController = TextEditingController();
+  TextEditingController inputHeightController = TextEditingController();
+  FocusNode inputTitleFocusNode = FocusNode();
+  FocusNode inputDescriptionFocusNode = FocusNode();
+  FocusNode inputWidthFocusNode = FocusNode();
+  FocusNode inputHeightFocusNode = FocusNode();
   @override
   void onClose() {
     super.onClose();
-    inputTextController.dispose();
-    inputtextoneController.dispose();
+    inputTitleController.dispose();
+    inputDescriptionController.dispose();
+    inputTitleFocusNode.dispose();
+    inputDescriptionFocusNode.dispose();
+    inputWidthController.dispose();
+    inputHeightController.dispose();
+    inputWidthFocusNode.dispose();
+    inputHeightFocusNode.dispose();
   }
 
   onSelectedDimensions(int value) {
-    for (var element in uploadArtworkModelObj.value.dimensionsDropdownItemList.value) {
+    for (var element
+        in uploadArtworkModelObj.value.dimensionsDropdownItemList.value) {
       element.isSelected = false;
       if (element.id == value) {
         // Now we're comparing two integers
@@ -41,7 +52,8 @@ class UploadArtworkController extends GetxController {
   }
 
   onSelectedMedium(int value) {
-    for (var element in uploadArtworkModelObj.value.mediumDropdownItemList.value) {
+    for (var element
+        in uploadArtworkModelObj.value.mediumDropdownItemList.value) {
       element.isSelected = false;
       if (element.id == value) {
         // Now we're comparing two integers
@@ -69,5 +81,50 @@ class UploadArtworkController extends GetxController {
     } else {
       print('no image selected');
     }
+  }
+}
+
+class ArtworkTypeController extends GetxController {
+  var selectedArtworkType = ''.obs;
+}
+
+class ArtworkTagController extends GetxController {
+  TextEditingController inputTagController = TextEditingController();
+  FocusNode inputTagFocusNode = FocusNode();
+
+  void onClose() {
+    super.onClose();
+    inputTagController.dispose();
+    inputTagFocusNode.dispose();
+  }
+
+  void addTag() {
+    if (inputTagController.text.isNotEmpty) {
+      selectedTags.add(inputTagController.text);
+      inputTagController.clear();
+    }
+  }
+
+  var selectedTags = <String>[].obs;
+}
+
+class ArtworkSaleController extends GetxController {
+  var isForSale = false.obs;
+  var price = 0.0.obs;
+  var currency = ''.obs;
+  TextEditingController priceController = TextEditingController();
+  FocusNode priceFocusNode = FocusNode();
+  List<String> currencies = ['KSH', 'USD'].obs;
+
+  void onClose() {
+    super.onClose();
+    priceController.dispose();
+    priceFocusNode.dispose();
+  }
+
+  void updateSaleInfo(bool forSale, String? newPrice, String? newCurrency) {
+    isForSale.value = forSale;
+    price.value = double.tryParse(newPrice ?? '') ?? 0.0;
+    currency.value = newCurrency ?? '';
   }
 }

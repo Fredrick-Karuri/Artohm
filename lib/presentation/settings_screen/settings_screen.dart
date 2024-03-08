@@ -23,6 +23,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
     return Container(
       color: Get.theme.scaffoldBackgroundColor,
       child: SafeArea(
+        top: false,
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: CustomAppBarComponent(
@@ -46,12 +47,16 @@ class SettingsScreen extends GetWidget<SettingsController> {
                 Column(
                   children: [
                     CustomOutlinedButton(
+                      buttonStyle: CustomButtonStyles.outlinePrimaryButton,
                         text: "lbl_contact_support".tr,
-                        buttonTextStyle: CustomTextStyles.titleSmallLatoRed300),
+                        buttonTextStyle: CustomTextStyles.buttonTextSmall!.copyWith(
+                          color: theme.colorScheme.tertiary
+                        )),
                     SizedBox(height: 24.v),
                     CustomElevatedButton(
+                      buttonStyle: CustomButtonStyles.fillPrimaryButton,
                       text: "Logout".tr,
-                      buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700,
+                      buttonTextStyle: CustomTextStyles.buttonTextSmall,
                       onTap: onTapLogout,
                     ),
                   ],
@@ -73,7 +78,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
       child: Container(
         margin: EdgeInsets.only(top: 28.v, right: 9.h),
         padding: EdgeInsets.symmetric(vertical: 8.v),
-        decoration: AppDecoration.outlineBlack90001,
+        decoration: AppDecoration.outlineBottomSide,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +105,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
     return Container(
       margin: EdgeInsets.only(top: 28.v, right: 9.h),
       padding: EdgeInsets.symmetric(vertical: 8.v),
-      decoration: AppDecoration.outlineBlack90001,
+      decoration: AppDecoration.outlineBottomSide,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +131,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
       child: Container(
         margin: EdgeInsets.only(top: 28.v, right: 9.h),
         padding: EdgeInsets.symmetric(vertical: 8.v),
-        decoration: AppDecoration.outlineBlack90001,
+        decoration: AppDecoration.outlineBottomSide,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,7 +159,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
       child: Container(
         margin: EdgeInsets.only(top: 28.v, right: 9.h),
         padding: EdgeInsets.symmetric(vertical: 8.v),
-        decoration: AppDecoration.outlineBlack90001,
+        decoration: AppDecoration.outlineBottomSide,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +188,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
       child: Container(
         margin: EdgeInsets.only(top: 24.v, right: 9.h),
         padding: EdgeInsets.symmetric(vertical: 8.v),
-        decoration: AppDecoration.outlineBlack90001,
+        decoration: AppDecoration.outlineBottomSide,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -218,7 +223,7 @@ class SettingsScreen extends GetWidget<SettingsController> {
         children: [
           Text(
             "msg_account_settings".tr,
-            style: CustomTextStyles.titleMediumLato,
+            style: CustomTextStyles.titleMediumLatoOnBackground,
           ),
           Expanded(
               child:
@@ -248,14 +253,14 @@ class SettingsScreen extends GetWidget<SettingsController> {
         top: 16.v,
       ),
       title: "Confirm Logout",
-      titleStyle: CustomTextStyles.titleLargeBlack,
+      titleStyle: CustomTextStyles.titleLarge,
       middleText: "Are you sure you want to logout?".tr,
       textConfirm: "Yes".tr,
       textCancel: "Cancel".tr,
-      confirmTextColor: Colors.white,
-      buttonColor: appTheme.red300,
-      cancelTextColor: appTheme.red300,
-      backgroundColor: appTheme.pink50,
+      confirmTextColor:theme.colorScheme.background,
+      buttonColor: theme.colorScheme.tertiary,
+      cancelTextColor: theme.colorScheme.tertiary,
+      backgroundColor: theme.colorScheme.surface,
       onConfirm: () async {
         bool isLoggedIn = await signOut();
         if (!isLoggedIn) {

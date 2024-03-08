@@ -67,7 +67,7 @@ class CollectionItemWidget extends StatelessWidget {
                             () => Text(
                               collectionItemModelObj.artworkText!.value,
                               overflow: TextOverflow.ellipsis,
-                              // style: CustomTextStyles.bodySmallLatoLight,
+                              // style: CustomTextStyles.bodySmallLight,
                               style: theme.textTheme.bodyMedium,
                             ),
                           ),

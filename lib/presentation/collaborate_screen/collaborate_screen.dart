@@ -14,16 +14,14 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: CustomAppBarComponent(
-          title: "lbl_collaborate".tr,
-          onBackPressed: () {
-            Get.back(id: 1);
-          },
-        ),
-        body: bodyContent(),
+    return Scaffold(
+      appBar: CustomAppBarComponent(
+        title: "lbl_collaborate".tr,
+        onBackPressed: () {
+          Get.back(id: 1);
+        },
       ),
+      body: bodyContent(),
     );
   }
 
@@ -77,7 +75,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
               EdgeInsets.only(left: 16.h, top: 11.v, bottom: 11.v, right: 8.v),
           borderDecoration: DropDownStyleHelper.fillSecondaryOpacity,
           filled: true,
-          fillColor: appTheme.lightBlueA700.withOpacity(0.08),
+          fillColor: theme.colorScheme.secondary.withOpacity(0.08),
           onChanged: (value) {
             controller.onSelected(value);
           },
@@ -168,36 +166,35 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
         ),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: IntrinsicWidth(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListingCard(
-                  imagePath: ImageConstant.imgRectangle11180x264,
-                  onButtonPressed: () {
-                    Get.toNamed(AppRoutes.collaborateitemScreen);
-                  },
-                  title: "msg_ai_infused_sculpture".tr,
-                  subtitle: "msg_mark_turner_aiart".tr,
-                  description: "msg_mark_s_bronze_sculpture".tr,
-                ),
-                SizedBox(
-                  width: 20.h,
-                ),
-                ListingCard(
-                  onButtonPressed: () {
-                    Get.toNamed(AppRoutes.collaborateitemScreen);
-                  },
-                  imagePath: ImageConstant.imgRectangle11180x264,
-                  title: "msg_harmony_of_nature".tr,
-                  subtitle: "msg_sarah_smith_david2".tr,
-                  description: "msg_sarah_s_intricate".tr,
-                ),
-              ],
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListingCard(
+                imagePath: ImageConstant.imgRectangle11180x264,
+                onButtonPressed: () {
+                  Get.toNamed(AppRoutes.collaborateitemScreen);
+                },
+                title: "msg_ai_infused_sculpture".tr,
+                subtitle: "msg_mark_turner_aiart".tr,
+                description: "msg_mark_s_bronze_sculpture".tr,
+              ),
+              SizedBox(
+                width: 20.h,
+              ),
+              ListingCard(
+                onButtonPressed: () {
+                  Get.toNamed(AppRoutes.collaborateitemScreen);
+                },
+                imagePath: ImageConstant.imgRectangle11180x264,
+                title: "msg_harmony_of_nature".tr,
+                subtitle: "msg_sarah_smith_david2".tr,
+                description: "msg_sarah_s_intricate".tr,
+              ),
+            ],
           ),
         ),
+        
       ],
     );
   }
@@ -310,7 +307,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           style: BorderStyle.solid,
-          color: appTheme.red300,
+          color: theme.colorScheme.tertiary,
         ),
       ),
       padding: EdgeInsets.symmetric(horizontal: 10.v, vertical: 16.v),
@@ -323,7 +320,7 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
           ),
           Text(
             "\"Art is a harmony parallel with nature. Let's create it together.\"",
-            style: CustomTextStyles.titleMediumLato.copyWith(
+            style: CustomTextStyles.titleMediumLatoOnBackground.copyWith(
               fontStyle: FontStyle.italic,
             ),
           ),
@@ -332,12 +329,13 @@ class CollaborateScreen extends GetWidget<CollaborateController> {
           ),
           Text(
             "- Paul Cézanne",
-            style: CustomTextStyles.titleMediumLato,
+            style: CustomTextStyles.titleMediumLatoOnBackground,
           ),
           SizedBox(
             height: 16.v,
           ),
           CustomElevatedButton(
+            buttonStyle: CustomButtonStyles.fillPrimaryButton,
             onTap: () {
               Get.toNamed(AppRoutes.newCollaborationItemPage);
             },

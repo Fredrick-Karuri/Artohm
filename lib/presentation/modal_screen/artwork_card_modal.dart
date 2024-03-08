@@ -84,7 +84,7 @@ class ArtworkCardModalState extends State<ArtworkCardModal> {
                         icon: Icon(Icons.info_outline),
                         label: Text(
                           'View Artwork Info',
-                          style: CustomTextStyles.titleSmallLatoBlack90001,
+                          style: CustomTextStyles.bodySmall,
                         ),
                       ),
                       TextButton.icon(
@@ -92,7 +92,7 @@ class ArtworkCardModalState extends State<ArtworkCardModal> {
                         icon: Icon(Icons.collections),
                         label: Text(
                           'Add to Collections',
-                          style: CustomTextStyles.titleSmallLatoBlack90001,
+                          style: CustomTextStyles.bodySmall,
                         ),
                       ),
                     ],

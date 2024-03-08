@@ -43,14 +43,14 @@ class NotificationsTabContainerScreen
                   fontSize: 16.fSize,
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.w400),
-              unselectedLabelColor: appTheme.lightBlueA700,
+              unselectedLabelColor: theme.colorScheme.secondary,
               unselectedLabelStyle: TextStyle(
                   fontSize: 16.fSize,
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.w400),
               indicatorPadding: EdgeInsets.all(0.5.h),
               indicator: BoxDecoration(
-                  color: appTheme.lightBlueA700,
+                  color: theme.colorScheme.secondary,
                   borderRadius: BorderRadius.circular(17.h)),
               tabs: [
                 Tab(child: Text("lbl_all".tr)),

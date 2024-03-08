@@ -128,7 +128,7 @@ class CustomSearchView extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.arrow_back,
-                      color: appTheme.red300,
+                      color: theme.colorScheme.tertiary,
                     ),
                   ),
                   Flexible(
@@ -137,7 +137,7 @@ class CustomSearchView extends StatelessWidget {
                       focusNode: focusNode ?? FocusNode(),
                       autofocus: autofocus!,
                       style: textStyle ??
-                          CustomTextStyles.titleSmallLatoLightblueA700Medium,
+                          CustomTextStyles.titleSmallLatoSecondaryMedium,
                       keyboardType: textInputType,
                       maxLines: maxLines ?? 1,
                       decoration: decoration,
@@ -154,7 +154,7 @@ class CustomSearchView extends StatelessWidget {
                       },
                       child: Text(
                         "Search",
-                        style: TextStyle(color: appTheme.red300),
+                        style: TextStyle(color: theme.colorScheme.tertiary),
                       ))
                 ],
               ),
@@ -181,7 +181,7 @@ class CustomSearchView extends StatelessWidget {
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "Type to Search ",
         hintStyle:
-            hintStyle ?? CustomTextStyles.titleSmallLatoLightblueA700Medium,
+            hintStyle ?? CustomTextStyles.titleSmallLatoSecondaryMedium,
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix ??
@@ -214,7 +214,7 @@ class CustomSearchView extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.h),
               borderSide: BorderSide(
-                color: appTheme.lightBlueA700,
+                color: theme.colorScheme.secondary,
                 width: 1,
               ),
             ),
@@ -222,7 +222,7 @@ class CustomSearchView extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.h),
               borderSide: BorderSide(
-                color: appTheme.lightBlueA700,
+                color: theme.colorScheme.secondary,
                 width: 1,
               ),
             ),
@@ -230,7 +230,7 @@ class CustomSearchView extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.h),
               borderSide: BorderSide(
-                color: appTheme.lightBlueA700,
+                color: theme.colorScheme.secondary,
                 width: 1,
               ),
             ),

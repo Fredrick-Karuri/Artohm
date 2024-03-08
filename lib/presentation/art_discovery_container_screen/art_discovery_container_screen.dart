@@ -8,7 +8,6 @@ import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dar
 import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-
 class ArtDiscoveryContainerScreen extends StatelessWidget {
   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);
 
@@ -19,6 +18,7 @@ class ArtDiscoveryContainerScreen extends StatelessWidget {
         (session != null) ? AppRoutes.homePage : AppRoutes.onboardingScreen;
 
     return SafeArea(
+      top: false,
       child: Scaffold(
         body: Navigator(
           key: Get.nestedKey(1),
@@ -63,9 +63,7 @@ String getCurrentRoute(BottomBarEnum type) {
 Widget getCurrentPage(String currentRoute) {
   switch (currentRoute) {
     case AppRoutes.homePage:
-      return HomePage(
-        
-      );
+      return HomePage();
     case AppRoutes.artMarketplaceScreen:
       return ArtMarketplaceScreen();
     case AppRoutes.artCommunityScreen:
@@ -73,10 +71,10 @@ Widget getCurrentPage(String currentRoute) {
     case AppRoutes.collaborateScreen:
       return CollaborateScreen();
     default:
-      return HomePage(
-      );
+      return HomePage();
   }
 }
+
 
 // class ArtDiscoveryContainerScreen extends StatelessWidget {
 //   const ArtDiscoveryContainerScreen({Key? key}) : super(key: key);

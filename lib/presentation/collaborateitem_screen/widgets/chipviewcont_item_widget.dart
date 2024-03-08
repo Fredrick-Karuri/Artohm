@@ -26,19 +26,19 @@ class ChipviewcontItemWidget extends StatelessWidget {
         label: Text(
           chipviewcontItemModelObj.cont.value,
           style: TextStyle(
-            color: appTheme.black90001.withOpacity(0.6),
+            color: appTheme.black900.withOpacity(0.6),
             fontSize: 14.fSize,
             fontFamily: 'Lato',
             fontWeight: FontWeight.w400,
           ),
         ),
         selected: chipviewcontItemModelObj.isSelected.value,
-        backgroundColor: appTheme.whiteA700,
-        selectedColor: appTheme.whiteA700,
+        backgroundColor: theme.colorScheme.background,
+        selectedColor: theme.colorScheme.background,
         shape: chipviewcontItemModelObj.isSelected.value
             ? RoundedRectangleBorder(
                 side: BorderSide(
-                  color: appTheme.black90001.withOpacity(0.6),
+                  color: appTheme.black900.withOpacity(0.6),
                   width: 1.h,
                 ),
                 borderRadius: BorderRadius.circular(

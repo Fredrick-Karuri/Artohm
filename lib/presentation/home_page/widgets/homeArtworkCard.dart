@@ -54,7 +54,7 @@ class HomeArtworkCardNew extends StatelessWidget {
                           artwork.isFavorite.value
                               ? Icons.favorite
                               : Icons.favorite_border,
-                          color: Colors.white,
+                          color: theme.colorScheme.background,
                         ),
                         onPressed: () {
                           favoriteArtworksController.toggleFavorite(artwork);

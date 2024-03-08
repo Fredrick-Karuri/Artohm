@@ -1,6 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/data/models/selectionPopupModel/selection_popup_model.dart';
-import 'package:artohmapp/presentation/edit_profile_screen/models/edit_profile_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomDropDown extends StatelessWidget {
@@ -133,7 +132,7 @@ class CustomDropDown extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.h),
               borderSide: BorderSide(
-                color: appTheme.black90001,
+                color: appTheme.black900,
                 width: 1,
               ),
             ),
@@ -141,7 +140,7 @@ class CustomDropDown extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.h),
               borderSide: BorderSide(
-                color: appTheme.black90001,
+                color: appTheme.black900,
                 width: 1,
               ),
             ),
@@ -149,7 +148,7 @@ class CustomDropDown extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.h),
               borderSide: BorderSide(
-                color: appTheme.black90001,
+                color: appTheme.black900,
                 width: 1,
               ),
             ),
@@ -165,7 +164,7 @@ extension DropDownStyleHelper on CustomDropDown {
   static OutlineInputBorder get outlineBlackTL81 => OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.h),
         borderSide: BorderSide(
-          color: appTheme.black90001.withOpacity(0.87),
+          color: appTheme.black900.withOpacity(0.87),
           width: 1,
         ),
       );

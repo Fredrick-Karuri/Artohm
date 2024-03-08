@@ -39,7 +39,7 @@ class UpcomingEventsCard extends StatelessWidget {
                       text,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.labelLargeWhiteA700
+                      style: CustomTextStyles.labelLargeWhite
                           .copyWith(height: 1.40),
                     ),
                   ),

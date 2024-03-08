@@ -1,6 +1,5 @@
 import 'package:artohmapp/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import '../../widgets/onboarding_appbar.dart';
 import 'controller/signin_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
@@ -24,6 +23,7 @@ class SigninScreen extends GetWidget<SigninController> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
+      top: false,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: OnboardingAppBar(
@@ -62,7 +62,7 @@ class SigninScreen extends GetWidget<SigninController> {
                         Padding(
                           padding: EdgeInsets.only(top: 2.v, right: 10),
                           child: Text("msg_don_t_have_an_account".tr,
-                              style: CustomTextStyles.bodyLargeLatoBlack),
+                              style: CustomTextStyles.bodyLarge),
                         ),
                         TextButton(
                           onPressed: () {
@@ -70,8 +70,8 @@ class SigninScreen extends GetWidget<SigninController> {
                           },
                           child: Text(
                             ' Create One',
-                            style: TextStyle(
-                                color: appTheme.lightBlueA700, fontSize: 12),
+                            style: CustomTextStyles.bodyLargeSecondary,
+                          
                           ),
                         )
                       ],
@@ -95,7 +95,6 @@ class SigninScreen extends GetWidget<SigninController> {
           height: 42.v,
           text: "lbl_forgot_password".tr,
           buttonStyle: CustomButtonStyles.outlinePrimaryTL81,
-          buttonTextStyle: CustomTextStyles.titleMediumLato,
           onTap: () {
             onTapForgotpassword();
           },
@@ -108,8 +107,8 @@ class SigninScreen extends GetWidget<SigninController> {
     return CustomElevatedButton(
       height: 42.v,
       text: "lbl_login".tr,
-      buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-      buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
+      buttonStyle: CustomButtonStyles.fillPrimaryButton,
+      buttonTextStyle: CustomTextStyles.buttonText,
       onTap: () async {
         if (_formKey.currentState!.validate()) {
           // if all the data are correct then save the data to out variables
@@ -124,12 +123,8 @@ class SigninScreen extends GetWidget<SigninController> {
             );
 
             if (response.user != null) {
-              // onTapLogin();
-              print('User signed in successfully: ${response.user!.email}');
-              Get.snackbar(
-                'Success',
-                "Welcome",
-              );
+              Get.snackbar('Success', "Welcome",
+                  backgroundColor: Colors.green, colorText: Colors.white);
               onTapLogin();
               String? accessToken = response.session?.accessToken;
               await storage.write(key: 'accessToken', value: accessToken);
@@ -166,8 +161,9 @@ class SigninScreen extends GetWidget<SigninController> {
           leftIcon: Container(
               margin: EdgeInsets.only(right: 30.h),
               child: CustomImageView(svgPath: ImageConstant.imgGooglelogo)),
-          buttonStyle: CustomButtonStyles.outlinePrimaryTL8,
-          buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
+          buttonStyle: CustomButtonStyles.outlinePrimaryButton,
+          buttonTextStyle: CustomTextStyles.buttonText!
+              .copyWith(color: theme.colorScheme.tertiary),
           onTap: () {
             onTapContinuewith();
           },
@@ -180,8 +176,8 @@ class SigninScreen extends GetWidget<SigninController> {
               margin: EdgeInsets.only(right: 30.h),
               child: CustomImageView(
                   svgPath: ImageConstant.imgProfileiconsWhiteA70020x20)),
-          buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-          buttonTextStyle: CustomTextStyles.titleMediumLatoWhite,
+          buttonStyle: CustomButtonStyles.fillPrimaryButton,
+          buttonTextStyle: CustomTextStyles.buttonText,
           onTap: () {
             onTapContinuewith1();
           },
@@ -198,7 +194,8 @@ class SigninScreen extends GetWidget<SigninController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_password".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_password".tr,
+              style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           Obx(
             () => CustomTextFormField(
@@ -244,7 +241,8 @@ class SigninScreen extends GetWidget<SigninController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_email_address".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_email_address".tr,
+              style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           CustomTextFormField(
             controller: controller.emailController,
@@ -272,11 +270,11 @@ class SigninScreen extends GetWidget<SigninController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("lbl_full_name".tr, style: CustomTextStyles.titleMediumLato),
+          Text("lbl_full_name".tr,
+              style: CustomTextStyles.titleMediumLatoOnBackground),
           SizedBox(height: 5.v),
           CustomTextFormField(
             controller: controller.fullNameController,
-
             focusNode: controller.fullNameFocusNode,
             hintText: "msg_enter_your_full".tr,
             validator: (value) {

@@ -46,7 +46,7 @@ class PrivacyScreen extends GetWidget<PrivacyController> {
         Text("msg_comment_visibility".tr, style: theme.textTheme.titleMedium),
         SizedBox(height: 11.v),
         Text("msg_choose_who_can_comment".tr,
-            style: CustomTextStyles.bodyMediumBlack),
+            style: CustomTextStyles.bodyMedium),
         SizedBox(height: 16.v),
         Obx(
           () => Wrap(
@@ -80,7 +80,7 @@ class PrivacyScreen extends GetWidget<PrivacyController> {
         Text("msg_artwork_visibility".tr, style: theme.textTheme.titleMedium),
         SizedBox(height: 11.v),
         Text("msg_choose_who_can_see".tr,
-            style: CustomTextStyles.bodyMediumBlack),
+            style: CustomTextStyles.bodyMedium),
         SizedBox(height: 16.v),
         Obx(
           () => Wrap(
@@ -114,7 +114,7 @@ class PrivacyScreen extends GetWidget<PrivacyController> {
         Text("msg_account_visibility".tr, style: theme.textTheme.titleMedium),
         SizedBox(height: 11.v),
         Text("msg_choose_who_can_view".tr,
-            style: CustomTextStyles.bodyMediumBlack),
+            style: CustomTextStyles.bodyMedium),
         Container(
           margin: EdgeInsets.only(top: 16.v, right: 1.h),
           padding: EdgeInsets.all(16.h),

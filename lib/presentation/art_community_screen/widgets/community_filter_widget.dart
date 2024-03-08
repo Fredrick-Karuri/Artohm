@@ -33,7 +33,7 @@ class CommunityFilterWidget extends StatelessWidget {
               padding: EdgeInsets.only(left: 9.h, top: 10.v, bottom: 7.v),
               child: Text(
                 text,
-                style: CustomTextStyles.labelLargeBlack90001,
+                style: CustomTextStyles.labelLargeOnbackground,
               ),
             ),
           ],

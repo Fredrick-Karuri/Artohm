@@ -1,5 +1,7 @@
 import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/presentation/art_discovery_container_screen/controller/navigation_observer.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
+import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,29 +18,32 @@ Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]).then((value) async {
-    Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
+  ]).then(
+    (value) async {
+      Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
 
-    // Load the .env file
-    await dotenv.load();
+      // Load the .env file
+      await dotenv.load();
 
-    // Initialize Supabase
-    await Supabase.initialize(
-      url: dotenv.env['SUPABASE_URL']!,
-      anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
-    );
+      // Initialize Supabase
+      await Supabase.initialize(
+        url: dotenv.env['SUPABASE_URL']!,
+        anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+      );
 
-    supabase = Supabase.instance.client;
-    // final session = supabase.auth.currentSession;
-    Get.put(GlobalOnboardingController());
-    GlobalOnboardingController globalOnboardingController = Get.find();
-    bool onboardingCompleted =
-        globalOnboardingController.onboardingCompleted.value;
-    Get.put(LoginController());
-    // SharedPreferences prefs = await SharedPreferences.getInstance();
-    // bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
-    runApp(MyApp(onboardingCompleted: onboardingCompleted));
-  });
+      supabase = Supabase.instance.client;
+      // final session = supabase.auth.currentSession;
+      Get.put(GlobalOnboardingController());
+      GlobalOnboardingController globalOnboardingController = Get.find();
+      bool onboardingCompleted =
+          globalOnboardingController.onboardingCompleted.value;
+      Get.put(LoginController());
+      Get.lazyPut(() => CustomBottomBarController());
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      // bool onboardingCompleted = prefs.getBool('onboardingCompleted') ?? false;
+      runApp(MyApp(onboardingCompleted: onboardingCompleted));
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -53,7 +58,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.from(colorScheme: ColorSchemes.primaryColorScheme),
       darkTheme: ThemeData.from(colorScheme: ColorSchemes.darkColorScheme),
       themeMode: ThemeMode.light,
-      // themeMode: ThemeMode.light,
+      // themeMode: ThemeMode.system,
 
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
@@ -62,6 +67,9 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.splashScreen,
       getPages: AppRoutes.pages,
+      navigatorObservers: [
+        NavigationObserver(),
+      ],
     );
   }
 }

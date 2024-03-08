@@ -22,7 +22,7 @@ class ListingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 280.v,
-      decoration: AppDecoration.outlineGray
+      decoration: AppDecoration.outlineBlack
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,12 +100,13 @@ class ListingCard extends StatelessWidget {
                     description,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: CustomTextStyles.bodyMediumBlack
+                    style: CustomTextStyles.bodyMedium
                         .copyWith(height: 1.50),
                   ),
                 ),
                 SizedBox(height: 8.v),
                 CustomElevatedButton(
+                  buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                   onTap: onButtonPressed,
                   // width: 250.h,
                   text: 'Curious...',

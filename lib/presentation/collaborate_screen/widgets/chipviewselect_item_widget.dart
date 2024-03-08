@@ -30,7 +30,7 @@ class ChipviewselectItemWidget extends StatelessWidget {
           label: Text(
             chipviewselectItemModelObj.select.value,
             style: TextStyle(
-              color: appTheme.lightBlueA700,
+              color: theme.colorScheme.secondary,
               fontSize: 14.fSize,
               fontFamily: 'Lato',
               fontWeight: FontWeight.w400,
@@ -38,11 +38,11 @@ class ChipviewselectItemWidget extends StatelessWidget {
           ),
           selected: chipviewselectItemModelObj.isSelected.value,
           backgroundColor: Colors.transparent,
-          selectedColor: appTheme.lightBlueA700.withOpacity(0.2),
+          selectedColor: theme.colorScheme.secondary.withOpacity(0.2),
           shape: chipviewselectItemModelObj.isSelected.value
               ? RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(
@@ -51,7 +51,7 @@ class ChipviewselectItemWidget extends StatelessWidget {
                 )
               : RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(

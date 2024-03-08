@@ -91,7 +91,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: controller,
           focusNode: focusNode ?? FocusNode(),
           autofocus: autofocus!,
-          style: textStyle ?? CustomTextStyles.bodyMediumBlack,
+          style: textStyle ?? CustomTextStyles.bodyMedium,
           obscureText: obscureText!,
           textInputAction: textInputAction,
           keyboardType: textInputType,
@@ -102,7 +102,10 @@ class CustomTextFormField extends StatelessWidget {
       );
   InputDecoration get decoration => InputDecoration(
         hintText: hintText ?? "",
-        hintStyle: hintStyle ?? CustomTextStyles.bodyMediumBlack,
+        hintStyle: hintStyle ??
+            CustomTextStyles.bodyMedium!.copyWith(
+              color: theme.colorScheme.onBackground.withOpacity(0.4),
+            ),
         prefixIcon: prefix,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
@@ -115,7 +118,7 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.h),
               borderSide: BorderSide(
-                color: appTheme.black90001.withOpacity(0.1),
+                color: theme.colorScheme.background.withOpacity(0.1),
                 width: 1,
               ),
             ),
@@ -123,7 +126,7 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.h),
               borderSide: BorderSide(
-                color: appTheme.black90001.withOpacity(0.1),
+                color: theme.colorScheme.onBackground.withOpacity(0.2),
                 width: 1,
               ),
             ),
@@ -131,22 +134,21 @@ class CustomTextFormField extends StatelessWidget {
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(6.h),
               borderSide: BorderSide(
-                color: appTheme.red300.withOpacity(0.8),
+                color: theme.colorScheme.onBackground.withOpacity(0.8),
                 width: 1,
               ),
             ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.h),
+          borderRadius: BorderRadius.circular(6.h),
           borderSide: BorderSide(
-            color: Colors.red,
-            // color: theme.colorScheme.primary.withOpacity(0.5),
+            color: theme.colorScheme.error,
             width: 1,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.h),
+          borderRadius: BorderRadius.circular(6.h),
           borderSide: BorderSide(
-            color: theme.colorScheme.primary.withOpacity(0.5),
+            color: theme.colorScheme.onBackground.withOpacity(0.8),
             width: 1,
           ),
         ),
@@ -161,13 +163,11 @@ extension TextFormFieldStyleHelper on CustomTextFormField {
       );
   static UnderlineInputBorder get underLineRed => UnderlineInputBorder(
         borderSide: BorderSide(
-          color: appTheme.red300,
+          color: theme.colorScheme.tertiary,
         ),
       );
-  static OutlineInputBorder get fillBlue => OutlineInputBorder(
-        borderSide: BorderSide.none,
-      );
-  static OutlineInputBorder get fillBlueTL4 => OutlineInputBorder(
+
+  static OutlineInputBorder get fillSecondaryOpacityTL4 => OutlineInputBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(
             4.h,

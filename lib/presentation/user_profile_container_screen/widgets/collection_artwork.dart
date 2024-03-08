@@ -15,7 +15,6 @@ class ArtworkCard extends StatelessWidget {
     CollectionsController collectionsController = Get.find();
     return GestureDetector(
       onTap: () {
-        // Navigate to ArtworkScreen
         Get.toNamed(
           AppRoutes.artworkScreen,
           arguments: artwork,

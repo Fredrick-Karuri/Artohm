@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 class ArtistProfileBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ArtistProfileController());
+    Get.lazyPut(() => ArtistProfileController(
+          Get.arguments,
+        ));
   }
 }

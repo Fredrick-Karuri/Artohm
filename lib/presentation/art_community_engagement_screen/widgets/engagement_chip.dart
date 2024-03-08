@@ -28,8 +28,8 @@ class _CustomContainerState extends State<CustomContainer> {
         padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 16.v),
         decoration: _isTapped
             ? AppDecoration
-                .fillSecondaryOpacity700 // Change this to your filled decoration
-            : AppDecoration.outlineLightblueA700
+                .fillSecondary // Change this to your filled decoration
+            : AppDecoration.outlineSecondary
                 .copyWith(borderRadius: BorderRadiusStyle.circleBorder20),
         child: Row(
           children: [
@@ -38,18 +38,18 @@ class _CustomContainerState extends State<CustomContainer> {
               height: 24.adaptSize,
               width: 24.adaptSize,
               color: _isTapped
-                  ? Colors.white
-                  : appTheme.lightBlueA700, // Change color when tapped
+                  ? theme.colorScheme.background
+                  : theme.colorScheme.secondary, // Change color when tapped
             ),
             Padding(
               padding: EdgeInsets.only(left: 10.h, top: 3.v, bottom: 3.v),
               child: Text(
                 widget.labelText,
-                style: CustomTextStyles.titleSmallLatoLightblueA700Medium
+                style: CustomTextStyles.titleSmallLatoSecondaryMedium
                     .copyWith(
                   color: _isTapped
-                      ? Colors.white
-                      : appTheme.lightBlueA700, // Change color when tapped
+                      ? theme.colorScheme.background
+                      : theme.colorScheme.secondary, // Change color when tapped
                 ),
               ),
             ),

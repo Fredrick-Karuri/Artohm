@@ -8,7 +8,6 @@ import 'controller/art_marketplace_controller.dart';
 import 'models/marketplacechip_item_model.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_elevated_button.dart';
-import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 
 class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
@@ -24,17 +23,14 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return Container(
-      color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          appBar: CustomAppBarComponent(
-            title: "lbl_market_place2".tr,
-            onBackPressed: () {
-              Get.back(id: 1);
-            },
-          ),
-          body: bodyContent(context),
+      child: Scaffold(
+        appBar: CustomAppBarComponent(
+          title: "lbl_market_place2".tr,
+          onBackPressed: () {
+            Get.back(id: 1);
+          },
         ),
+        body: bodyContent(context),
       ),
     );
   }
@@ -47,12 +43,15 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
           Wrap(
             children: artworkForSaleController.categories.map(
               (category) {
-                return ChoiceChip(
-                  label: Text(category),
-                  selected: false,
-                  onSelected: (selected) {
-                    // artworkForSaleController.fetchArtworksForSale(category);
-                  },
+                return Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: ChoiceChip(
+                    label: Text(category),
+                    selected: false,
+                    onSelected: (selected) {
+                      // artworkForSaleController.fetchArtworksForSale(category);
+                    },
+                  ),
                 );
               },
             ).toList(),
@@ -121,19 +120,19 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
                               children: [
                                 Text(
                                   artwork.title,
-                                  style: CustomTextStyles.titleSmallBlack90001,
+                                  style: CustomTextStyles.titleSmallOnBackground,
                                 ),
                                 Spacer(),
                                 Text(
                                   "\$${artwork.price}",
-                                  style: CustomTextStyles.titleMediumLato,
+                                  style: CustomTextStyles.titleMediumLatoOnBackground,
                                 ),
                               ],
                             ),
                             SizedBox(height: 8),
                             Text(
                               artwork.artist,
-                              style: CustomTextStyles.bodyMediumBlack,
+                              style: CustomTextStyles.bodyMedium,
                             ),
                           ],
                         ),
@@ -186,70 +185,7 @@ class ArtMarketplaceScreen extends GetWidget<ArtMarketplaceController> {
     });
   }
 
-  featuredCard() {
-    return Padding(
-      padding: const EdgeInsets.only(right: 16),
-      child: Card(
-        color: Colors.white,
-        child: Column(
-          children: [
-            CustomImageView(
-              imagePath: ImageConstant.imgRectangle11332x358,
-              radius: BorderRadius.circular(8.h),
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding:
-                  EdgeInsets.only(top: 20.v, left: 10, right: 10, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "msg_ethereal_enchantment".tr,
-                            style: theme.textTheme.titleSmall,
-                          ),
-                          Text(
-                            'lbl_850'.tr,
-                            style: theme.textTheme.titleSmall,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8.v),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "lbl_sophia_anderson".tr,
-                        style: CustomTextStyles.bodyMediumBlack,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 24.v),
-                  CustomElevatedButton(
-                    fullWidth: true,
-                    text: "lbl_view_artwork".tr,
-                    buttonTextStyle:
-                        CustomTextStyles.titleSmallRobotoWhiteA700Medium,
-                    onTap: () {
-                      onTapViewartwork();
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  
 
   topChipss() {
     return Padding(

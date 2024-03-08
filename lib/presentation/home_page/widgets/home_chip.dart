@@ -28,7 +28,7 @@ class HomeChip extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
               side: BorderSide(
-                color: chip.isSelected.value ? Colors.black : Colors.blue,
+                color: chip.isSelected.value ? theme.colorScheme.secondary : theme.colorScheme.secondary,
                 width: 1.0,
               ),
             ),
@@ -41,10 +41,10 @@ class HomeChip extends StatelessWidget {
                 )
                 : null,
             backgroundColor: chip.isSelected.value
-                ? appTheme.lightBlueA700
-                : appTheme.blue50,
+                ? theme.colorScheme.secondary
+                : theme.colorScheme.background,
             labelStyle: theme.textTheme.labelLarge!.copyWith(
-              color: chip.isSelected.value ? Colors.white : Colors.black,
+              color: chip.isSelected.value ? theme.colorScheme.background : theme.colorScheme.secondary,
             ),
           ),
         ),

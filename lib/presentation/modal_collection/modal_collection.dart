@@ -10,7 +10,9 @@ void collectionModal() {
         widthFactor: 0.94,
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFFEE9E9),
+            color: theme.colorScheme.surface,
+
+            // color: Color(0xFFFEE9E9),
             borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
             border: Border.all(
               color: Color.fromRGBO(245, 140, 140, 0.075),
@@ -84,9 +86,9 @@ void collectionModal() {
                 children: [
                   Text(
                     'Collection Description',
-                    style: CustomTextStyles.titleMediumLato,
+                    style: CustomTextStyles.titleMediumLatoOnBackground,
                   ),
-                  // style: CustomTextStyles.titleMediumLato,
+                  // style: CustomTextStyles.titleMediumLatoOnBackground,
 
                   SizedBox(
                     height: 8,
@@ -117,7 +119,9 @@ ctaButtons() {
         child: CustomOutlinedButton(
           text: "Edit Collection",
           margin: EdgeInsets.only(top: 23.v),
-          buttonTextStyle: CustomTextStyles.titleSmallLatoRed300Medium,
+          buttonTextStyle: CustomTextStyles.buttonTextSmall!.copyWith(
+            color:theme.colorScheme.tertiary
+          ),
           onTap: () {
             // onTapCreate();
           },
@@ -126,11 +130,12 @@ ctaButtons() {
       SizedBox(width: 10),
       Expanded(
         child: CustomElevatedButton(
+          buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
           text: "msg_create_collection".tr,
           margin: EdgeInsets.only(
             top: 23.v,
           ),
-          buttonTextStyle: CustomTextStyles.titleSmallLatoWhiteA700Medium,
+          buttonTextStyle: CustomTextStyles.buttonTextSmall,
           onTap: () {
             // onTapCreate();
           },
@@ -146,7 +151,7 @@ modalArtworks() {
     children: [
       Text(
         '12 artworks',
-        style: CustomTextStyles.titleMediumLato,
+        style: CustomTextStyles.titleMediumLatoOnBackground,
       ),
       SizedBox(
         height: 8,

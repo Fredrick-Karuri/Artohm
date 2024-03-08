@@ -55,7 +55,7 @@ class EnchantedforestItemWidget extends StatelessWidget {
               () => Text(
                 enchantedforestItemModelObj.txtone!.value,
                 overflow: TextOverflow.ellipsis,
-                style: CustomTextStyles.bodySmallLatoLight,
+                style: CustomTextStyles.bodySmallLight,
               ),
             ),
           ),

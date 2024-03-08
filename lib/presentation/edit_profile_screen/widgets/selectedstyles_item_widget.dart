@@ -29,7 +29,7 @@ class SelectedstylesItemWidget extends StatelessWidget {
         label: Text(
           selectedstylesItemModelObj.chips2filterb.value,
           style: TextStyle(
-            color: appTheme.black90001,
+            color: appTheme.black900,
             fontSize: 14.fSize,
             fontFamily: 'Lato',
             fontWeight: FontWeight.w400,
@@ -41,7 +41,7 @@ class SelectedstylesItemWidget extends StatelessWidget {
         shape: selectedstylesItemModelObj.isSelected.value
             ? RoundedRectangleBorder(
                 side: BorderSide(
-                  color: appTheme.black90001.withOpacity(0.6),
+                  color: appTheme.black900.withOpacity(0.6),
                   width: 1.h,
                 ),
                 borderRadius: BorderRadius.circular(

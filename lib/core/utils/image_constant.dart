@@ -43,7 +43,7 @@ class ImageConstant {
   static String imgRectangle11120x1601 =
       '$imagePath/img_rectangle11_120x160_1.png';
 
-  static String imgIconsblack90001 = '$imagePath/img_icons_black_900_02.svg';
+  static String imgIconsblack900 = '$imagePath/img_icons_black_900_02.svg';
 
   static String imgRectangle11120x1602 =
       '$imagePath/img_rectangle11_120x160_2.png';
@@ -223,7 +223,7 @@ class ImageConstant {
   static String imgRectangle1175x18 = '$imagePath/img_rectangle11_75x18.png';
 
   // Common images
-  static String imgAirplaneBlack90001 =
+  static String imgAirplaneblack900 =
       '$imagePath/img_airplane_black_900_01.svg';
 
   static String imgMask = '$imagePath/img_mask.svg';

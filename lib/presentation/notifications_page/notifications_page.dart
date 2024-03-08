@@ -24,7 +24,7 @@ class NotificationsPage extends StatelessWidget {
       child: Scaffold(
         body: Container(
           width: double.maxFinite,
-          decoration: AppDecoration.fillWhiteA,
+          // decoration: AppDecoration.fillBackground,
           child: Padding(
             padding: EdgeInsets.only(
               left: 16.h,

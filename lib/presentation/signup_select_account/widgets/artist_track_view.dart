@@ -70,8 +70,8 @@ class ArtistTrackPage extends StatelessWidget {
 
               // Add an image upload field here
               CustomElevatedButton(
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumWhiteA700,
+                buttonStyle: CustomButtonStyles.fillPrimaryButton,
+                buttonTextStyle: CustomTextStyles.buttonText,
                 text: 'Next',
                 onTap: () {
                   Get.offAllNamed(

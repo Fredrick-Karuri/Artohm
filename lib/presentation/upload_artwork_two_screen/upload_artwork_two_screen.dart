@@ -40,13 +40,14 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
               ),
               Expanded(
                 child: CustomElevatedButton(
+                  buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                     onTap: () {
                       postArtWork(context);
                     },
                     text: "lbl_post_artwork".tr,
                     margin: EdgeInsets.only(left: 12.h),
                     buttonTextStyle:
-                        CustomTextStyles.titleSmallRobotoWhiteA700),
+                        CustomTextStyles.buttonTextSmall),
               )
             ],
           ),
@@ -108,7 +109,7 @@ class UploadArtworkTwoScreen extends GetWidget<UploadArtworkTwoController> {
         top: 24.v,
       ),
       padding: EdgeInsets.all(16.h),
-      decoration: AppDecoration.fillBlue
+      decoration: AppDecoration.fillSecondaryOpacity
           .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
       child: Column(
         mainAxisSize: MainAxisSize.min,

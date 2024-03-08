@@ -29,7 +29,7 @@ class ArtEnthusiastTrackPage extends StatelessWidget {
             SizedBox(height: 32.0),
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: appTheme.lightBlueA700),
+                border: Border.all(color: theme.colorScheme.secondary),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
@@ -55,8 +55,8 @@ class ArtEnthusiastTrackPage extends StatelessWidget {
             SizedBox(height: 48.0),
             //
             CustomElevatedButton(
-                buttonStyle: CustomButtonStyles.fillPrimaryTL8,
-                buttonTextStyle: CustomTextStyles.titleMediumWhiteA700,
+                buttonStyle: CustomButtonStyles.fillPrimaryButton,
+                buttonTextStyle: CustomTextStyles.buttonText,
                 text: 'Next',
                 onTap: () {
                   Get.offAllNamed(

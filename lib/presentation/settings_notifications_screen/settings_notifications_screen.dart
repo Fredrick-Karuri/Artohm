@@ -22,7 +22,7 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
           // width: 359.h,
           margin: EdgeInsets.fromLTRB(15.h, 34.v, 15.h, 5.v),
           padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 16.v),
-          decoration: AppDecoration.outlineBlack900011
+          decoration: AppDecoration.outlineBlack
               .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -53,7 +53,7 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
                   child: Text("msg_receive_updates".tr,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyMediumBlack
+                      style: CustomTextStyles.bodyMedium
                           .copyWith(height: 1.50))),
               Padding(
                   padding: EdgeInsets.only(left: 8.h, top: 37.v),
@@ -76,7 +76,7 @@ class SettingsitemScreen extends GetWidget<SettingsitemController> {
                       ])),
               SizedBox(height: 11.v),
               Text("msg_stay_informed_about".tr,
-                  style: CustomTextStyles.bodyMediumBlack)
+                  style: CustomTextStyles.bodyMedium)
             ],
           ),
         ),

@@ -21,7 +21,7 @@ class CustomRowWidget extends StatelessWidget {
             flex: 1,
             child: Text(
               title,
-              style: CustomTextStyles.titleMediumLato,
+              style: CustomTextStyles.titleMediumLatoOnBackground,
             ),
           ),
           SizedBox(width: 16), // You can adjust the space between the texts

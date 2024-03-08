@@ -85,7 +85,7 @@ class ThemeHelper {
       dividerTheme: DividerThemeData(
         thickness: 1,
         space: 1,
-        color: appTheme.black90001.withOpacity(0.08),
+        color: appTheme.black900.withOpacity(0.08),
       ),
     );
   }
@@ -101,49 +101,49 @@ class ThemeHelper {
 class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
         bodyLarge: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 16.fSize,
           fontFamily: 'Lato',
           fontWeight: FontWeight.w400,
         ),
         bodyMedium: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 14.fSize,
           fontFamily: 'Lato',
           fontWeight: FontWeight.w400,
         ),
         bodySmall: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 9.fSize,
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w400,
         ),
         labelLarge: TextStyle(
-          color: appTheme.black90001.withOpacity(0.87),
+          color: appTheme.black900.withOpacity(0.87),
           fontSize: 12.fSize,
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w700,
         ),
         labelMedium: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 10.fSize,
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w700,
         ),
         titleLarge: TextStyle(
-          color: appTheme.black90001.withOpacity(0.8),
+          color: appTheme.black900.withOpacity(0.8),
           fontSize: 20.fSize,
           fontFamily: 'Roboto',
           fontWeight: FontWeight.w500,
         ),
         titleMedium: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 16.fSize,
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w700,
         ),
         titleSmall: TextStyle(
-          color: appTheme.black90001,
+          color: appTheme.black900,
           fontSize: 14.fSize,
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w700,
@@ -159,19 +159,19 @@ class ColorSchemes {
     primaryContainer: Color(0XFF1C274C),
     secondary: Color(0XFF007BFF),
     secondaryContainer: Color(0X14FF6B88),
-    tertiary: Color(0XFF1C274C),
+    tertiary: Color(0XFFD45971),
     tertiaryContainer: Color(0X14FF6B88),
 
     // Background colors
     background: Color.fromARGB(255, 255, 255, 255),
 
     // Surface colors
-    surface: Color(0XFFFF6B88),
+    surface: Color(0xFFFEE9E9), //bottom sheets
     surfaceTint: Color(0XFF231F20),
     surfaceVariant: Color(0X14FF6B88),
 
     // Error colors
-    error: Color(0XFF231F20),
+    error: Colors.red,
     errorContainer: Color(0X3F407BFF),
     onError: Color(0XFFFFD561),
     onErrorContainer: Color(0XFF231F20),
@@ -187,7 +187,7 @@ class ColorSchemes {
     onTertiaryContainer: Colors.black, // black text on tertiary container
 
     // Other colors
-    outline: Color(0XFFD45971),
+    outline: Color(0XFF1C274C), //chips,cards,outlines
     outlineVariant: Colors.grey,
     scrim: Color(0XFF1C274C),
     shadow: Color(0XFF231F20),
@@ -197,17 +197,17 @@ class ColorSchemes {
     inverseSurface: Color(0XFF231F20),
 
     // Pending colors
-    onSurface: Color(0XFFD9D9D9),
+    onSurface: Color.fromARGB(255, 73, 72, 72), //text on cards, chips
     onSurfaceVariant: Color(0XFF231F20),
   );
 
   static final darkColorScheme = ColorScheme.dark(
     // Primary colors
-    primary: Color.fromARGB(255, 119, 50, 64),
+    primary: Color.fromARGB(255, 245, 244, 244),
     primaryContainer: Color(0XFF1C274C),
     secondary: Color(0XFF1C274C),
     secondaryContainer: Color(0X14FF6B88),
-    tertiary: Color(0XFF1C274C),
+    tertiary: Color(0XFF7A8C),
     tertiaryContainer: Color(0X14FF6B88),
 
     // Background colors
@@ -255,15 +255,11 @@ class PrimaryColors {
 
   // Black
   Color get black900 => Color(0XFF0F0404);
-  Color get black90001 => Color(0XFF000000);
-  Color get black90033 => Color(0X33030303);
-
   // Blue
   Color get blue50 => Color(0XFFEAF4FF);
 
   // BlueGray
   Color get blueGray100 => Color(0XFFCECECE);
-  Color get blueGray10001 => Color(0XFFD9D9D9);
   Color get blueGray400 => Color(0XFF888888);
   Color get blueGray700 => Color(0XFF515151);
   Color get blueGray900 => Color(0XFF263238);
@@ -272,16 +268,11 @@ class PrimaryColors {
   Color get deepOrange50 => Color(0XFFFDE8E8);
 
   // Gray
+  Color get gray50 => Color(0XFFFCFCFC);
   Color get gray100 => Color(0XFFF5F5F5);
   Color get gray200 => Color(0XFFEBEBEB);
   Color get gray400 => Color(0XFFC0BFBF);
-  Color get gray40001 => Color(0XFFB9B2B2);
-  Color get gray50 => Color(0XFFFCFCFC);
-  Color get gray500 => Color(0XFFABA8A8);
-  Color get gray50001 => Color(0XFFA7A7A7);
   Color get gray900 => Color(0XFF231F20);
-  Color get gray90014 => Color(0X14212121);
-  Color get gray90033 => Color(0X33212121);
 
   // Green
   Color get greenA700 => Color(0XFF00AC47);
@@ -291,12 +282,9 @@ class PrimaryColors {
 
   // Pink
   Color get pink50 => Color(0XFFFFE6EB);
-  Color get pink5001 => Color(0XFFFFE7EC);
-  Color get pink5002 => Color(0XFFFFE5EA);
 
   // Red
   Color get red300 => Color(0XFFD45971);
-  Color get red30044 => Color(0X44DF7E7E);
 
   // White
   Color get whiteA700 => Color(0XFFFFFFFF);

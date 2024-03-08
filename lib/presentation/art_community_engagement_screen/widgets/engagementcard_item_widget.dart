@@ -21,7 +21,7 @@ class EngagementcardItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8.h),
-      decoration: AppDecoration.fillPink5001.copyWith(
+      decoration: AppDecoration.fillPrimaryOpacity2.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder8,
       ),
       child: Row(
@@ -60,7 +60,9 @@ class EngagementcardItemWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 10.v),
                   Row(
+                    
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding: EdgeInsets.only(
@@ -69,17 +71,17 @@ class EngagementcardItemWidget extends StatelessWidget {
                         ),
                         child: Text(
                           "lbl_artwork".tr,
-                          style: CustomTextStyles.titleMediumLato,
+                          style: CustomTextStyles.titleMediumLatoOnBackground,
                         ),
                       ),
-                      CustomOutlinedButton(
-                        height: 28.v,
-                        width: 139.h,
-                        text: "msg_enchanted_forest".tr,
-                        margin: EdgeInsets.only(left: 87.h),
-                        buttonStyle: CustomButtonStyles.outlineRed,
-                        buttonTextStyle: CustomTextStyles.titleMediumLatoRed300,
+                      TextButton(
+                        style: CustomButtonStyles.outlineTertiaryButton,
+                        onPressed: () {},
+                        child: Text(
+                          "Enchanted Forest",
+                        ),
                       ),
+                     
                     ],
                   ),
                   Padding(
@@ -100,12 +102,13 @@ class EngagementcardItemWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomOutlinedButton(
-                        width: 67.h,
-                        text: "lbl_reply".tr,
-                        buttonStyle: CustomButtonStyles.outlineLightBlueATL16,
-                        buttonTextStyle:
-                            CustomTextStyles.bodyMediumLightblueA700_1,
+                      TextButton(
+                        style: CustomButtonStyles.outlineSecondaryButton,
+                        onPressed: () {},
+                        child: Text(
+                          "Reply".tr,
+                          style: CustomTextStyles.bodyMediumSecondary,
+                        ),
                       ),
                       Container(
                         height: 33.v,
@@ -114,7 +117,7 @@ class EngagementcardItemWidget extends StatelessWidget {
                           horizontal: 9.h,
                           vertical: 8.v,
                         ),
-                        decoration: AppDecoration.outlineLightblueA700.copyWith(
+                        decoration: AppDecoration.outlineSecondary.copyWith(
                           borderRadius: BorderRadiusStyle.roundedBorder12,
                         ),
                         child: CustomImageView(

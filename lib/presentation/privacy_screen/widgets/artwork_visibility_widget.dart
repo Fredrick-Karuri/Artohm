@@ -33,8 +33,8 @@ class ArtworkVisibilityWidget extends StatelessWidget {
             artworkVisibilityModelObj.select.value,
             style: TextStyle(
               color: artworkVisibilityModelObj.isSelected.value
-                  ? Colors.white
-                  : appTheme.lightBlueA700,
+                  ? theme.colorScheme.background
+                  : theme.colorScheme.secondary,
               fontSize: 14.fSize,
               fontFamily: 'Lato',
               fontWeight: FontWeight.w400,
@@ -43,12 +43,12 @@ class ArtworkVisibilityWidget extends StatelessWidget {
           selected: artworkVisibilityModelObj.isSelected.value,
           backgroundColor: Colors.transparent,
           // selectedColor: appTheme.lightBlueA700.withOpacity(0.2),
-          selectedColor: appTheme.lightBlueA700,
+          selectedColor: theme.colorScheme.secondary,
 
           shape: artworkVisibilityModelObj.isSelected.value
               ? RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(
@@ -57,7 +57,7 @@ class ArtworkVisibilityWidget extends StatelessWidget {
                 )
               : RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(

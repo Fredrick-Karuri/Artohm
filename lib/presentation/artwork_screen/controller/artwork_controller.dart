@@ -1,9 +1,7 @@
 import 'dart:convert';
-
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/data/localStorage.dart';
 import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
-import 'package:artohmapp/presentation/artwork_screen/models/artwork_model.dart';
 import 'package:flutter/material.dart';
 
 /// A controller class for the ArtworkScreen.

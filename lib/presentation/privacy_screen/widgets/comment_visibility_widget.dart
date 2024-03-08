@@ -33,8 +33,8 @@ class CommentVisibilityWidget extends StatelessWidget {
             commentVisibilityModelObj.select.value,
             style: TextStyle(
               color: commentVisibilityModelObj.isSelected.value
-                  ? Colors.white
-                  : appTheme.lightBlueA700,
+                  ? theme.colorScheme.background
+                  : theme.colorScheme.secondary,
               fontSize: 14.fSize,
               fontFamily: 'Lato',
               fontWeight: FontWeight.w400,
@@ -42,11 +42,11 @@ class CommentVisibilityWidget extends StatelessWidget {
           ),
           selected: commentVisibilityModelObj.isSelected.value,
           backgroundColor: Colors.transparent,
-          selectedColor: appTheme.lightBlueA700.withOpacity(1),
+          selectedColor: theme.colorScheme.secondary.withOpacity(1),
           shape: commentVisibilityModelObj.isSelected.value
               ? RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(
@@ -55,7 +55,7 @@ class CommentVisibilityWidget extends StatelessWidget {
                 )
               : RoundedRectangleBorder(
                   side: BorderSide(
-                    color: appTheme.lightBlueA700,
+                    color: theme.colorScheme.secondary,
                     width: 1.h,
                   ),
                   borderRadius: BorderRadius.circular(

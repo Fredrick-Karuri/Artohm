@@ -48,7 +48,7 @@ class ArtworkToSell extends StatelessWidget {
                           var artwork = artworks[index];
                           return Container(
                             decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(12),
                                 border: Border.all(
                                   color: theme.colorScheme.outlineVariant,
                                   width: .8,
@@ -67,13 +67,13 @@ class ArtworkToSell extends StatelessWidget {
                                   },
                                   child: Image.asset(
                                     artwork.imageUrl,
-                                    fit: BoxFit.fill,
+                                    fit: BoxFit.fitWidth,
                                   ),
                                 ),
                                 SizedBox(height: 8),
                                 Text(
                                   artwork.title,
-                                  style: CustomTextStyles.titleSmallBlack90001,
+                                  style: CustomTextStyles.titleSmallOnBackground,
                                 ),
                                 SizedBox(height: 8),
                                 Padding(
@@ -85,14 +85,14 @@ class ArtworkToSell extends StatelessWidget {
                                     children: [
                                       Text(
                                         artwork.artist,
-                                        style: CustomTextStyles.bodyMediumBlack,
+                                        style: CustomTextStyles.bodyMedium,
                                       ),
                                       Text(
                                         artwork.price != null
                                             ? artwork.price!.toString()
                                             : 'Price not available',
                                         style: CustomTextStyles
-                                            .titleSmallBlack90001,
+                                            .titleSmallOnBackground,
                                       ),
                                     ],
                                   ),
@@ -113,6 +113,7 @@ class ArtworkToSell extends StatelessWidget {
                                         ),
                                       ),
                                       CustomElevatedButton(
+                                        buttonStyle: CustomButtonStyles.fillPrimaryButtonRounded,
                                         text: 'Contact Seller',
                                         onTap: () {
                                           Get.bottomSheet(
@@ -142,93 +143,4 @@ class ArtworkToSell extends StatelessWidget {
   }
 }
 
-    // return Container(
-    //   width: 240,
-    //   // height: double.maxFinite,
-    //   padding: EdgeInsets.only(right: 10),
-    //   child: Column(
-    //     children: [
-    //       SizedBox(
-    //         child: Stack(
-    //           alignment: Alignment.bottomRight,
-    //           children: [
-    //             CustomImageView(
-    //               fit: BoxFit.fill,
-    //               // imagePath: card.imagePath,
-    //               imagePath: artwork.imagePath,
-    //               radius: BorderRadius.circular(8.h),
-    //               alignment: Alignment.center,
-    //             ),
-    //             IconButton(
-    //               onPressed: () {
-    //                 ArtworkCardModalState.showModal(context);
-    //               },
-    //               icon: Icon(
-    //                 Icons.more_vert_outlined,
-    //                 color: appTheme.whiteA700,
-    //                 size: 28,
-    //               ),
-    //             )
-    //           ],
-    //         ),
-    //       ),
-    //       SizedBox(height: 12.v),
-    //       Container(
-    //         padding: EdgeInsets.only(bottom: 20),
-    //         child: Row(
-    //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //           crossAxisAlignment: CrossAxisAlignment.end,
-    //           children: [
-    //             Column(
-    //               crossAxisAlignment: CrossAxisAlignment.start,
-    //               children: [
-    //                 Text(
-    //                   artwork.title.tr,
-    //                   style: theme.textTheme.titleSmall,
-    //                 ),
-    //                 SizedBox(height: 6.v),
-    //                 Text(
-    //                   artwork.artist.tr,
-    //                   style: theme.textTheme.bodyMedium,
-    //                 ),
-    //               ],
-    //             ),
-    //             Container(
-    //               padding: EdgeInsets.symmetric(
-    //                 horizontal: 8.h,
-    //                 vertical: 4.v,
-    //               ),
-    //               decoration: AppDecoration.outlineBlack90001.copyWith(
-    //                   borderRadius: BorderRadiusStyle.roundedBorder4,
-    //                   color: appTheme.blue50),
-    //               child: Text(
-    //                 artwork.price.tr,
-    //                 style: theme.textTheme.labelLarge,
-    //               ),
-    //             ),
-    //           ],
-    //         ),
-    //       ),
-    //       Row(
-    //         children: [
-    //           IconButton(
-    //             onPressed: () {},
-    //             icon: Icon(
-    //               Icons.favorite_border_outlined,
-    //             ),
-    //           ),
-    //           SizedBox(width: 8),
-    //           Expanded(
-    //             child: CustomElevatedButton(
-    //               onTap: () {
-    //                 Get.bottomSheet(ContactSellerBottomSheet(seller: seller));
-    //               },
-    //               text: 'Contact Seller',
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ],
-    //   ),
-    // );
-
+    

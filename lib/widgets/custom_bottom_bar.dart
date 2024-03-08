@@ -9,7 +9,7 @@ class CustomBottomBar extends StatelessWidget {
           key: key,
         );
 
-  RxInt selectedIndex = 0.obs;
+  // RxInt selectedIndex = 0.obs;
 
   List<BottomMenuModel> bottomMenuList = [
     BottomMenuModel(
@@ -38,17 +38,17 @@ class CustomBottomBar extends StatelessWidget {
     )
   ];
 
-  Function(BottomBarEnum)? onChanged;
+  final Function(BottomBarEnum)? onChanged;
+  final _controller = Get.put(CustomBottomBarController());
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 48.v,
       decoration: BoxDecoration(
-        color: appTheme.whiteA700,
         border: Border(
           top: BorderSide(
-            color: appTheme.black90001.withOpacity(0.08),
+            color: theme.colorScheme.onBackground.withOpacity(0.04),
             width: 1.h,
           ),
         ),
@@ -60,54 +60,61 @@ class CustomBottomBar extends StatelessWidget {
           showUnselectedLabels: false,
           selectedFontSize: 0,
           elevation: 0,
-          currentIndex: selectedIndex.value,
+          currentIndex: _controller.selectedIndex.value,
+          // currentIndex: selectedIndex.value,
           type: BottomNavigationBarType.fixed,
           items: List.generate(bottomMenuList.length, (index) {
+            final item = bottomMenuList[index];
+            final isCurrentPage = item.type == _controller.currentPage.value;
             return BottomNavigationBarItem(
               icon: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CustomImageView(
-                    svgPath: bottomMenuList[index].icon,
+                    // svgPath: bottomMenuList[index].icon,
+                    svgPath: item.icon,
                     height: 24.v,
                     width: 23.h,
-                    color: theme.colorScheme.primaryContainer,
+                    color: isCurrentPage
+                        ? theme.colorScheme.tertiary
+                        : theme.colorScheme.onBackground,
+                    // color: theme.colorScheme.primaryContainer,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 1.v),
                     child: Text(
                       bottomMenuList[index].title ?? "",
                       style: theme.textTheme.bodySmall!.copyWith(
-                        color: appTheme.black90001,
+                        // color: theme.colorScheme.onBackground,
+                        color: isCurrentPage
+                            ? theme.colorScheme.tertiary
+                            : theme.colorScheme.onBackground,
                       ),
                     ),
                   ),
                 ],
               ),
-              activeIcon: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  CustomImageView(
-                    svgPath: bottomMenuList[index].activeIcon,
-                    height: 24.v,
-                    width: 23.h,
-                    color: appTheme.red300,
-                  ),
-                  Text(
-                    bottomMenuList[index].title ?? "",
-                    style: CustomTextStyles.bodySmallRed300.copyWith(
-                      color: appTheme.red300,
-                    ),
-                  ),
-                ],
-              ),
+              // activeIcon: Column(
+              //   mainAxisSize: MainAxisSize.min,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     CustomImageView(
+              //       svgPath: bottomMenuList[index].activeIcon,
+              //       height: 24.v,
+              //       width: 23.h,
+              //       color: appTheme.red300,
+              //     ),
+              //     Text(bottomMenuList[index].title ?? "",
+              //         style: CustomTextStyles.bodySmallTertiary),
+              //   ],
+              // ),
               label: '',
             );
           }),
           onTap: (index) {
-            selectedIndex.value = index;
+            // selectedIndex.value = index;
+            _controller.updateIndex(index);
             onChanged?.call(bottomMenuList[index].type);
           },
         ),
@@ -138,6 +145,16 @@ class BottomMenuModel {
   String? title;
 
   BottomBarEnum type;
+}
+
+class CustomBottomBarController extends GetxController {
+  final selectedIndex = 0.obs;
+  final currentPage = BottomBarEnum.Home2.obs;
+  void updateIndex(int index) {
+    selectedIndex.value = index;
+    currentPage.value = BottomBarEnum.values[index];
+    update();
+  }
 }
 
 // class DefaultWidget extends StatelessWidget {
