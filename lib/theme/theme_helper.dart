@@ -51,7 +51,8 @@ class ThemeHelper {
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,
       textTheme: TextThemes.textTheme(colorScheme),
-      scaffoldBackgroundColor: appTheme.whiteA700,
+      // scaffoldBackgroundColor: appTheme.whiteA700,
+      // scaffoldBackgroundColor: Colors.transparent,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.primary,
@@ -130,12 +131,7 @@ class TextThemes {
           fontFamily: 'Libre Baskerville',
           fontWeight: FontWeight.w700,
         ),
-        titleLarge: TextStyle(
-          color: appTheme.black900.withOpacity(0.8),
-          fontSize: 20.fSize,
-          fontFamily: 'Roboto',
-          fontWeight: FontWeight.w500,
-        ),
+        
         titleMedium: TextStyle(
           color: appTheme.black900,
           fontSize: 16.fSize,

@@ -74,7 +74,11 @@ class HomeArtworkCardNew extends StatelessWidget {
                         if (Get.isDialogOpen!) {
                           Get.back();
                         }
-                        Get.dialog(CollectionsModal(artwork: artwork));
+                        Get.dialog(
+                          CollectionsModal(
+                            artwork: artwork,
+                          ),
+                        );
                       },
                     ),
                   ],

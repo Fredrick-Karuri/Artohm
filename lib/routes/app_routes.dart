@@ -1,10 +1,14 @@
 import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/presentation/artist_profile_screen/models/artist_profile_model.dart';
+import 'package:artohmapp/presentation/artwork_screen/models/artwork_model.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/collaborate_start_screen/binding/collaboration_start_binding.dart';
 import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/binding/collaboration_start_confirmation_binding.dart';
 import 'package:artohmapp/presentation/collaboration_start_confirmation_screen/collaboration_start_confirmation_screen.dart';
 import 'package:artohmapp/presentation/home_page/binding/home_page_binding.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
+import 'package:artohmapp/presentation/home_page/widgets/featured_artwork.dart';
+import 'package:artohmapp/presentation/home_page/widgets/featured_artwork_details_page.dart';
 import 'package:artohmapp/presentation/onboarding_screen/onboarding_screen.dart';
 import 'package:artohmapp/presentation/onboarding_screen/binding/onboarding_binding.dart';
 import 'package:artohmapp/presentation/collaborateitem_screen/collaborateitem_screen.dart';
@@ -34,12 +38,12 @@ import 'package:artohmapp/presentation/art_discovery_container_screen/art_discov
 import 'package:artohmapp/presentation/art_discovery_container_screen/binding/art_discovery_container_binding.dart';
 import 'package:artohmapp/presentation/artist_profile_screen/artist_profile_screen.dart';
 import 'package:artohmapp/presentation/artist_profile_screen/binding/artist_profile_binding.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_screen.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/binding/art_marketplace_binding.dart';
+import 'package:artohmapp/presentation/marketplace_screen/marketplace_screen.dart';
+import 'package:artohmapp/presentation/marketplace_screen/binding/marketplace_binding.dart';
 import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
 import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
-import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
-import 'package:artohmapp/presentation/art_community_screen/binding/art_community_binding.dart';
+import 'package:artohmapp/presentation/community_screen/art_community_screen.dart';
+import 'package:artohmapp/presentation/community_screen/binding/art_community_binding.dart';
 import 'package:artohmapp/presentation/signup_landing_screen/signup_landing_screen.dart';
 import 'package:artohmapp/presentation/signup_landing_screen/binding/signup_landing_binding.dart';
 import 'package:artohmapp/presentation/signup_screen/signup_screen.dart';
@@ -56,8 +60,8 @@ import 'package:artohmapp/presentation/upload_artwork_two_screen/upload_artwork_
 import 'package:artohmapp/presentation/upload_artwork_two_screen/binding/upload_artwork_two_binding.dart';
 import 'package:artohmapp/presentation/createcollection_screen/createcollection_screen.dart';
 import 'package:artohmapp/presentation/createcollection_screen/binding/createcollection_binding.dart';
-import 'package:artohmapp/presentation/art_community_engagement_screen/art_community_engagement_screen.dart';
-import 'package:artohmapp/presentation/art_community_engagement_screen/binding/art_community_engagement_binding.dart';
+import 'package:artohmapp/presentation/community_engagement_screen/art_community_engagement_screen.dart';
+import 'package:artohmapp/presentation/community_engagement_screen/binding/art_community_engagement_binding.dart';
 import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
 import 'package:artohmapp/presentation/modal_screen/binding/modal_binding.dart';
 import 'package:artohmapp/presentation/modal_one_screen/modal_one_screen.dart';
@@ -140,6 +144,8 @@ class AppRoutes {
   static const String artistTrackPage = '/artist_track_page';
   static const String artEnthusiastTrackPage = '/art_enthusiast_track_page';
   static const String collectionDetailPage = '/collection_detail_page';
+  static const String featuredArtworkDetailsPage =
+      '/featured_artwork_details_page';
 
   static List<GetPage> pages = [
     GetPage(
@@ -207,24 +213,25 @@ class AppRoutes {
     ),
     GetPage(
       name: userProfileContainerScreen,
-      page: () => UserProfileContainerScreen(FavoriteArtworksController(
-      )),
+      page: () => UserProfileContainerScreen(FavoriteArtworksController()),
       bindings: [
         UserProfileContainerBinding(),
       ],
     ),
     GetPage(
       name: artistProfileScreen,
-      page: () => ArtistProfileScreen(),
+      page: () => ArtistProfileScreen(
+        artist: Get.arguments as ArtistProfileModel,
+      ),
       bindings: [
         ArtistProfileBinding(),
       ],
     ),
     GetPage(
       name: artMarketplaceScreen,
-      page: () => ArtMarketplaceScreen(),
+      page: () => MarketplaceScreen(),
       bindings: [
-        ArtMarketplaceBinding(),
+        MarketplaceBinding(),
       ],
     ),
     GetPage(
@@ -382,6 +389,15 @@ class AppRoutes {
       page: () => CollectionDetailScreen(
         collection: Get.arguments,
       ),
+    ),
+    GetPage(
+      name: featuredArtworkDetailsPage,
+      page: () => FeaturedArtworkDetailsPage(
+        artwork: Get.arguments as FeaturedArtwork,
+      ),
+      binding: BindingsBuilder(() {
+        Get.put(FeaturedArtworkController());
+      }),
     ),
   ];
 }

@@ -1,4 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/artist_profile_screen/models/artist_profile_model.dart';
 import 'package:uuid/uuid.dart';
 
 class Artwork {
@@ -80,10 +81,22 @@ class Artwork {
   }
 }
 
+String getArtistNameById(String id) {
+  // Find the artist with the given id
+  ArtistProfileModel artist =
+      artists.firstWhere((artist) => artist.id == id, orElse: () {
+    throw Exception('Artist not found');
+  });
+
+  // Return the artist's name
+  return artist.name;
+}
+
 var uuid = Uuid();
 List<Artwork> artworks = [
   Artwork(
     title: 'Ethereal Enchantment',
+    // artist: getArtistNameById(id)
     artist: 'Sophia Anderson',
     imageUrl: ImageConstant.imgRectangle11200x1601,
     id: uuid.v4(),

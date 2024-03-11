@@ -14,6 +14,7 @@ late final SupabaseClient supabase;
 Future main() async {
   Get.lazyPut(() => ArtworksController()); // Register ArtworksController
   Get.lazyPut(() => LocalStorageService()); // Register LocalStorageService
+  Get.lazyPut(()=>ThemeHelper());
 
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -59,7 +60,6 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.from(colorScheme: ColorSchemes.darkColorScheme),
       themeMode: ThemeMode.light,
       // themeMode: ThemeMode.system,
-
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
       fallbackLocale: Locale('en', 'US'),

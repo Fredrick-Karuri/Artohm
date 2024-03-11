@@ -1,3 +1,4 @@
+import 'package:artohmapp/presentation/artist_profile_screen/controller/artist_profile_controller.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/controller/home_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';

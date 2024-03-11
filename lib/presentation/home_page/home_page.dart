@@ -1,4 +1,5 @@
 import 'package:artohmapp/data/localStorage.dart';
+import 'package:artohmapp/presentation/home_page/widgets/featured_artwork.dart';
 import 'package:artohmapp/presentation/home_page/widgets/homeArtworkCard.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model.dart';
@@ -19,7 +20,8 @@ class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
   HomeController controller = Get.put(HomeController(HomeModel().obs));
-  NotificationsController nc = Get.put(NotificationsController(NotificationsModel().obs));
+  NotificationsController nc =
+      Get.put(NotificationsController(NotificationsModel().obs));
   // final NotificationsController nc = Get.find();
 
   @override
@@ -55,13 +57,12 @@ class HomePage extends StatelessWidget {
                     onPressed: () {
                       customSearch.SearchController searchController =
                           customSearch.SearchController();
-      
+
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => CustomSearchView(
-                            controller:
-                                searchController.textEditingController,
+                            controller: searchController.textEditingController,
                           ),
                         ),
                       );
@@ -76,7 +77,6 @@ class HomePage extends StatelessWidget {
                           onTapImgNotification();
                         },
                         icon: Icon(
-                          
                           Icons.notifications,
                           color: theme.colorScheme.tertiary,
                           size: 24,
@@ -113,7 +113,6 @@ class HomePage extends StatelessWidget {
   }
 
   bodyContent() {
-    
     return Container(
       width: double.maxFinite,
       child: Column(
@@ -123,77 +122,74 @@ class HomePage extends StatelessWidget {
           Expanded(
             child: ListView(
               children: [
-                
-                SizedBox(height: 2.v),
-                Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: appTheme.blueGray400.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.h),
-                      child: CustomImageView(
-                        imagePath: ImageConstant.imgRectangle11400x3401,
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 24.v,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Obx(() {
-                    
-                    return Column(
-                      children: controller.categories.value.map((category) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              category.categoryName,
-                              overflow: TextOverflow.ellipsis,
-                              style:CustomTextStyles.titleMedium
-                            ),
-                            SizedBox(height: 16.v),
-                            // Category title
-                            Container(
-                              height: 200.v,
-                              margin:
-                                  EdgeInsets.only(right: 15.h, bottom: 24.h),
-                              child: ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                itemCount: category.artworks.length,
-                                itemBuilder: (context, index) {
-                                  final artwork = category.artworks[index];
-                                  return HomeArtworkCardNew(
-                                    artwork: artwork,
-                                    
-                                  );
-                                  // log artwork to se its data
-                                  // Log the artwork details to the console
-                                },
-                              ),
-                            )
-                          ],
-                        );
-                      }).toList(),
-                    );
-                  }), // Close Obx here
-                ),
+                // featuredArtwork(),
+                FeaturedArtworkView(),
+                artworksList(),
               ],
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Padding featuredArtwork() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 16, right: 16, top: 4),
+      child: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: appTheme.blueGray400.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8.h),
+          child: CustomImageView(
+            imagePath: ImageConstant.imgRectangle11400x3401,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding artworksList() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, top: 24),
+      child: Obx(() {
+        return Column(
+          children: controller.categories.value.map((category) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(category.categoryName,
+                    overflow: TextOverflow.ellipsis,
+                    style: CustomTextStyles.titleMedium),
+                SizedBox(height: 16.v),
+                // Category title
+                Container(
+                  height: 200.v,
+                  margin: EdgeInsets.only(right: 15.h, bottom: 24.h),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: category.artworks.length,
+                    itemBuilder: (context, index) {
+                      final artwork = category.artworks[index];
+                      return HomeArtworkCardNew(
+                        artwork: artwork,
+                      );
+                    },
+                  ),
+                )
+              ],
+            );
+          }).toList(),
+        );
+      }), // Close Obx here
     );
   }
 

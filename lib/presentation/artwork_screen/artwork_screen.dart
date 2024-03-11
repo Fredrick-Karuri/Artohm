@@ -1,4 +1,6 @@
-import 'package:artohmapp/presentation/art_marketplace_screen/models/seller_model.dart';
+import 'package:artohmapp/presentation/marketplace_screen/models/seller_model.dart';
+import 'package:artohmapp/presentation/artist_profile_screen/controller/artist_profile_controller.dart';
+import 'package:artohmapp/presentation/artist_profile_screen/models/artist_profile_model.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:artohmapp/presentation/createcollection_screen/widgets/create_collections_modal.dart';
@@ -15,6 +17,7 @@ class ArtworkScreen extends GetView<ArtworkController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      top: false,
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         appBar: CustomAppBarComponent(
@@ -322,8 +325,20 @@ comment(ArtworkController controller, context) {
   );
 }
 
+// Get.lazyPut<ArtistController>(
+//     () => ArtistController(List<ArtistProfileModel>.empty(growable: true),
+//         Get.find<ArtworksController>().artworks),
+//     fenix: true);
+
 artistInfo(Artwork artwork, context, controller) {
+  Get.lazyPut<ArtworksController>(() => ArtworksController());
+  Get.lazyPut<ArtistController>(() => ArtistController(
+    artists, Get.find<ArtworksController>().artworks
+  ));
+
   FavoriteArtworksController favoriteArtworksController = Get.find();
+  ArtistController artistController = Get.find();
+  ArtistProfileModel artist = artistController.getArtistByName(artwork.artist);
 
   return Padding(
     padding: const EdgeInsets.only(bottom: 24, top: 8),
@@ -339,12 +354,10 @@ artistInfo(Artwork artwork, context, controller) {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CustomImageView(
-                  imagePath: artwork
-                      .imageUrl, // Use the imageUrl from the Artwork object
+                  imagePath: artist.imageUrl,
                   height: 36.adaptSize,
                   width: 36.adaptSize,
                   radius: BorderRadius.circular(18.h),
-                  // alignment: Alignment.centerLeft,
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 8.h, top: 6.v, bottom: 3.v),
@@ -352,44 +365,52 @@ artistInfo(Artwork artwork, context, controller) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        artwork
-                            .artist, // Use the artist from the Artwork object
+                        artist.name,
                         style: CustomTextStyles.bodyLarge,
                       ),
                       SizedBox(height: 4.v),
-                      Text(
-                        ' 4 Followers',
-                        style: CustomTextStyles.bodyMedium,
+                      Obx(
+                        () => Text(
+                          '${artist.followsCount} Followers',
+                          style: CustomTextStyles.bodyMedium,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            TextButton(
-              style: TextButton.styleFrom(
-                side: BorderSide(
-                  color: theme.colorScheme.primary,
-                  width: 1,
+            Obx(
+              () => TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: artist.isFollowed.value
+                      ? theme.colorScheme.primary
+                      : null,
+                  side: BorderSide(
+                    color: theme.colorScheme.primary,
+                    width: 1,
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                minimumSize: Size.zero,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              onPressed: () {
-                // if (artwork.isFollowed.value) {
-                //   artwork.isFollowed.value = false;
-                // } else {
-                //   artwork.isFollowed.value = true;
-                // }
-              },
-              child: Text(
-                'Follow',
-                style: theme.textTheme.bodyMedium!.copyWith(
-                  color: theme.colorScheme.primary,
+                onPressed: () {
+                  if (artist.isFollowed.value) {
+                    artistController.unFollowArtist(artist);
+                  } else {
+                    artistController.followArtist(artist);
+                  }
+                },
+                child: Text(
+                  artist.isFollowed.value ? 'Following'.tr : 'Follow'.tr,
+                  style: theme.textTheme.bodyMedium!.copyWith(
+                    color: artist.isFollowed.value
+                        ? theme.colorScheme.background
+                        : theme.colorScheme.primary,
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
         Padding(
@@ -406,7 +427,7 @@ artistInfo(Artwork artwork, context, controller) {
                       artwork.isFavorite.value
                           ? Icons.favorite
                           : Icons.favorite_outline,
-                      color: theme.colorScheme.outline,
+                      color: theme.colorScheme.tertiary,
                     ),
                   ),
                   Text(
@@ -428,7 +449,7 @@ artistInfo(Artwork artwork, context, controller) {
                     },
                     icon: Icon(
                       Icons.comment,
-                      color: theme.colorScheme.outline,
+                      color: theme.colorScheme.tertiary,
                     ),
                   ),
                   Text(
@@ -446,7 +467,7 @@ artistInfo(Artwork artwork, context, controller) {
                     },
                     icon: Icon(
                       Icons.collections,
-                      color: theme.colorScheme.outline,
+                      color: theme.colorScheme.tertiary,
                     ),
                   ),
                   Text(

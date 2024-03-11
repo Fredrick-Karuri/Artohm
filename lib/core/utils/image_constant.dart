@@ -276,5 +276,12 @@ class ImageConstant {
   static String imgProfileiconsRed30012x18 =
       '$imagePath/img_profileicons_red_300_12x18.svg';
 
+  static String lastSupper = '$imagePath/featured_last_supper.jpg';
+  static String monaLisa = '$imagePath/featured_Mona_Lisa.jpg';
+  static String starryNight = '$imagePath/featured_Starry_Night.jpg';
+  static String theScream = '$imagePath/featured_The_Scream.jpg';
+  static String theGreatWave = '$imagePath/featured_the_great_wave.jpg';
+  static String guernica = '$imagePath/featured_PicassoGuernica.jpg';
+  static String nightCafe ='$imagePath/featured_the_night_cafe.jpg';
   static String imageNotFound = 'assets/images/image_not_found.png';
 }

@@ -1,4 +1,4 @@
-import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
+import 'package:artohmapp/presentation/community_screen/art_community_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';

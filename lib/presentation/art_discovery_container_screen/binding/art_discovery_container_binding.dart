@@ -1,5 +1,5 @@
-import 'package:artohmapp/presentation/art_community_screen/controller/art_community_controller.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/controller/art_marketplace_controller.dart';
+import 'package:artohmapp/presentation/community_screen/controller/art_community_controller.dart';
+import 'package:artohmapp/presentation/marketplace_screen/controller/marketplace_controller.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
 import 'package:artohmapp/presentation/collaborate_screen/controller/collaborate_controller.dart';
 
@@ -17,12 +17,12 @@ class ArtDiscoveryContainerBinding extends Bindings {
     //     () => ArtDiscoveryContainerController());
     // Get.lazyPut<ArtCommunityController>(() => ArtCommunityController());
     // Get.lazyPut<ArtCommunityController>(() => ArtCommunityController());
-    // Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController());
+    // Get.lazyPut<MarketplaceController>(() => MarketplaceController());
 
     // Get.put(ArtDiscoveryContainerController());
     // Get.put(ArtCommunityController());
     // Get.put(CollaborateController());
-    // Get.put(ArtMarketplaceController());
+    // Get.put(MarketplaceController());
     Get.lazyPut<ArtDiscoveryContainerController>(
         () => ArtDiscoveryContainerController(),
         fenix: true);
@@ -30,7 +30,7 @@ class ArtDiscoveryContainerBinding extends Bindings {
         fenix: true);
     Get.lazyPut<CollaborateController>(() => CollaborateController(),
         fenix: true);
-    Get.lazyPut<ArtMarketplaceController>(() => ArtMarketplaceController(),
+    Get.lazyPut<MarketplaceController>(() => MarketplaceController(),
         fenix: true);
     Get.lazyPut(() => FavoriteArtworksController(), fenix: true);
   }

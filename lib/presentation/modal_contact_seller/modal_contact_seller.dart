@@ -3,7 +3,7 @@ import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../core/app_export.dart';
-import '../art_marketplace_screen/models/seller_model.dart';
+import '../marketplace_screen/models/seller_model.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 

@@ -3,9 +3,9 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/home_page/home_page.dart';
 import 'package:artohmapp/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:artohmapp/presentation/art_marketplace_screen/art_marketplace_screen.dart';
+import 'package:artohmapp/presentation/marketplace_screen/marketplace_screen.dart';
 import 'package:artohmapp/presentation/collaborate_screen/collaborate_screen.dart';
-import 'package:artohmapp/presentation/art_community_screen/art_community_screen.dart';
+import 'package:artohmapp/presentation/community_screen/art_community_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ArtDiscoveryContainerScreen extends StatelessWidget {
@@ -65,7 +65,7 @@ Widget getCurrentPage(String currentRoute) {
     case AppRoutes.homePage:
       return HomePage();
     case AppRoutes.artMarketplaceScreen:
-      return ArtMarketplaceScreen();
+      return MarketplaceScreen();
     case AppRoutes.artCommunityScreen:
       return ArtCommunityScreen();
     case AppRoutes.collaborateScreen:

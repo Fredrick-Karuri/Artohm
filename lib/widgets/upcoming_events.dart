@@ -1,14 +1,12 @@
 import 'package:artohmapp/core/app_export.dart';
+import 'package:artohmapp/presentation/artist_profile_screen/models/artist_profile_model.dart';
+import 'package:artohmapp/presentation/modal_screen/modal_screen.dart';
 import 'package:flutter/material.dart';
 
-
 class UpcomingEventsCard extends StatelessWidget {
-  final Function onTap;
-  final String imagePath;
-  final String text;
+  final UpcomingEvent event;
 
-  UpcomingEventsCard(
-      {required this.onTap, required this.imagePath, required this.text});
+  UpcomingEventsCard({required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class UpcomingEventsCard extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           CustomImageView(
-            imagePath: imagePath,
+            imagePath: event.imageUrl ?? '', // Use the imageUrl from the event
             radius: BorderRadius.circular(8.h),
             alignment: Alignment.center,
           ),
@@ -36,7 +34,7 @@ class UpcomingEventsCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      text,
+                      event.title, // Use the title from the event
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: CustomTextStyles.labelLargeWhite
@@ -44,7 +42,9 @@ class UpcomingEventsCard extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () => onTap(),
+                    onPressed: () {
+                      ModalScreenState.showModal(context);
+                    },
                     icon: Icon(Icons.more_vert),
                     color: Colors.white,
                   ),
