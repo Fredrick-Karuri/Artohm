@@ -122,7 +122,7 @@ class MarketplaceScreen extends GetWidget<MarketplaceController> {
                                     Text(
                                       artwork.title,
                                       style: CustomTextStyles
-                                          .titleSmallOnBackground,
+                                          .titleSmall,
                                     ),
                                     Spacer(),
                                     Text(

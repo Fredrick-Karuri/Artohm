@@ -1,6 +1,12 @@
+import 'dart:io';
+
+import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
+import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
 import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
+import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:artohmapp/presentation/artworks/widgets/favorite_artworks_view.dart';
-import 'package:artohmapp/presentation/upload_artwork_two_screen/widgets/custom_row.dart';
+import 'package:artohmapp/presentation/upload_artwork_confirmation_screen/widgets/custom_row.dart';
+import 'package:artohmapp/presentation/upload_artwork_screen/controller/upload_artwork_controller.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
 import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_list_screen.dart';
 import '../../widgets/custom_appbar_component.dart';
@@ -25,35 +31,38 @@ class UserProfileContainerScreen
     CollectionsController collectionsController = Get.find();
 
     mediaQueryData = MediaQuery.of(context);
-    return Container(
-      color: Get.theme.scaffoldBackgroundColor,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: CustomAppBarComponent(
-          onBackPressed: () {
-            Get.back();
-          },
-          title: "lbl_profile".tr,
-          hasTrailingIcon: true,
-          onTapTrailingIcon: () {
-            onTapProfileicons();
-          },
-        ),
-        body: SizedBox(
-          width: mediaQueryData.size.width,
-          child: SingleChildScrollView(
-            padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                profileInfoCard(),
-                FavoriteArtworksView(),
-                yourWork(),
-                CollectionListWidget(
-                    collections: collectionsController.collections),
-                buildCollectionsWidget(),
-                communityEngagement(),
-              ],
+    return SafeArea(
+      top: false,
+      child: Container(
+        color: Get.theme.scaffoldBackgroundColor,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: CustomAppBarComponent(
+            onBackPressed: () {
+              Get.back();
+            },
+            title: "lbl_profile".tr,
+            hasTrailingIcon: true,
+            onTapTrailingIcon: () {
+              onTapProfileicons();
+            },
+          ),
+          body: SizedBox(
+            width: mediaQueryData.size.width,
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 24.v, bottom: 32.v),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  profileInfoCard(),
+                  FavoriteArtworksView(),
+                  yourWork(),
+                  CollectionListWidget(
+                      collections: collectionsController.collections),
+                  buildCollectionsWidget(),
+                  communityEngagement(),
+                ],
+              ),
             ),
           ),
         ),
@@ -249,6 +258,8 @@ class UserProfileContainerScreen
   }
 
   yourWork() {
+    UploadArtworkController uploadArtworkController = Get.find();
+
     return Padding(
       padding: EdgeInsets.only(left: 16, right: 16, top: 32.v, bottom: 32.h),
       child: Column(
@@ -294,25 +305,48 @@ class UserProfileContainerScreen
             ),
             child: Obx(
               () => GridView.builder(
+                itemCount: uploadArtworkController.yourWorks.length,
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 172.v,
-                    crossAxisCount: 3,
-                    mainAxisSpacing: 13.h,
-                    crossAxisSpacing: 13.h),
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: controller.userProfileContainerModelObj.value
-                    .enchantedforestItemList.value.length,
-                itemBuilder: (context, index) {
-                  EnchantedforestItemModel model = controller
-                      .userProfileContainerModelObj
-                      .value
-                      .enchantedforestItemList
-                      .value[index];
-                  return EnchantedforestItemWidget(model);
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (BuildContext context, int index) {
+                  Artwork artwork = uploadArtworkController.yourWorks[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(() => ArtworkScreen(),
+                          arguments: artwork, binding: ArtworkBinding());
+                    },
+                    child: Image.file(
+                      File(artwork.imageUrl),
+                    ),
+                  );
                 },
               ),
             ),
+
+            // Obx(
+            //   () => GridView.builder(
+            //     shrinkWrap: true,
+            //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //         mainAxisExtent: 172.v,
+            //         crossAxisCount: 3,
+            //         mainAxisSpacing: 13.h,
+            //         crossAxisSpacing: 13.h),
+            //     physics: NeverScrollableScrollPhysics(),
+            //     itemCount: controller.userProfileContainerModelObj.value
+            //         .enchantedforestItemList.value.length,
+            //     itemBuilder: (context, index) {
+            //       EnchantedforestItemModel model = controller
+            //           .userProfileContainerModelObj
+            //           .value
+            //           .enchantedforestItemList
+            //           .value[index];
+            //       return EnchantedforestItemWidget(model);
+            //     },
+            //   ),
+            // ),
           ),
           CustomOutlinedButton(
             buttonStyle: CustomButtonStyles.outlinePrimaryButton,

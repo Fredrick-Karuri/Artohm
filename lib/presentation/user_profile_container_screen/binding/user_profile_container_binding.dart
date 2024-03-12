@@ -1,3 +1,5 @@
+import 'package:artohmapp/presentation/upload_artwork_screen/controller/upload_artwork_controller.dart';
+
 import '../controller/user_profile_container_controller.dart';
 import 'package:get/get.dart';
 
@@ -9,5 +11,6 @@ class UserProfileContainerBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => UserProfileContainerController());
+    Get.lazyPut(()=>UploadArtworkController());
   }
 }

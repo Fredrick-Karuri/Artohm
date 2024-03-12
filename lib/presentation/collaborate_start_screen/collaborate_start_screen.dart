@@ -75,7 +75,7 @@ class NewCollaborationItemPage extends StatelessWidget {
       children: [
         Text(
           'Add Collaborators',
-          style: CustomTextStyles.titleSmallOnBackground,
+          style: CustomTextStyles.titleSmall,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,

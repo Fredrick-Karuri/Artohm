@@ -26,6 +26,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.filled = false,
     this.validator,
+    this.onChanged,
   }) : super(
           key: key,
         );
@@ -74,6 +75,10 @@ class CustomTextFormField extends StatelessWidget {
 
   final FormFieldValidator<String>? validator;
 
+  final ValueChanged<String>? onChanged;
+  //onchanged
+
+
   @override
   Widget build(BuildContext context) {
     return alignment != null
@@ -98,6 +103,7 @@ class CustomTextFormField extends StatelessWidget {
           maxLines: maxLines ?? 1,
           decoration: decoration,
           validator: validator,
+          onChanged: onChanged,
         ),
       );
   InputDecoration get decoration => InputDecoration(

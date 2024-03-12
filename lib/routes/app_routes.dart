@@ -56,8 +56,8 @@ import 'package:artohmapp/presentation/edit_profile_screen/edit_profile_screen.d
 import 'package:artohmapp/presentation/edit_profile_screen/binding/edit_profile_binding.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/upload_artwork_screen.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/binding/upload_artwork_binding.dart';
-import 'package:artohmapp/presentation/upload_artwork_two_screen/upload_artwork_two_screen.dart';
-import 'package:artohmapp/presentation/upload_artwork_two_screen/binding/upload_artwork_two_binding.dart';
+import 'package:artohmapp/presentation/upload_artwork_confirmation_screen/upload_artwork_confirmation.dart';
+import 'package:artohmapp/presentation/upload_artwork_confirmation_screen/binding/upload_artwork_two_binding.dart';
 import 'package:artohmapp/presentation/createcollection_screen/createcollection_screen.dart';
 import 'package:artohmapp/presentation/createcollection_screen/binding/createcollection_binding.dart';
 import 'package:artohmapp/presentation/community_engagement_screen/art_community_engagement_screen.dart';
@@ -292,7 +292,7 @@ class AppRoutes {
     ),
     GetPage(
       name: uploadArtworkTwoScreen,
-      page: () => UploadArtworkTwoScreen(),
+      page: () => UploadArtworkConfirmationScreen(),
       bindings: [
         UploadArtworkTwoBinding(),
       ],

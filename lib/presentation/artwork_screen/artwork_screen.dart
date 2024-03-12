@@ -50,11 +50,15 @@ class ArtworkScreen extends GetView<ArtworkController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Hero(
-                  tag: artwork.id,
-                  child: CustomImageView(
-                    imagePath: artwork.imageUrl,
-                    radius: BorderRadius.circular(8.h),
+                AspectRatio(
+                  aspectRatio: 12/15,
+                  child: Hero(
+                    tag: artwork.id,
+                    child: CustomImageView(
+                      imagePath: artwork.imageUrl,
+                      radius: BorderRadius.circular(8.h),
+                      // isAsset: true,
+                    ),
                   ),
                 ),
                 artistInfo(artwork, context, controller),

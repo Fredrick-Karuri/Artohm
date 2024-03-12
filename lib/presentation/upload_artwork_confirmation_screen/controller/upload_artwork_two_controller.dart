@@ -1,13 +1,13 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/upload_artwork_two_screen/models/upload_artwork_two_model.dart';
+import 'package:artohmapp/presentation/upload_artwork_confirmation_screen/models/upload_artwork_two_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-/// A controller class for the UploadArtworkTwoScreen.
+/// A controller class for the UploadArtworkConfirmationScreen.
 ///
-/// This class manages the state of the UploadArtworkTwoScreen, including the
+/// This class manages the state of the UploadArtworkConfirmationScreen, including the
 /// current uploadArtworkTwoModelObj
-class UploadArtworkTwoController extends GetxController {
+class UploadArtworkConfirmationController extends GetxController {
   Rx<UploadArtworkTwoModel> uploadArtworkTwoModelObj =
       UploadArtworkTwoModel().obs;
   

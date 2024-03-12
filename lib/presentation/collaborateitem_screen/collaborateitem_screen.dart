@@ -203,7 +203,7 @@ class CollaborateitemScreen extends GetWidget<CollaborateitemController> {
                             children: <Widget>[
                               ListTile(
                                 title: Text('Continue to Collaborate',
-                                    style: CustomTextStyles.titleSmallOnBackground,
+                                    style: CustomTextStyles.titleSmall,
                                     textAlign: TextAlign.center),
                               ),
                               Divider(),

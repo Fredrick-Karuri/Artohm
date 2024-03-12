@@ -3,21 +3,21 @@ import 'package:artohmapp/presentation/artist_profile_screen/models/artist_profi
 import 'package:uuid/uuid.dart';
 
 class Artwork {
-  final String title;
+  String title;
   final String artist;
-  final String imageUrl;
+  String imageUrl;
   final String id;
-  final String type;
-  final String category;
-  final String description;
+  String type;
+  String category;
+  String description;
   RxBool isFavorite = false.obs;
   int likes;
   List<Comment> comments;
-  final double? price;
-  final bool forSale;
-  final List<String>? tools;
-  final List<String>? tags;
-  final Dimension? dimensions;
+  double? price;
+  bool forSale;
+  List<String>? tools;
+  List<String>? tags;
+  Dimension? dimensions;
 
   Artwork({
     required this.title,

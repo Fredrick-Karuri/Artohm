@@ -4,8 +4,6 @@ import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
 import 'package:artohmapp/presentation/artwork_screen/artwork_screen.dart';
 import 'package:artohmapp/presentation/artwork_screen/binding/artwork_binding.dart';
 import 'package:artohmapp/presentation/createcollection_screen/widgets/create_collections_modal.dart';
-import 'package:artohmapp/widgets/app_bar/custom_app_bar.dart';
-import 'package:artohmapp/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeArtworkCardNew extends StatelessWidget {
@@ -31,20 +29,20 @@ class HomeArtworkCardNew extends StatelessWidget {
             arguments: artwork, binding: ArtworkBinding());
       },
       child: Padding(
-        padding: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.only(right: 8),
         child: SizedBox(
-          height: 200.v,
           width: 160.h,
           child: Stack(
+            fit: StackFit.loose,
             alignment: Alignment.bottomRight,
             children: [
-              Image.asset(
-                artwork.imageUrl,
+              CustomImageView(
+                isAsset: true,
+                imagePath: artwork.imageUrl,
                 fit: BoxFit.cover,
               ),
               Container(
                 padding: EdgeInsetsDirectional.symmetric(horizontal: 4),
-                decoration: BoxDecoration(),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

@@ -1,13 +1,9 @@
-import 'package:artohmapp/data/localStorage.dart';
 import 'package:artohmapp/presentation/home_page/widgets/featured_artwork.dart';
 import 'package:artohmapp/presentation/home_page/widgets/homeArtworkCard.dart';
-import 'package:artohmapp/presentation/artworks/controller/artworks_controller.dart';
-import 'package:artohmapp/presentation/home_page/models/home_model.dart';
 import 'package:artohmapp/presentation/home_page/models/home_model_populated.dart';
 import 'package:artohmapp/presentation/notifications_page/controller/notifications_controller.dart';
 import 'package:artohmapp/presentation/notifications_page/models/notifications_model.dart';
 import 'package:artohmapp/widgets/custom_search_view.dart';
-import '../../widgets/app_bar/custom_app_bar.dart';
 import 'controller/home_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
@@ -27,108 +23,117 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return Container(
-      color: Get.theme.scaffoldBackgroundColor,
-      child: Scaffold(
-        appBar: CustomAppBar(
-          leadingWidth: 46.h,
-          leading: CustomImageView(
-            svgPath: ImageConstant.imgArtohmlogo,
-            margin: EdgeInsets.only(
-              left: 18.h,
-            ),
-            height: 40.v,
-            width: 30.h,
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(width: 32.h),
-                  IconButton(
-                    icon: Icon(
-                      Icons.search_outlined,
-                      color: theme.colorScheme.tertiary,
-                      size: 24,
-                    ),
-                    onPressed: () {
-                      customSearch.SearchController searchController =
-                          customSearch.SearchController();
 
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CustomSearchView(
-                            controller: searchController.textEditingController,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  SizedBox(width: 32.h),
-                  Stack(
-                    children: <Widget>[
+    return SafeArea(
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              floating: true,
+              pinned: false,
+              backgroundColor: theme.colorScheme.background,
+              elevation: 0,
+              leading: CustomImageView(
+                svgPath: ImageConstant.imgArtohmlogo,
+                margin: EdgeInsets.only(
+                  left: 18.h,
+                ),
+                height: 40.v,
+                width: 30.h,
+              ),
+              actions: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(9.v, 9.v, 9.v, 9.v),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(width: 32.h),
                       IconButton(
-                        onPressed: () {
-                          nc.reset();
-                          onTapImgNotification();
-                        },
                         icon: Icon(
-                          Icons.notifications,
+                          Icons.search_outlined,
                           color: theme.colorScheme.tertiary,
                           size: 24,
                         ),
+                        onPressed: () {
+                          customSearch.SearchController searchController =
+                              customSearch.SearchController();
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CustomSearchView(
+                                controller:
+                                    searchController.textEditingController,
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                      Positioned(
-                        right: 0,
-                        child: Badge.count(
-                          backgroundColor: theme.colorScheme.tertiary,
-                          textColor: theme.colorScheme.background,
-                          count: nc.notificationCount.value,
-                        ),
+                      SizedBox(width: 32.h),
+                      Stack(
+                        children: <Widget>[
+                          IconButton(
+                            onPressed: () {
+                              nc.reset();
+                              onTapImgNotification();
+                            },
+                            icon: Icon(
+                              Icons.notifications,
+                              color: theme.colorScheme.tertiary,
+                              size: 24,
+                            ),
+                          ),
+                          Positioned(
+                            right: 0,
+                            child: Badge.count(
+                              backgroundColor: theme.colorScheme.tertiary,
+                              textColor: theme.colorScheme.background,
+                              count: nc.notificationCount.value,
+                            ),
+                          ),
+                        ],
                       ),
+                      SizedBox(width: 16.h),
+                      CustomImageView(
+                        imagePath: ImageConstant.imgFrame72,
+                        height: 36.adaptSize,
+                        width: 36.adaptSize,
+                        margin: EdgeInsets.only(left: 32.h, right: 12.h),
+                        onTap: () {
+                          onTapImgProfileoneone();
+                        },
+                      )
                     ],
                   ),
-                  SizedBox(width: 16.h),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgFrame72,
-                    height: 36.adaptSize,
-                    width: 36.adaptSize,
-                    margin: EdgeInsets.only(left: 32.h, right: 12.h),
-                    onTap: () {
-                      onTapImgProfileoneone();
-                    },
-                  )
-                ],
-              ),
-            ),
-          ],
-        ),
-        body: bodyContent(),
-      ),
-    );
-  }
-
-  bodyContent() {
-    return Container(
-      width: double.maxFinite,
-      child: Column(
-        children: [
-          homeFilters(),
-          SizedBox(height: 8.v),
-          Expanded(
-            child: ListView(
-              children: [
-                // featuredArtwork(),
-                FeaturedArtworkView(),
-                artworksList(),
+                ),
               ],
             ),
-          ),
-        ],
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: theme.colorScheme.background,
+              pinned: true,
+              flexibleSpace: FlexibleSpaceBar(
+                  background: Padding(
+                padding: EdgeInsets.only(bottom: 8),
+                child: homeFilters(),
+              )),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  if (index == 0) {
+                    return FeaturedArtworkView();
+                  } else {
+                    return artworksList();
+                  }
+                },
+                childCount:
+                    2, // Adjust this number based on the total number of widgets
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -206,7 +211,6 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: ListView(
             shrinkWrap: true,
-            // physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.horizontal,
             children: [
               for (var chip in controller.homeChipFilterList.value)
@@ -217,62 +221,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  // Padding(
-  //   padding: EdgeInsets.only(left: 15.h, top: 18.v),
-  //   child: Obx(
-  //     () => ListView.separated(
-  //       physics: NeverScrollableScrollPhysics(),
-  //       shrinkWrap: true,
-  //       separatorBuilder: (context, index) {
-  //         return SizedBox(height: 26.v);
-  //       },
-  //       itemCount: controller
-  //           .homeModelObj.value.homeCategoriesList.value.length,
-  //       itemBuilder: (context, index) {
-  //         HomeCategoriesModel model = controller
-  //             .homeModelObj.value.homeCategoriesList.value[index];
-
-  //         return HomeCategoriesWidget(
-  //             homeCategoriesModelObj: model);
-  //       },
-  //     ),
-  //   ),
-  // ),
-
-  // homeFilterss() {
-  //   HomeController controller = Get.find();
-  //   return SingleChildScrollView(
-  //     scrollDirection: Axis.horizontal,
-  //     padding: EdgeInsets.only(left: 16.h, top: 16.v),
-  //     child: IntrinsicWidth(
-  //       child: Row(
-  //         mainAxisAlignment: MainAxisAlignment.start,
-  //         children: [
-  //           Flexible(
-  //             child: CustomDropDown(
-  //               borderDecoration: OutlineInputBorder(
-  //                 borderRadius: BorderRadius.circular(20),
-  //                 borderSide: BorderSide(
-  //                   color: appTheme.lightBlueA700,
-  //                   width: 1.0,
-  //                 ),
-  //               ),
-  //               dropdownColor: appTheme.blue50,
-  //               width: 120.h,
-  //               hintText: "Filter By",
-  //               items: controller.homeModelObj.value.dropdownItemList.value,
-  //               onChanged: (value) {
-  //                 controller.onSelected(value);
-  //               },
-  //             ),
-  //           ),
-  //           for (var chip in controller.homeChipFilterList.value)
-  //             HomeChip(chip: chip),
-  //         ],
-  //       ),
-  //     ),
-  //   );
-  // }
 
   /// Navigates to the notificationsTabContainerScreen when the action is triggered.
 

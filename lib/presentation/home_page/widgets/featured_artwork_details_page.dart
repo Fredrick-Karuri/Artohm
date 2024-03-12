@@ -14,11 +14,11 @@ class FeaturedArtworkDetailsPage extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             backgroundColor: theme.colorScheme.background,
-            expandedHeight: 200.0,
+            expandedHeight: 320.0,
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
+              centerTitle: false,
               title: Text(
                 artwork.title,
                 style: CustomTextStyles.titleAppBar,

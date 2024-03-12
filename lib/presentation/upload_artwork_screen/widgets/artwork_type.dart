@@ -1,7 +1,11 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/upload_artwork_screen/controller/upload_artwork_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+
+class ArtworkTypeController extends GetxController {
+  var selectedArtworkType = ''.obs;
+}
 
 class ArtworkTypeSelection extends StatelessWidget {
   final ArtworkTypeController controller = Get.put(ArtworkTypeController());
@@ -15,13 +19,13 @@ class ArtworkTypeSelection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 24.0),
+      padding: const EdgeInsets.only(top: 32.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             'Type of Artwork',
-            style: theme.textTheme.titleMedium,
+            style: CustomTextStyles.titleSmall,
           ),
           SizedBox(
             height: 8.0,

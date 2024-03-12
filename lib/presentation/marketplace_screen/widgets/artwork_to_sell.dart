@@ -74,7 +74,7 @@ class ArtworkToSell extends StatelessWidget {
                                   SizedBox(height: 8),
                                   Text(
                                     artwork.title,
-                                    style: CustomTextStyles.titleSmallOnBackground,
+                                    style: CustomTextStyles.titleSmall,
                                   ),
                                   SizedBox(height: 8),
                                   Padding(
@@ -93,7 +93,7 @@ class ArtworkToSell extends StatelessWidget {
                                               ? artwork.price!.toString()
                                               : 'Price not available',
                                           style: CustomTextStyles
-                                              .titleSmallOnBackground,
+                                              .titleSmall,
                                         ),
                                       ],
                                     ),

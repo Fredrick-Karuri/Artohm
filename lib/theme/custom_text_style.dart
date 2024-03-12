@@ -98,8 +98,9 @@ class CustomTextStyles {
   static get titleSmallBackground => theme.textTheme.titleSmall!.copyWith(
         color: appTheme.whiteA700,
       );
-  static get titleSmallOnBackground => theme.textTheme.titleSmall!.copyWith(
+  static get titleSmall => theme.textTheme.titleSmall!.copyWith(
         color: theme.colorScheme.onBackground.withOpacity(0.8),
+        fontSize: 16.fSize,
       );
 
   static get titleSmallLatoSecondary =>

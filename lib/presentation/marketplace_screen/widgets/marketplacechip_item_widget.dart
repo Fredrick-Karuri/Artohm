@@ -64,7 +64,7 @@ class MarketplaceChipItemWidget extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: marketplaceChipItemModelObj.isSelected!.value
                         ? CustomTextStyles.titleSmallBackground
-                        : CustomTextStyles.titleSmallOnBackground,
+                        : CustomTextStyles.titleSmall,
                   ),
                 ),
               ],

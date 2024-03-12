@@ -1,11 +1,7 @@
 import 'dart:async';
-
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/artworks/models/artworksmodel.dart';
-import 'package:artohmapp/presentation/home_page/widgets/featured_artwork.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class FeaturedArtworkArtist {
   final String name;
@@ -86,8 +82,16 @@ class FeaturedArtworkController extends GetxController {
     super.onClose();
   }
 
+  void pauseTimer() {
+    _timer?.cancel();
+  }
+
+  void resumeTimer() {
+    _startTimer();
+  }
+
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 6), (timer) {
       nextArtwork();
     });
   }
@@ -100,7 +104,6 @@ class FeaturedArtworkController extends GetxController {
 
   void showDetails() {
     // Navigate to the details page
-
     Get.toNamed(AppRoutes.featuredArtworkDetailsPage,
         arguments: currentArtwork.value);
   }
@@ -157,22 +160,27 @@ class FeaturedArtworkView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Obx(() {
-
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, top: 4),
       child: CarouselSlider(
         options: CarouselOptions(
-          aspectRatio: 9 / 10,
-          // height: 400.0,
-          viewportFraction:
-              1.0, // This ensures that only one artwork is visible at a time
-          autoPlay: true,
-          onPageChanged: (index, reason) {
-            controller.currentIndex = index;
-            controller.currentArtwork.value = featuredArtworks[index];
-          },
-        ),
+            aspectRatio: 9 / 10,
+            // height: 400.0,
+            viewportFraction:
+                1.0, // This ensures that only one artwork is visible at a time
+            autoPlay: true,
+            onPageChanged: (index, reason) {
+              controller
+                  .pauseTimer(); //pause the  timer when the user states scrolling
+              controller.currentIndex = index;
+              controller.currentArtwork.value = featuredArtworks[index];
+            },
+            onScrolled: (value) {
+              if (value == 0 || value == 1) {
+                controller
+                    .resumeTimer(); //resume the timer when the user stops scrolling
+              }
+            }),
         items: featuredArtworks.map((artwork) {
           return Builder(
             builder: (BuildContext context) {

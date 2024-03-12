@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 import '../../widgets/custom_appbar_component.dart';
 import '../../widgets/custom_switch.dart';
-import '../upload_artwork_two_screen/widgets/custom_row.dart';
+import '../upload_artwork_confirmation_screen/widgets/custom_row.dart';
 import 'controller/collaboration_start_confirmation_controller.dart';
 
 class CollaborationStartConfirmationPage extends StatelessWidget {
