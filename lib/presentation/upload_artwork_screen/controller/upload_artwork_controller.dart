@@ -36,11 +36,16 @@ class UploadArtworkController extends GetxController {
 
   //  ArtworkTypeController artworkTypeController = Get.find();
 
+
   @override
   void onInit() {
     super.onInit();
-    // ever(artworkTypeController.selectedArtworkType, (_) => saveArtworkDetails());
+    Get.lazyPut<ArtworkTypeController>(() => ArtworkTypeController());
+    Get.lazyPut<ArtworkTagController>(() => ArtworkTagController());
+    Get.lazyPut<ArtworkSaleController>(() => ArtworkSaleController());
+    onSelectedDimensions(0);
   }
+  // ever(artworkTypeController.selectedArtworkType, (_) => saveArtworkDetails());
 
   @override
   void onClose() {
@@ -173,41 +178,40 @@ class UploadArtworkController extends GetxController {
     return newArtwork;
   }
 
-Future<Artwork?> getArtworkById(String id) async {
-  String? artworkJson = await localStorageService.getString('artwork_$id');
+  Future<Artwork?> getArtworkById(String id) async {
+    String? artworkJson = await localStorageService.getString('artwork_$id');
 
-  if (artworkJson != null) {
-    Map<String, dynamic> artworkMap = jsonDecode(artworkJson);
-    return Artwork.fromJson(artworkMap);
-  } else {
-    print('Artwork not found');
-    return null;
+    if (artworkJson != null) {
+      Map<String, dynamic> artworkMap = jsonDecode(artworkJson);
+      return Artwork.fromJson(artworkMap);
+    } else {
+      print('Artwork not found');
+      return null;
+    }
   }
-}
 
-void editArtwork(String id, Map<String, dynamic> newDetails) async {
-  Artwork? artwork = await getArtworkById(id);
+  void editArtwork(String id, Map<String, dynamic> newDetails) async {
+    Artwork? artwork = await getArtworkById(id);
 
-  if (artwork != null) {
-    // Update the artwork details with the new details
-    artwork.title = newDetails['title'] ?? artwork.title;
-    artwork.imageUrl = newDetails['imageUrl'] ?? artwork.imageUrl;
-    artwork.type = newDetails['type'] ?? artwork.type;
-    artwork.category = newDetails['category'] ?? artwork.category;
-    artwork.description = newDetails['description'] ?? artwork.description;
-    artwork.likes = newDetails['likes'] ?? artwork.likes;
-    artwork.comments = newDetails['comments'] ?? artwork.comments;
-    artwork.price = newDetails['price'] ?? artwork.price;
-    artwork.forSale = newDetails['forSale'] ?? artwork.forSale;
-    artwork.tools = newDetails['tools'] ?? artwork.tools;
-    artwork.tags = newDetails['tags'] ?? artwork.tags;
-    artwork.dimensions = newDetails['dimensions'] ?? artwork.dimensions;
+    if (artwork != null) {
+      // Update the artwork details with the new details
+      artwork.title = newDetails['title'] ?? artwork.title;
+      artwork.imageUrl = newDetails['imageUrl'] ?? artwork.imageUrl;
+      artwork.type = newDetails['type'] ?? artwork.type;
+      artwork.category = newDetails['category'] ?? artwork.category;
+      artwork.description = newDetails['description'] ?? artwork.description;
+      artwork.likes = newDetails['likes'] ?? artwork.likes;
+      artwork.comments = newDetails['comments'] ?? artwork.comments;
+      artwork.price = newDetails['price'] ?? artwork.price;
+      artwork.forSale = newDetails['forSale'] ?? artwork.forSale;
+      artwork.tools = newDetails['tools'] ?? artwork.tools;
+      artwork.tags = newDetails['tags'] ?? artwork.tags;
+      artwork.dimensions = newDetails['dimensions'] ?? artwork.dimensions;
 
-    // Save the updated artwork details to local storage
-    saveArtworkDetails();
+      // Save the updated artwork details to local storage
+      saveArtworkDetails();
+    }
   }
-}
-
 
   void postArtwork() async {
     Artwork newArtwork = await createArtwork();
@@ -226,18 +230,6 @@ void editArtwork(String id, Map<String, dynamic> newDetails) async {
     Get.find<ArtworkSaleController>().isForSale.value = false;
     Get.find<ArtworkSaleController>().price.value = 0.0;
     localStorageService.setString('image', ''); // Clear the image path
-  }
-
-  onSelectedMedium(int value) {
-    for (var element
-        in uploadArtworkModelObj.value.mediumDropdownItemList.value) {
-      element.isSelected = false;
-      if (element.id == value) {
-        // Now we're comparing two integers
-        element.isSelected = true;
-      }
-    }
-    uploadArtworkModelObj.value.mediumDropdownItemList.refresh();
   }
 }
 

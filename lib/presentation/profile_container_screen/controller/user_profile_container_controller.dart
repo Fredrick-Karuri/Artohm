@@ -1,5 +1,5 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/models/user_profile_container_model.dart';
+import 'package:artohmapp/presentation/profile_container_screen/models/user_profile_container_model.dart';
 
 /// A controller class for the UserProfileContainerScreen.
 ///

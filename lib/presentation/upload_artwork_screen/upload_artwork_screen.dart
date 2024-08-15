@@ -2,7 +2,6 @@ import 'package:artohmapp/presentation/artworks/widgets/tools(mediums).dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/widgets/artwork_sale_form.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/widgets/artwork_tags.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/widgets/artwork_type.dart';
-
 import 'controller/upload_artwork_controller.dart';
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/widgets/custom_drop_down.dart';
@@ -12,77 +11,143 @@ import 'package:artohmapp/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
-  UploadArtworkScreen({Key? key}) : super(key: key);
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey;
+
+  UploadArtworkScreen({Key? key, required GlobalKey<FormState> formKey})
+      : _formKey = formKey,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          leadingWidth: 46.h,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            onPressed: () {
-              Get.back();
-            },
-            iconSize: 40,
-            icon: Icon(
-              Icons.close,
-              color: theme.colorScheme.tertiary,
+
+    return Scaffold(
+      body: Stack(
+        children: [
+          Form(
+            key: _formKey,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            child: CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  backgroundColor: Colors.transparent,
+                  pinned: true,
+                  elevation: 0,
+                  leading: IconButton(
+                    onPressed: () {
+                      Get.back();
+                    },
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.close,
+                      color: theme.colorScheme.tertiary,
+                    ),
+                  ),
+                ),
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        child: _children[index],
+                      );
+                    },
+                    childCount: _children.length,
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-        resizeToAvoidBottomInset: true,
-        body: bodyContent(),
-        bottomNavigationBar: CustomElevatedButton(
-          buttonStyle: CustomButtonStyles.fillPrimaryButton,
-          height: 36.v,
-          text: "lbl_save".tr,
-          margin:
-              EdgeInsets.only(left: 16.h, right: 16.h, bottom: 16.v, top: 8.v),
-          buttonTextStyle: CustomTextStyles.buttonText,
-          onTap: () async {
-            if (_formKey.currentState!.validate()) {
-              controller.saveArtworkDetails();
+          // Positioned(
+          //   top: 0,
+          //   left: 0,
+          //   child: SafeArea(
+          //     child: IconButton(
+          //       onPressed: () {
+          //         Get.back();
+          //       },
+          //       iconSize: 40,
+          //       icon: Icon(
+          //         Icons.close,
+          //         color: theme.colorScheme.tertiary,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+        ],
+      ),
+      bottomNavigationBar: CustomElevatedButton(
+        buttonStyle: CustomButtonStyles.fillPrimaryButton,
+        height: 36.v,
+        text: "lbl_save".tr,
+        margin:
+            EdgeInsets.only(left: 16.h, right: 16.h, bottom: 16.v, top: 8.v),
+        buttonTextStyle: CustomTextStyles.buttonText,
+        onTap: () async {
+          if (_formKey.currentState!.validate()) {
+            controller.saveArtworkDetails();
 
-              Get.toNamed(
-                AppRoutes.uploadArtworkTwoScreen,
-              );
-            }
-            // onTapSave();
-          },
-        ),
+            Get.toNamed(
+              AppRoutes.uploadArtworkTwoScreen,
+            );
+          }
+          // onTapSave();
+        },
       ),
     );
   }
 
-  bodyContent() {
-    return SingleChildScrollView(
-      child: Form(
-        key: _formKey,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              title(),
-              description(),
-              ArtworkTypeSelection(),
-              ArtworkTagSelection(),
-              MediumsView(),
-              // medium(),
-              dimensions(),
-              images(),
-              ArtworkSaleForm(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  List<Widget> get _children => [
+        title(),
+        description(),
+        ArtworkTypeSelection(),
+        ArtworkTagSelection(),
+        MediumsView(),
+        // medium(),
+        // Obx(
+        //   () => dimensions(),
+        // ),
+        images(),
+        ArtworkSaleForm(),
+      ];
+  // return SafeArea(
+  //   child: Scaffold(
+  //     appBar: AppBar(
+  //       leadingWidth: 46.h,
+  //       backgroundColor: Colors.white,
+  //       leading: IconButton(
+  //         onPressed: () {
+  //           Get.back();
+  //         },
+  //         iconSize: 40,
+  //         icon: Icon(
+  //           Icons.close,
+  //           color: theme.colorScheme.tertiary,
+  //         ),
+  //       ),
+  //     ),
+  //     resizeToAvoidBottomInset: true,
+  //     body: bodyContent(),
+  //     bottomNavigationBar: CustomElevatedButton(
+  //       buttonStyle: CustomButtonStyles.fillPrimaryButton,
+  //       height: 36.v,
+  //       text: "lbl_save".tr,
+  //       margin:
+  //           EdgeInsets.only(left: 16.h, right: 16.h, bottom: 16.v, top: 8.v),
+  //       buttonTextStyle: CustomTextStyles.buttonText,
+  //       onTap: () async {
+  //         if (_formKey.currentState!.validate()) {
+  //           controller.saveArtworkDetails();
+
+  //           Get.toNamed(
+  //             AppRoutes.uploadArtworkTwoScreen,
+  //           );
+  //         }
+  //         // onTapSave();
+  //       },
+  //     ),
+  //   ),
+  // );
 
   images() {
     return Padding(
@@ -111,43 +176,6 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
                   .copyWith(color: theme.colorScheme.tertiary),
             ),
           )
-        ],
-      ),
-    );
-  }
-
-  medium() {
-    return Container(
-      margin: EdgeInsets.only(left: 7.h, top: 36.v, right: 7.h),
-      padding: EdgeInsets.all(16.h),
-      decoration: AppDecoration.fillPrimaryOpacity2
-          .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text(
-                "Medium",
-                style: theme.textTheme.titleSmall,
-              ),
-              SizedBox(width: 8.h),
-              Text("(How was your piece made?)",
-                  style: theme.textTheme.bodyMedium),
-            ],
-          ),
-          SizedBox(height: 17.v),
-          CustomDropDown(
-            hintText: "lbl_oil_on_canvas".tr,
-            items: controller
-                .uploadArtworkModelObj.value.mediumDropdownItemList.value,
-            contentPadding:
-                EdgeInsets.only(left: 16.h, top: 10.v, bottom: 10.v, right: 16),
-            onChanged: (value) {
-              controller.onSelectedMedium(value);
-            },
-          ),
         ],
       ),
     );
@@ -300,8 +328,12 @@ class UploadArtworkScreen extends GetWidget<UploadArtworkController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-            padding: EdgeInsets.only(left: 7.h, top: 16.v),
-            child: Text("lbl_title".tr, style: CustomTextStyles.titleSmall)),
+          padding: EdgeInsets.only(left: 7.h, top: 16.v),
+          child: Text(
+            "lbl_title".tr,
+            style: CustomTextStyles.titleSmall,
+          ),
+        ),
         CustomTextFormField(
           controller: controller.inputTitleController,
           focusNode: controller.inputTitleFocusNode,

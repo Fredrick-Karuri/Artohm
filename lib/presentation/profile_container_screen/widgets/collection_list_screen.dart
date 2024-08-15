@@ -1,6 +1,6 @@
 import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/data/models/collections/collections_model.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_card.dart';
+import 'package:artohmapp/presentation/profile_container_screen/widgets/collection_card.dart';
 import 'package:artohmapp/widgets/custom_outlined_button.dart';
 import 'package:flutter/material.dart';
 

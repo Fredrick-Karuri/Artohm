@@ -2,8 +2,9 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:artohmapp/presentation/upload_artwork_screen/controller/upload_artwork_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class ArtworkSaleForm extends StatelessWidget {
-  final ArtworkSaleController controller = Get.put(ArtworkSaleController());
+  final ArtworkSaleController controller = Get.find<ArtworkSaleController>();
 
   @override
   Widget build(BuildContext context) {

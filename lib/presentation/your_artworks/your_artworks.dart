@@ -1,9 +1,9 @@
 import 'package:artohmapp/core/app_export.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/models/enchantedforest_item_model.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/widgets/enchantedforest_item_widget.dart';
+import 'package:artohmapp/presentation/profile_container_screen/models/enchantedforest_item_model.dart';
+import 'package:artohmapp/presentation/profile_container_screen/widgets/enchantedforest_item_widget.dart';
 import 'package:artohmapp/widgets/custom_appbar_component.dart';
 import 'package:flutter/material.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/controller/user_profile_container_controller.dart';
+import 'package:artohmapp/presentation/profile_container_screen/controller/user_profile_container_controller.dart';
 
 class YourArtworksPage extends StatelessWidget {
   UserProfileContainerController controller =

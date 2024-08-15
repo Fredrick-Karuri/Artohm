@@ -2,13 +2,12 @@ import 'package:artohmapp/core/app_export.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 class ArtworkTypeController extends GetxController {
   var selectedArtworkType = ''.obs;
 }
 
 class ArtworkTypeSelection extends StatelessWidget {
-  final ArtworkTypeController controller = Get.put(ArtworkTypeController());
+  final ArtworkTypeController controller = Get.find<ArtworkTypeController>();
   final List<String> artworkTypes = [
     'Art',
     'Photograph',

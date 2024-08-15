@@ -220,7 +220,7 @@ List<FeaturedArtwork> featuredArtworks = [
     dimensions: '74 cm × 92 cm',
     imageUrl: ImageConstant.starryNight,
     description:
-        'One of Vincent van Gogh\'s most famous paintings, The Starry Night is a post-Impressionist masterpiece that celebrates the beauty of the night sky.',
+        ' The Starry Night is an oil-on-canvas painting by the Dutch Post-Impressionist painter Vincent van Gogh. Painted in June 1889, it depicts the view from the east-facing window of his asylum room at Saint-Rémy-de-Provence, just before sunrise, with the addition of an imaginary village. It has been in the permanent collection of the Museum of Modern Art in New York City since 1941. Widely regarded as Van Gogh’s magnum opus, The Starry Night is one of the most recognizable paintings in Western art.It is one of the most well-known paintings of the Impressionist style.',
     location: 'Museum of Modern Art, New York',
     period: 'Post-Impressionism',
     themes: ['Nature', 'Night', 'Sky'],
@@ -233,7 +233,7 @@ List<FeaturedArtwork> featuredArtworks = [
     dimensions: '460 cm × 880 cm',
     imageUrl: ImageConstant.lastSupper,
     description:
-        'Painted by Leonardo da Vinci in the early 1500s, The Last Supper is a religious work that depicts the last meal Jesus shared with his twelve apostles before he was betrayed.',
+        'The Last Supper is a mural painting by the Italian High Renaissance artist Leonardo da Vinci, dated to c. 1495–1498, housed in the refectory of the Convent of Santa Maria delle Grazie in Milan, Italy. The painting represents the scene of the Last Supper of Jesus with the Twelve Apostles, as it is told in the Gospel of John – specifically the moment after Jesus announces that one of his apostles will betray him. Its handling of space, mastery of perspective, treatment of motion and complex display of human emotion has made it one of the Western world’s most recognizable paintings and among Leonardo’s most celebrated works.I',
     location: 'Convent of Santa Maria delle Grazie, Milan',
     period: 'High Renaissance',
     themes: ['Religion', 'Apostles', 'Jesus'],
@@ -246,7 +246,7 @@ List<FeaturedArtwork> featuredArtworks = [
     dimensions: '91 cm × 73.5 cm',
     imageUrl: ImageConstant.theScream,
     description:
-        'Created by the Norwegian artist Edvard Munch, The Scream is a powerful and influential work that is known for its expressive brushstrokes and raw emotion.',
+        'The Scream is a composition created by Norwegian artist Edvard Munch in 1893. The agonized face in the painting has become one of the most iconic images in art, seen as symbolizing the anxiety of the human condition. Munch’s work, including The Scream, had a formative influence on the Expressionist movement. Munch recalled that he had been out for a walk at sunset when suddenly the setting sun’s light turned the clouds “a blood red”. He sensed an “infinite scream passing through nature”. Scholars have located the spot to a fjord overlooking Oslo and have suggested other explanations for the unnaturally orange sky, ranging from the effects of a volcanic eruption to a psychological reaction by Munch to his sister’s commitment at a nearby lunatic asylum.',
     location: 'National Gallery, Oslo, Norway',
     period: 'Expressionism',
     themes: ['Anxiety', 'Despair'],

@@ -28,12 +28,12 @@ import 'package:artohmapp/presentation/signup_select_account/controller/signup_s
 import 'package:artohmapp/presentation/signup_select_account/signup_select_account.dart';
 import 'package:artohmapp/presentation/signup_select_account/widgets/art_enthusiast_track_view.dart';
 import 'package:artohmapp/presentation/signup_select_account/widgets/artist_track_view.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/widgets/collection_details_Screen.dart';
+import 'package:artohmapp/presentation/profile_container_screen/widgets/collection_details_Screen.dart';
 import 'package:artohmapp/presentation/your_artworks/binding/your_artworks._binding.dart';
 import 'package:artohmapp/presentation/your_artworks/your_artworks.dart';
 import 'package:artohmapp/widgets/splashscreen.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/user_profile_container_screen.dart';
-import 'package:artohmapp/presentation/user_profile_container_screen/binding/user_profile_container_binding.dart';
+import 'package:artohmapp/presentation/profile_container_screen/profile_container_screen.dart';
+import 'package:artohmapp/presentation/profile_container_screen/binding/user_profile_container_binding.dart';
 import 'package:artohmapp/presentation/art_discovery_container_screen/art_discovery_container_screen.dart';
 import 'package:artohmapp/presentation/art_discovery_container_screen/binding/art_discovery_container_binding.dart';
 import 'package:artohmapp/presentation/artist_profile_screen/artist_profile_screen.dart';
@@ -68,6 +68,7 @@ import 'package:artohmapp/presentation/modal_one_screen/modal_one_screen.dart';
 import 'package:artohmapp/presentation/modal_one_screen/binding/modal_one_binding.dart';
 import 'package:artohmapp/presentation/app_navigation_screen/app_navigation_screen.dart';
 import 'package:artohmapp/presentation/app_navigation_screen/binding/app_navigation_binding.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:artohmapp/presentation/collaborate_start_screen/collaborate_start_screen.dart';
 
@@ -285,7 +286,9 @@ class AppRoutes {
     ),
     GetPage(
       name: uploadArtworkScreen,
-      page: () => UploadArtworkScreen(),
+      page: () => UploadArtworkScreen(
+        formKey: GlobalKey<FormState>(),
+      ),
       bindings: [
         UploadArtworkBinding(),
       ],

@@ -99,7 +99,8 @@ class ArtworkTagController extends GetxController {
 }
 
 class ArtworkTagSelection extends StatelessWidget {
-  final ArtworkTagController controller = Get.put(ArtworkTagController());
+  final ArtworkTagController controller = Get.find<ArtworkTagController>();
+
   // final _tagController = TextEditingController();
 
   @override
